@@ -49,6 +49,7 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--hl);outline-of
 .root{font-size:13.5px;color:var(--mute)}
 .icon{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;min-width:44px;min-height:44px;cursor:pointer;font-size:15px}
 select{font:16px "Source Sans 3",sans-serif;min-height:44px;padding:6px 10px;border:1.5px solid var(--blue);border-radius:10px;background:var(--bg);color:var(--ink);flex:1 1 220px;max-width:460px}
+.zr{font-size:15.5px;line-height:1.7;color:var(--ink);border-left:3px solid var(--hl);padding:4px 0 4px 12px;margin:-2px 0 10px}
 .chk{display:flex;align-items:center;gap:6px;font-size:14px;margin-top:8px;cursor:pointer;min-height:32px}
 .chk input{width:18px;height:18px}
 mark{background:var(--hl);color:inherit;padding:0 3px;border-radius:3px}
@@ -803,6 +804,15 @@ claim:"主張；論點",counterclaim:"反方論點",rebuttal:"反駁",valid:"站
 "The mockingbird":"知更鳥","The Radley house & knothole":"Radley 家與樹洞","The rabid dog":"瘋狗","Mrs. Dubose’s camellia":"Dubose 太太的山茶花",
 "Retrospective first-person narration":"回顧式第一人稱敘事","Foreshadowing":"伏筆","Irony":"反諷","Two-part structure":"兩部式結構","Southern Gothic elements":"南方哥德元素",
 "Claim":"主張","Evidence":"證據","Reasoning":"推理","Counterclaim":"反方論點","Themes":"主題","Symbols":"象徵"};
+const ZR={
+"Parallel structure":"以清單列出，或用成對連接詞（and、or、not only…but also、either…or）連接的項目，文法形式必須相同：名詞配名詞、動詞配動詞、子句配子句。",
+"Phrases":"片語是一組沒有自己主詞和動詞的字詞。要認識以下幾種類型：介系詞片語、分詞片語、獨立分詞構句（absolute phrase）、同位語片語、不定詞片語和動名詞片語。每一種都能為句子增添特定的意義，並讓句型更有變化。",
+"Clauses":"子句有主詞和動詞。獨立子句可以單獨成句；從屬子句不行。從屬子句可以當名詞（that…）、形容詞（who、which…）或副詞（because、although、when…）使用。",
+"Semicolons":"分號用於：(1) 連接兩個意思密切相關的獨立子句；(2) 放在 however、therefore 等連接副詞之前（後面加逗號）；(3) 分隔本身已經含有逗號的清單項目。",
+"Colons":"冒號放在完整的獨立子句之後，用來引出清單、解釋或引文。動詞或介系詞後面絕對不能直接接冒號。",
+"Run-ons & comma splices":"兩個獨立子句不能只用逗號連接（逗號錯接），也不能什麼都不加（連寫句）。修正方法：用句號、分號、逗號加 FANBOYS 連接詞（for、and、nor、but、or、yet、so），或把其中一個子句改成從屬子句。",
+"Subject–verb agreement":"動詞必須與真正的主詞一致，而不是與旁邊的名詞一致。each、everyone、neither 是單數。用 either/or、neither/nor 時，動詞與較靠近的主詞一致。在 There is/are 句型中，主詞放在動詞後面。",
+"MLA in-text citation":"MLA 格式的引用：在括號中寫作者姓氏和頁碼，中間不加逗號，例如 (Lee 87)。句點放在括號後面。如果句中已經寫出作者，括號內只寫頁碼。詩體劇本則標示「幕.場.行」。"};
 const Z=k=>S.zh&&ZH[k]?` <span class="zh">${ZH[k]}</span>`:"";
 const ZB=k=>S.zh&&ZH[k]?`<div class="zh">${ZH[k]}</div>`:"";
 BOOKS.forEach(b=>Object.assign(ZH,b.kz||{}));
@@ -862,7 +872,7 @@ function gramView(){
   const t=G9[S.gt];
   return `<h2>Grade 9 grammar & language</h2><p class="meta">Based on CA CCSS Language standards for grades 9–10, with two foundational review topics.</p>
   <div class="gtopics"><div class="glist">${G9.map((x,i)=>`<button data-gt="${i}" aria-pressed="${S.gt===i}">${x.t}${ZB(x.t)}</button>`).join("")}</div>
-  <div><span class="code">${t.c}</span><h2>${t.t}${Z(t.t)}</h2><p>${esc(t.r)}</p>
+  <div><span class="code">${t.c}</span><h2>${t.t}${Z(t.t)}</h2><p>${esc(t.r)}</p>${S.zh&&ZR[t.t]?`<p class="zh zr">${ZR[t.t]}</p>`:""}
   <div class="eg">${t.y.map(s=>`<div class="y">${esc(s)}</div>`).join("")}${t.n.map(s=>`<div class="n">${esc(s)}</div>`).join("")}</div>
   <h3>Practice (${t.q.filter((_,i)=>gAns[S.gt+"-"+i]===t.q[i][2]).length}/${t.q.length} correct)</h3>
   ${t.q.map((q,i)=>{const a=gAns[S.gt+"-"+i];return `<div class="quiz" style="margin:10px 0"><b>${i+1}. ${esc(q[0])}</b><div class="opts">${q[1].map((o,j)=>{let c="";if(a!==undefined){if(j===q[2])c="right";else if(j===a)c="wrong"}return `<button class="opt ${c}" data-gq="${i}" data-o="${j}" ${a!==undefined?"disabled":""}>${esc(o)}</button>`}).join("")}</div>${a!==undefined?`<div class="fb">${a===q[2]?"✓ Correct.":"✗ Not quite."} ${esc(q[3])}</div>`:""}</div>`}).join("")}
