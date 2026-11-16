@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Source+Sans+3:wght@400;600;700&family=Noto+Sans+TC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a focused study notebook, calm and exact, teacher-grade
+   IDEA: a ruled composition notebook with a red-pen margin and highlighter marks
+   PICTURE: the working study surface itself — word cards, drills, the reading guide
+   COLOUR and TYPE: white page, ink, notebook-rule blue, red-pen accent, highlighter yellow; Source Serif 4 + Source Sans 3 + Noto Sans TC
+   LAYOUT: grade dividers on top, section tabs, one content column up to 980px */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#121417);--ink:light-dark(#1c1d21,#e8e9ec);--mute:light-dark(#5b5f69,#a3a8b3);
+--rule:light-dark(#d7e3f2,#26303d);--blue:light-dark(#2a64a8,#86b6ff);--red:light-dark(#c8352b,#ff7a6e);
+--hl:light-dark(#ffe66d,#6b5a12);--card:light-dark(#f7f9fc,#1a1e24);--ok:light-dark(#1f7a4a,#6fd39d);--line:light-dark(#e3e6ec,#2a2f38)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+.zh{font-family:"Noto Sans TC",sans-serif;color:var(--mute);font-size:14.5px;font-weight:400}
+.lang{display:flex;border:1.5px solid var(--red);border-radius:999px;overflow:hidden}.lang button{border:0;background:var(--bg);color:var(--red);font:600 14.5px "Source Sans 3","Noto Sans TC",sans-serif;padding:8px 14px;min-height:44px;cursor:pointer}.lang button[aria-pressed=true]{background:var(--red);color:#fff}
+[aria-pressed=true] .zh{color:inherit;opacity:.85}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,42px)}h2{font-size:26px;margin:6px 0 12px}h3{font-size:19px;margin:18px 0 6px}
+header{padding:22px max(5vw,16px) 0;border-bottom:2px solid var(--red)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:980px;margin:auto}
+.top p{margin:0;color:var(--mute)}
+.grades{display:flex;gap:6px;max-width:980px;margin:16px auto 0;flex-wrap:wrap}
+.grades button{border:1px solid var(--line);border-bottom:none;background:var(--card);color:var(--ink);font:600 16px "Source Sans 3";padding:10px 18px;border-radius:10px 10px 0 0;min-height:44px;cursor:pointer}
+.grades button[aria-pressed=true]{background:var(--red);color:#fff;border-color:var(--red)}
+main{max-width:980px;margin:auto;padding:18px max(4vw,16px) 60px;background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% 32px;background-position:0 12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;background:var(--bg);padding:4px 0}
+.tabs button,.pill{border:1.5px solid var(--blue);background:var(--bg);color:var(--blue);font:600 15px "Source Sans 3","Noto Sans TC";padding:8px 14px;border-radius:999px;min-height:44px;cursor:pointer}
+.tabs button[aria-pressed=true],.pill[aria-pressed=true]{background:var(--blue);color:var(--bg)}
+button:focus-visible,select:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+.panel{background:var(--bg);border-radius:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 14px}
+.meta{color:var(--mute);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:14px 16px}
+.card.done{border-left-color:var(--ok)}
+.w{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.w b{font:700 22px "Source Serif 4",serif}
+.ipa{color:var(--mute);font-size:14px;white-space:nowrap}
+.pos{font-style:italic;color:var(--red);font-size:14px;margin-right:6px}
+.ex{margin:8px 0 4px;padding-left:10px;border-left:2px solid var(--rule)}
+.root{font-size:13.5px;color:var(--mute)}
+.icon{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;min-width:44px;min-height:44px;cursor:pointer;font-size:15px}
+select{font:16px "Source Sans 3",sans-serif;min-height:44px;padding:6px 10px;border:1.5px solid var(--blue);border-radius:10px;background:var(--bg);color:var(--ink);flex:1 1 220px;max-width:460px}
+.chk{display:flex;align-items:center;gap:6px;font-size:14px;margin-top:8px;cursor:pointer;min-height:32px}
+.chk input{width:18px;height:18px}
+mark{background:var(--hl);color:inherit;padding:0 3px;border-radius:3px}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 14px;font:16px "Source Sans 3","Noto Sans TC";min-height:44px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--bg))}
+.opt.wrong{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--bg))}
+.fb{margin-top:10px;font-size:15px}
+.gtopics{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:18px}
+.glist{display:grid;gap:6px;align-content:start}
+.glist button{text-align:left;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:10px 12px;font:600 15px "Source Sans 3","Noto Sans TC";cursor:pointer;min-height:44px}
+.glist button[aria-pressed=true]{border-color:var(--red);box-shadow:inset 4px 0 0 var(--red)}
+.code{display:inline-block;font-size:13px;color:var(--red);border:1px solid var(--red);border-radius:6px;padding:0 6px}
+.eg{display:grid;gap:6px;margin:10px 0}
+.eg div{padding:8px 12px;border-radius:8px;background:var(--card)}
+.eg .y::before{content:"✓ ";color:var(--ok);font-weight:700}.eg .n::before{content:"✗ ";color:var(--red);font-weight:700}
+.eg .n{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:1.5px}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:12px}
+.book{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--card);text-align:left;color:var(--ink);font:inherit;cursor:pointer;min-height:44px}
+.book b{display:block;font:700 18px "Source Serif 4",serif}
+.book[disabled]{cursor:default;opacity:.75}
+.badge{display:inline-block;font-size:12.5px;padding:1px 8px;border-radius:999px;background:var(--hl);color:var(--ink);margin-top:6px}
+.sec p{margin:8px 0}
+.ch{border-top:1px solid var(--line);padding:10px 0}
+.ch b{color:var(--blue)}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:10px}
+.people div{background:var(--card);border-radius:8px;padding:10px 12px}
+.cer{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+.cer dl{margin:8px 0;display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 12px}
+.cer dt{font-weight:700;color:var(--red)}.cer dd{margin:0}
+details summary{cursor:pointer;color:var(--blue);font-weight:600;min-height:32px}
+.soon{padding:16px;border:1.5px dashed var(--blue);border-radius:12px;background:var(--bg)}
+footer{max-width:980px;margin:auto;padding:0 max(4vw,16px) 30px;color:var(--mute);font-size:13.5px}
+@media(max-width:700px){.gtopics{grid-template-columns:minmax(0,1fr)}.glist{grid-template-columns:repeat(2,minmax(0,1fr))}.cer dl{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:no-preference){.panel{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top"><div><h1>English Lab</h1><p>California high school ELA · Vocabulary · Grammar · Novels</p></div><div class="lang" id="lang"></div></div>
+  <div class="grades" id="grades"></div>
+</header>
+<main>
+  <div class="tabs" id="tabs"></div>
+  <div id="view" class="panel"></div>
+</main>
+<footer>Aligned to California Common Core State Standards for ELA (Language L.9-10 / L.11-12, Reading Literature RL, Writing W). Novel guides are original summaries and analysis; read the full text alongside them.</footer>
+<script>
+{
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+/* ---------- GRADE 9 VOCABULARY: [word, ipa, pos, definition, (unused), example, root] ---------- */
+const V9=[
+["Unit 1 · Academic reading",[
+["analyze","/ˈænəlaɪz/","v.","to examine something in detail to understand how it works or what it means","","In class we will analyze how the author builds suspense.","Greek analyein ‘to loosen up’"],
+["evidence","/ˈevɪdəns/","n.","facts or information that show whether something is true","","Use evidence from the text to support your claim.","Latin e- ‘out’ + videre ‘to see’"],
+["infer","/ɪnˈfɜːr/","v.","to reach a conclusion from clues rather than direct statements","","From his clenched fists, we can infer that he is angry.","Latin in- + ferre ‘to carry’"],
+["interpret","/ɪnˈtɜːrprɪt/","v.","to explain or decide the meaning of something","","Readers interpret the ending of the story in different ways.","Latin interpres ‘explainer’"],
+["significant","/sɪɡˈnɪfɪkənt/","adj.","important enough to have an effect or be noticed","","The broken window is a significant clue.","Latin signum ‘sign’"],
+["perspective","/pərˈspektɪv/","n.","a particular way of seeing or thinking about something","","The novel is told from a child’s perspective.","per- ‘through’ + specere ‘to look’"],
+["context","/ˈkɑːntekst/","n.","the situation or background that helps explain something","","Use context clues to figure out the unknown word.","con- ‘together’ + texere ‘to weave’"],
+["contrast","/ˈkɑːntræst/","n./v.","a clear difference between two things; to show such a difference","","The author contrasts the quiet town with the noisy courtroom.","contra- ‘against’ + stare ‘to stand’"],
+["assume","/əˈsuːm/","v.","to accept something as true without proof","","Don’t assume the narrator is always reliable.","ad- + sumere ‘to take’"],
+["relevant","/ˈreləvənt/","adj.","closely connected to the topic being discussed","","Choose quotations that are relevant to your thesis.","Latin relevare ‘to raise up’"]]],
+["Unit 2 · Cause, effect & conflict",[
+["conclude","/kənˈkluːd/","v.","to decide something after thinking; to bring to an end","","After reading both articles, I concluded that the law was unfair.","con- + claudere ‘to shut’"],
+["approach","/əˈproʊtʃ/","n./v.","a way of dealing with something; to come near","","Her approach to the problem was patient and careful.","Latin ad- + prope ‘near’"],
+["consequence","/ˈkɑːnsəkwens/","n.","a result of an action, often a bad one","","Lying to the jury had serious consequences.","con- + sequi ‘to follow’"],
+["establish","/ɪˈstæblɪʃ/","v.","to set up; to show that something is true","","The first chapter establishes the setting.","Latin stabilis ‘firm’"],
+["indicate","/ˈɪndɪkeɪt/","v.","to show or suggest","","The data indicate that reading time is falling.","in- + dicare ‘to proclaim’"],
+["motive","/ˈmoʊtɪv/","n.","a reason for doing something","","What was the character’s motive for lying?","Latin movere ‘to move’"],
+["conflict","/ˈkɑːnflɪkt/","n.","a struggle between opposing people, ideas or forces","","The central conflict is between one man and his whole town.","con- + fligere ‘to strike’"],
+["tension","/ˈtenʃən/","n.","a feeling of nervousness or strain","","Short sentences increase the tension in the scene.","Latin tendere ‘to stretch’"],
+["objective","/əbˈdʒektɪv/","adj.","based on facts rather than personal feelings","","A news report should be objective.","Latin obicere ‘to throw before’"],
+["bias","/ˈbaɪəs/","n.","an unfair preference for or against someone or something","","The witness showed a clear bias against the defendant.","French biais ‘slant’"]]],
+["Unit 3 · Character & society",[
+["prejudice","/ˈpredʒədɪs/","n.","an unfair opinion formed without knowledge or reason","","The trial exposed the town’s prejudice.","pre- ‘before’ + judicium ‘judgment’"],
+["integrity","/ɪnˈteɡrəti/","n.","the quality of being honest and having strong moral principles","","He kept his integrity even when it cost him friends.","Latin integer ‘whole’"],
+["conscience","/ˈkɑːnʃəns/","n.","your inner sense of what is right and wrong","","Her conscience would not let her stay silent.","con- + scire ‘to know’"],
+["empathy","/ˈempəθi/","n.","the ability to understand and share another person’s feelings","","Empathy means seeing a situation from someone else’s side.","Greek em- ‘in’ + pathos ‘feeling’"],
+["innocence","/ˈɪnəsəns/","n.","freedom from guilt; lack of experience with evil","","The children slowly lose their innocence over the summer.","in- ‘not’ + nocere ‘to harm’"],
+["hypocrisy","/hɪˈpɑːkrəsi/","n.","claiming to have beliefs or standards that you do not act on","","The teacher’s hypocrisy shocked the students.","Greek hypokrisis ‘playing a part’"],
+["courage","/ˈkɜːrɪdʒ/","n.","the ability to do something you know is difficult or frightening","","Real courage can be quiet and patient.","Latin cor ‘heart’"],
+["justice","/ˈdʒʌstɪs/","n.","fair treatment; the system of law","","The verdict raised questions about justice.","Latin jus ‘right, law’"],
+["tolerance","/ˈtɑːlərəns/","n.","willingness to accept beliefs or ways different from your own","","The community needed more tolerance, not less.","Latin tolerare ‘to endure’"],
+["reputation","/ˌrepjuˈteɪʃən/","n.","what people generally believe about someone","","He worried more about his reputation than the truth.","Latin reputare ‘to think over’"]]],
+["Unit 4 · Literary terms",[
+["narrator","/ˈnæreɪtər/","n.","the voice that tells the story","","The narrator looks back on events from years later.","Latin narrare ‘to tell’"],
+["protagonist","/proʊˈtæɡənɪst/","n.","the main character of a story","","The protagonist must make a hard choice.","Greek protos ‘first’ + agonistes ‘actor’"],
+["antagonist","/ænˈtæɡənɪst/","n.","a character or force that works against the protagonist","","Prejudice itself can act as the antagonist.","Greek anti- ‘against’"],
+["foreshadowing","/fɔːrˈʃædoʊɪŋ/","n.","hints about what will happen later in a story","","The threat in chapter 23 is foreshadowing.","fore- ‘before’ + shadow"],
+["symbol","/ˈsɪmbəl/","n.","an object, person or event that represents a larger idea","","The bird is a symbol of innocence.","Greek symbolon ‘token’"],
+["theme","/θiːm/","n.","the central message or insight about life in a work","","One theme is that empathy must be learned.","Greek thema ‘proposition’"],
+["irony","/ˈaɪrəni/","n.","a contrast between what is expected and what actually happens","","It is ironic that the church ladies preach kindness but speak cruelly.","Greek eironeia ‘pretended ignorance’"],
+["tone","/toʊn/","n.","the author’s or speaker’s attitude toward the subject","","The tone shifts from playful to serious.","Greek tonos ‘tension, pitch’"],
+["setting","/ˈsetɪŋ/","n.","the time and place in which a story happens","","The setting is a small Southern town in the 1930s.","Old English settan ‘to place’"],
+["characterization","/ˌkærəktərəˈzeɪʃən/","n.","the way an author reveals what a character is like","","Lee uses dialogue for most of her characterization.","Greek kharakter ‘engraved mark’"]]],
+["Unit 5 · Describing people & actions",[
+["reluctant","/rɪˈlʌktənt/","adj.","unwilling and hesitant","","He was reluctant to take the dangerous case.","re- + luctari ‘to struggle’"],
+["vindictive","/vɪnˈdɪktɪv/","adj.","wanting to hurt someone who has hurt you","","After the trial, he became vindictive and bitter.","Latin vindicta ‘revenge’"],
+["condescending","/ˌkɑːndɪˈsendɪŋ/","adj.","treating others as if they are less important or less intelligent","","Her condescending tone annoyed the class.","con- + descendere ‘to climb down’"],
+["assert","/əˈsɜːrt/","v.","to state something firmly","","The lawyer asserted that his client was innocent.","ad- + serere ‘to join’"],
+["ambiguous","/æmˈbɪɡjuəs/","adj.","having more than one possible meaning","","The ending is deliberately ambiguous.","ambi- ‘both ways’ + agere ‘to drive’"],
+["compel","/kəmˈpel/","v.","to force someone to do something","","Fear compelled her to lie.","com- + pellere ‘to drive’"],
+["vulnerable","/ˈvʌlnərəbəl/","adj.","easily hurt or harmed","","Children are the most vulnerable people in the story.","Latin vulnus ‘wound’"],
+["persistent","/pərˈsɪstənt/","adj.","continuing firmly despite difficulty","","Her persistent questions finally got an answer.","per- + sistere ‘to stand’"],
+["provoke","/prəˈvoʊk/","v.","to cause a strong reaction, especially anger","","The insult was meant to provoke a fight.","pro- ‘forth’ + vocare ‘to call’"],
+["inevitable","/ɪnˈevɪtəbəl/","adj.","certain to happen; impossible to avoid","","Given the jury, the verdict seemed inevitable.","in- ‘not’ + evitare ‘to avoid’"]]],
+["Unit 6 · Argument writing",[
+["claim","/kleɪm/","n.","a statement you argue is true","","State your claim clearly in one sentence.","Latin clamare ‘to call out’"],
+["counterclaim","/ˈkaʊntərkleɪm/","n.","an argument that opposes your claim","","A strong essay addresses the counterclaim.","counter- ‘against’ + claim"],
+["rebuttal","/rɪˈbʌtəl/","n.","a response showing why an opposing argument is wrong or weak","","Follow the counterclaim with a rebuttal.","Old French rebouter ‘to push back’"],
+["valid","/ˈvælɪd/","adj.","logical and well supported","","That is a valid point, but the evidence is thin.","Latin validus ‘strong’"],
+["credible","/ˈkredəbəl/","adj.","able to be believed; trustworthy","","The second witness was more credible.","Latin credere ‘to believe’"],
+["emphasize","/ˈemfəsaɪz/","v.","to give special importance to something","","The author repeats the image to emphasize its meaning.","Greek emphasis ‘appearance’"],
+["illustrate","/ˈɪləstreɪt/","v.","to explain or make clear by using examples","","This scene illustrates his sense of fairness.","Latin illustrare ‘to light up’"],
+["imply","/ɪmˈplaɪ/","v.","to suggest something without saying it directly","","Her silence implies that she knows the truth.","in- + plicare ‘to fold’"],
+["justify","/ˈdʒʌstɪfaɪ/","v.","to show that something is right or reasonable","","Justify your answer with two pieces of evidence.","Latin justus ‘just’ + facere ‘to make’"],
+["synthesize","/ˈsɪnθəsaɪz/","v.","to combine ideas from different sources into a whole","","Synthesize the article and the novel in your conclusion.","Greek syn- ‘together’ + tithenai ‘to place’"]]]
+];
+
+const V9MORE=`# Unit 7 · Academic verbs I
+acquire|/əˈkwaɪər/|v.|to get or gain something, often over time|獲得；習得|Scout acquires a deeper understanding of her town.|Latin ad- + quaerere ‘to seek’
+adapt|/əˈdæpt/|v.|to change in order to fit a new situation|適應；改編|Odysseus must adapt to each new danger.|ad- + aptare ‘to fit’
+allocate|/ˈæləkeɪt/|v.|to give out a share of something for a purpose|分配|The school allocates more time to reading.|ad- + locus ‘place’
+anticipate|/ænˈtɪsəpeɪt/|v.|to expect something and prepare for it|預期；預料|The audience anticipates the tragedy before the characters do.|ante- ‘before’ + capere ‘to take’
+assess|/əˈses/|v.|to judge the quality or value of something|評估|Assess how well the evidence supports the claim.|Latin assidere ‘to sit beside (as a judge)’
+attribute|/əˈtrɪbjuːt/|v.|to say that something is caused by or belongs to someone|歸因於|The Prince attributes the deaths to the families’ hatred.|ad- + tribuere ‘to assign’
+clarify|/ˈklærəfaɪ/|v.|to make something clearer or easier to understand|澄清；闡明|Clarify your thesis before you add evidence.|Latin clarus ‘clear’ + facere ‘to make’
+comprise|/kəmˈpraɪz/|v.|to consist of; to be made up of|包含；由…組成|The Odyssey comprises twenty-four books.|French compris ‘included’
+consist|/kənˈsɪst/|v.|to be made of particular parts (consist of)|由…組成|The jury consisted of twelve white men.|con- + sistere ‘to stand’
+constitute|/ˈkɑːnstətuːt/|v.|to form or make up something|構成|Lies and fear constitute the case against Tom.|con- + statuere ‘to set up’
+# Unit 8 · Academic verbs II
+contribute|/kənˈtrɪbjuːt/|v.|to help cause something, or to give to a shared effort|貢獻；促成|Many choices contribute to the lovers’ deaths.|con- + tribuere ‘to give’
+convey|/kənˈveɪ/|v.|to communicate an idea or feeling|傳達|The dark imagery conveys a sense of doom.|Latin conviare ‘to accompany’
+demonstrate|/ˈdemənstreɪt/|v.|to show clearly with evidence or examples|證明；展示|Atticus demonstrates that Tom could not have done it.|de- + monstrare ‘to show’
+derive|/dɪˈraɪv/|v.|to get something from a source|源自；取得|The word ‘odyssey’ derives from Odysseus’s name.|de- + rivus ‘stream’
+distinguish|/dɪˈstɪŋɡwɪʃ/|v.|to recognize the difference between things|區分；辨別|Distinguish between a fact and an opinion.|Latin distinguere ‘to separate’
+enhance|/ɪnˈhæns/|v.|to improve the quality of something|提升；增強|Strong verbs enhance your writing.|Latin altus ‘high’ (via Old French)
+evaluate|/ɪˈvæljueɪt/|v.|to judge how good, useful or effective something is|評價|Evaluate whether George made the right choice.|e- + valere ‘to be worth’
+exclude|/ɪkˈskluːd/|v.|to keep someone or something out|排除；排斥|Crooks is excluded from the bunkhouse.|ex- + claudere ‘to shut’
+generate|/ˈdʒenəreɪt/|v.|to produce or create|產生|The rumor generated fear across the town.|Latin genus ‘birth, kind’
+identify|/aɪˈdentəfaɪ/|v.|to recognize and name something|辨認；找出|Identify two symbols in the chapter.|Latin idem ‘same’ + facere ‘to make’
+# Unit 9 · Academic nouns I
+aspect|/ˈæspekt/|n.|one part or feature of something|方面；面向|Loneliness affects every aspect of ranch life.|ad- + specere ‘to look’
+concept|/ˈkɑːnsept/|n.|an idea or general notion|概念|Hospitality was a sacred concept in ancient Greece.|Latin concipere ‘to take in’
+criteria|/kraɪˈtɪriə/|n. pl.|standards used to judge something (singular: criterion)|標準；準則|The rubric lists the criteria for a strong essay.|Greek kriterion ‘means of judging’
+data|/ˈdeɪtə/|n.|facts or numbers collected for study|資料；數據|The data show that reading scores rose.|Latin datum ‘something given’
+element|/ˈeləmənt/|n.|a basic part of something|要素；元素|Suspense is a key element of the plot.|Latin elementum ‘first principle’
+factor|/ˈfæktər/|n.|one of several things that cause a result|因素|Poverty is a major factor in the Ewells’ lives.|Latin factor ‘doer, maker’
+function|/ˈfʌŋkʃən/|n.|the purpose or job of something|功能；作用|The prologue’s function is to tell us the ending.|Latin functio ‘performance’
+hypothesis|/haɪˈpɑːθəsɪs/|n.|a suggested explanation that can be tested|假說|Test your hypothesis against the text.|Greek hypo- ‘under’ + thesis ‘placing’
+method|/ˈmeθəd/|n.|a planned way of doing something|方法|Odysseus’s method is trickery, not force.|Greek methodos ‘pursuit’
+principle|/ˈprɪnsəpəl/|n.|a basic belief or rule that guides behavior|原則|Atticus acts on principle, not popularity.|Latin principium ‘beginning’
+# Unit 10 · Academic nouns II
+alternative|/ɔːlˈtɜːrnətɪv/|n.|another possible choice|替代方案|Juliet sees no alternative but the Friar’s plan.|Latin alter ‘other’
+assumption|/əˈsʌmpʃən/|n.|something accepted as true without proof|假設；假定|The verdict rests on a racist assumption.|ad- + sumere ‘to take’
+category|/ˈkætəɡɔːri/|n.|a group of things with shared features|類別|Sort the words into three categories.|Greek kategoria ‘statement’
+component|/kəmˈpoʊnənt/|n.|one part of a larger whole|組成部分|A thesis is the key component of an essay.|com- + ponere ‘to put’
+dimension|/dɪˈmenʃən/|n.|an aspect or side of something; a measurement|面向；維度|The trial adds a moral dimension to the story.|Latin dimetiri ‘to measure out’
+emphasis|/ˈemfəsɪs/|n.|special importance given to something|重點；強調|Place the emphasis on your strongest evidence.|Greek emphasis ‘display’
+framework|/ˈfreɪmwɜːrk/|n.|a basic structure for ideas or plans|架構|Claim, evidence and reasoning give your paragraph a framework.|frame + work
+impact|/ˈɪmpækt/|n.|a strong effect on someone or something|影響；衝擊|The verdict has a lasting impact on Jem.|Latin impingere ‘to push against’
+phenomenon|/fəˈnɑːmənɑːn/|n.|an event or fact that can be observed (plural: phenomena)|現象|Mob violence was a real phenomenon in the 1930s.|Greek phainomenon ‘that which appears’
+sequence|/ˈsiːkwəns/|n.|the order in which things happen|順序；序列|Retell the events in sequence.|Latin sequi ‘to follow’
+# Unit 11 · Academic adjectives
+adequate|/ˈædɪkwət/|adj.|enough or good enough for a purpose|足夠的；適當的|One quotation is not adequate support.|ad- + aequus ‘equal’
+accurate|/ˈækjərət/|adj.|correct and exact|準確的|Make sure your summary is accurate.|Latin accurare ‘to take care of’
+appropriate|/əˈproʊpriət/|adj.|suitable for a situation|合適的；恰當的|Use an appropriate formal tone in essays.|Latin appropriare ‘to make one’s own’
+comprehensive|/ˌkɑːmprɪˈhensɪv/|adj.|including everything or nearly everything|全面的|Write a comprehensive review of the unit.|Latin comprehendere ‘to grasp’
+consistent|/kənˈsɪstənt/|adj.|always behaving or happening in the same way|一致的；始終如一的|Atticus is consistent at home and in court.|con- + sistere ‘to stand’
+crucial|/ˈkruːʃəl/|adj.|extremely important; decisive|關鍵的|The undelivered letter is a crucial turning point.|Latin crux ‘cross’
+explicit|/ɪkˈsplɪsɪt/|adj.|stated clearly and directly|明確的；明說的|The prologue makes the ending explicit.|ex- + plicare ‘to fold’ (unfolded)
+implicit|/ɪmˈplɪsɪt/|adj.|suggested but not stated directly|含蓄的；隱含的|The criticism of the town is implicit.|in- + plicare ‘to fold’ (folded in)
+inherent|/ɪnˈhɪrənt/|adj.|existing as a natural, permanent part of something|固有的；內在的|Risk is inherent in every sea voyage.|in- + haerere ‘to stick’
+subsequent|/ˈsʌbsɪkwənt/|adj.|coming after something else|隨後的|Subsequent chapters reveal Boo’s kindness.|sub- + sequi ‘to follow’
+# Unit 12 · Transition words
+consequently|/ˈkɑːnsəkwentli/|adv.|as a result|因此|Romeo is banished; consequently, the lovers are separated.|con- + sequi ‘to follow’
+furthermore|/ˈfɜːrðərmɔːr/|adv.|in addition; also|此外；再者|Furthermore, the witness changed her story.|further + more
+nevertheless|/ˌnevərðəˈles/|adv.|despite what was just said|然而；儘管如此|The case was hopeless; nevertheless, Atticus fought.|never + the + less
+whereas|/werˈæz/|conj.|while on the other hand (shows contrast)|而；然而|Lennie is strong, whereas George is quick.|where + as
+thereby|/ˌðerˈbaɪ/|adv.|as a result of this action|藉此；從而|He told the truth, thereby angering the crowd.|there + by
+hence|/hens/|adv.|for this reason|因此|The roads were flooded; hence the delay.|Middle English hennes ‘from here’
+likewise|/ˈlaɪkwaɪz/|adv.|in the same way|同樣地|Juliet, likewise, defies her parents.|like + wise ‘manner’
+moreover|/mɔːrˈoʊvər/|adv.|besides; in addition (more formal)|而且；此外|Moreover, the evidence points to Bob Ewell.|more + over
+conversely|/kənˈvɜːrsli/|adv.|in an opposite way|相反地|Mercutio jokes; conversely, Tybalt is deadly serious.|con- + vertere ‘to turn’
+ultimately|/ˈʌltəmətli/|adv.|finally; at the most basic level|最終；歸根究柢|Ultimately, the feud destroys both families.|Latin ultimus ‘last’
+# Unit 13 · Romeo and Juliet: love & fate
+feud|/fjuːd/|n.|a long, bitter quarrel between families or groups|世仇；長期不和|The Montague–Capulet feud began long before Romeo was born.|Old French fede ‘enmity’
+fate|/feɪt/|n.|a power believed to control what will happen|命運|The Prologue suggests that fate controls the lovers.|Latin fatum ‘that which is spoken’
+impulsive|/ɪmˈpʌlsɪv/|adj.|acting suddenly without thinking first|衝動的|Romeo’s impulsive choices speed up the tragedy.|in- + pellere ‘to drive’
+banish|/ˈbænɪʃ/|v.|to send someone away from a place as punishment|放逐|The Prince banishes Romeo from Verona.|Old French banir ‘to proclaim’
+vow|/vaʊ/|n./v.|a serious promise; to promise seriously|誓言；發誓|The lovers vow to marry the next day.|Latin votum ‘promise’
+rash|/ræʃ/|adj.|done too quickly without thinking of results|魯莽的；輕率的|Juliet worries their love is too rash.|Middle English rasch ‘quick’
+quarrel|/ˈkwɔːrəl/|n./v.|an angry argument; to argue angrily|爭吵|A street quarrel opens the play.|Latin querela ‘complaint’
+adversary|/ˈædvərseri/|n.|an enemy or opponent|對手；敵人|Tybalt sees Romeo as his adversary.|ad- + vertere ‘to turn’
+haste|/heɪst/|n.|excessive speed or hurry|匆忙；草率|The Friar warns against haste.|Old French haste
+peril|/ˈperəl/|n.|serious danger|危險|Juliet faces peril when she drinks the potion.|Latin periculum ‘trial, danger’
+# Unit 14 · Drama terms
+soliloquy|/səˈlɪləkwi/|n.|a speech in which a character alone on stage speaks thoughts aloud|獨白（獨自一人時）|Juliet’s soliloquy before taking the potion reveals her fear.|solus ‘alone’ + loqui ‘to speak’
+aside|/əˈsaɪd/|n.|a short remark to the audience that other characters do not hear|旁白（對觀眾說）|Juliet’s aside shows what she really thinks.|a- + side
+monologue|/ˈmɑːnəlɔːɡ/|n.|a long speech by one character to others|獨白（對他人）|Mercutio delivers a wild monologue about Queen Mab.|Greek monos ‘single’ + logos ‘speech’
+dramatic irony|/drəˈmætɪk ˈaɪrəni/|n.|when the audience knows something the characters do not|戲劇性反諷|We know Juliet is alive, but Romeo does not — dramatic irony.|Greek drama ‘action’ + eironeia
+prologue|/ˈproʊlɔːɡ/|n.|an introduction at the start of a play or poem|序幕；開場白|The prologue tells us the lovers will die.|Greek pro- ‘before’ + logos ‘word’
+sonnet|/ˈsɑːnɪt/|n.|a fourteen-line poem with a set rhyme scheme|十四行詩|Romeo and Juliet’s first words together form a sonnet.|Italian sonetto ‘little song’
+pun|/pʌn/|n.|a joke using a word with two meanings|雙關語|Even while dying, Mercutio makes a pun.|origin uncertain (17th century)
+oxymoron|/ˌɑːksɪˈmɔːrɑːn/|n.|a phrase combining opposite ideas, such as ‘loving hate’|矛盾修辭|Romeo’s oxymorons show his confused feelings.|Greek oxys ‘sharp’ + moros ‘dull’
+foil|/fɔɪl/|n.|a character who contrasts with another to highlight traits|對照角色；陪襯|Calm Benvolio is a foil to hot-tempered Tybalt.|from metal foil set under a gem to make it shine
+tragedy|/ˈtrædʒədi/|n.|a serious drama in which the main character suffers and usually dies|悲劇|A tragedy often turns on a fatal flaw.|Greek tragoidia
+# Unit 15 · Strong emotions
+anguish|/ˈæŋɡwɪʃ/|n.|severe mental or physical pain|極度痛苦|Juliet cries out in anguish at the news.|Latin angustia ‘tightness’
+despair|/dɪˈsper/|n./v.|complete loss of hope|絕望|In despair, Romeo buys poison.|de- + sperare ‘to hope’
+devotion|/dɪˈvoʊʃən/|n.|great love and loyalty|忠誠；摯愛|Penelope’s devotion lasts twenty years.|Latin devovere ‘to vow’
+infatuation|/ɪnˌfætʃuˈeɪʃən/|n.|an intense but short-lived passion for someone|迷戀|Was Romeo’s love for Rosaline only infatuation?|Latin infatuare ‘to make foolish’
+melancholy|/ˈmelənkɑːli/|n./adj.|a deep, long-lasting sadness|憂鬱|Romeo begins the play in a mood of melancholy.|Greek melas ‘black’ + chole ‘bile’
+solace|/ˈsɑːləs/|n.|comfort in a time of sadness|慰藉|Candy finds solace in the dream of the farm.|Latin solacium ‘comfort’
+torment|/ˈtɔːrment/|n./v.|great suffering; to cause great suffering|折磨|The suitors torment the old beggar.|Latin tormentum ‘instrument of torture’
+woe|/woʊ/|n.|great sorrow or distress|悲痛|The play ends with a story of woe.|Old English wa
+grievance|/ˈɡriːvəns/|n.|a complaint about unfair treatment|不滿；冤屈|Bob Ewell holds a grievance against Atticus.|Old French grever ‘to burden’
+reconcile|/ˈrekənsaɪl/|v.|to restore friendly relations; to make two things agree|和解；調和|The deaths finally reconcile the two families.|re- + conciliare ‘to bring together’
+# Unit 16 · The Odyssey: epic terms
+epic|/ˈepɪk/|n.|a long poem about a hero’s great deeds|史詩|The Odyssey is an ancient Greek epic.|Greek epos ‘word, song’
+epithet|/ˈepəθet/|n.|a descriptive phrase attached to a name|稱號；修飾語|Homer often calls Athena ‘gray-eyed’ — an epithet.|Greek epitheton ‘added’
+invocation|/ˌɪnvəˈkeɪʃən/|n.|a call for help, especially to a Muse at the start of an epic|祈求（呼告繆思）|The poem opens with an invocation to the Muse.|in- + vocare ‘to call’
+hubris|/ˈhjuːbrɪs/|n.|excessive pride that leads to downfall|狂妄；傲慢|Shouting his name at the Cyclops is an act of hubris.|Greek hybris ‘insolence’
+odyssey|/ˈɑːdəsi/|n.|a long, adventurous journey|漫長的冒險旅程|Their move across the country became an odyssey.|from Odysseus
+hospitality|/ˌhɑːspɪˈtæləti/|n.|friendly treatment of guests|好客；款待|Greeks believed Zeus protected the rules of hospitality.|Latin hospes ‘guest, host’
+quest|/kwest/|n.|a long search for something important|追尋；探索|Odysseus’s quest is to return home.|Latin quaerere ‘to seek’
+archetype|/ˈɑːrkɪtaɪp/|n.|a typical character or pattern found across many stories|原型|The wise mentor is a common archetype.|Greek arche ‘original’ + typos ‘model’
+in medias res|/ɪn ˌmeɪdiəs ˈreɪs/|phr.|starting a story in the middle of the action|從中間開始敘事|The Odyssey begins in medias res, ten years after Troy.|Latin ‘into the middle of things’
+deity|/ˈdiːəti/|n.|a god or goddess|神祇|Poseidon is the deity who punishes Odysseus.|Latin deus ‘god’
+# Unit 17 · The Odyssey: character
+cunning|/ˈkʌnɪŋ/|adj./n.|clever at tricking others|狡猾的；機智|Odysseus’s cunning saves him from the Cyclops.|Old English cunnan ‘to know’
+guile|/ɡaɪl/|n.|clever but dishonest intelligence|詭計；狡詐|He wins with guile rather than strength.|Old French guile ‘deceit’
+endure|/ɪnˈdʊr/|v.|to suffer something difficult patiently|忍受；持續|Odysseus endures ten years of hardship.|Latin indurare ‘to harden’
+perseverance|/ˌpɜːrsəˈvɪrəns/|n.|continued effort despite difficulty|毅力|Perseverance carries him home at last.|per- + severus ‘strict’
+loyalty|/ˈlɔɪəlti/|n.|faithful support for someone|忠誠|The swineherd Eumaeus shows great loyalty.|Latin legalis ‘lawful’
+temptation|/tempˈteɪʃən/|n.|the wish to do something unwise or wrong|誘惑|The Sirens are the ultimate temptation.|Latin temptare ‘to test’
+suitor|/ˈsuːtər/|n.|a man who wants to marry a particular woman|求婚者|Over a hundred suitors crowd Penelope’s hall.|Latin secutor ‘follower’
+disguise|/dɪsˈɡaɪz/|n./v.|a change in appearance to hide identity|偽裝|Athena gives Odysseus the disguise of a beggar.|dis- + guise ‘manner’
+vengeance|/ˈvendʒəns/|n.|punishment given to someone for a wrong|復仇|Odysseus takes violent vengeance on the suitors.|Latin vindicare ‘to avenge’
+prudent|/ˈpruːdənt/|adj.|careful and wise about the future|謹慎的|A prudent captain would not have boasted.|Latin providens ‘foreseeing’
+# Unit 18 · The Odyssey: gods & journey
+plight|/plaɪt/|n.|a difficult or dangerous situation|困境|Telemachus describes his family’s plight to the assembly.|Old French plit ‘condition’
+wrath|/ræθ/|n.|extreme anger|憤怒|Poseidon’s wrath keeps Odysseus at sea.|Old English wrath
+omen|/ˈoʊmən/|n.|a sign of what will happen in the future|預兆|An eagle carrying off a goose is read as an omen.|Latin omen
+prophecy|/ˈprɑːfəsi/|n.|a prediction of the future|預言|Tiresias gives a prophecy in the underworld.|Greek pro- + phanai ‘to speak’
+mortal|/ˈmɔːrtəl/|adj./n.|certain to die; a human being|凡人；終有一死的|Calypso offers to make the mortal Odysseus immortal.|Latin mors ‘death’
+immortal|/ɪˈmɔːrtəl/|adj.|living forever|不朽的；永生的|The gods are immortal but not always fair.|in- ‘not’ + mortalis
+divine|/dɪˈvaɪn/|adj.|of or from a god|神的；神聖的|Athena gives him divine help.|Latin divinus
+voyage|/ˈvɔɪɪdʒ/|n.|a long journey, especially by sea|航行；旅程|The voyage home takes ten years.|Latin viaticum ‘provision for a journey’
+treacherous|/ˈtretʃərəs/|adj.|dangerous; not to be trusted|危險的；背叛的|The strait between Scylla and Charybdis is treacherous.|Old French trecheor ‘deceiver’
+steadfast|/ˈstedfæst/|adj.|firm and loyal; not changing|堅定不移的|Penelope remains steadfast.|Old English stede ‘place’ + fæst ‘firm’
+# Unit 19 · Of Mice and Men: the Depression
+migrant|/ˈmaɪɡrənt/|n./adj.|a worker who moves from place to place to find work|流動（工人）|George and Lennie are migrant workers.|Latin migrare ‘to move’
+itinerant|/aɪˈtɪnərənt/|adj.|traveling from place to place|流浪的；巡迴的|Itinerant workers rarely made lasting friends.|Latin iter ‘journey’
+isolation|/ˌaɪsəˈleɪʃən/|n.|the state of being alone or separated from others|孤立|Crooks lives in isolation in the barn.|Italian isola ‘island’
+companionship|/kəmˈpænjənʃɪp/|n.|friendly company|陪伴；友誼|Their companionship makes them unusual on the ranch.|com- + panis ‘bread’ (one who shares bread)
+aspiration|/ˌæspəˈreɪʃən/|n.|a strong hope or goal|抱負；渴望|Owning land is their greatest aspiration.|ad- + spirare ‘to breathe’
+futile|/ˈfjuːtəl/|adj.|having no useful result|徒勞的|Their planning feels futile by the end.|Latin futilis ‘leaky’
+mercy|/ˈmɜːrsi/|n.|kindness toward someone you could punish or harm|慈悲；仁慈|Is George’s final act one of mercy?|Latin merces ‘reward’
+exploit|/ɪkˈsplɔɪt/|v.|to use someone unfairly for your own benefit|剝削；利用|Owners could exploit workers who had no other choice.|Latin explicare ‘to unfold’
+discrimination|/dɪˌskrɪmɪˈneɪʃən/|n.|unfair treatment based on race, age, ability or other traits|歧視|Crooks suffers discrimination because he is Black.|Latin discriminare ‘to divide’
+dignity|/ˈdɪɡnəti/|n.|the quality of deserving respect|尊嚴|Candy fears losing his dignity when he can no longer work.|Latin dignus ‘worthy’
+# Unit 20 · Describing tone & manner
+brusque|/brʌsk/|adj.|short and rude in speech or manner|唐突的；粗魯的|The boss asks brusque questions.|Italian brusco ‘sour’
+belligerent|/bəˈlɪdʒərənt/|adj.|eager to fight; hostile|好鬥的|Curley is belligerent toward bigger men.|Latin bellum ‘war’ + gerere ‘to wage’
+cynical|/ˈsɪnɪkəl/|adj.|believing people act only out of selfishness|憤世嫉俗的|Crooks is cynical about the dream.|Greek kynikos ‘doglike’ (a school of philosophers)
+meek|/miːk/|adj.|quiet, gentle and easily pushed around|溫順的|Lennie is meek until he is frightened.|Old Norse mjukr ‘soft’
+timid|/ˈtɪmɪd/|adj.|shy and easily frightened|膽小的|The timid student would not answer.|Latin timere ‘to fear’
+sullen|/ˈsʌlən/|adj.|bad-tempered and silent|悶悶不樂的|Jem is sullen after the trial.|Old French solain ‘solitary’
+pugnacious|/pʌɡˈneɪʃəs/|adj.|quick to argue or fight|好鬥的；愛爭吵的|Tybalt’s pugnacious nature starts the fight.|Latin pugnare ‘to fight’
+crestfallen|/ˈkrestfɔːlən/|adj.|sad and disappointed|垂頭喪氣的|He was crestfallen when the game was canceled.|crest ‘a bird’s comb’ + fallen
+menacing|/ˈmenəsɪŋ/|adj.|seeming likely to cause harm|具威脅性的|The mob looked menacing in the dark.|Latin minax ‘threatening’
+apprehensive|/ˌæprɪˈhensɪv/|adj.|worried that something bad will happen|憂慮的|Juliet is apprehensive before drinking the potion.|Latin apprehendere ‘to seize’
+# Unit 21 · Law & the courtroom
+segregation|/ˌseɡrɪˈɡeɪʃən/|n.|the forced separation of people by race|種族隔離|Maycomb’s courtroom reflects segregation.|se- ‘apart’ + grex ‘flock’
+testimony|/ˈtestəmoʊni/|n.|a formal statement given by a witness in court|證詞|Mayella’s testimony changes under questioning.|Latin testis ‘witness’
+verdict|/ˈvɜːrdɪkt/|n.|the decision of a jury|裁決；判決|The verdict shocks Jem.|Latin vere dictum ‘truly said’
+defendant|/dɪˈfendənt/|n.|a person accused of a crime in court|被告|The defendant, Tom Robinson, testifies calmly.|Latin defendere ‘to ward off’
+prosecutor|/ˈprɑːsɪkjuːtər/|n.|the lawyer who tries to prove the accused is guilty|檢察官|The prosecutor mocks Tom on the stand.|Latin prosequi ‘to pursue’
+acquit|/əˈkwɪt/|v.|to decide officially that someone is not guilty|宣判無罪|The jury refused to acquit Tom.|Old French aquiter ‘to pay off’
+convict|/kənˈvɪkt/|v.|to decide officially that someone is guilty|判決有罪|They convicted him despite the evidence.|Latin convincere ‘to prove guilty’
+jury|/ˈdʒʊri/|n.|a group of citizens who decide a verdict|陪審團|The jury deliberated for hours.|Latin jurare ‘to swear’
+circumstantial|/ˌsɜːrkəmˈstænʃəl/|adj.|(of evidence) suggesting a fact but not proving it directly|間接的（證據）|The case against Tom was weak and circumstantial.|Latin circumstantia ‘surrounding condition’
+ostracize|/ˈɑːstrəsaɪz/|v.|to exclude someone from a group|排擠|The town ostracizes anyone who breaks its rules.|Greek ostrakon ‘pottery shard’ (used as a ballot)
+# Unit 22 · Positive character traits
+benevolent|/bəˈnevələnt/|adj.|kind and wanting to help others|仁慈的|Boo’s gifts reveal a benevolent spirit.|bene ‘well’ + volens ‘wishing’
+compassionate|/kəmˈpæʃənət/|adj.|feeling sympathy and wanting to help|有同情心的|Slim is the most compassionate man on the ranch.|com- + pati ‘to suffer’
+diligent|/ˈdɪlɪdʒənt/|adj.|working hard and carefully|勤奮的|A diligent reader annotates every chapter.|Latin diligere ‘to value’
+humble|/ˈhʌmbəl/|adj.|not proud; modest|謙虛的|Atticus is too humble to mention his shooting skill.|Latin humilis ‘low’
+resilient|/rɪˈzɪliənt/|adj.|able to recover quickly from difficulty|有韌性的|Scout proves resilient after the attack.|Latin resilire ‘to spring back’
+sincere|/sɪnˈsɪr/|adj.|honest and genuine|真誠的|Tom’s sincere answer angers the prosecutor.|Latin sincerus ‘pure’
+tenacious|/təˈneɪʃəs/|adj.|holding firmly to a goal; not giving up|頑強的|Penelope is tenacious in resisting the suitors.|Latin tenere ‘to hold’
+candid|/ˈkændɪd/|adj.|truthful and direct|坦率的|George is candid with Slim about Weed.|Latin candidus ‘white, pure’
+gracious|/ˈɡreɪʃəs/|adj.|kind, polite and generous|親切有禮的|Miss Maudie is gracious even after the fire.|Latin gratia ‘favor’
+principled|/ˈprɪnsəpəld/|adj.|acting according to strong moral rules|有原則的|A principled lawyer takes the case anyway.|Latin principium ‘foundation’
+# Unit 23 · Negative character traits
+arrogant|/ˈærəɡənt/|adj.|believing you are better than others|傲慢的|The arrogant suitors insult the beggar.|Latin arrogare ‘to claim for oneself’
+callous|/ˈkæləs/|adj.|not caring about others’ suffering|冷酷無情的|Carlson’s callous words end the novel.|Latin callosus ‘hard-skinned’
+deceitful|/dɪˈsiːtfəl/|adj.|trying to make people believe untrue things|欺詐的|Bob Ewell is deceitful on the stand.|Latin decipere ‘to deceive’
+envious|/ˈenviəs/|adj.|wanting what someone else has|嫉妒的|Curley is envious of bigger men.|Latin invidia ‘envy’
+gullible|/ˈɡʌləbəl/|adj.|easily tricked into believing things|容易受騙的|The Cyclops is gullible enough to believe ‘Nobody’ hurt him.|English gull ‘to deceive’
+hostile|/ˈhɑːstəl/|adj.|unfriendly and aggressive|敵對的|The crowd grows hostile toward Atticus.|Latin hostis ‘enemy’
+malicious|/məˈlɪʃəs/|adj.|intending to harm others|惡意的|The rumors about Boo are malicious.|Latin malitia ‘badness’
+obstinate|/ˈɑːbstɪnət/|adj.|refusing to change your mind|固執的|Lord Capulet is obstinate about the wedding.|Latin obstinare ‘to persist’
+petty|/ˈpeti/|adj.|caring too much about small, unimportant things|小心眼的|Their feud may have begun over something petty.|French petit ‘small’
+spiteful|/ˈspaɪtfəl/|adj.|wanting to hurt or annoy someone|懷恨的；惡毒的|Curley’s wife makes a spiteful threat to Crooks.|despite ‘contempt’
+# Unit 24 · Plot structure
+exposition|/ˌekspəˈzɪʃən/|n.|the beginning of a story that introduces characters and setting|開端；鋪陳|The exposition introduces Maycomb and the Finches.|Latin exponere ‘to set out’
+rising action|/ˈraɪzɪŋ ˈækʃən/|n.|events that build tension toward the climax|上升情節|Each new danger is part of the rising action.|rise + action
+climax|/ˈklaɪmæks/|n.|the turning point of greatest tension|高潮|The duel in Act 3 is often read as the climax.|Greek klimax ‘ladder’
+falling action|/ˈfɔːlɪŋ ˈækʃən/|n.|events after the climax that lead to the end|下降情節|Romeo’s banishment begins the falling action.|fall + action
+resolution|/ˌrezəˈluːʃən/|n.|the end of a story, where conflicts are settled|結局；解決|In the resolution, the families make peace.|Latin resolvere ‘to loosen’
+flashback|/ˈflæʃbæk/|n.|a scene that shows events from the past|倒敘|Odysseus tells his adventures as a long flashback.|flash + back
+point of view|/ˌpɔɪnt əv ˈvjuː/|n.|the perspective from which a story is told|觀點；敘事視角|First-person point of view limits what we know.|point + view
+dialogue|/ˈdaɪəlɔːɡ/|n.|conversation between characters|對話|Steinbeck tells much of his story through dialogue.|Greek dialogos ‘conversation’
+plot|/plɑːt/|n.|the sequence of events in a story|情節|The plot moves from the river to the ranch and back.|Old English plot ‘piece of ground’
+subplot|/ˈsʌbplɑːt/|n.|a secondary storyline|次要情節|The Boo Radley subplot ties into the main plot.|sub- ‘under’ + plot
+# Unit 25 · Figurative language
+metaphor|/ˈmetəfɔːr/|n.|a comparison that says one thing is another|隱喻|Romeo calls Juliet the sun — a metaphor.|Greek metapherein ‘to carry over’
+simile|/ˈsɪməli/|n.|a comparison using like or as|明喻|Homer’s similes compare Odysseus to a lion.|Latin similis ‘like’
+personification|/pərˌsɑːnɪfɪˈkeɪʃən/|n.|giving human qualities to things or ideas|擬人法|Death is personified as Juliet’s bridegroom.|Latin persona ‘mask, person’
+hyperbole|/haɪˈpɜːrbəli/|n.|extreme exaggeration for effect|誇飾|‘I’ve told you a million times’ is hyperbole.|Greek hyper ‘over’ + ballein ‘to throw’
+imagery|/ˈɪmɪdʒri/|n.|language that appeals to the five senses|意象|Steinbeck’s imagery makes the river come alive.|Latin imago ‘image’
+allusion|/əˈluːʒən/|n.|a brief reference to a well-known person, place or story|典故；暗指|Calling a journey an ‘odyssey’ is an allusion to Homer.|Latin alludere ‘to play with’
+alliteration|/əˌlɪtəˈreɪʃən/|n.|repetition of the same first sound in nearby words|頭韻|‘Sweet summer sun’ uses alliteration.|ad- + littera ‘letter’
+onomatopoeia|/ˌɑːnəˌmætəˈpiːə/|n.|a word that imitates a sound|擬聲詞|Buzz, crash and hiss are onomatopoeia.|Greek onoma ‘name’ + poiein ‘to make’
+idiom|/ˈɪdiəm/|n.|a phrase whose meaning differs from its separate words|慣用語|‘Walk in someone’s shoes’ is an idiom.|Greek idioma ‘peculiarity’
+connotation|/ˌkɑːnəˈteɪʃən/|n.|the feeling or idea a word suggests beyond its definition|言外之意|‘Home’ has a warmer connotation than ‘house’.|con- + notare ‘to mark’
+# Unit 26 · Rhetoric
+persuade|/pərˈsweɪd/|v.|to convince someone to believe or do something|說服|Atticus tries to persuade the jury with facts.|per- + suadere ‘to advise’
+rhetoric|/ˈretərɪk/|n.|the art of effective or persuasive speaking and writing|修辭；說服術|Study the rhetoric of his closing argument.|Greek rhetor ‘speaker’
+ethos|/ˈiːθɑːs/|n.|an appeal based on the speaker’s credibility or character|人格訴求|A doctor’s ethos makes her advice convincing.|Greek ethos ‘character’
+pathos|/ˈpeɪθɑːs/|n.|an appeal to the audience’s emotions|情感訴求|The photo of the child is pure pathos.|Greek pathos ‘suffering, feeling’
+logos|/ˈloʊɡɑːs/|n.|an appeal to logic and evidence|邏輯訴求|Statistics are a common form of logos.|Greek logos ‘word, reason’
+fallacy|/ˈfæləsi/|n.|a mistake in reasoning|謬誤|‘Everyone believes it, so it’s true’ is a fallacy.|Latin fallere ‘to deceive’
+premise|/ˈpremɪs/|n.|a statement that an argument is based on|前提|If the premise is false, the conclusion fails.|Latin praemittere ‘to send before’
+concede|/kənˈsiːd/|v.|to admit that something is true, often unwillingly|承認；讓步|Concede the counterclaim’s strongest point, then answer it.|con- + cedere ‘to yield’
+refute|/rɪˈfjuːt/|v.|to prove that a statement is wrong|駁斥|Atticus refutes Bob Ewell’s story.|Latin refutare ‘to repel’
+anecdote|/ˈænɪkdoʊt/|n.|a short story about a real event used to make a point|軼事；小故事|Open your speech with an anecdote.|Greek anekdota ‘unpublished things’
+# Unit 27 · Society & power
+civic|/ˈsɪvɪk/|adj.|relating to a city or to citizens’ duties|公民的|Jury duty is a civic responsibility.|Latin civis ‘citizen’
+democracy|/dɪˈmɑːkrəsi/|n.|government by the people, usually through elected representatives|民主|Miss Gates teaches a lesson on democracy.|Greek demos ‘people’ + kratos ‘power’
+oppression|/əˈpreʃən/|n.|cruel and unfair use of power over others|壓迫|Jim Crow laws were a system of oppression.|ob- + premere ‘to press’
+authority|/əˈθɔːrəti/|n.|the power to give orders or make decisions|權威；當局|The Prince has authority over Verona.|Latin auctoritas
+conform|/kənˈfɔːrm/|v.|to follow the usual rules or customs of a group|順從；符合|Aunt Alexandra wants Scout to conform.|con- + formare ‘to shape’
+rebel|/rɪˈbel/|v.|to fight against authority or control|反叛|Juliet rebels against her father’s choice.|re- + bellum ‘war’
+hierarchy|/ˈhaɪərɑːrki/|n.|a system that ranks people above others|階級制度|The ranch has a strict hierarchy.|Greek hieros ‘sacred’ + arkhein ‘to rule’
+privilege|/ˈprɪvəlɪdʒ/|n.|a special advantage that only some people have|特權|Being white gave Bob Ewell privilege in court.|Latin privus ‘private’ + lex ‘law’
+equality|/ɪˈkwɑːləti/|n.|the state of being equal in rights and opportunities|平等|The courts are meant to guarantee equality.|Latin aequus ‘equal’
+propaganda|/ˌprɑːpəˈɡændə/|n.|often misleading information used to promote a political cause|政治宣傳|The class studies wartime propaganda posters.|Latin propagare ‘to spread’
+# Unit 28 · Feelings & states of mind
+anxious|/ˈæŋkʃəs/|adj.|worried and nervous|焦慮的|Scout feels anxious on the dark walk home.|Latin anxius ‘troubled’
+content|/kənˈtent/|adj.|happy and satisfied|滿足的|Lennie is content when he holds something soft.|Latin contentus ‘satisfied’
+elated|/ɪˈleɪtɪd/|adj.|extremely happy and excited|興高采烈的|Candy is elated when he joins the plan.|Latin elatus ‘raised up’
+indifferent|/ɪnˈdɪfərənt/|adj.|not interested or concerned|漠不關心的|The boss is indifferent to the workers’ lives.|in- ‘not’ + differre ‘to differ’
+nostalgic|/nɑːˈstældʒɪk/|adj.|longing for a happy time in the past|懷舊的|The adult narrator often sounds nostalgic.|Greek nostos ‘homecoming’ + algos ‘pain’
+remorse|/rɪˈmɔːrs/|n.|deep regret for doing something wrong|悔恨|Candy feels remorse about his dog.|Latin remordere ‘to bite again’
+resentment|/rɪˈzentmənt/|n.|anger about being treated unfairly|怨恨|Crooks’s resentment is understandable.|re- + sentire ‘to feel’
+serene|/səˈriːn/|adj.|calm and peaceful|寧靜的|The river clearing is serene at sunset.|Latin serenus ‘clear’
+wary|/ˈweri/|adj.|careful because of possible danger|警惕的|The children are wary of the Radley house.|Old English wær ‘careful’
+zealous|/ˈzeləs/|adj.|very eager and enthusiastic|熱衷的；狂熱的|The zealous students prepared all week for the debate.|Greek zelos ‘zeal’
+# Unit 29 · Change & time
+transform|/trænsˈfɔːrm/|v.|to change completely|徹底改變|Circe transforms the crew into pigs.|trans- ‘across’ + formare ‘to shape’
+decline|/dɪˈklaɪn/|v./n.|to become smaller or weaker; to refuse politely|衰退；婉拒|The old family’s fortunes declined.|de- + clinare ‘to bend’
+emerge|/ɪˈmɜːrdʒ/|v.|to come out or appear|出現；浮現|Boo finally emerges from the shadows.|e- + mergere ‘to dip’
+evolve|/ɪˈvɑːlv/|v.|to develop gradually|演變；逐步發展|Scout’s view of Boo evolves.|e- + volvere ‘to roll’
+gradual|/ˈɡrædʒuəl/|adj.|happening slowly over time|逐漸的|Jem’s growing up is gradual.|Latin gradus ‘step’
+abrupt|/əˈbrʌpt/|adj.|sudden and unexpected|突然的|The story takes an abrupt turn in chapter five.|ab- + rumpere ‘to break’
+temporary|/ˈtempəreri/|adj.|lasting for a short time|暫時的|Their hope on the ranch is only temporary.|Latin tempus ‘time’
+permanent|/ˈpɜːrmənənt/|adj.|lasting forever or for a very long time|永久的|The verdict leaves a permanent mark on Jem.|per- + manere ‘to remain’
+revive|/rɪˈvaɪv/|v.|to bring back to life or use|復甦；恢復|A good teacher can revive interest in reading.|re- + vivere ‘to live’
+obsolete|/ˌɑːbsəˈliːt/|adj.|no longer used; out of date|過時的|Typewriters are now obsolete.|Latin obsolescere ‘to grow old’
+# Unit 30 · Verbs for speaking
+exclaim|/ɪkˈskleɪm/|v.|to cry out suddenly with strong feeling|驚呼|‘It’s Boo!’ Scout exclaimed.|ex- + clamare ‘to shout’
+murmur|/ˈmɜːrmər/|v.|to speak softly and quietly|低聲說|The crowd murmured as the verdict was read.|Latin murmur (imitative)
+retort|/rɪˈtɔːrt/|v.|to reply quickly and sharply|反駁；回嘴|‘That’s not fair,’ she retorted.|re- + torquere ‘to twist’
+insist|/ɪnˈsɪst/|v.|to demand or say something firmly|堅持|Lord Capulet insists on the wedding.|in- + sistere ‘to stand’
+plead|/pliːd/|v.|to beg emotionally; to answer a charge in court|懇求；（法庭）答辯|Juliet pleads with her father on her knees.|Old French plaidier ‘to go to law’
+mock|/mɑːk/|v.|to laugh at someone unkindly|嘲弄|The suitors mock the old beggar.|Old French mocquer
+boast|/boʊst/|v.|to talk too proudly about yourself|吹噓|Odysseus boasts to the blinded Cyclops.|Middle English bost
+scold|/skoʊld/|v.|to speak angrily to someone for doing wrong|責罵|Calpurnia scolds Scout in the kitchen.|Old Norse skald ‘poet’ (one who mocks)
+implore|/ɪmˈplɔːr/|v.|to beg urgently|懇求；哀求|Penelope implores the bard to stop singing about Troy.|in- + plorare ‘to weep’
+hesitate|/ˈhezɪteɪt/|v.|to pause before acting or speaking|猶豫|Don’t hesitate to ask for help.|Latin haesitare ‘to stick fast’
+# Unit 31 · Judging ideas
+plausible|/ˈplɔːzəbəl/|adj.|seeming reasonable or possible|似乎合理的|Tom’s account is more plausible than Mayella’s.|Latin plausibilis ‘deserving applause’
+absurd|/əbˈsɜːrd/|adj.|completely unreasonable or silly|荒謬的|The charge against Tom is absurd.|Latin absurdus ‘out of tune’
+rational|/ˈræʃənəl/|adj.|based on reason rather than emotion|理性的|A rational jury would have acquitted him.|Latin ratio ‘reason’
+arbitrary|/ˈɑːrbɪtreri/|adj.|based on chance or personal whim, not reason|任意的；武斷的|The gods’ punishments sometimes seem arbitrary.|Latin arbitrium ‘judgment’
+legitimate|/lɪˈdʒɪtəmət/|adj.|allowed by law; reasonable|合法的；正當的|She had a legitimate reason to be angry.|Latin legitimus ‘lawful’
+dubious|/ˈduːbiəs/|adj.|doubtful; not to be trusted|可疑的|Bob Ewell’s story is dubious.|Latin dubium ‘doubt’
+coherent|/koʊˈhɪrənt/|adj.|logical and well organized|連貫的；條理清楚的|A coherent essay flows from point to point.|co- + haerere ‘to stick’
+profound|/prəˈfaʊnd/|adj.|very deep or intense|深刻的|The ending has a profound effect on readers.|Latin profundus ‘deep’
+superficial|/ˌsuːpərˈfɪʃəl/|adj.|only on the surface; not deep|膚淺的|A superficial reading misses the irony.|super- + facies ‘face’
+trivial|/ˈtrɪviəl/|adj.|of little importance|瑣碎的|Do not fill your essay with trivial details.|Latin trivialis ‘common’
+# Unit 32 · Roots in action
+transmit|/trænzˈmɪt/|v.|to send or pass something from one person or place to another|傳送；傳遞|Stories transmit values across generations.|trans- ‘across’ + mittere ‘to send’
+inscribe|/ɪnˈskraɪb/|v.|to write or carve words on something|銘刻；題寫|The stone was inscribed with the family name.|in- + scribere ‘to write’
+contradict|/ˌkɑːntrəˈdɪkt/|v.|to say the opposite of something|矛盾；反駁|Mayella’s answers contradict each other.|contra- ‘against’ + dicere ‘to say’
+spectator|/ˈspekteɪtər/|n.|a person who watches an event|旁觀者；觀眾|The children are spectators in the balcony.|Latin spectare ‘to watch’
+audible|/ˈɔːdəbəl/|adj.|loud enough to be heard|聽得見的|Her voice was barely audible.|Latin audire ‘to hear’
+chronological|/ˌkrɑːnəˈlɑːdʒɪkəl/|adj.|arranged in the order events happened|按時間順序的|The Odyssey is not told in chronological order.|Greek chronos ‘time’ + logos
+autonomy|/ɔːˈtɑːnəmi/|n.|freedom to make your own decisions|自主權|Juliet wants autonomy over her own life.|Greek autos ‘self’ + nomos ‘law’
+benefactor|/ˈbenəfæktər/|n.|a person who gives help or money|恩人；捐助者|Boo is the children’s secret benefactor.|bene ‘well’ + facere ‘to do’
+malevolent|/məˈlevələnt/|adj.|wishing to do evil to others|惡毒的|The children imagine Boo as malevolent.|male ‘badly’ + volens ‘wishing’
+incredulous|/ɪnˈkredʒələs/|adj.|unable or unwilling to believe something|不敢相信的|Jem is incredulous at the verdict.|in- ‘not’ + credere ‘to believe’
+# Unit 33 · History across subjects
+catalyst|/ˈkætəlɪst/|n.|something that causes an important change|催化劑；導火線|Tybalt’s death is the catalyst for the tragedy.|Greek katalysis ‘dissolving’
+era|/ˈɪrə/|n.|a long period of history|時代|The novel is set in the Depression era.|Latin aera ‘counters, numbers’
+empire|/ˈempaɪər/|n.|a group of lands ruled by one powerful ruler or state|帝國|Rome later built an empire around the Mediterranean.|Latin imperium ‘command’
+migration|/maɪˈɡreɪʃən/|n.|movement of people or animals from one region to another|遷徙；移民|The Dust Bowl caused a huge migration west.|Latin migrare ‘to move’
+revolution|/ˌrevəˈluːʃən/|n.|a sudden, complete change, often in government|革命|The printing press started a revolution in reading.|Latin revolvere ‘to roll back’
+colony|/ˈkɑːləni/|n.|a land controlled by a distant country|殖民地|Greek city-states founded colonies across the sea.|Latin colonia ‘settlement’
+artifact|/ˈɑːrtɪfækt/|n.|an object made by people, especially of historical interest|文物；人工製品|The museum displays artifacts from ancient Greece.|ars ‘skill’ + factum ‘made’
+chronicle|/ˈkrɑːnɪkəl/|n./v.|a record of events in time order; to record events|編年史；記錄|The memoir chronicles one family’s survival.|Greek chronika ‘annals’
+legacy|/ˈleɡəsi/|n.|something handed down from the past|遺產；遺緒|Atticus wants to leave his children a legacy of integrity.|Latin legare ‘to bequeath’
+tradition|/trəˈdɪʃən/|n.|a custom passed down over generations|傳統|Hospitality was a sacred tradition in Homer’s world.|Latin tradere ‘to hand over’
+# Unit 34 · Conflict & resolution
+compromise|/ˈkɑːmprəmaɪz/|n./v.|an agreement where each side gives up something|妥協|Neither family will compromise.|com- + promittere ‘to promise’
+negotiate|/nɪˈɡoʊʃieɪt/|v.|to discuss in order to reach an agreement|協商；談判|The workers tried to negotiate higher pay.|Latin negotium ‘business’
+mediate|/ˈmiːdieɪt/|v.|to help two sides settle a disagreement|調解|The Friar hopes to mediate between the families.|Latin medius ‘middle’
+dispute|/dɪˈspjuːt/|n./v.|a disagreement; to argue about something|爭端；爭論|The land dispute lasted for years.|dis- + putare ‘to reckon’
+escalate|/ˈeskəleɪt/|v.|to become greater or more serious|升級；加劇|The insults escalate into a sword fight.|Latin scala ‘ladder’
+resolve|/rɪˈzɑːlv/|v./n.|to settle a problem; firm determination|解決；決心|Only tragedy resolves the feud.|re- + solvere ‘to loosen’
+alliance|/əˈlaɪəns/|n.|an agreement to work together|聯盟|The Friar hopes the marriage will create an alliance between the houses.|Old French alier ‘to bind’
+rival|/ˈraɪvəl/|n./adj.|a person competing with another for the same thing|對手；競爭的|The rival houses meet in the street.|Latin rivalis ‘one using the same stream’
+truce|/truːs/|n.|an agreement to stop fighting for a time|休戰|The Prince demands an end to the street fights.|Old English treow ‘faith, pledge’
+retaliate|/rɪˈtælieɪt/|v.|to attack someone in return for an attack|報復|Romeo retaliates by killing Tybalt.|re- + talis ‘such’ (paying back in kind)
+# Unit 35 · Reading & writing process
+annotate|/ˈænəteɪt/|v.|to add notes to a text while reading|註解；做筆記|Annotate each chapter for symbols.|ad- + notare ‘to mark’
+paraphrase|/ˈpærəfreɪz/|v./n.|to restate an idea in your own words|改述；轉述|Paraphrase the passage before you analyze it.|Greek para- ‘beside’ + phrazein ‘to tell’
+summarize|/ˈsʌməraɪz/|v.|to give the main points briefly|摘要；總結|Summarize the chapter in three sentences.|Latin summa ‘total’
+cite|/saɪt/|v.|to name a source as evidence|引用；引述|Cite the chapter and page number.|Latin citare ‘to summon’
+excerpt|/ˈeksɜːrpt/|n.|a short passage taken from a longer work|節錄|Read the excerpt and answer the questions.|ex- + carpere ‘to pluck’
+predict|/prɪˈdɪkt/|v.|to say what you think will happen|預測|Use the foreshadowing to predict the ending.|pre- + dicere ‘to say’
+draft|/dræft/|n./v.|an early version of a piece of writing|草稿；起草|Write a quick first draft, then revise.|Old English dragan ‘to draw’
+revise|/rɪˈvaɪz/|v.|to change and improve writing|修改；修訂|Revise for clarity and evidence.|re- + videre ‘to see’
+thesis|/ˈθiːsɪs/|n.|the main claim of an essay|主旨；論點|Your thesis should be arguable.|Greek thesis ‘a setting down’
+outline|/ˈaʊtlaɪn/|n./v.|a plan showing the main points in order|大綱|Make an outline before writing.|out + line
+# Unit 36 · Advanced descriptive words
+meticulous|/məˈtɪkjələs/|adj.|very careful about small details|一絲不苟的|Atticus prepares a meticulous defense.|Latin meticulosus ‘fearful’
+ominous|/ˈɑːmɪnəs/|adj.|suggesting that something bad will happen|不祥的|An ominous silence filled the courtroom.|Latin omen ‘sign’
+ponder|/ˈpɑːndər/|v.|to think carefully about something|沉思；仔細考慮|Scout ponders what it means to be a good person.|Latin ponderare ‘to weigh’
+scrutinize|/ˈskruːtənaɪz/|v.|to examine very closely|仔細審查|The lawyer scrutinizes every detail.|Latin scrutari ‘to search’
+solemn|/ˈsɑːləm/|adj.|serious and formal|莊嚴的；嚴肅的|The funeral was solemn and quiet.|Latin sollemnis ‘ceremonial’
+tedious|/ˈtiːdiəs/|adj.|long, slow and boring|乏味冗長的|The work on the ranch is tedious.|Latin taedium ‘weariness’
+uncanny|/ʌnˈkæni/|adj.|strange in a way that is hard to explain|離奇的；不可思議的|She had an uncanny ability to guess the ending.|un- + canny ‘knowing’
+vivid|/ˈvɪvɪd/|adj.|very clear, bright or detailed|生動的；鮮明的|Use vivid details in your narrative.|Latin vividus ‘lively’
+wistful|/ˈwɪstfəl/|adj.|sadly longing for something|渴望而略帶感傷的|Candy speaks in a wistful voice about the farm.|wistly ‘intently’ + -ful
+foreboding|/fɔːrˈboʊdɪŋ/|n.|a feeling that something bad will happen|不祥預感|Romeo feels a foreboding before the feast.|fore- ‘before’ + bode ‘to announce’`;
+{let cur=null;V9MORE.split("\n").forEach(l=>{if(l.startsWith("# ")){cur=[l.slice(2),[]];V9.push(cur)}else if(l.trim()&&cur)cur[1].push(l.split("|"))})}
+
+/* ---------- GRADE 9 GRAMMAR ---------- */
+const G9=[
+{t:"Parallel structure",z:"",c:"L.9-10.1a",
+r:"Items joined in a list or by a pair (and, or, not only…but also, either…or) should have the same grammatical form: noun with noun, verb with verb, clause with clause.",
+rz:"",
+y:["Atticus values honesty, fairness, and kindness.","She wanted to read, to write, and to argue."],
+n:["Atticus values honesty, fairness, and being kind.","She wanted to read, writing, and to argue."],
+q:[["Which sentence uses parallel structure?",["Scout likes climbing trees, reading, and to fight.","Scout likes climbing trees, reading, and fighting.","Scout likes to climb trees, reading, and fights."],1,"All three items are -ing gerunds."],
+["She likes to read, to write, and ___.",["painting","to paint","she paints"],1,"The first two items are to + verb, so the third must be ‘to paint’."],
+["The plan was not only cheap but also ___.",["it worked well","effective","working"],1,"‘Not only’ is followed by an adjective (cheap), so ‘but also’ needs an adjective too."],
+["Best revision: “Jem learned to ignore insults, to stay calm, and that courage is not a gun.”",["…to stay calm, and to understand that courage is not a gun.","…to stay calm, and courage is not a gun.","…staying calm, and that courage is not a gun."],0,"All three items now use to + verb."],
+["Either we leave now, or ___.",["we miss the bus","missing the bus","to miss the bus"],0,"‘Either’ is followed by a clause (we leave), so ‘or’ must be followed by a clause too."]]},
+{t:"Phrases",z:"",c:"L.9-10.1b",
+r:"A phrase is a group of words without its own subject and verb. Know these types: prepositional, participial, absolute, appositive, infinitive and gerund. Each adds a specific meaning and variety to your sentences.",
+rz:"",
+y:["Walking into the courtroom, Jem felt nervous. (participial)","His hands shaking, the witness took the stand. (absolute)"],
+n:["Walking into the courtroom, the trial began. (dangling — the trial was not walking)"],
+q:[["[Walking into the courtroom], Jem felt nervous. The bracketed phrase is…",["prepositional","participial","absolute","infinitive"],1,"It begins with an -ing participle and describes the subject, Jem."],
+["[His hands shaking], the witness took the stand. The bracketed phrase is…",["participial","absolute","appositive","gerund"],1,"It has its own noun (His hands) plus a participle, so it is an absolute phrase."],
+["Calpurnia, [the family’s cook], was strict. The bracketed phrase is…",["appositive","prepositional","infinitive","absolute"],0,"It renames the noun right before it, Calpurnia."],
+["[To win the case] seemed impossible. The bracketed phrase is…",["gerund phrase","infinitive phrase used as a noun","participial phrase","absolute phrase"],1,"A to + verb phrase acting as the subject of the sentence."],
+["The gifts appeared [in the knothole of the tree]. The bracketed words are…",["a dependent clause","prepositional phrases","an appositive","an absolute phrase"],1,"Two prepositional phrases (in…, of…) act as an adverb telling where."]]},
+{t:"Clauses",z:"",c:"L.9-10.1b",
+r:"A clause has a subject and a verb. An independent clause can stand alone; a dependent clause cannot. Dependent clauses work as nouns (that…), adjectives (who, which…) or adverbs (because, although, when…).",
+rz:"",
+y:["Although Atticus lost the case, he earned respect. (adverb clause + independent clause)"],
+n:["Although Atticus lost the case. (a dependent clause alone is a fragment)"],
+q:[["Which is an independent clause?",["Because the jury was afraid","The jury was afraid","Which the jury feared"],1,"It has a subject and a verb and expresses a complete thought."],
+["Scout knew [that Boo was watching]. The bracketed clause is a…",["noun clause","relative clause","adverb clause"],0,"It is the object of ‘knew’, so it works as a noun."],
+["The man [who lived next door] never came outside. The bracketed clause is a…",["noun clause","relative (adjective) clause","adverb clause"],1,"Introduced by ‘who’, it describes ‘the man’."],
+["[Although Atticus lost the case], he earned respect. The bracketed clause is a…",["adverb clause","noun clause","independent clause"],0,"‘Although’ introduces a contrast that modifies the main clause."],
+["Which sentence is complex (one independent + one dependent clause)?",["Jem ran, and Scout followed.","When the bell rang, Jem ran.","Jem ran home quickly."],1,"‘When the bell rang’ is dependent; ‘Jem ran’ is independent."]]},
+{t:"Semicolons",z:"",c:"L.9-10.2a",
+r:"Use a semicolon (1) to join two closely related independent clauses, (2) before a conjunctive adverb such as however or therefore (with a comma after it), and (3) between list items that already contain commas.",
+rz:"",
+y:["The trial ended; the town stayed divided.","Atticus knew he would lose; however, he took the case."],
+n:["The trial ended; and the town stayed divided.","I studied hard; for the test."],
+q:[["Which is correct?",["The trial ended; the town stayed divided.","The trial ended; and the town stayed divided.","The trial ended; when the town stayed divided."],0,"Both sides are independent clauses, with no conjunction after the semicolon."],
+["Atticus knew he would lose___ he took the case.",[", however,","; however,","however"],1,"‘However’ is a conjunctive adverb, not a conjunction: semicolon before it, comma after it. A comma alone creates a comma splice."],
+["We visited Mobile, Alabama___ Atlanta, Georgia___ and Memphis, Tennessee.",["commas",";  (semicolons)","colons"],1,"The items already contain commas, so semicolons separate them."],
+["Which is INCORRECT?",["I studied; I passed.","I studied hard; for the test.","It rained; therefore, we stayed inside."],1,"‘For the test’ is not an independent clause, so it cannot follow a semicolon."],
+["Fix the comma splice: “Jem was furious, he cut the camellias.”",["Jem was furious; he cut the camellias.","Jem was furious he cut the camellias.","Jem was furious, and, he cut the camellias."],0,"A semicolon correctly joins two independent clauses."]]},
+{t:"Colons",z:"",c:"L.9-10.2b",
+r:"Use a colon after a complete independent clause to introduce a list, an explanation or a quotation. Never put a colon directly after a verb or a preposition.",
+rz:"",
+y:["You need three things: flour, sugar, and eggs.","Scout learned one hard lesson: people are not always what they seem."],
+n:["The ingredients are: flour, sugar, and eggs.","My favorite subjects include: math and art."],
+q:[["Which is correct?",["The ingredients are: flour, sugar, eggs.","You need three things: flour, sugar, and eggs.","You need: flour, sugar, and eggs."],1,"The words before the colon form a complete sentence."],
+["Scout learned one hard lesson___ people are not always what they seem.",[":",",","no punctuation"],0,"The first part is complete, and what follows explains it."],
+["Which is INCORRECT?",["My favorite subjects include: math and art.","She had one goal: freedom.","He said it plainly: “Go home.”"],0,"‘Include’ is a verb; a colon cannot come directly after it."],
+["One word described him___",[": Brave.",": brave."],1,"What follows the colon is a single word, not a full sentence, so it stays lowercase."],
+["Where does the colon belong?",["The verdict: was guilty.","The verdict was clear: guilty."],1,"A colon must follow a complete sentence."]]},
+{t:"Run-ons & comma splices",z:"",c:"Foundational (L.8 → L.9-10)",
+r:"Two independent clauses cannot be joined by a comma alone (comma splice) or by nothing (run-on). Fix with a period, a semicolon, a comma + FANBOYS (for, and, nor, but, or, yet, so), or by making one clause dependent.",
+rz:"",
+y:["It was late, so we left.","Because she was afraid of her father, Mayella lied."],
+n:["It was late, we left.","Mayella lied she was afraid of her father."],
+q:[["Which is a comma splice?",["It was late, so we left.","It was late, we left.","It was late; we left."],1,"A comma alone joins two independent clauses."],
+["Best fix: “Mayella lied she was afraid of her father.”",["Mayella lied because she was afraid of her father.","Mayella lied, she was afraid of her father.","Mayella lied she, was afraid of her father."],0,"‘Because’ turns the second clause into a dependent clause and shows the cause."],
+["I wanted to go___ I was sick.",[", but",", however","but,"],0,"Use a comma plus a FANBOYS conjunction. ‘However’ needs a semicolon before it."],
+["“Although it was raining, we walked to school.” This sentence is…",["a run-on","a comma splice","correct"],2,"The ‘Although’ clause is dependent, so the comma is correct."],
+["Best fix: “The dog was sick it walked strangely down the street.”",["The dog was sick; it walked strangely down the street.","The dog was sick, it walked strangely down the street.","The dog, was sick it walked strangely."],0,"A semicolon joins the two independent clauses."]]},
+{t:"Subject–verb agreement",z:"",c:"Foundational (L.9-10.1)",
+r:"The verb must agree with its true subject, not with a nearby noun. Each, everyone and neither are singular. With either/or and neither/nor, the verb agrees with the closer subject. In ‘There is/are’, the subject comes after the verb.",
+rz:"",
+y:["Each of the children is afraid of the house.","The box of letters was on the table."],
+n:["Each of the children are afraid of the house.","The box of letters were on the table."],
+q:[["Each of the children ___ afraid of the Radley house.",["is","are"],0,"The subject is ‘Each’ (singular); ‘of the children’ only describes it."],
+["The jury ___ reached its verdict.",["has","have"],0,"The jury acts as one unit, so the verb is singular (note ‘its’)."],
+["Neither Jem nor his friends ___ the truth.",["knows","know"],1,"The verb agrees with the closer subject, ‘friends’ (plural)."],
+["There ___ many reasons for his decision.",["is","are"],1,"The true subject is ‘reasons’ (plural)."],
+["The box of letters ___ on the table.",["was","were"],0,"The subject is ‘box’ (singular), not ‘letters’."]]},
+{t:"MLA in-text citation",z:"",c:"L.9-10.3a · W.9-10.8",
+r:"In MLA style, cite a quotation with the author’s last name and page number in parentheses, no comma: (Lee 87). The period goes after the parentheses. If you name the author in your sentence, give only the page. For plays in verse, cite act.scene.lines.",
+rz:"",
+y:["Scout calls it a lesson in “courage” (Lee 112).","As Lee shows, Scout changes over the novel (112)."],
+n:["Scout calls it a lesson in “courage.” (Lee, p. 112)"],
+q:[["Which in-text citation is correct MLA?",["(Lee, p. 87).","(Lee 87).","(87, Lee)."],1,"Last name and page number, with no comma and no ‘p.’"],
+["Where does the period go?",["…in “courage” (Lee 112).","…in “courage.” (Lee 112)"],0,"The period goes after the parentheses."],
+["If you already wrote “As Lee writes,” in your sentence, the citation is…",["(Lee 112)","(112)","(p. 112)"],1,"The author is already named in the sentence, so give only the page."],
+["Citing lines from Romeo and Juliet in MLA uses…",["(2.2.33–35)","(page 33)","(Act 2 Scene 2)"],0,"Act.scene.lines, in Arabic numerals."],
+["Which Works Cited order is correct for a book?",["Last, First. Title. Publisher, Year.","First Last. Year. Title.","Title. Last, First. Year."],0,"MLA 9: Author (Last, First). Title (italics). Publisher, Year."]]}
+];
+
+/* ---------- NOVEL: To Kill a Mockingbird ---------- */
+const TKAM={
+title:"To Kill a Mockingbird",author:"Harper Lee · 1960",
+bg:["Published in 1960 and awarded the Pulitzer Prize for Fiction in 1961. Set in the fictional town of Maycomb, Alabama, from about 1933 to 1935, during the Great Depression and under Jim Crow segregation laws.",
+"The narrator is Jean Louise “Scout” Finch, looking back as an adult on the years when she was roughly six to nine. Her father, the lawyer Atticus Finch, is appointed to defend Tom Robinson, a Black man falsely accused of assaulting a white woman, Mayella Ewell.",
+"Lee grew up in Monroeville, Alabama, and her father was a lawyer. Readers often connect the trial to real cases of the era, especially the Scottsboro Boys trials (1931–1937), in which nine Black teenagers were wrongly accused in Alabama."],
+bgz:"",
+sum:[["Part One · Ch. 1–3","Scout, her brother Jem and their widowed father Atticus live in Maycomb with their cook Calpurnia. Their summer friend Dill joins them in an obsession with Boo Radley, a neighbor who never leaves his house. At school, Scout’s new teacher scolds her for already knowing how to read. After Scout shames a poor classmate, Walter Cunningham, at lunch, Calpurnia scolds her and Atticus teaches her to understand people by imagining life from their point of view.",""],
+["Ch. 4–8","Small gifts appear in a knothole of a tree by the Radley house — gum, coins, soap carvings, a watch. The children act out Boo’s story and sneak onto the Radley property at night; Jem loses his pants on a fence and later finds them mended and folded. Nathan Radley fills the knothole with cement. During a rare snowfall, Miss Maudie’s house burns, and someone silently places a blanket on Scout’s shoulders.",""],
+["Ch. 9–11","Atticus agrees to defend Tom Robinson, and Scout fights classmates and a cousin who insult him. Atticus surprises the children by shooting a rabid dog with one shot, a skill he never bragged about. Miss Maudie explains why it is a sin to kill a mockingbird: it only makes music and harms no one. After Jem destroys the elderly Mrs. Dubose’s flowers, he must read to her daily; after her death, Atticus reveals she was fighting a morphine addiction, and calls her the bravest person he knew.",""],
+["Part Two · Ch. 12–15","Calpurnia takes the children to her church, First Purchase, where they see her other life in the Black community. Aunt Alexandra moves in to give Scout a ‘proper’ upbringing. One night a mob of men comes to the jail to attack Tom; Scout, not understanding the danger, talks to Mr. Cunningham about his son, and the mob leaves in shame.",""],
+["Ch. 16–21","At the trial, the children watch from the balcony with the Black community. Atticus shows that Mayella’s injuries were on the right side of her face, likely caused by a left-handed man — Bob Ewell is left-handed, while Tom’s left arm was crippled in an accident. Tom testifies that he helped Mayella with chores because he felt sorry for her, a statement that angers the white audience. Despite the evidence, the all-white jury convicts Tom.",""],
+["Ch. 22–25","Jem is crushed by the verdict. Bob Ewell spits in Atticus’s face and threatens him. At Aunt Alexandra’s missionary tea, the women pity distant Africans while insulting Black people in Maycomb. News arrives that Tom was shot and killed while trying to escape prison. The local editor compares his death to the senseless killing of songbirds.",""],
+["Ch. 26–31","At school, Scout notices her teacher condemns Hitler’s persecution of Jews yet speaks with contempt about Black people at home. Walking home from a Halloween pageant, Scout and Jem are attacked by Bob Ewell. A stranger saves them and carries the injured Jem home — it is Boo Radley. Bob Ewell is found dead. Sheriff Heck Tate insists Ewell fell on his own knife, to protect the shy Boo from public attention. Scout agrees that exposing Boo would be like shooting a mockingbird. She walks Boo home and, standing on his porch, finally sees the neighborhood from his point of view.",""]],
+chars:[["Scout (Jean Louise) Finch","Narrator; curious, quick-tempered tomboy who learns empathy.",""],
+["Jem Finch","Scout’s older brother; his faith in justice is broken by the verdict.",""],
+["Atticus Finch","Widowed lawyer; calm, principled, defends Tom.",""],
+["Calpurnia","The Finches’ Black cook; strict, bridges two communities.",""],
+["Boo (Arthur) Radley","Reclusive neighbor; feared by children, secretly kind.",""],
+["Tom Robinson","Black field worker falsely accused; a ‘mockingbird’.",""],
+["Bob Ewell","Poor, cruel, vindictive father of Mayella.",""],
+["Mayella Ewell","Lonely, abused daughter who accuses Tom.",""],
+["Dill (Charles Baker Harris)","Imaginative summer friend; cries at the trial’s cruelty.",""],
+["Miss Maudie Atkinson","Neighbor and gardener; the children’s moral guide.",""],
+["Aunt Alexandra","Atticus’s sister; obsessed with family status.",""],
+["Heck Tate","Sheriff; makes the final choice to protect Boo.",""]],
+themes:[["Loss of innocence & moral growth","Scout and Jem move from childish fear of Boo to an adult understanding of real evil (prejudice) and real goodness (quiet kindness). The novel is a coming-of-age story (bildungsroman).",""],
+["Racial injustice","The trial shows that evidence matters less than race in Maycomb’s courtroom. The law is supposed to be equal, but the people who run it are not.",""],
+["Courage","Atticus defines courage as continuing when you know you will probably lose — shown by Mrs. Dubose and by Atticus himself, not by a gun.",""],
+["Empathy & perspective","The book opens and closes with the lesson of seeing from another person’s position. Scout finally does it literally on Boo’s porch.",""],
+["Social class","Maycomb ranks people: old families, the Cunninghams (poor but proud), the Ewells (poor and despised), and the Black community below all of them by law.",""]],
+syms:[["The mockingbird","Innocent beings who do only good — Tom and Boo. Harming them is a sin.",""],
+["The Radley house & knothole","Fear of the unknown; the knothole becomes a secret line of communication until it is sealed.",""],
+["The rabid dog","A danger the town must face; often read as the ‘sickness’ of racism that Atticus must confront.",""],
+["Mrs. Dubose’s camellia","The white camellia she gives Jem: understanding that people are more complicated than they look.",""]],
+devs:[["Retrospective first-person narration","An adult narrator describes a child’s experience, so we get both the child’s innocence and the adult’s understanding.",""],
+["Foreshadowing","The first sentence mentions Jem’s broken arm, which is explained only in the final chapters. Bob Ewell’s threat foreshadows the attack.",""],
+["Irony","The missionary tea and Miss Gates’s lesson on democracy show adults condemning prejudice far away while practicing it at home.",""],
+["Two-part structure","Part One centers on Boo, Part Two on the trial. The ending joins them: Boo, the feared outsider, saves the children Maycomb failed to protect.",""],
+["Southern Gothic elements","A mysterious house, rumors, violence at night and a decaying social order — all inside a small Southern town.",""]],
+ct:[{q:"Is Atticus Finch a hero, or is he too accepting of his town?",z:"",
+claim:"Take a position: e.g., “Atticus is heroic because…” or “Atticus is admirable but limited because…”",
+ev:"Ch. 9 (why he takes the case), Ch. 15 (the jail), Ch. 23 (his response to Bob Ewell and his view of Mr. Cunningham), Ch. 30 (accepting Heck Tate’s decision).",
+rs:"Explain what each moment reveals about his values. Does working within a racist system change it, or protect it?",
+cc:"Some critics argue the novel centers a white hero while Tom has little voice. Lee’s later-published Go Set a Watchman (2015) shows an older Atticus with segregationist views.",
+m:"Model claim: Atticus is heroic in his personal integrity, but the novel also shows the limits of one good man inside an unjust system — he wins the town’s respect, not Tom’s freedom."},
+{q:"Why does Lee tell this story through a child’s eyes?",z:"",
+claim:"State the effect, e.g., “A child narrator makes prejudice look absurd because…”",
+ev:"Ch. 15 (Scout disarms the mob without understanding the danger), Ch. 19–20 (Dill’s reaction to the cross-examination), Ch. 26 (Scout questions Miss Gates).",
+rs:"Show how the child’s innocent questions expose what adults refuse to see. Note how the adult narrator adds meaning the child could not.",
+cc:"A child’s view can also soften or simplify racial violence. Is that a weakness?",
+m:"Model claim: Scout’s innocence turns the town’s ‘normal’ prejudice into something strange and visible, forcing readers to question what adults accept."},
+{q:"Was Heck Tate right to hide the truth about Bob Ewell’s death?",z:"",
+claim:"Decide: law vs. justice. “Heck Tate’s choice was just / unjust because…”",
+ev:"Ch. 30 (the discussion on the porch), Ch. 10 (the mockingbird lesson), Ch. 21 (what the legal system did to Tom).",
+rs:"Weigh the rule of law against protecting an innocent, vulnerable person. Connect to the novel’s claim that the courts already failed Tom.",
+cc:"If officials can decide which truths to hide, what stops them from hiding unjust things?",
+m:"Model claim: Tate breaks the letter of the law to serve its purpose — protecting the innocent — which the courtroom failed to do for Tom."},
+{q:"Whose voices are missing from the novel?",z:"",
+claim:"e.g., “Although the novel condemns racism, it tells Tom’s and Calpurnia’s stories mostly from the outside.”",
+ev:"Ch. 12 (Calpurnia’s ‘two lives’), Ch. 19 (Tom’s testimony), Ch. 25 (how Tom’s death is reported to the family).",
+rs:"Ask what we never learn about Tom’s or Helen Robinson’s thoughts. How does a white child narrator shape what we can know?",
+cc:"Others argue a limited narrator is honest: Scout cannot know what she has not been told.",
+m:"Model claim: Lee’s choice of narrator makes Black characters’ inner lives largely invisible, which both reflects Maycomb’s segregation and limits the novel’s critique."},
+{q:"Cross-text: Compare Tom Robinson’s trial with the real Scottsboro Boys case.",z:"",
+claim:"Identify one key similarity and one difference, then argue what the comparison reveals.",
+ev:"Novel: Ch. 17–21. Real world: a reliable history source on the Scottsboro trials (1931–1937), e.g., a museum or library site.",
+rs:"Synthesize: how does fiction help readers feel what a historical record only reports?",
+cc:"Is fiction ‘less true’ than history? When can it be more powerful?",
+m:"Model claim: Both cases show a jury choosing race over evidence, but the novel personalizes injustice through one family, making it harder for readers to look away."},
+{q:"Debate: Should this novel remain required reading in California high schools?",z:"",
+claim:"Take a clear side and give two reasons.",
+ev:"Use the novel (its themes, its language, whose story it centers) plus at least one recent news article about curriculum debates.",
+rs:"Consider who reads it — students of different backgrounds — and what they gain or lose.",
+cc:"Answer the strongest point from the other side, then rebut it.",
+m:"Model claim: The novel should be taught, but alongside texts by Black authors, so students study both the story of injustice and the voices it leaves out."}]
+};
+
+TKAM.cite="author and page, e.g., (Lee 112)";
+const RJ={
+title:"Romeo and Juliet",author:"William Shakespeare · c. 1595",
+cite:"act.scene.line, e.g., (3.1.94)",
+bg:["A tragedy written around 1594–1596, based mainly on Arthur Brooke’s 1562 poem The Tragical History of Romeus and Juliet. It is set in Verona and Mantua, Italy, and the action takes place over only four or five days.",
+"Two noble families, the Montagues and the Capulets, are locked in an old feud. Romeo, a Montague, and Juliet, a Capulet who is not yet fourteen, fall in love, marry in secret and die within the week.",
+"The play is written mostly in blank verse (unrhymed iambic pentameter), with rhymed sonnets at key moments. It was first printed in 1597 and is in the public domain, so you may quote it directly. Cite act, scene and line numbers."],
+sum:[["Prologue & Act 1","A sonnet prologue tells us that a pair of ‘star-crossed lovers’ will die and that their deaths will end their parents’ feud. A street brawl between servants grows until Prince Escalus declares that anyone who disturbs the peace again will be put to death. Romeo is lovesick over Rosaline, who does not return his love. Count Paris asks Lord Capulet for permission to marry Juliet. Romeo and his friends Benvolio and Mercutio slip into the Capulet feast, where Romeo and Juliet meet, speak a shared sonnet and kiss — and only then learn each other’s family names. Tybalt recognizes Romeo and wants to fight, but Capulet stops him."],
+["Act 2","In the balcony scene, Romeo and Juliet declare their love, and Juliet proposes marriage if his love is honorable. Romeo asks Friar Laurence for help. The Friar agrees, hoping the marriage will end the feud, but warns him to move slowly. Juliet’s Nurse carries messages, and the couple marry in secret that afternoon. Just before the wedding, the Friar warns that ‘these violent delights have violent ends.’"],
+["Act 3","Tybalt challenges Romeo, who refuses to fight his new relative by marriage. Mercutio fights instead and is fatally wounded when Romeo steps between them; dying, he curses both houses. In rage, Romeo kills Tybalt, and the Prince banishes him to Mantua. Juliet is torn between grief for her cousin and loyalty to her husband. After one night together, Romeo leaves. Lord Capulet, who knows nothing of the marriage, orders Juliet to marry Paris in a few days. When she refuses, he threatens to throw her out, and the Nurse advises her to marry Paris."],
+["Act 4","Desperate, Juliet goes to Friar Laurence, who gives her a potion that will make her appear dead for about forty-two hours. He will send word to Romeo so that he can take her away when she wakes in the family tomb. Juliet pretends to obey her father, and the wedding is moved up a day. That night, after a fearful soliloquy, she drinks the potion. In the morning the family finds her apparently dead, and the wedding becomes a funeral."],
+["Act 5","Romeo’s servant Balthasar tells him that Juliet is dead. The Friar’s letter never arrives, because the messenger was held by a plague quarantine. Romeo buys poison and returns to Verona. At the tomb he kills Paris, then drinks the poison beside Juliet. She wakes moments later, refuses to leave with the Friar, and stabs herself with Romeo’s dagger. The Friar explains everything; the Prince blames the families’ hatred, and Montague and Capulet finally make peace."]],
+chars:[["Romeo Montague","Passionate, impulsive son of the Montagues."],["Juliet Capulet","Not yet fourteen; grows from obedient daughter to decisive wife."],["Friar Laurence","Romeo’s adviser; marries the couple and invents the potion plan."],["The Nurse","Juliet’s caretaker and confidante; comic, then disappointing."],["Mercutio","Romeo’s witty friend and the Prince’s relative; neither Montague nor Capulet."],["Tybalt","Juliet’s cousin; proud, quick to fight."],["Benvolio","Romeo’s cousin; tries to keep the peace."],["Lord Capulet","Juliet’s father; generous host but tyrannical when defied."],["Lady Capulet","Juliet’s mother; distant from her daughter."],["Count Paris","A noble suitor approved by Capulet."],["Prince Escalus","Ruler of Verona; represents law and order."],["Lord & Lady Montague","Romeo’s parents; Lady Montague dies of grief."]],
+themes:[["Love and hate","Love and hate grow side by side. The lovers’ passion is born inside a feud, and the play’s language mixes the two from the first scene."],
+["Fate vs. free will","The Prologue calls the lovers ‘star-crossed,’ but almost every disaster also follows a human choice — a duel, a hurried marriage, a lost letter, a forced wedding."],
+["Haste and impulsiveness","Everything moves too fast: meeting, marriage, revenge and suicide all happen within days. Characters who warn against haste are ignored."],
+["Youth vs. authority","Parents, the Prince and the Church try to control the young, but none of them truly listens to Romeo or Juliet."],
+["Violence and honor","Young men fight to defend their family name. Honor demands revenge, and revenge causes the tragedy."]],
+syms:[["Light and darkness","Romeo describes Juliet as light in darkness — the sun, the stars, a torch. Their love belongs to the night and is destroyed by the day."],
+["Poison and the potion","Poison and medicine come from the same plants, as the Friar notes: the same thing can heal or kill, just as love can turn deadly."],
+["The stars","The stars stand for fate; Romeo defies them when he hears Juliet is dead."],
+["Queen Mab","Mercutio’s fairy of dreams suggests that dreams and desires can be foolish and dangerous."]],
+devs:[["Dramatic irony","The Prologue tells the audience the ending, so we watch every hopeful moment knowing it will fail."],
+["Foil characters","Mercutio’s mocking wit contrasts with Romeo’s romance; peaceful Benvolio contrasts with violent Tybalt; the earthy Nurse contrasts with the idealistic Juliet."],
+["Oxymoron and paradox","Romeo’s phrases such as ‘loving hate’ and Juliet’s ‘sweet sorrow’ show feelings at war with each other."],
+["Soliloquy","Juliet’s speech before taking the potion lets us hear her fears and her courage directly."],
+["The sonnet form","The Prologue and the lovers’ first conversation are sonnets, the classic form of love poetry."],
+["Puns and wordplay","Mercutio jokes even as he dies, calling himself a ‘grave man,’ which mixes humor and horror."]],
+ct:[{q:"Who is most responsible for the deaths of Romeo and Juliet?",claim:"Name one character or force and argue that their role was decisive, e.g., “Friar Laurence bears the most responsibility because…”",ev:"2.3 (the Friar agrees to the marriage), 3.1 (Romeo kills Tybalt), 3.5 (Capulet’s threat and the Nurse’s advice), 5.2 (the undelivered letter), 5.3 (the Prince’s final judgment).",rs:"Explain how that person’s choice made the outcome likely and why others’ actions were less important.",cc:"The Prologue suggests fate is to blame. Does that remove human responsibility?",m:"Model claim: The adults are most responsible: the Friar’s secret plan, the Nurse’s betrayal and Capulet’s threats left two teenagers with no safe choice."},
+{q:"Is the tragedy caused by fate or by choices?",claim:"Take a side, or argue that the play shows both working together.",ev:"Prologue (‘star-crossed’), 1.4 (Romeo’s foreboding before the feast), 3.1 (‘fortune’s fool’), 5.1 (Romeo defies the stars), 5.2 (the letter).",rs:"For each event, ask: could a different choice have changed it? Which events are pure chance?",cc:"If fate decides everything, why does Shakespeare show the characters’ choices in so much detail?",m:"Model claim: Fate sets the stage, but the characters’ haste turns bad luck into catastrophe."},
+{q:"Is this a story of true love or of youthful infatuation?",claim:"Decide what the play suggests about Romeo and Juliet’s love.",ev:"1.1 (Romeo on Rosaline), 1.5 (the first meeting), 2.2 (Juliet worries it is ‘too rash’), 2.3 (the Friar’s doubts about Romeo’s quick change of heart).",rs:"Compare how Romeo talks about Rosaline with how he talks about Juliet. Does Juliet’s love show more judgment?",cc:"Even if the love is real, does its speed make it dangerous?",m:"Model claim: Romeo starts as an infatuated boy, but his love for Juliet becomes real because it requires sacrifice — the play honors the love while warning against its speed."},
+{q:"How does the play show adults failing young people?",claim:"Identify one adult whose failure matters most and argue why.",ev:"3.5 (Capulet’s rage and Lady Capulet’s coldness), 3.5 (the Nurse advises marrying Paris), 4.1 (the Friar’s risky plan), 5.3 (the Friar runs from the tomb).",rs:"Explain what Juliet needed at that moment and what she received instead.",cc:"Were the adults acting reasonably by the standards of their time?",m:"Model claim: When Juliet is most alone, every adult she trusts either threatens her or abandons her, which pushes her toward the potion."},
+{q:"Is Juliet more mature than Romeo?",claim:"Compare the two lovers’ judgment and courage.",ev:"2.2 (Juliet questions the speed of their vows), 3.2 (her response to Tybalt’s death), 3.3 (Romeo’s despair at the Friar’s cell), 4.3 (her soliloquy).",rs:"Look at who makes plans and who reacts to feelings.",cc:"Juliet also acts impulsively at the end. Does that change your answer?",m:"Model claim: Juliet thinks ahead and acts with courage, while Romeo mostly reacts; she is younger but more mature."},
+{q:"Cross-text: Compare the feud in Verona with the prejudice in Maycomb in To Kill a Mockingbird.",claim:"Argue what both texts show about inherited hatred.",ev:"R&J 1.1 (the opening brawl) and 5.3 (the families reconcile); TKAM Ch. 15 (the mob) and Ch. 21 (the verdict).",rs:"Explain how adults pass hatred to the next generation and who pays the price.",cc:"In Verona the hatred ends; in Maycomb it does not. What does that difference suggest?",m:"Model claim: Both texts show that hatred learned from adults destroys the young and innocent, but only Shakespeare lets the community change in the end."}],
+kz:{"Love and hate":"愛與恨","Fate vs. free will":"命運與自由意志","Haste and impulsiveness":"匆促與衝動","Youth vs. authority":"青年與權威","Violence and honor":"暴力與榮譽","Light and darkness":"光明與黑暗","Poison and the potion":"毒藥與藥水","The stars":"星辰","Queen Mab":"夢之仙后 Mab","Dramatic irony":"戲劇性反諷","Foil characters":"對照角色","Oxymoron and paradox":"矛盾修辭與悖論","Soliloquy":"獨白","The sonnet form":"十四行詩形式","Puns and wordplay":"雙關與文字遊戲"}};
+
+const ODY={
+title:"The Odyssey",author:"Homer · c. 8th–7th century BCE",
+cite:"book.line with your translator, e.g., (9.502–505)",
+bg:["An ancient Greek epic poem traditionally credited to Homer. It was probably composed in the late 8th or 7th century BCE and performed aloud long before it was written down. It has twenty-four books in dactylic hexameter and continues the story of the Trojan War told in the Iliad.",
+"After the Greeks win the ten-year Trojan War — with the wooden horse that was Odysseus’s idea — Odysseus, king of Ithaca, spends ten more years trying to get home. Meanwhile, more than a hundred suitors occupy his palace, eat up his wealth and pressure his wife, Penelope, to remarry.",
+"Homer’s Greek is in the public domain, but modern English translations (for example by Robert Fagles, Robert Fitzgerald or Emily Wilson) are copyrighted, and their line numbers differ. When you quote, name your translator and cite book and line numbers."],
+sum:[["Books 1–4 · Telemachus","The poem opens with an invocation to the Muse. On Mount Olympus, Athena persuades Zeus to let Odysseus return home. Disguised as a family friend, she urges his son Telemachus, now about twenty, to stand up to the suitors and look for news of his father. We learn that Penelope held off the suitors for three years by weaving a burial shroud by day and secretly unraveling it at night. Telemachus visits King Nestor at Pylos and King Menelaus and Helen at Sparta, who tell him Odysseus is alive but held by the nymph Calypso. The suitors plan to ambush Telemachus on his way home."],
+["Books 5–8 · Calypso and the Phaeacians","Zeus sends Hermes to order Calypso, who has kept Odysseus on her island for seven years, to let him go. Odysseus builds a raft, but Poseidon, who hates him, wrecks it in a storm. He washes ashore in the land of the Phaeacians, where the princess Nausicaa helps him. At King Alcinous’s court, a blind bard sings about Troy, Odysseus weeps, and at last he reveals his name and begins his story."],
+["Books 9–10 · Cyclops, winds and Circe","In a long flashback, Odysseus tells of raiding the Cicones and escaping the Lotus-Eaters, whose fruit makes men forget home. Trapped in the cave of the Cyclops Polyphemus, a son of Poseidon, he tells the giant his name is ‘Nobody,’ blinds him and escapes under the sheep — but then boastfully shouts his real name, and Polyphemus prays to Poseidon for revenge. The wind god Aeolus gives him a bag of winds; his crew opens it within sight of home, and they are blown back. Cannibal giants destroy every ship but his. The goddess Circe turns his men into pigs; with Hermes’ help Odysseus resists her magic, and they stay with her a year."],
+["Books 11–12 · The dead, the Sirens and the cattle","In the Land of the Dead, the prophet Tiresias warns him not to harm the cattle of the sun god Helios and predicts trouble at home. He speaks with his mother’s ghost and with Achilles. He has himself tied to the mast to hear the Sirens’ song while his crew’s ears are stuffed with wax. Passing between the monster Scylla and the whirlpool Charybdis, he loses six men. On Helios’s island the starving crew kill the sacred cattle. Zeus destroys the ship, and only Odysseus survives, drifting to Calypso’s island."],
+["Books 13–20 · Home in disguise","The Phaeacians carry Odysseus home to Ithaca, and Athena disguises him as an old beggar. He stays with his loyal swineherd Eumaeus and reveals himself to Telemachus, who has escaped the ambush; together they plan revenge. At the palace his old dog Argos recognizes him and dies. The suitors mock and abuse the ‘beggar.’ His old nurse Eurycleia recognizes a scar on his leg while washing his feet, but he swears her to silence. Penelope announces she will marry the man who can string Odysseus’s great bow and shoot an arrow through twelve axe heads."],
+["Books 21–24 · The bow and the reunion","None of the suitors can string the bow. Odysseus strings it easily, shoots through the axes and then, with Telemachus and two loyal servants, kills the suitors. The disloyal maids are executed. Penelope tests him by ordering their bed moved; Odysseus angrily explains that he built it around a living olive tree, and she knows he is truly her husband. He reunites with his father, Laertes. When the suitors’ families seek revenge, Athena steps in and commands peace."]],
+chars:[["Odysseus","King of Ithaca; brave, clever, proud and often deceptive."],["Penelope","His wife; faithful, patient and as cunning as he is."],["Telemachus","Their son; grows from a hesitant boy into a man."],["Athena","Goddess of wisdom; Odysseus’s protector."],["Poseidon","God of the sea; punishes Odysseus for blinding his son."],["Zeus","King of the gods; balances the other gods’ wishes."],["Calypso","Nymph who keeps Odysseus seven years and offers him immortality."],["Circe","Enchantress who turns men into animals, then helps Odysseus."],["Polyphemus","The Cyclops; a son of Poseidon."],["Antinous","The most arrogant of the suitors; the first one killed."],["Eumaeus","The loyal swineherd who shelters the disguised king."],["Eurycleia","Odysseus’s old nurse; recognizes his scar."],["Tiresias","The blind prophet in the underworld."]],
+themes:[["Hospitality (xenia)","Greeks believed Zeus protected guests and hosts. Good hosts (the Phaeacians, Eumaeus) are rewarded; those who abuse hospitality (the Cyclops, the suitors) are destroyed."],
+["Cunning vs. strength","Odysseus survives by tricks, disguises and words more often than by force — and Penelope matches him."],
+["Loyalty","Penelope, Telemachus, Eumaeus and even the dog Argos stay faithful for twenty years; the disloyal are punished."],
+["Homecoming (nostos)","The whole poem moves toward home — not just a place but a family, a role and an identity."],
+["Temptation and self-control","The Lotus-Eaters, Circe, Calypso, the Sirens and the cattle all test whether people can resist what they want now for what matters later."],
+["Glory and reputation (kleos)","Odysseus wants his name known, which makes him great but also causes disaster when he boasts to the Cyclops."]],
+syms:[["The bow","Only the true king can string it: it stands for Odysseus’s rightful power and identity."],
+["The olive-tree bed","Built around a living tree that cannot be moved, it stands for the unshakable bond of the marriage."],
+["Penelope’s loom","Weaving and unweaving the shroud shows Penelope’s patience and intelligence."],
+["Odysseus’s scar","A mark from his youth that proves who he is beneath any disguise."]],
+devs:[["Epic simile","Long, detailed comparisons — for example, Odysseus compared to a mountain lion — slow the action and make it vivid."],
+["Epithets","Repeated descriptive phrases such as ‘gray-eyed Athena’ helped oral poets remember and fill out lines."],
+["In medias res and flashback","The poem begins near the end of the journey; Odysseus tells the earlier adventures himself in Books 9–12."],
+["Invocation of the Muse","The poet begins by asking the Muse to sing through him, a convention of epic poetry."],
+["Dramatic irony","In Books 13–22 we know the beggar is Odysseus while the suitors do not, which builds tension."],
+["Divine intervention","Gods appear, disguise themselves and change events, raising questions about human responsibility."]],
+ct:[{q:"Is Odysseus a good leader?",claim:"Take a position on his leadership of his crew.",ev:"Book 1 (the opening lines blame the crew’s own recklessness), Book 9 (the Cyclops cave and the boast), Book 10 (the bag of winds), Book 12 (the Sirens and Helios’s cattle).",rs:"Weigh his clever escapes against the fact that none of his men return home.",cc:"Is it fair to judge an ancient warrior-king by modern ideas of leadership?",m:"Model claim: Odysseus is a brilliant survivor but a flawed leader: his pride and his secrecy cost the lives of the men who trusted him."},
+{q:"Is Odysseus’s revenge on the suitors justice or excess?",claim:"Decide whether the slaughter in Book 22 is justified.",ev:"Books 1–2 (what the suitors have done), Book 18 (Amphinomus is warned and stays), Book 22 (the killing and the execution of the maids), Book 24 (Athena commands peace).",rs:"Use the Greek idea of hospitality to explain how the original audience may have seen it, then explain how a modern reader may see it.",cc:"Why does the poem end with a goddess forcing peace rather than with celebration?",m:"Model claim: By Homeric standards the suitors earn their fate, but the killing of the maids and the need for Athena to stop the cycle suggest the poem itself questions endless revenge."},
+{q:"Is Penelope as clever as Odysseus?",claim:"Argue whether Penelope is his equal in cunning.",ev:"Book 2 (the shroud), Book 19 (her conversation with the beggar and the bow contest), Book 23 (the bed test).",rs:"Explain how she protects her household without weapons or power.",cc:"Some readers see her as passive, waiting for a man to save her. Answer that view.",m:"Model claim: Penelope is Odysseus’s intellectual equal: her trick with the shroud and her test of the bed prove that she controls her own story."},
+{q:"Why does hospitality matter so much in the poem?",claim:"Explain what Homer’s audience was meant to learn about guests and hosts.",ev:"Book 1 (Telemachus welcomes the disguised Athena), Books 6–8 (the Phaeacians), Book 9 (the Cyclops), Books 14–17 (Eumaeus vs. the suitors).",rs:"Compare good and bad hosts and what happens to each.",cc:"Does Odysseus himself ever abuse hospitality? Consider the Cyclops cave.",m:"Model claim: The poem uses hospitality as its moral test; how characters treat strangers decides whether they are rewarded or destroyed."},
+{q:"What does the poem suggest about the gods and human responsibility?",claim:"Argue whether humans or gods are to blame for suffering in the poem.",ev:"Book 1 (Zeus complains that mortals blame the gods for their own folly), Book 5 (Poseidon’s storm), Book 12 (the crew chooses to eat the cattle).",rs:"Separate events caused by gods from events caused by human choices.",cc:"If gods can change events at will, can humans truly be responsible?",m:"Model claim: Homer shows gods acting in the world, but he insists through Zeus that human recklessness causes the worst suffering."},
+{q:"Cross-text: Does Odysseus fit the ‘hero’s journey’ pattern found in modern stories?",claim:"Compare Odysseus with a modern hero from a book or film you know.",ev:"The Odyssey: departure, trials (Books 9–12), the underworld (Book 11), return (Books 13–24). Modern text: identify the same stages.",rs:"Explain what has stayed the same and what has changed about what makes a hero.",cc:"Modern heroes are often expected to be honest and humble. Would Odysseus count as a hero today?",m:"Model claim: Odysseus follows the classic pattern, but modern heroes are judged more by their morals than by their cleverness, which makes him a more complicated hero to modern readers."}],
+kz:{"Hospitality (xenia)":"待客之道（xenia）","Cunning vs. strength":"智謀與武力","Loyalty":"忠誠","Homecoming (nostos)":"歸鄉（nostos）","Temptation and self-control":"誘惑與自制","Glory and reputation (kleos)":"榮耀與名聲（kleos）","The bow":"弓","The olive-tree bed":"橄欖樹床","Penelope’s loom":"Penelope 的織布機","Odysseus’s scar":"Odysseus 的疤痕","Epic simile":"史詩明喻","Epithets":"稱號修飾語","In medias res and flashback":"從中間開始與倒敘","Invocation of the Muse":"呼告繆思","Divine intervention":"神的介入"}};
+
+const OMAM={
+title:"Of Mice and Men",author:"John Steinbeck · 1937",
+cite:"author and page, e.g., (Steinbeck 37)",
+bg:["A short novel (novella) by John Steinbeck, published in 1937 and set near Soledad in California’s Salinas Valley during the Great Depression. Steinbeck designed it so it could easily be performed as a play, and a stage version opened on Broadway the same year.",
+"George Milton and Lennie Small are migrant ranch workers who travel together, which is unusual in a world of lonely men. Lennie is huge and strong and has an intellectual disability; George looks after him. They share a dream of owning a small farm of their own.",
+"The title comes from Robert Burns’s 1785 poem ‘To a Mouse,’ about how even the most carefully laid plans can go wrong. Content note: the novel contains racial slurs and violence that reflect its time and setting, and it has often been challenged in schools. Discuss these elements in historical context."],
+sum:[["Chapter 1 · The river","By a pool on the Salinas River, George and Lennie camp the night before starting work on a ranch. George takes away a dead mouse Lennie has been petting and complains about how Lennie got them chased out of Weed, their last town, when he grabbed a woman’s dress and would not let go. At Lennie’s request, George tells the story of their dream: someday they will own a little place, raise animals, and Lennie will tend the rabbits. George tells Lennie that if he ever gets into trouble, he should come back and hide in the brush by the river."],
+["Chapter 2 · The bunkhouse","At the ranch they meet Candy, an old worker who lost a hand and owns an old dog; the suspicious boss; and the boss’s son Curley, a small, aggressive former boxer who picks fights with bigger men. Curley’s flirtatious wife appears, and George warns Lennie to stay away from her. They also meet Slim, the highly respected mule driver, and Carlson, who complains that Candy’s dog smells and should be shot."],
+["Chapter 3 · The plan","George tells Slim the truth about Lennie and what happened in Weed. Carlson pressures Candy until he lets him shoot the old dog. Candy overhears the dream and offers his savings, about $350, to join them, and suddenly the farm seems possible. Curley attacks Lennie, who does not fight back until George tells him to — then Lennie crushes Curley’s hand. Slim forces Curley to say his hand was caught in a machine."],
+["Chapter 4 · Crooks’s room","On Saturday night, left behind while the men go to town, Lennie visits Crooks, the Black stable hand, who must live alone in the harness room because of his race. Crooks first teases Lennie cruelly, then reveals his own loneliness and briefly hopes to join the dream. Curley’s wife comes in and threatens Crooks with a lynching, and he shrinks into silence. Afterward, Crooks takes back his request to join."],
+["Chapter 5 · The barn","On Sunday afternoon, Lennie has accidentally killed his puppy. Curley’s wife talks to him about her lost dream of acting in the movies and lets him stroke her hair. When she panics, Lennie holds on, and in his fear he breaks her neck. He flees to the river. Candy finds the body, and George realizes the dream is over. Curley gathers the men to hunt Lennie down."],
+["Chapter 6 · The river again","At the river, Lennie waits and imagines his Aunt Clara and a giant rabbit scolding him. George arrives, calms him by telling the dream one last time and, as the men approach, shoots Lennie in the back of the head with Carlson’s gun. Slim comforts George, while Carlson cannot understand what is bothering them."]],
+chars:[["George Milton","Small, quick and sharp; Lennie’s protector and friend."],["Lennie Small","Huge, gentle and strong, with an intellectual disability; loves soft things."],["Candy","Aging ranch hand with one hand; fears being thrown away."],["Curley","The boss’s son; insecure and aggressive."],["Curley’s wife","Lonely young woman, never named; dreamed of being an actress."],["Slim","Respected, calm leader of the workers."],["Crooks","Black stable hand; isolated, proud and bitter."],["Carlson","Practical, unfeeling worker who shoots Candy’s dog."],["The boss","Suspicious owner of the ranch."]],
+themes:[["Loneliness and friendship","Almost everyone on the ranch is alone; George and Lennie’s friendship is what makes them different — and what George loses."],
+["The American Dream","The dream farm promises independence and safety, but the Depression economy and the characters’ powerlessness make it nearly impossible."],
+["Power and powerlessness","Race (Crooks), age and disability (Candy), gender (Curley’s wife) and mental ability (Lennie) leave people at the bottom of the ranch’s hierarchy."],
+["The strong and the weak","The weak are destroyed in this world: the mouse, the puppy, Candy’s dog and finally Lennie."],
+["Mercy and responsibility","Candy regrets letting a stranger shoot his dog; George decides he must be the one to end Lennie’s life."]],
+syms:[["The dream farm","Freedom, safety and belonging — a paradise the men can describe but never reach."],
+["Rabbits","Lennie’s part of the dream; they stand for innocence and hope."],
+["Candy’s dog","Old and no longer useful, it foreshadows both Candy’s fear and Lennie’s death."],
+["Soft things","Lennie’s love of mice, the puppy and hair shows his innocence — and how his strength destroys what he loves."],
+["The river clearing","A peaceful natural refuge where the story begins and ends."]],
+devs:[["Foreshadowing","The death of Candy’s dog, the trouble in Weed and the killed mice all predict the ending."],
+["Circular structure","The novel begins and ends at the same pool by the river, suggesting the men cannot escape their fate."],
+["Play-like structure","Six scenes, few settings and heavy dialogue make the novella read like a script."],
+["Descriptive scene openings","Each chapter opens with detailed description of nature or a room before people enter."],
+["Dialect","Characters speak in informal, regional language that makes them realistic and shows their class."]],
+ct:[{q:"Was George’s final act an act of mercy or murder?",claim:"Take a clear position, e.g., “George’s choice was an act of mercy because…”",ev:"Ch. 3 (Candy’s regret after his dog is shot), Ch. 5 (Curley’s plan for Lennie), Ch. 6 (the final scene).",rs:"Compare George’s situation with Candy’s. What would have happened to Lennie if George had not acted?",cc:"Did George have other choices, such as running or surrendering Lennie to the law?",m:"Model claim: George’s act is a painful mercy: he spares Lennie a violent death at the hands of the mob and takes the responsibility Candy wishes he had taken."},
+{q:"Why does Steinbeck never give Curley’s wife a name?",claim:"Argue what this choice shows about her and about the ranch.",ev:"Ch. 2 (how the men describe her), Ch. 4 (her threat to Crooks), Ch. 5 (her conversation with Lennie).",rs:"Explain how being known only as someone’s wife reflects her place in the hierarchy.",cc:"Some readers think Steinbeck treats her unfairly as a dangerous temptress. Is that true?",m:"Model claim: Without a name, she is defined only as Curley’s property, which shows how the ranch denies her an identity — yet Chapter 5 reveals a lonely person with her own dreams."},
+{q:"Was the dream farm ever possible?",claim:"Decide whether the dream could have come true.",ev:"Ch. 1 (the first telling), Ch. 3 (Candy’s money makes it seem real), Ch. 4 (Crooks says he has seen many men with the same dream), Ch. 5 (George’s reaction).",rs:"Consider the Depression economy, Lennie’s needs and the men’s wages.",cc:"Does it matter whether it was possible, if the dream itself kept them going?",m:"Model claim: The dream was nearly within reach, but the novel suggests that in their world, powerless people’s plans break as easily as a mouse’s nest."},
+{q:"Who is the loneliest character on the ranch?",claim:"Choose one character and support your choice.",ev:"Ch. 2 (Candy), Ch. 4 (Crooks), Ch. 5 (Curley’s wife), Ch. 6 (George at the end).",rs:"Explain what causes each character’s loneliness: race, age, gender, loss.",cc:"Is George loneliest of all once Lennie is gone?",m:"Model claim: Crooks is the loneliest because his isolation is forced on him by law and custom, not by choice or circumstance."},
+{q:"Is Lennie responsible for his actions?",claim:"Argue what responsibility means for someone like Lennie.",ev:"Ch. 1 (the mice and Weed), Ch. 3 (Curley’s hand), Ch. 5 (the puppy and Curley’s wife).",rs:"Separate intent from outcome. Who else shares responsibility for what happens?",cc:"If Lennie cannot control his strength, should others have protected people from him?",m:"Model claim: Lennie causes harm but never intends it, so the novel places much of the responsibility on a world that offered him no safe place."},
+{q:"Cross-text: Compare Crooks in Of Mice and Men with Tom Robinson in To Kill a Mockingbird.",claim:"Argue what both characters reveal about race and power in 1930s America.",ev:"OMAM Ch. 4 (Crooks’s room and the threat from Curley’s wife); TKAM Ch. 19 (Tom’s testimony) and Ch. 24 (news of Tom’s death).",rs:"Compare how a white woman’s word holds power over both men.",cc:"One book is set in California and one in Alabama. Does the setting change how racism works?",m:"Model claim: Both men are threatened by a white woman’s accusation, showing that racial power in the 1930s reached far beyond the Deep South."}],
+kz:{"Loneliness and friendship":"孤獨與友誼","The American Dream":"美國夢","Power and powerlessness":"權力與無力","The strong and the weak":"強者與弱者","Mercy and responsibility":"慈悲與責任","The dream farm":"夢想中的農場","Rabbits":"兔子","Candy’s dog":"Candy 的老狗","Soft things":"柔軟的東西","The river clearing":"河邊空地","Circular structure":"循環結構","Play-like structure":"劇本式結構","Descriptive scene openings":"描寫式開場","Dialect":"方言"}};
+
+const BOOKS=[TKAM,RJ,ODY,OMAM];
+
+/* ---------- Grades 10–12 plan ---------- */
+const PLAN={
+10:{books:[["Lord of the Flies","William Golding · 1954","Human nature, civilization vs. savagery"],["Night","Elie Wiesel · 1956/1960","Holocaust memoir, faith and survival"],["Fahrenheit 451","Ray Bradbury · 1953","Censorship, technology, thinking for yourself"],["Macbeth","William Shakespeare · c. 1606","Ambition, guilt, fate"]],
+gram:["Active vs. passive voice","Misplaced & dangling modifiers","Verbals review","Quotation integration","Formal style & tone","Comma rules review"]},
+11:{books:[["The Great Gatsby","F. Scott Fitzgerald · 1925","American Dream, class, illusion"],["The Crucible","Arthur Miller · 1953","Mass hysteria, integrity, McCarthyism"],["Adventures of Huckleberry Finn","Mark Twain · 1884","Freedom, conscience, satire of slavery"],["Their Eyes Were Watching God","Zora Neale Hurston · 1937","Voice, independence, love"]],
+gram:["Contested usage (L.11-12.1a)","Hyphenation (L.11-12.2a)","Syntax for effect","Rhetorical devices","Parallelism in rhetoric","Style manuals compared"]},
+12:{books:[["Hamlet","William Shakespeare · c. 1600","Revenge, doubt, action vs. thought"],["1984","George Orwell · 1949","Surveillance, truth, power"],["Frankenstein","Mary Shelley · 1818","Creation, responsibility, isolation"],["Things Fall Apart","Chinua Achebe · 1958","Colonialism, tradition, identity"]],
+gram:["Complex syntax & varied sentences","Diction & connotation","Rhetorical analysis (ethos, pathos, logos)","Concision","Academic voice","MLA Works Cited mastery"]}};
+
+/* ---------- state & rendering ---------- */
+const S=store.get("el-state",{g:9,tab:"vocab",unit:0,gt:0,book:null,bs:"bg"});
+let learned=store.get("el-learned",{});
+const ZH={
+analyze:"分析",evidence:"證據",infer:"推論",interpret:"詮釋；解讀",significant:"重要的；顯著的",perspective:"觀點；角度",context:"背景；上下文",contrast:"對比；對照",assume:"假設；認定",relevant:"相關的",
+conclude:"推斷出；結束",approach:"方法；接近",consequence:"後果",establish:"建立；確立",indicate:"顯示；指出",motive:"動機",conflict:"衝突",tension:"緊張（氣氛）",objective:"客觀的",bias:"偏差；偏見",
+prejudice:"偏見；成見",integrity:"正直；誠信",conscience:"良心",empathy:"同理心",innocence:"純真；無罪",hypocrisy:"偽善",courage:"勇氣",justice:"正義；司法",tolerance:"寬容；包容",reputation:"名聲",
+narrator:"敘事者",protagonist:"主角",antagonist:"對手；反派",foreshadowing:"伏筆；預示",symbol:"象徵",theme:"主題",irony:"反諷",tone:"語氣；口吻",setting:"背景（時空）",characterization:"人物塑造",
+reluctant:"不情願的",vindictive:"有報復心的",condescending:"居高臨下的",assert:"斷言；主張",ambiguous:"模稜兩可的",compel:"迫使",vulnerable:"脆弱的",persistent:"堅持不懈的",provoke:"激怒；引發",inevitable:"不可避免的",
+claim:"主張；論點",counterclaim:"反方論點",rebuttal:"反駁",valid:"站得住腳的",credible:"可信的",emphasize:"強調",illustrate:"舉例說明",imply:"暗示",justify:"證明…合理",synthesize:"綜合；整合",
+"Vocabulary":"單字","Grammar":"文法","Novels":"小說",
+"Background":"背景","Summary":"摘要","Characters":"人物","Themes & Symbols":"主題與象徵","Literary Devices":"文學手法","Critical Thinking":"思辨",
+"Parallel structure":"平行結構","Phrases":"片語","Clauses":"子句","Semicolons":"分號","Colons":"冒號","Run-ons & comma splices":"連寫句與逗號錯接","Subject–verb agreement":"主詞動詞一致","MLA in-text citation":"MLA 文內引用",
+"Loss of innocence & moral growth":"失去純真與道德成長","Racial injustice":"種族不公","Courage":"勇氣","Empathy & perspective":"同理心與觀點","Social class":"社會階級",
+"The mockingbird":"知更鳥","The Radley house & knothole":"Radley 家與樹洞","The rabid dog":"瘋狗","Mrs. Dubose’s camellia":"Dubose 太太的山茶花",
+"Retrospective first-person narration":"回顧式第一人稱敘事","Foreshadowing":"伏筆","Irony":"反諷","Two-part structure":"兩部式結構","Southern Gothic elements":"南方哥德元素",
+"Claim":"主張","Evidence":"證據","Reasoning":"推理","Counterclaim":"反方論點","Themes":"主題","Symbols":"象徵"};
+const Z=k=>S.zh&&ZH[k]?` <span class="zh">${ZH[k]}</span>`:"";
+const ZB=k=>S.zh&&ZH[k]?`<div class="zh">${ZH[k]}</div>`:"";
+BOOKS.forEach(b=>Object.assign(ZH,b.kz||{}));
+const VZ=w=>{const t=ZH[w[0]]||w[4];return S.zh&&t?`<div class="zh">${t}</div>`:""};
+if(location.hash==="#zh-tw")S.zh=true;else if(location.hash==="#en")S.zh=false;
+const save=()=>store.set("el-state",S);
+const $=id=>document.getElementById(id);
+
+function speak(w){try{const u=new SpeechSynthesisUtterance(w);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+
+function renderGrades(){$("grades").innerHTML=[9,10,11,12].map(g=>`<button data-g="${g}" aria-pressed="${S.g===g}">Grade ${g}</button>`).join("")}
+function renderTabs(){$("tabs").innerHTML=[["vocab","Vocabulary"],["gram","Grammar"],["novel","Novels"]].map(([k,l])=>`<button data-tab="${k}" aria-pressed="${S.tab===k}">${l}${Z(l)}</button>`).join("")}
+
+function soon(txt){return `<div class="soon"><h3>Coming in the next batch</h3><p>${txt}</p></div>`}
+
+let quiz=null;
+function vocabView(){
+  if(S.g!==9)return `<h2>Grade ${S.g} vocabulary</h2>`+soon("360 words (36 units × 10) of academic and literary vocabulary at the Grade "+S.g+" level, plus key words from each novel, increasing in difficulty.");
+  const total=V9.reduce((a,u)=>a+u[1].length,0),done=Object.keys(learned).filter(k=>learned[k]).length;
+  const u=V9[S.unit];
+  let h=`<h2>Grade 9 vocabulary</h2><p class="meta">${total} words · ${V9.length} units · 10 words a week for the school year · Learned ${done}/${total}</p>
+  <div class="row"><button class="icon" data-unit="${Math.max(0,S.unit-1)}" aria-label="Previous unit">‹</button><select id="unitsel" aria-label="Choose unit">${V9.map((x,i)=>`<option value="${i}" ${S.unit===i?"selected":""}>${esc(x[0])} (${V9[i][1].filter(w=>learned[w[0]]).length}/10)</option>`).join("")}</select><button class="icon" data-unit="${Math.min(V9.length-1,S.unit+1)}" aria-label="Next unit">›</button></div>
+  <div class="row"><b>${esc(u[0])}</b><button class="pill" data-quiz="1" aria-pressed="${!!quiz}">${quiz?"Back to cards":"Quiz this unit"}</button></div>`;
+  if(quiz)return h+quizView();
+  return h+`<div class="cards">${u[1].map(w=>`<div class="card ${learned[w[0]]?"done":""}">
+   <div class="w"><div><b>${w[0]}</b><div class="ipa">${w[1]}</div>${VZ(w)}</div><button class="icon" data-say="${w[0]}" aria-label="Pronounce ${w[0]}">🔊</button></div>
+   <div><span class="pos">${w[2]}</span>${esc(w[3])}</div>   <div class="ex">${esc(w[5]).replace(new RegExp("\\b("+w[0].slice(0,Math.max(4,w[0].length-3))+"\\w*)","i"),"<mark>$1</mark>")}</div>
+   <div class="root">Root: ${esc(w[6])}</div>
+   <label class="chk"><input type="checkbox" data-learn="${w[0]}" ${learned[w[0]]?"checked":""}> Learned</label></div>`).join("")}</div>`;
+}
+function newQuiz(){const ws=V9[S.unit][1];const order=ws.map((_,i)=>i).sort(()=>Math.random()-.5);quiz={ws,order,i:0,score:0,ans:null};}
+function quizView(){
+  const {ws,order,i,score,ans}=quiz;
+  if(i>=order.length)return `<div class="quiz"><h3>Score: ${score}/${order.length}</h3><p>${score>=8?"Great work. Mark these words as learned.":"Review the cards, then try again."}</p><button class="pill" data-requiz="1">Try again</button></div>`;
+  const w=ws[order[i]];
+  if(!quiz.opts||quiz.oi!==i){const others=ws.filter(x=>x!==w).sort(()=>Math.random()-.5).slice(0,3);quiz.opts=[w,...others].sort(()=>Math.random()-.5);quiz.oi=i}
+  return `<div class="quiz"><p class="meta">Question ${i+1} of ${order.length} · Score ${score}</p><h3>${esc(w[3])}</h3>${ans?VZ(w):""}
+  <div class="opts">${quiz.opts.map(o=>{let c="";if(ans){if(o===w)c="right";else if(o[0]===ans)c="wrong"}return `<button class="opt ${c}" data-vq="${o[0]}" ${ans?"disabled":""}>${o[0]}</button>`}).join("")}</div>
+  ${ans?`<div class="fb">${ans===w[0]?"✓ Correct":"✗ The answer is <b>"+w[0]+"</b>"} — <i>${esc(w[5])}</i></div><div class="row"><button class="pill" data-vnext="1">Next</button></div>`:""}</div>`;
+}
+
+let gAns={};
+function gramView(){
+  if(S.g!==9)return `<h2>Grade ${S.g} grammar & language</h2>`+soon("Planned topics: "+PLAN[S.g].gram.join(" · "));
+  const t=G9[S.gt];
+  return `<h2>Grade 9 grammar & language</h2><p class="meta">Based on CA CCSS Language standards for grades 9–10, with two foundational review topics.</p>
+  <div class="gtopics"><div class="glist">${G9.map((x,i)=>`<button data-gt="${i}" aria-pressed="${S.gt===i}">${x.t}${ZB(x.t)}</button>`).join("")}</div>
+  <div><span class="code">${t.c}</span><h2>${t.t}${Z(t.t)}</h2><p>${esc(t.r)}</p>
+  <div class="eg">${t.y.map(s=>`<div class="y">${esc(s)}</div>`).join("")}${t.n.map(s=>`<div class="n">${esc(s)}</div>`).join("")}</div>
+  <h3>Practice (${t.q.filter((_,i)=>gAns[S.gt+"-"+i]===t.q[i][2]).length}/${t.q.length} correct)</h3>
+  ${t.q.map((q,i)=>{const a=gAns[S.gt+"-"+i];return `<div class="quiz" style="margin:10px 0"><b>${i+1}. ${esc(q[0])}</b><div class="opts">${q[1].map((o,j)=>{let c="";if(a!==undefined){if(j===q[2])c="right";else if(j===a)c="wrong"}return `<button class="opt ${c}" data-gq="${i}" data-o="${j}" ${a!==undefined?"disabled":""}>${esc(o)}</button>`}).join("")}</div>${a!==undefined?`<div class="fb">${a===q[2]?"✓ Correct.":"✗ Not quite."} ${esc(q[3])}</div>`:""}</div>`}).join("")}
+  <button class="pill" data-greset="1">Reset this topic</button></div></div>`;
+}
+
+function novelView(){
+  const list=S.g===9?[["To Kill a Mockingbird","Harper Lee · 1960","Justice, empathy, growing up",1],["Romeo and Juliet","William Shakespeare · c. 1595","Love, fate, conflict between generations",1],["The Odyssey","Homer · c. 8th century BCE","The hero’s journey, loyalty, homecoming",1],["Of Mice and Men","John Steinbeck · 1937","Friendship, dreams, loneliness",1]]:PLAN[S.g].books.map(b=>[...b,0]);
+  if(S.book!==null&&S.g===9&&BOOKS[S.book])return bookView();
+  return `<h2>Grade ${S.g} novels</h2><p class="meta">Each guide: background · chapter summaries · characters · themes & symbols · literary devices · critical thinking (claim–evidence–reasoning).</p>
+  <div class="books">${list.map((b,i)=>`<button class="book" ${b[3]?`data-book="${i}"`:"disabled"}><b>${b[0]}</b><span class="meta">${b[1]}</span><div>${b[2]}</div>${b[3]?`<span class="badge" style="background:var(--blue);color:var(--bg)">Open guide</span>`:`<span class="badge">Next batch</span>`}</button>`).join("")}</div>`;
+}
+function bookView(){
+  const B=BOOKS[S.book],secs=[["bg","Background"],["sum","Summary"],["chars","Characters"],["themes","Themes & Symbols"],["devs","Literary Devices"],["ct","Critical Thinking"]];
+  let body="";
+  if(S.bs==="bg")body=B.bg.map(p=>`<p>${esc(p)}</p>`).join("");
+  if(S.bs==="sum")body=B.sum.map(c=>`<div class="ch"><b>${c[0]}</b><p>${esc(c[1])}</p></div>`).join("");
+  if(S.bs==="chars")body=`<div class="people">${B.chars.map(c=>`<div><b>${c[0]}</b><br>${esc(c[1])}</div>`).join("")}</div>`;
+  if(S.bs==="themes")body=`<h3>Themes${Z("Themes")}</h3>`+B.themes.map(t=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p></div>`).join("")+`<h3>Symbols${Z("Symbols")}</h3>`+B.syms.map(t=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p></div>`).join("");
+  if(S.bs==="devs")body=B.devs.map(t=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p></div>`).join("");
+  if(S.bs==="ct")body=`<p class="meta">Answer each question with a claim, at least two pieces of evidence (cite ${B.cite}), and reasoning that connects them. Then answer the counterclaim.</p>`+B.ct.map((c,i)=>`<div class="cer"><b>${i+1}. ${esc(c.q)}</b><dl><dt>Claim${Z("Claim")}</dt><dd>${esc(c.claim)}</dd><dt>Evidence${Z("Evidence")}</dt><dd>${esc(c.ev)}</dd><dt>Reasoning${Z("Reasoning")}</dt><dd>${esc(c.rs)}</dd><dt>Counterclaim${Z("Counterclaim")}</dt><dd>${esc(c.cc)}</dd></dl><details><summary>Show model claim</summary><p>${esc(c.m)}</p></details></div>`).join("");
+  return `<button class="pill" data-back="1">← All Grade 9 novels</button><h2 style="margin-top:14px">${B.title}</h2><p class="meta">${B.author}</p>
+  <div class="row">${secs.map(([k,l])=>`<button class="pill" data-bs="${k}" aria-pressed="${S.bs===k}">${l}${Z(l)}</button>`).join("")}</div><div class="sec">${body}</div>`;
+}
+
+function render(){$("lang").innerHTML=`<button data-zh="0" aria-pressed="${!S.zh}">English</button><button data-zh="1" aria-pressed="${!!S.zh}">English + 中文</button>`;renderGrades();renderTabs();$("view").innerHTML=S.tab==="vocab"?vocabView():S.tab==="gram"?gramView():novelView();save()}
+
+document.addEventListener("change",e=>{if(e.target.id==="unitsel"){S.unit=+e.target.value;quiz=null;render()}});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button,input");if(!b)return;const d=b.dataset;
+  if(d.zh!==undefined){S.zh=d.zh==="1";try{history.replaceState(null,"",S.zh?"#zh-tw":"#en")}catch(err){location.hash=S.zh?"zh-tw":"en"}}
+  else if(d.g){S.g=+d.g;S.book=null;quiz=null}
+  else if(d.tab){S.tab=d.tab;quiz=null}
+  else if(d.unit){S.unit=+d.unit;quiz=null}
+  else if(d.say){speak(d.say);return}
+  else if(d.learn){learned[d.learn]=b.checked;store.set("el-learned",learned)}
+  else if(d.quiz){quiz?quiz=null:newQuiz()}
+  else if(d.requiz)newQuiz();
+  else if(d.vq){quiz.ans=d.vq;if(d.vq===quiz.ws[quiz.order[quiz.i]][0])quiz.score++}
+  else if(d.vnext){quiz.i++;quiz.ans=null}
+  else if(d.gt){S.gt=+d.gt}
+  else if(d.gq!==undefined&&d.o!==undefined){gAns[S.gt+"-"+d.gq]=+d.o}
+  else if(d.greset){G9[S.gt].q.forEach((_,i)=>delete gAns[S.gt+"-"+i])}
+  else if(d.book!==undefined){S.book=+d.book;S.bs="bg"}
+  else if(d.back){S.book=null}
+  else if(d.bs){S.bs=d.bs}
+  else return;
+  const y=window.scrollY;render();if(d.g||d.tab||d.book!==undefined||d.back||d.unit)window.scrollTo(0,0);else window.scrollTo(0,y);
+});
+window.addEventListener("hashchange",()=>{if(location.hash==="#zh-tw")S.zh=true;else if(location.hash==="#en")S.zh=false;else return;render()});
+render();
+}
+</script>
+</body>
+</html>
