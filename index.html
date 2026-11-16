@@ -509,6 +509,404 @@ vivid|/ˈvɪvɪd/|adj.|very clear, bright or detailed|生動的；鮮明的|Use 
 wistful|/ˈwɪstfəl/|adj.|sadly longing for something|渴望而略帶感傷的|Candy speaks in a wistful voice about the farm.|wistly ‘intently’ + -ful
 foreboding|/fɔːrˈboʊdɪŋ/|n.|a feeling that something bad will happen|不祥預感|Romeo feels a foreboding before the feast.|fore- ‘before’ + bode ‘to announce’`;
 {let cur=null;V9MORE.split("\n").forEach(l=>{if(l.startsWith("# ")){cur=[l.slice(2),[]];V9.push(cur)}else if(l.trim()&&cur)cur[1].push(l.split("|"))})}
+const parseV=(txt,arr)=>{let cur=null;txt.split("\n").forEach(l=>{if(l.startsWith("# ")){cur=[l.slice(2),[]];arr.push(cur)}else if(l.trim()&&cur)cur[1].push(l.split("|"))});return arr};
+const V10TXT=`# Unit 1 · Academic verbs I
+advocate|/ˈædvəkeɪt/|v.|to publicly support an idea or cause|提倡；擁護|Faber advocates reading as a way to think freely.|ad- + vocare ‘to call’
+articulate|/ɑːrˈtɪkjəleɪt/|v.|to express an idea clearly in words|清楚表達|Simon struggles to articulate what he knows about the beast.|Latin articulus ‘small joint’
+ascertain|/ˌæsərˈteɪn/|v.|to find out for certain|查明；確定|Ralph tries to ascertain whether they are on an island.|Old French acertener ‘to make certain’
+augment|/ɔːɡˈment/|v.|to make larger or add to|增加；擴大|Macbeth augments his power by removing rivals.|Latin augere ‘to increase’
+coincide|/ˌkoʊɪnˈsaɪd/|v.|to happen at the same time|同時發生|The storm coincides with Simon’s return.|co- + incidere ‘to fall upon’
+compile|/kəmˈpaɪl/|v.|to collect information into one list or work|彙編；收集|Compile your evidence before you write.|Latin compilare ‘to plunder, collect’
+deduce|/dɪˈduːs/|v.|to reach a conclusion by reasoning|推斷；演繹|From the clues, we can deduce who the killer is.|de- + ducere ‘to lead’
+depict|/dɪˈpɪkt/|v.|to show or describe in words or pictures|描繪|Wiesel depicts the camps with stark simplicity.|Latin depingere ‘to paint’
+discern|/dɪˈsɜːrn/|v.|to notice or understand something that is not obvious|辨別；察覺|Only Simon can discern the truth about the beast.|dis- + cernere ‘to separate’
+elicit|/ɪˈlɪsɪt/|v.|to draw out a response or reaction|引出；誘發|The poem elicits tears from Mrs. Phelps.|e- + lacere ‘to entice’
+# Unit 2 · Academic verbs II
+emulate|/ˈemjəleɪt/|v.|to copy someone you admire|仿效|The littluns emulate the older boys’ chants.|Latin aemulari ‘to rival’
+encompass|/ɪnˈkʌmpəs/|v.|to include or cover completely|包含；涵蓋|The novel encompasses war, faith and survival.|en- + compass
+exemplify|/ɪɡˈzempləfaɪ/|v.|to be a typical example of something|作為…的典範|Banquo exemplifies loyalty under temptation.|Latin exemplum ‘example’
+facilitate|/fəˈsɪləteɪt/|v.|to make an action or process easier|促進；使容易|Clear rules facilitate fair discussion.|Latin facilis ‘easy’
+formulate|/ˈfɔːrmjəleɪt/|v.|to create or express a plan or idea carefully|制定；構想|Formulate a thesis before you outline.|Latin formula ‘small form’
+foster|/ˈfɑːstər/|v.|to encourage the growth of something|培養；促進|Books can foster independent thought.|Old English fostrian ‘to nourish’
+hinder|/ˈhɪndər/|v.|to make something slower or more difficult|阻礙|Fear hinders the boys from thinking clearly.|Old English hindrian ‘to hold back’
+illuminate|/ɪˈluːmɪneɪt/|v.|to light up; to make clear|照亮；闡明|This scene illuminates Lady Macbeth’s guilt.|Latin lumen ‘light’
+impose|/ɪmˈpoʊz/|v.|to force something unwelcome on others|強加|The regime imposes strict rules on reading.|in- + ponere ‘to place’
+incorporate|/ɪnˈkɔːrpəreɪt/|v.|to include something as part of a whole|納入；結合|Incorporate quotations smoothly into your sentences.|in- + corpus ‘body’
+# Unit 3 · Academic verbs III
+integrate|/ˈɪntəɡreɪt/|v.|to combine parts so they work together|整合；融入|Integrate your evidence with your analysis.|Latin integer ‘whole’
+manipulate|/məˈnɪpjəleɪt/|v.|to control or influence someone unfairly|操縱|Jack manipulates the boys’ fear of the beast.|Latin manipulus ‘handful’
+mitigate|/ˈmɪtəɡeɪt/|v.|to make something less severe|減輕；緩和|Nothing can mitigate the horror of the camps.|Latin mitis ‘mild’
+perceive|/pərˈsiːv/|v.|to notice or understand something|察覺；認為|The boys perceive Piggy as weak.|per- + capere ‘to take’
+portray|/pɔːrˈtreɪ/|v.|to represent or describe someone in a certain way|描寫；刻畫|Bradbury portrays Mildred as empty and lonely.|Old French portraire ‘to draw’
+presume|/prɪˈzuːm/|v.|to suppose something is true without proof|假定；推測|The boys presume the parachutist is a monster.|pre- + sumere ‘to take’
+prevail|/prɪˈveɪl/|v.|to win or prove more powerful|佔上風；盛行|In the end, Malcolm’s army prevails.|pre- + valere ‘to be strong’
+pursue|/pərˈsuː/|v.|to follow or chase; to try to achieve|追求；追趕|The hunters pursue Ralph across the island.|Latin prosequi ‘to follow’
+reinforce|/ˌriːɪnˈfɔːrs/|v.|to make stronger|加強；強化|Each new murder reinforces Macbeth’s fear.|re- + enforce
+undermine|/ˌʌndərˈmaɪn/|v.|to weaken gradually|逐漸削弱|Jack undermines Ralph’s authority.|under + mine (to dig under)
+# Unit 4 · Academic nouns I
+ambiguity|/ˌæmbɪˈɡjuːəti/|n.|the quality of having more than one meaning|模稜兩可；歧義|The witches’ words are full of ambiguity.|ambi- ‘both’ + agere ‘to drive’
+anomaly|/əˈnɑːməli/|n.|something unusual that does not fit a pattern|異常；反常現象|Clarisse is an anomaly in her society.|Greek anomalos ‘uneven’
+antithesis|/ænˈtɪθəsɪs/|n.|the direct opposite of something|對立面；正好相反|Jack is the antithesis of Piggy.|Greek anti- + thesis ‘placing’
+consensus|/kənˈsensəs/|n.|general agreement among a group|共識|The assembly fails to reach a consensus.|con- + sentire ‘to feel’
+correlation|/ˌkɔːrəˈleɪʃən/|n.|a connection between two things that change together|相關性|Is there a correlation between screen time and reading?|cor- + relatio ‘relation’
+discrepancy|/dɪˈskrepənsi/|n.|a difference between things that should match|差異；不一致|Note the discrepancy between the two accounts.|Latin discrepare ‘to sound differently’
+implication|/ˌɪmplɪˈkeɪʃən/|n.|a possible result or hidden meaning|含意；可能的影響|Consider the implications of banning books.|in- + plicare ‘to fold’
+inference|/ˈɪnfərəns/|n.|a conclusion based on evidence and reasoning|推論|Support each inference with a quotation.|in- + ferre ‘to carry’
+paradigm|/ˈpærədaɪm/|n.|a typical pattern or model; a way of thinking|範式；典範|The novel challenges the paradigm of the noble savage.|Greek paradeigma ‘pattern’
+perception|/pərˈsepʃən/|n.|the way something is understood or seen|看法；感知|Montag’s perception of his job changes.|Latin perceptio ‘a taking in’
+# Unit 5 · Academic nouns II
+precedent|/ˈpresɪdənt/|n.|an earlier event used as an example for later ones|先例|The first killing sets a dangerous precedent.|pre- + cedere ‘to go’
+rationale|/ˌræʃəˈnæl/|n.|the reasons behind a decision|理由；依據|Explain the rationale for your claim.|Latin rationalis ‘reasonable’
+scope|/skoʊp/|n.|the range of what something covers|範圍|Narrow the scope of your essay to one theme.|Greek skopos ‘target’
+speculation|/ˌspekjəˈleɪʃən/|n.|guessing without firm evidence|猜測；推測|The boys’ speculation about the beast grows wild.|Latin speculari ‘to observe’
+stance|/stæns/|n.|a publicly stated opinion or position|立場；態度|Take a clear stance in your introduction.|Italian stanza ‘standing place’
+nuance|/ˈnuːɑːns/|n.|a small, subtle difference in meaning or feeling|細微差別|Good analysis notices nuance in word choice.|French nuer ‘to shade’
+validity|/vəˈlɪdəti/|n.|the quality of being logically sound or acceptable|有效性；正確性|Question the validity of Beatty’s argument.|Latin validus ‘strong’
+variable|/ˈveriəbəl/|n.|a factor that can change|變數；可變因素|Isolation is a key variable in the boys’ behavior.|Latin variare ‘to change’
+notion|/ˈnoʊʃən/|n.|an idea or belief|觀念；想法|Montag rejects the notion that books are dangerous.|Latin notio ‘idea’
+advent|/ˈædvent/|n.|the arrival of something important|出現；來臨|The advent of television changed reading habits.|ad- + venire ‘to come’
+# Unit 6 · Academic adjectives
+concise|/kənˈsaɪs/|adj.|giving information clearly in few words|簡潔的|Write a concise summary of each chapter.|Latin concisus ‘cut short’
+controversial|/ˌkɑːntrəˈvɜːrʃəl/|adj.|causing strong public disagreement|有爭議的|The novel remains controversial in some schools.|contra- + vertere ‘to turn’
+empirical|/ɪmˈpɪrɪkəl/|adj.|based on observation or experiment|實證的；經驗的|Piggy prefers empirical evidence to rumors.|Greek empeiria ‘experience’
+feasible|/ˈfiːzəbəl/|adj.|possible to do|可行的|Rescue seems less feasible each day.|Latin facere ‘to do’
+intrinsic|/ɪnˈtrɪnzɪk/|adj.|belonging naturally to something|本質的；固有的|Golding suggests evil is intrinsic to humans.|Latin intrinsecus ‘inwardly’
+pragmatic|/præɡˈmætɪk/|adj.|dealing with things in a practical way|務實的|Piggy offers pragmatic solutions.|Greek pragma ‘deed’
+prevalent|/ˈprevələnt/|adj.|widespread; common|普遍的；盛行的|Fear becomes prevalent among the littluns.|Latin praevalere ‘to be stronger’
+radical|/ˈrædɪkəl/|adj.|extreme; affecting the basic nature of something|激進的；根本的|Montag makes a radical choice.|Latin radix ‘root’
+redundant|/rɪˈdʌndənt/|adj.|unnecessary because it repeats something|多餘的；冗贅的|Cut redundant sentences from your draft.|Latin redundare ‘to overflow’
+rigorous|/ˈrɪɡərəs/|adj.|very thorough and careful|嚴謹的|A rigorous argument answers counterclaims.|Latin rigor ‘stiffness’
+# Unit 7 · Lord of the Flies: order & chaos
+civilization|/ˌsɪvələˈzeɪʃən/|n.|an advanced, organized society|文明|The conch represents civilization.|Latin civis ‘citizen’
+savagery|/ˈsævɪdʒri/|n.|cruel, uncontrolled violence|野蠻；殘暴|The boys slide into savagery.|Latin silvaticus ‘of the woods’
+primal|/ˈpraɪməl/|adj.|basic and instinctive, as in early humans|原始的|The chant awakens primal instincts.|Latin primus ‘first’
+anarchy|/ˈænərki/|n.|a state of disorder with no authority|無政府狀態；混亂|Without rules, the island falls into anarchy.|Greek an- ‘without’ + arkhos ‘ruler’
+tribal|/ˈtraɪbəl/|adj.|relating to a tribe or close group|部落的|Jack’s followers adopt tribal rituals.|Latin tribus ‘tribe’
+chaos|/ˈkeɪɑːs/|n.|complete confusion and disorder|混亂|The storm turns the feast into chaos.|Greek khaos ‘abyss’
+ritual|/ˈrɪtʃuəl/|n.|a set of actions always done the same way|儀式|The hunting dance becomes a ritual.|Latin ritus ‘rite’
+frenzy|/ˈfrenzi/|n.|a state of wild, uncontrolled excitement|狂熱；瘋狂|In a frenzy, the boys attack Simon.|Greek phrenitis ‘delirium’
+assembly|/əˈsembli/|n.|a meeting of people for a purpose|集會|Ralph calls an assembly with the conch.|Old French assembler ‘to gather’
+barbaric|/bɑːrˈbærɪk/|adj.|extremely cruel; uncivilized|野蠻的|The killing of the sow is barbaric.|Greek barbaros ‘foreign’
+# Unit 8 · Lord of the Flies: power & cruelty
+tyranny|/ˈtɪrəni/|n.|cruel and unfair use of power|暴政|Jack’s rule becomes a tyranny.|Greek tyrannos ‘absolute ruler’
+scapegoat|/ˈskeɪpɡoʊt/|n.|a person blamed for others’ faults|代罪羔羊|Piggy becomes the group’s scapegoat.|escape + goat (from an ancient ritual)
+derision|/dɪˈrɪʒən/|n.|mocking laughter or contempt|嘲笑|Piggy’s ideas are met with derision.|de- + ridere ‘to laugh’
+compulsion|/kəmˈpʌlʃən/|n.|a strong urge that is hard to resist|強迫；衝動|Jack feels a compulsion to hunt.|com- + pellere ‘to drive’
+inarticulate|/ˌɪnɑːrˈtɪkjələt/|adj.|unable to express ideas clearly|口齒不清的；表達不清的|Simon is inarticulate at assemblies.|in- ‘not’ + articulate
+taboo|/təˈbuː/|n./adj.|something forbidden by custom|禁忌|Roger is still held back by an old taboo.|Tongan tabu ‘set apart’
+malice|/ˈmælɪs/|n.|the desire to harm others|惡意|Roger acts with pure malice.|Latin malus ‘bad’
+mutiny|/ˈmjuːtəni/|n.|a rebellion against a leader|叛變|Jack’s break from Ralph is a kind of mutiny.|Old French meutin ‘rebellious’
+jeer|/dʒɪr/|v.|to laugh at someone rudely|嘲弄；奚落|The hunters jeer at Piggy.|uncertain origin (16th century)
+sinister|/ˈsɪnɪstər/|adj.|suggesting evil or harm|陰險的；不祥的|The pig’s head grins in a sinister way.|Latin sinister ‘left, unlucky’
+# Unit 9 · Human nature & ethics
+morality|/məˈræləti/|n.|principles of right and wrong|道德|The novel tests the boys’ morality.|Latin moralis ‘of manners’
+innate|/ɪˈneɪt/|adj.|existing from birth; natural|天生的|Is cruelty innate or learned?|in- + natus ‘born’
+depravity|/dɪˈprævəti/|n.|moral corruption; wickedness|墮落；邪惡|Macbeth sinks into depravity.|de- + pravus ‘crooked’
+virtue|/ˈvɜːrtʃuː/|n.|moral goodness; a good quality|美德|Patience is Penelope’s great virtue.|Latin virtus ‘excellence’
+altruism|/ˈæltruɪzəm/|n.|unselfish concern for others|利他主義|Simon’s altruism shows when he helps the littluns.|Italian altrui ‘of others’
+decency|/ˈdiːsənsi/|n.|behavior that is honest, kind and respectful|正派；體面|Ralph clings to his decency.|Latin decere ‘to be fitting’
+corrupt|/kəˈrʌpt/|adj./v.|dishonest or immoral; to make dishonest|腐敗的；使腐化|Power corrupts Macbeth completely.|cor- + rumpere ‘to break’
+redemption|/rɪˈdempʃən/|n.|being saved from sin or error|救贖|Is redemption possible for Macbeth?|Latin redimere ‘to buy back’
+ethical|/ˈeθɪkəl/|adj.|morally right; relating to moral principles|合乎道德的；倫理的|George faces an ethical dilemma.|Greek ethos ‘character’
+instinct|/ˈɪnstɪŋkt/|n.|a natural, unlearned urge|本能|Hunting awakens an instinct in Jack.|Latin instinctus ‘impulse’
+# Unit 10 · Night: history
+genocide|/ˈdʒenəsaɪd/|n.|the deliberate killing of a whole people|種族滅絕|The Holocaust was a genocide.|Greek genos ‘race’ + -cide ‘killing’
+persecution|/ˌpɜːrsəˈkjuːʃən/|n.|cruel treatment because of identity or beliefs|迫害|The persecution began with small restrictions.|Latin persequi ‘to pursue’
+deportation|/ˌdiːpɔːrˈteɪʃən/|n.|forcing people to leave a place|驅逐出境；遣送|The deportation of Sighet’s Jews began in May.|de- + portare ‘to carry’
+ghetto|/ˈɡetoʊ/|n.|an area where a group is forced to live separately|猶太隔離區；貧民區|Families were crowded into the ghetto.|Italian ghetto (Venice)
+atrocity|/əˈtrɑːsəti/|n.|an extremely cruel act|暴行|Wiesel bears witness to atrocity.|Latin atrox ‘cruel’
+liberation|/ˌlɪbəˈreɪʃən/|n.|the act of setting people free|解放|The liberation of Buchenwald came in April 1945.|Latin liber ‘free’
+annihilation|/əˌnaɪəˈleɪʃən/|n.|complete destruction|殲滅|The Nazis planned the annihilation of Europe’s Jews.|Latin nihil ‘nothing’
+crematorium|/ˌkriːməˈtɔːriəm/|n.|a building where bodies are burned|焚化場|Smoke rose from the crematorium.|Latin cremare ‘to burn’
+edict|/ˈiːdɪkt/|n.|an official order from an authority|法令；敕令|Each new edict took away more freedom.|e- + dicere ‘to say’
+internment|/ɪnˈtɜːrnmənt/|n.|imprisonment of people, especially for political reasons|拘禁|Japanese American internment is another dark chapter of history.|Latin internus ‘inward’
+# Unit 11 · Night: faith & witness
+devout|/dɪˈvaʊt/|adj.|deeply religious|虔誠的|Eliezer begins as a devout student.|Latin devovere ‘to vow’
+blasphemy|/ˈblæsfəmi/|n.|speech or action that disrespects God|褻瀆|Some readers call Eliezer’s anger blasphemy.|Greek blasphemia ‘slander’
+mysticism|/ˈmɪstəsɪzəm/|n.|the search for direct, hidden knowledge of God|神秘主義|Eliezer studies Jewish mysticism.|Greek mystes ‘initiate’
+piety|/ˈpaɪəti/|n.|deep religious devotion|虔誠|His piety is tested in the camps.|Latin pietas ‘dutifulness’
+indifference|/ɪnˈdɪfrəns/|n.|lack of interest or concern|冷漠|Wiesel warned against indifference.|in- ‘not’ + differre
+bystander|/ˈbaɪstændər/|n.|a person who watches but does not act|旁觀者|The bystanders did nothing to stop it.|by + stander
+anti-Semitism|/ˌæntiˈsemətɪzəm/|n.|hostility or prejudice against Jewish people|反猶太主義|Anti-Semitism made the deportations possible.|anti- ‘against’ + Semite
+martyr|/ˈmɑːrtər/|n.|a person who suffers or dies for their beliefs|殉道者|Some prisoners died as martyrs to their faith.|Greek martys ‘witness’
+providence|/ˈprɑːvɪdəns/|n.|God’s care and guidance|天意；神的眷顧|Eliezer questions divine providence.|Latin providere ‘to foresee’
+lament|/ləˈment/|v./n.|to express deep sorrow|哀悼；悲嘆|The prisoners lament their lost families.|Latin lamentum ‘wailing’
+# Unit 12 · Night: body & mind
+emaciated|/ɪˈmeɪsieɪtɪd/|adj.|extremely thin from hunger or illness|瘦弱的；憔悴的|The prisoners were emaciated.|Latin macies ‘thinness’
+gaunt|/ɡɔːnt/|adj.|thin and bony, especially from suffering|枯瘦的|His father’s face grew gaunt.|origin uncertain (15th century)
+desolate|/ˈdesələt/|adj.|empty, bleak and lonely|荒涼的；孤寂的|The snowy road was desolate.|de- + solus ‘alone’
+numb|/nʌm/|adj.|unable to feel physically or emotionally|麻木的|After months of horror, he felt numb.|Middle English nomen ‘seized’
+apathy|/ˈæpəθi/|n.|lack of interest or feeling|冷漠；無動於衷|Hunger turned hope into apathy.|Greek a- ‘without’ + pathos ‘feeling’
+inhumane|/ˌɪnhjuːˈmeɪn/|adj.|cruel; lacking pity|不人道的|The conditions on the train were inhumane.|in- ‘not’ + humane
+dehumanize|/diːˈhjuːmənaɪz/|v.|to treat people as less than human|使失去人性；非人化|Numbers were used to dehumanize prisoners.|de- + human
+endurance|/ɪnˈdʊrəns/|n.|the ability to keep going through hardship|耐力；忍耐|The march tested every prisoner’s endurance.|Latin indurare ‘to harden’
+resignation|/ˌrezɪɡˈneɪʃən/|n.|accepting that something bad cannot be changed|聽天由命；順從|His father spoke with quiet resignation.|re- + signare ‘to sign’
+delirium|/dɪˈlɪriəm/|n.|a state of confused thinking caused by illness|譫妄；神志不清|In delirium, his father called out his name.|Latin delirare ‘to go out of the furrow’
+# Unit 13 · Fahrenheit 451: control
+censorship|/ˈsensərʃɪp/|n.|the act of banning or removing information or art|審查制度|The firemen enforce censorship.|Latin censor ‘magistrate’
+dystopia|/dɪsˈtoʊpiə/|n.|an imagined society where life is bad and controlled|反烏托邦|Fahrenheit 451 describes a dystopia.|dys- ‘bad’ + topos ‘place’
+conformity|/kənˈfɔːrməti/|n.|behaving like everyone else|從眾；順從|The society rewards conformity.|con- + forma ‘shape’
+totalitarian|/toʊˌtæləˈteriən/|adj.|describing a government with total control|極權的|The state is totalitarian in its control of ideas.|Italian totalitario
+surveillance|/sərˈveɪləns/|n.|close watching of people, often by authorities|監視|Cameras and the Hound keep citizens under surveillance.|French surveiller ‘to watch over’
+subversive|/səbˈvɜːrsɪv/|adj.|trying to weaken an established system|顛覆性的|Reading is treated as a subversive act.|sub- + vertere ‘to turn’
+dissent|/dɪˈsent/|n./v.|disagreement with official views; to disagree|異議；持不同意見|Clarisse represents quiet dissent.|dis- + sentire ‘to feel’
+utopia|/juːˈtoʊpiə/|n.|an imagined perfect society|烏托邦|Beatty claims the society is a utopia.|Greek ou- ‘not’ + topos ‘place’
+illiterate|/ɪˈlɪtərət/|adj.|unable to read or write|不識字的|The public becomes almost illiterate.|il- ‘not’ + littera ‘letter’
+oblivion|/əˈblɪviən/|n.|the state of being forgotten or unaware|遺忘；湮沒|Without books, history fades into oblivion.|Latin oblivisci ‘to forget’
+# Unit 14 · Fahrenheit 451: media
+hedonism|/ˈhiːdənɪzəm/|n.|the belief that pleasure is the most important thing|享樂主義|The society runs on hedonism.|Greek hedone ‘pleasure’
+stimulus|/ˈstɪmjələs/|n.|something that causes a reaction (plural: stimuli)|刺激|The walls provide constant stimulus.|Latin stimulus ‘goad’
+distraction|/dɪˈstrækʃən/|n.|something that takes attention away|分心的事物|Entertainment is a deliberate distraction.|dis- + trahere ‘to draw’
+passive|/ˈpæsɪv/|adj.|accepting what happens without acting|被動的；消極的|Mildred is a passive viewer.|Latin pati ‘to suffer’
+mindless|/ˈmaɪndləs/|adj.|requiring or showing no thought|無腦的；不用思考的|The shows are mindless and loud.|mind + -less
+spectacle|/ˈspektəkəl/|n.|a dramatic public show|奇觀；壯觀場面|The chase becomes a television spectacle.|Latin spectare ‘to watch’
+consumer|/kənˈsuːmər/|n.|a person who buys and uses goods|消費者|Citizens are treated as consumers, not thinkers.|Latin consumere ‘to use up’
+mass media|/ˌmæs ˈmiːdiə/|n.|forms of communication that reach large audiences|大眾媒體|Bradbury feared the power of mass media.|mass + media (Latin medium ‘middle’)
+broadcast|/ˈbrɔːdkæst/|v./n.|to send out a program; a program sent out|廣播；播送|The hunt for Montag is broadcast live.|broad + cast
+immerse|/ɪˈmɜːrs/|v.|to involve someone deeply in something|沉浸|Mildred immerses herself in the parlor walls.|in- + mergere ‘to dip’
+# Unit 15 · Fahrenheit 451: fire
+incinerate|/ɪnˈsɪnəreɪt/|v.|to burn completely to ashes|焚化；燒成灰|The firemen incinerate entire libraries.|in- + cinis ‘ashes’
+kindle|/ˈkɪndəl/|v.|to start a fire; to awaken a feeling|點燃；激起|Clarisse kindles Montag’s curiosity.|Old Norse kynda ‘to light’
+ember|/ˈembər/|n.|a small glowing piece of a dying fire|餘燼|A few embers glow among the ashes.|Old English æmerge
+combustion|/kəmˈbʌstʃən/|n.|the process of burning|燃燒|Paper reaches combustion at a high temperature.|Latin comburere ‘to burn up’
+smolder|/ˈsmoʊldər/|v.|to burn slowly with smoke but no flame|悶燒|His anger smolders beneath the surface.|Middle English smolderen
+ignite|/ɪɡˈnaɪt/|v.|to catch fire or set on fire|點燃|One question can ignite a revolution.|Latin ignis ‘fire’
+inferno|/ɪnˈfɜːrnoʊ/|n.|a large, dangerous fire|熊熊烈火；地獄般的景象|The house became an inferno.|Italian inferno ‘hell’
+char|/tʃɑːr/|v.|to burn partly so that it turns black|燒焦|The flames char the pages.|from charcoal
+pyre|/ˈpaɪər/|n.|a pile of wood for burning something|火葬堆；柴堆|The books are heaped into a pyre.|Greek pyr ‘fire’
+scorch|/skɔːrtʃ/|v.|to burn the surface of something|燒焦；烤焦|The heat scorches the walls.|Old Norse skorpna ‘to shrivel’
+# Unit 16 · Macbeth: power
+ambition|/æmˈbɪʃən/|n.|a strong desire to succeed or gain power|野心；抱負|Ambition drives Macbeth to murder.|Latin ambitio ‘going around (for votes)’
+usurp|/juːˈsɜːrp/|v.|to take a position of power illegally|篡奪|Macbeth usurps Duncan’s throne.|Latin usurpare ‘to seize’
+regicide|/ˈredʒɪsaɪd/|n.|the killing of a king|弒君|Regicide was the worst crime in Shakespeare’s time.|rex ‘king’ + -cide ‘killing’
+tyrant|/ˈtaɪrənt/|n.|a cruel and unfair ruler|暴君|Scotland suffers under the tyrant Macbeth.|Greek tyrannos ‘absolute ruler’
+treason|/ˈtriːzən/|n.|betraying one’s country or ruler|叛國罪|The first Thane of Cawdor is executed for treason.|Latin traditio ‘a handing over’
+thane|/θeɪn/|n.|a Scottish noble who held land from the king|領主（蘇格蘭貴族）|Macbeth is Thane of Glamis.|Old English thegn ‘servant’
+equivocate|/ɪˈkwɪvəkeɪt/|v.|to speak in a deliberately unclear way|含糊其辭；模稜兩可|The witches equivocate to mislead Macbeth.|Latin aequus ‘equal’ + vocare ‘to call’
+valor|/ˈvælər/|n.|great courage in battle|英勇|The captain praises Macbeth’s valor.|Latin valere ‘to be strong’
+sovereign|/ˈsɑːvrən/|n./adj.|a king or queen; supreme in power|君主；至高無上的|Duncan is Scotland’s rightful sovereign.|Old French soverain ‘highest’
+heir|/er/|n.|a person who will inherit a title or property|繼承人|Duncan names Malcolm his heir.|Latin heres ‘heir’
+# Unit 17 · Macbeth: guilt & deceit
+guilt|/ɡɪlt/|n.|a feeling of having done wrong|罪惡感；罪責|Guilt keeps Lady Macbeth awake.|Old English gylt ‘crime’
+hallucination|/həˌluːsɪˈneɪʃən/|n.|seeing or hearing something that is not there|幻覺|The floating dagger may be a hallucination.|Latin hallucinari ‘to wander in mind’
+apparition|/ˌæpəˈrɪʃən/|n.|a ghostlike image or figure|幽靈；幻影|The witches show Macbeth three apparitions.|Latin apparere ‘to appear’
+paranoia|/ˌpærəˈnɔɪə/|n.|an extreme, unreasonable suspicion of others|偏執；多疑|Paranoia drives Macbeth to kill again.|Greek paranoia ‘madness’
+insomnia|/ɪnˈsɑːmniə/|n.|the inability to sleep|失眠|Macbeth’s guilt brings insomnia.|in- ‘not’ + somnus ‘sleep’
+deceive|/dɪˈsiːv/|v.|to make someone believe something false|欺騙|Macbeth deceives Banquo about his plans.|Latin decipere ‘to ensnare’
+treachery|/ˈtretʃəri/|n.|betrayal of trust|背叛；奸詐|Duncan never suspects Macbeth’s treachery.|Old French trecherie
+prophetic|/prəˈfetɪk/|adj.|correctly predicting the future|預言的|The witches’ words prove prophetic.|Greek prophetes ‘one who speaks before’
+dire|/ˈdaɪər/|adj.|extremely serious or urgent|可怕的；極其嚴重的|Scotland is in dire danger.|Latin dirus ‘fearful’
+foul|/faʊl/|adj.|disgusting, evil or unfair|骯髒的；邪惡的|The murder is a foul deed.|Old English ful ‘rotten’
+# Unit 18 · Drama and tragedy
+tragic hero|/ˌtrædʒɪk ˈhɪroʊ/|n.|a noble character whose flaw leads to downfall|悲劇英雄|Macbeth fits the model of a tragic hero.|Greek tragoidia + heros
+hamartia|/ˌhɑːmɑːrˈtiːə/|n.|a tragic flaw or error in judgment|致命缺陷|Ambition is Macbeth’s hamartia.|Greek hamartia ‘error’
+catharsis|/kəˈθɑːrsɪs/|n.|a release of emotion that the audience feels at a tragedy’s end|情感淨化；宣洩|Aristotle believed tragedy produces catharsis.|Greek katharsis ‘cleansing’
+comic relief|/ˌkɑːmɪk rɪˈliːf/|n.|a humorous scene that eases tension|喜劇調劑|The Porter provides comic relief.|comic + relief
+motif|/moʊˈtiːf/|n.|a repeated image or idea in a work|母題；反覆出現的意象|Blood is a motif in Macbeth.|French motif ‘motive’
+paradox|/ˈpærədɑːks/|n.|a statement that seems contradictory but may be true|悖論；矛盾的說法|‘Fair is foul’ is a paradox.|Greek para- ‘contrary’ + doxa ‘opinion’
+iambic pentameter|/aɪˌæmbɪk penˈtæmɪtər/|n.|a line of ten syllables in five unstressed–stressed pairs|抑揚五步格|Nobles speak in iambic pentameter.|Greek iambos + pente ‘five’ + metron ‘measure’
+blank verse|/ˌblæŋk ˈvɜːrs/|n.|unrhymed iambic pentameter|無韻詩|Most of the play is written in blank verse.|blank ‘without rhyme’ + verse
+couplet|/ˈkʌplət/|n.|two lines of verse that rhyme|對句|Many scenes end with a rhyming couplet.|French couple ‘pair’
+stage direction|/ˈsteɪdʒ dəˌrekʃən/|n.|an instruction in a script about action or movement|舞台指示|The stage direction says ‘Enter three witches.’|stage + direction
+# Unit 19 · Literary analysis
+allegory|/ˈæləɡɔːri/|n.|a story in which characters and events stand for larger ideas|寓言；諷喻|Lord of the Flies can be read as an allegory.|Greek allos ‘other’ + agoreuein ‘to speak’
+satire|/ˈsætaɪər/|n.|humor used to criticize people or society|諷刺文學|Bradbury uses satire to mock mindless TV.|Latin satira ‘medley’
+parody|/ˈpærədi/|n.|an imitation that exaggerates for humor|模仿嘲諷；戲仿|The commercial is a parody of real ads.|Greek parodia ‘mock song’
+juxtaposition|/ˌdʒʌkstəpəˈzɪʃən/|n.|placing two things side by side to contrast them|並置；對照|The juxtaposition of fire and warmth is striking.|Latin juxta ‘near’ + ponere ‘to place’
+diction|/ˈdɪkʃən/|n.|an author’s choice of words|措辭；用字|Wiesel’s diction is simple and direct.|Latin dicere ‘to say’
+syntax|/ˈsɪntæks/|n.|the arrangement of words in sentences|句法|Short syntax creates urgency.|Greek syntaxis ‘arrangement’
+mood|/muːd/|n.|the feeling a text creates in the reader|氛圍；情緒|The opening scene creates a dark mood.|Old English mod ‘mind, spirit’
+unreliable narrator|/ˌʌnrɪˈlaɪəbəl ˈnæreɪtər/|n.|a narrator whose account cannot be fully trusted|不可靠的敘事者|An unreliable narrator makes readers question events.|un- + reliable + narrator
+genre|/ˈʒɑːnrə/|n.|a category of literature or art|文類；類型|Night belongs to the genre of memoir.|French genre ‘kind’
+memoir|/ˈmemwɑːr/|n.|a true account of the author’s own experiences|回憶錄|Night is a Holocaust memoir.|French mémoire ‘memory’
+# Unit 20 · Figurative language II
+understatement|/ˈʌndərsteɪtmənt/|n.|saying something is less important than it is|輕描淡寫；保守說法|Calling the war ‘a bit of trouble’ is an understatement.|under + statement
+euphemism|/ˈjuːfəmɪzəm/|n.|a mild word used in place of a harsh one|委婉語|‘Passed away’ is a euphemism for ‘died.’|Greek eu ‘good’ + pheme ‘speech’
+apostrophe|/əˈpɑːstrəfi/|n.|speaking directly to an absent person or an idea|呼語法（對不在場者說話）|Macbeth uses apostrophe when he speaks to the stars.|Greek apostrophe ‘turning away’
+synecdoche|/sɪˈnekdəki/|n.|using a part to represent the whole|提喻|‘All hands on deck’ uses synecdoche for sailors.|Greek synekdoche ‘understanding together’
+metonymy|/məˈtɑːnəmi/|n.|naming something by a thing closely related to it|轉喻|‘The crown’ is metonymy for the king.|Greek meta- ‘change’ + onyma ‘name’
+anaphora|/əˈnæfərə/|n.|repeating words at the beginning of lines or sentences|首語重複法|Wiesel uses anaphora in the ‘Never’ passage.|Greek anaphora ‘carrying back’
+rhetorical question|/rɪˌtɔːrɪkəl ˈkwestʃən/|n.|a question asked for effect, not for an answer|修辭性問句|‘Where is God?’ works as a rhetorical question.|rhetoric + question
+analogy|/əˈnælədʒi/|n.|a comparison that explains one thing through another|類比|Golding draws an analogy between the island and the world at war.|Greek analogia ‘proportion’
+extended metaphor|/ɪkˌstendɪd ˈmetəfɔːr/|n.|a metaphor developed over several lines or a whole work|延伸隱喻|The island works as an extended metaphor for society.|extended + metaphor
+situational irony|/ˌsɪtʃueɪʃənəl ˈaɪrəni/|n.|when events turn out opposite to what is expected|情境反諷|Firemen who start fires are situational irony.|situation + irony
+# Unit 21 · Argument & logic
+substantiate|/səbˈstænʃieɪt/|v.|to support a claim with evidence|證實；提出證據支持|Substantiate each claim with a quotation.|Latin substantia ‘substance’
+corroborate|/kəˈrɑːbəreɪt/|v.|to confirm with additional evidence|證實；佐證|A second source can corroborate your point.|cor- + robur ‘strength’
+discredit|/dɪsˈkredɪt/|v.|to make something seem false or unreliable|使不可信|Beatty tries to discredit books.|dis- + credit
+contend|/kənˈtend/|v.|to argue or claim; to struggle|主張；爭奪|Some critics contend that Atticus is too passive.|con- + tendere ‘to stretch’
+concession|/kənˈseʃən/|n.|admitting that an opposing point has some truth|讓步|A concession makes your argument fairer.|con- + cedere ‘to yield’
+objectivity|/ˌɑːbdʒekˈtɪvəti/|n.|judging fairly without personal bias|客觀性|Historians aim for objectivity.|Latin objectum ‘thing presented’
+inductive|/ɪnˈdʌktɪv/|adj.|reasoning from specific examples to a general rule|歸納的|Inductive reasoning moves from evidence to a conclusion.|in- + ducere ‘to lead’
+deductive|/dɪˈdʌktɪv/|adj.|reasoning from a general rule to a specific case|演繹的|Deductive reasoning applies a rule to a case.|de- + ducere ‘to lead’
+warrant|/ˈwɔːrənt/|n.|the reasoning that connects evidence to a claim|論據；推理依據|Explain the warrant behind your evidence.|Old French warant ‘protector’
+ad hominem|/ˌæd ˈhɑːmɪnem/|adj.|attacking the person instead of the argument|人身攻擊的|Calling Piggy names is an ad hominem attack.|Latin ‘to the person’
+# Unit 22 · Power & resistance
+regime|/reɪˈʒiːm/|n.|a government, especially an authoritarian one|政權|The Nazi regime controlled every part of life.|Latin regimen ‘rule’
+autocracy|/ɔːˈtɑːkrəsi/|n.|government by one person with total power|獨裁統治|Macbeth’s Scotland becomes an autocracy.|Greek autos ‘self’ + kratos ‘power’
+coercion|/koʊˈɜːrʒən/|n.|using force or threats to make someone act|強迫；脅迫|The twins join Jack’s tribe under coercion.|Latin coercere ‘to restrain’
+subjugate|/ˈsʌbdʒəɡeɪt/|v.|to bring under control by force|征服；使屈服|The regime tried to subjugate whole nations.|sub- + jugum ‘yoke’
+marginalize|/ˈmɑːrdʒɪnəlaɪz/|v.|to treat as unimportant and push to the edge|邊緣化|Society marginalizes those who read.|Latin margo ‘edge’
+sovereignty|/ˈsɑːvrənti/|n.|supreme power or independence of a state|主權|Scotland regains its sovereignty under Malcolm.|Old French soverain
+revolt|/rɪˈvoʊlt/|n./v.|an uprising against authority|反抗；起義|The nobles revolt against Macbeth.|Italian rivoltare ‘to overturn’
+insurgent|/ɪnˈsɜːrdʒənt/|n.|a person who rebels against a government|叛亂分子|The book people are quiet insurgents.|in- + surgere ‘to rise’
+compliance|/kəmˈplaɪəns/|n.|obeying a rule or request|服從；遵守|The state demands total compliance.|Italian complire ‘to fulfill’
+defiance|/dɪˈfaɪəns/|n.|open refusal to obey|反抗；蔑視|Montag’s reading is an act of defiance.|Old French defier ‘to challenge’
+# Unit 23 · The mind
+alienation|/ˌeɪliəˈneɪʃən/|n.|a feeling of being isolated or separated|疏離感|Montag feels alienation from his own wife.|Latin alienus ‘belonging to another’
+repression|/rɪˈpreʃən/|n.|holding back thoughts or feelings|壓抑|Repression of grief harms Lady Macbeth.|re- + premere ‘to press’
+euphoria|/juːˈfɔːriə/|n.|intense happiness and excitement|狂喜|The hunters feel euphoria after the kill.|Greek eu ‘well’ + pherein ‘to bear’
+trauma|/ˈtraʊmə/|n.|a deeply disturbing experience and its lasting effects|創傷|Survivors lived with lifelong trauma.|Greek trauma ‘wound’
+phobia|/ˈfoʊbiə/|n.|an extreme, irrational fear|恐懼症|A phobia can control a person’s choices.|Greek phobos ‘fear’
+introspection|/ˌɪntrəˈspekʃən/|n.|looking inward at one’s own thoughts and feelings|內省|Macbeth’s soliloquies are moments of introspection.|intro- + specere ‘to look’
+delusion|/dɪˈluːʒən/|n.|a false belief held despite evidence|錯覺；妄想|Macbeth lives in the delusion that he cannot be harmed.|Latin deludere ‘to mock’
+hysteria|/hɪˈsteriə/|n.|uncontrollable fear or emotion in a group|歇斯底里|Mass hysteria spreads among the boys.|Greek hystera ‘womb’ (old medical idea)
+composure|/kəmˈpoʊʒər/|n.|calmness and self-control|鎮靜|Lady Macbeth keeps her composure at the banquet.|com- + ponere ‘to place’
+stoic|/ˈstoʊɪk/|adj.|enduring pain without showing feelings|堅忍的；不動聲色的|His father remained stoic at first.|Greek stoa ‘porch’ (a school of philosophy)
+# Unit 24 · Negative traits II
+audacious|/ɔːˈdeɪʃəs/|adj.|very bold, sometimes recklessly|大膽的；魯莽的|Montag’s audacious plan puts him in danger.|Latin audax ‘bold’
+complacent|/kəmˈpleɪsənt/|adj.|too satisfied to see danger|自滿的|The citizens are complacent about war.|Latin complacere ‘to please’
+conniving|/kəˈnaɪvɪŋ/|adj.|secretly planning something harmful|密謀的；詭計多端的|Lady Macbeth is conniving and bold.|Latin connivere ‘to close the eyes’
+docile|/ˈdɑːsəl/|adj.|quiet and easy to control|溫順的；易於管教的|A docile public is easy to rule.|Latin docilis ‘teachable’
+impetuous|/ɪmˈpetʃuəs/|adj.|acting quickly without thought|衝動的；魯莽的|Jack is impetuous and violent.|Latin impetus ‘attack’
+irreverent|/ɪˈrevərənt/|adj.|showing a lack of respect|不敬的|The Porter’s jokes are irreverent.|ir- ‘not’ + reverent
+ruthless|/ˈruːθləs/|adj.|having no pity|無情的|Macbeth becomes ruthless.|ruth ‘pity’ + -less
+sanctimonious|/ˌsæŋktɪˈmoʊniəs/|adj.|acting morally superior to others|偽裝虔誠的；道貌岸然的|The missionary ladies are sanctimonious.|Latin sanctimonia ‘holiness’
+unscrupulous|/ʌnˈskruːpjələs/|adj.|having no moral principles|不擇手段的|An unscrupulous leader will lie to win.|un- + scrupulus ‘small worry’
+vain|/veɪn/|adj.|too proud of one’s looks or abilities; useless|虛榮的；徒勞的|Their attempts to keep the fire were in vain.|Latin vanus ‘empty’
+# Unit 25 · Positive traits II
+astute|/əˈstuːt/|adj.|clever at understanding situations|精明的；敏銳的|Piggy is astute about the boys’ behavior.|Latin astus ‘cunning’
+conscientious|/ˌkɑːnʃiˈenʃəs/|adj.|careful to do what is right and thorough|認真負責的|Ralph is conscientious about the fire.|Latin conscientia ‘conscience’
+earnest|/ˈɜːrnɪst/|adj.|serious and sincere|認真的；誠摯的|Simon speaks in an earnest voice.|Old English eornoste
+indomitable|/ɪnˈdɑːmɪtəbəl/|adj.|impossible to defeat|不屈不撓的|The survivors showed indomitable will.|in- ‘not’ + domitare ‘to tame’
+magnanimous|/mæɡˈnænɪməs/|adj.|generous and forgiving|寬宏大量的|Malcolm is magnanimous in victory.|magnus ‘great’ + animus ‘soul’
+perceptive|/pərˈseptɪv/|adj.|quick to notice and understand|有洞察力的|Clarisse is unusually perceptive.|Latin percipere ‘to seize’
+stalwart|/ˈstɔːlwərt/|adj.|loyal, reliable and hardworking|忠實可靠的|Eumaeus is a stalwart servant.|Old English stælwierthe ‘serviceable’
+unassuming|/ˌʌnəˈsuːmɪŋ/|adj.|modest; not seeking attention|謙遜的；不出風頭的|Faber is an unassuming old man.|un- + assuming
+judicious|/dʒuːˈdɪʃəs/|adj.|showing good judgment|明智的；審慎的|A judicious leader listens before acting.|Latin judicium ‘judgment’
+empathetic|/ˌempəˈθetɪk/|adj.|able to understand others’ feelings|有同理心的|Simon is the most empathetic boy.|Greek empatheia
+# Unit 26 · Verbs of speech II
+denounce|/dɪˈnaʊns/|v.|to criticize strongly in public|公開譴責|Wiesel denounced indifference to suffering.|de- + nuntiare ‘to announce’
+decree|/dɪˈkriː/|n./v.|an official order; to order officially|法令；下令|The king issues a decree.|Latin decretum ‘decision’
+proclaim|/proʊˈkleɪm/|v.|to announce officially or publicly|宣布；宣告|Malcolm is proclaimed king.|pro- + clamare ‘to shout’
+rebuke|/rɪˈbjuːk/|v./n.|to criticize sharply|斥責|Ralph rebukes Jack for letting the fire go out.|Old French rebuker ‘to beat back’
+reiterate|/riˈɪtəreɪt/|v.|to say again for emphasis|重申|Reiterate your thesis in the conclusion.|re- + iterare ‘to repeat’
+vehement|/ˈviːəmənt/|adj.|showing strong feeling|激烈的；強烈的|Montag makes a vehement protest.|Latin vehemens ‘violent’
+eloquent|/ˈeləkwənt/|adj.|fluent and persuasive in speech or writing|雄辯的；有說服力的|Faber gives an eloquent defense of books.|e- + loqui ‘to speak’
+interject|/ˌɪntərˈdʒekt/|v.|to interrupt with a remark|插話|Jack interjects without the conch.|inter- + jacere ‘to throw’
+digress|/daɪˈɡres/|v.|to move away from the main topic|離題|Don’t digress from your thesis.|di- + gradi ‘to step’
+admonish|/ədˈmɑːnɪʃ/|v.|to warn or scold gently but firmly|告誡；勸誡|Banquo admonishes Macbeth to be careful.|ad- + monere ‘to warn’
+# Unit 27 · Increase & decrease
+deteriorate|/dɪˈtɪriəreɪt/|v.|to become worse|惡化|Conditions on the island deteriorate.|Latin deterior ‘worse’
+intensify|/ɪnˈtensɪfaɪ/|v.|to become stronger or more extreme|加強；加劇|Macbeth’s fear intensifies.|Latin intensus ‘stretched’
+diminish|/dɪˈmɪnɪʃ/|v.|to make or become smaller|減少；減弱|Their hope diminishes each day.|Latin minuere ‘to lessen’
+exacerbate|/ɪɡˈzæsərbeɪt/|v.|to make a bad situation worse|使惡化|Hunger exacerbates the conflict.|ex- + acerbus ‘harsh’
+culminate|/ˈkʌlmɪneɪt/|v.|to reach the highest point or final result|達到頂點|The conflict culminates in Piggy’s death.|Latin culmen ‘summit’
+dissipate|/ˈdɪsɪpeɪt/|v.|to disappear or scatter|消散|The smoke slowly dissipates.|Latin dissipare ‘to scatter’
+proliferate|/prəˈlɪfəreɪt/|v.|to increase rapidly in number|激增；擴散|Rumors proliferate among the littluns.|Latin proles ‘offspring’ + ferre
+stagnate|/ˈstæɡneɪt/|v.|to stop developing or moving|停滯|A society without new ideas will stagnate.|Latin stagnum ‘pool’
+regress|/rɪˈɡres/|v.|to return to an earlier, worse state|倒退；退化|The boys regress toward savagery.|re- + gradi ‘to step’
+accelerate|/əkˈseləreɪt/|v.|to speed up|加速|The killings accelerate Macbeth’s downfall.|ad- + celer ‘swift’
+# Unit 28 · Light, dark & atmosphere
+luminous|/ˈluːmɪnəs/|adj.|full of light; glowing|發光的；明亮的|Clarisse’s face seems luminous to Montag.|Latin lumen ‘light’
+somber|/ˈsɑːmbər/|adj.|dark, serious or sad|陰沉的；憂鬱的|The memoir has a somber tone.|French sombre ‘dark’
+ethereal|/ɪˈθɪriəl/|adj.|extremely delicate and light, as if not of this world|飄渺的；超凡的|The sea creatures around Simon’s body are ethereal.|Greek aither ‘upper air’
+grotesque|/ɡroʊˈtesk/|adj.|ugly or distorted in a disturbing way|怪誕的；醜陋的|The pig’s head is grotesque.|Italian grottesca ‘cave painting’
+macabre|/məˈkɑːbrə/|adj.|disturbing because it involves death|恐怖的；令人毛骨悚然的|The witches’ brew is macabre.|French danse macabre ‘dance of death’
+eerie|/ˈɪri/|adj.|strange and frightening|詭異的|An eerie silence fills the castle.|Old English earg ‘cowardly’
+pallid|/ˈpælɪd/|adj.|pale, especially because of illness|蒼白的|His father’s face was pallid.|Latin pallidus ‘pale’
+radiant|/ˈreɪdiənt/|adj.|shining brightly; full of happiness|燦爛的；容光煥發的|The sunrise is radiant over the river.|Latin radius ‘ray’
+murky|/ˈmɜːrki/|adj.|dark and dirty; unclear|陰暗的；模糊不清的|The witches meet in murky air.|Old Norse myrkr ‘darkness’
+gloom|/ɡluːm/|n.|darkness; a feeling of sadness|陰暗；憂鬱|A gloom settles over Scotland.|Middle English gloumen ‘to look sullen’
+# Unit 29 · Time
+chronic|/ˈkrɑːnɪk/|adj.|lasting a long time or recurring|慢性的；長期的|Hunger in the camps was chronic.|Greek chronos ‘time’
+simultaneous|/ˌsaɪməlˈteɪniəs/|adj.|happening at the same time|同時的|The two scenes are simultaneous.|Latin simul ‘at the same time’
+perpetual|/pərˈpetʃuəl/|adj.|never ending|永久的；不斷的|The walls create perpetual noise.|Latin perpetuus ‘continuous’
+transient|/ˈtrænʃənt/|adj.|lasting only a short time|短暫的|Pleasure in the novel is transient.|Latin transire ‘to go across’
+imminent|/ˈɪmɪnənt/|adj.|about to happen|即將發生的|War is imminent in the novel’s final pages.|Latin imminere ‘to overhang’
+interim|/ˈɪntərɪm/|adj./n.|temporary; the time in between|臨時的；過渡期|In the interim, the boys must survive.|Latin interim ‘meanwhile’
+precede|/prɪˈsiːd/|v.|to come before|先於|Warnings precede the disaster.|pre- + cedere ‘to go’
+ensue|/ɪnˈsuː/|v.|to happen as a result|隨之而來|Chaos ensues when the conch breaks.|Old French ensuivre ‘to follow’
+prior|/ˈpraɪər/|adj.|earlier in time or order|先前的|Prior to the war, Sighet was peaceful.|Latin prior ‘former’
+contemporary|/kənˈtempəreri/|adj./n.|belonging to the same time; modern|當代的；同時代的|Bradbury’s warnings feel contemporary.|con- + tempus ‘time’
+# Unit 30 · Amount & degree
+abundant|/əˈbʌndənt/|adj.|more than enough|豐富的|Fruit is abundant on the island.|Latin abundare ‘to overflow’
+meager|/ˈmiːɡər/|adj.|very small in amount|微薄的；貧乏的|The prisoners received meager rations.|Old French maigre ‘thin’
+negligible|/ˈneɡlɪdʒəbəl/|adj.|so small it does not matter|微不足道的|The difference is negligible.|Latin neglegere ‘to neglect’
+substantial|/səbˈstænʃəl/|adj.|large in amount or importance|大量的；重要的|Provide substantial evidence.|Latin substantia ‘substance’
+excessive|/ɪkˈsesɪv/|adj.|more than is necessary or reasonable|過度的|Macbeth’s violence is excessive.|Latin excedere ‘to go beyond’
+scarce|/skers/|adj.|in short supply|稀少的；缺乏的|Food was scarce on the march.|Old French escars ‘scanty’
+sufficient|/səˈfɪʃənt/|adj.|enough|足夠的|One example is rarely sufficient.|Latin sufficere ‘to be enough’
+ample|/ˈæmpəl/|adj.|more than enough; plenty|充足的|There is ample evidence of Jack’s cruelty.|Latin amplus ‘large’
+marginal|/ˈmɑːrdʒɪnəl/|adj.|small and not very important|微小的；邊緣的|The improvement was marginal.|Latin margo ‘edge’
+immense|/ɪˈmens/|adj.|extremely large|巨大的；極大的|The loss was immense.|in- ‘not’ + mensus ‘measured’
+# Unit 31 · Judging claims II
+fallible|/ˈfæləbəl/|adj.|capable of making mistakes|可能犯錯的|Even good leaders are fallible.|Latin fallere ‘to deceive’
+infallible|/ɪnˈfæləbəl/|adj.|never wrong|絕對正確的|No witness is infallible.|in- ‘not’ + fallible
+irrational|/ɪˈræʃənəl/|adj.|not based on reason|不理性的|The boys’ fear is irrational.|ir- ‘not’ + rational
+ludicrous|/ˈluːdɪkrəs/|adj.|so foolish it is laughable|荒唐可笑的|The idea that Tom was guilty is ludicrous.|Latin ludus ‘play’
+tenuous|/ˈtenjuəs/|adj.|very weak or slight|薄弱的|The connection is tenuous at best.|Latin tenuis ‘thin’
+compelling|/kəmˈpelɪŋ/|adj.|convincing; holding attention|有說服力的；引人入勝的|She makes a compelling argument.|com- + pellere ‘to drive’
+cogent|/ˈkoʊdʒənt/|adj.|clear, logical and convincing|有說服力的；令人信服的|Piggy offers a cogent plan.|Latin cogere ‘to compel’
+spurious|/ˈspjʊriəs/|adj.|false, though it seems real|虛假的；似是而非的|Beatty’s logic is spurious.|Latin spurius ‘false’
+erroneous|/ɪˈroʊniəs/|adj.|wrong; incorrect|錯誤的|The boys reach an erroneous conclusion.|Latin errare ‘to wander’
+unfounded|/ʌnˈfaʊndɪd/|adj.|having no basis in fact|毫無根據的|The rumor proved unfounded.|un- + founded
+# Unit 32 · Roots in action II
+philanthropy|/fɪˈlænθrəpi/|n.|giving money or help to others|慈善事業|Philanthropy funds many libraries.|Greek philos ‘loving’ + anthropos ‘human’
+misanthrope|/ˈmɪsənθroʊp/|n.|a person who dislikes people|厭世者；不喜歡人的人|Crooks is not a misanthrope but a lonely man.|Greek misein ‘to hate’ + anthropos
+pseudonym|/ˈsuːdənɪm/|n.|a false name used by a writer|筆名；化名|Some authors write under a pseudonym.|Greek pseudes ‘false’ + onyma ‘name’
+anonymous|/əˈnɑːnɪməs/|adj.|with a name that is unknown|匿名的|An anonymous neighbor reported the books.|Greek an- ‘without’ + onyma ‘name’
+circumvent|/ˌsɜːrkəmˈvent/|v.|to find a way around a rule or obstacle|規避；繞過|Montag tries to circumvent the law.|circum- ‘around’ + venire ‘to come’
+retrospect|/ˈretrəspekt/|n.|looking back on past events|回顧|In retrospect, the warning signs were clear.|retro- ‘back’ + specere ‘to look’
+introvert|/ˈɪntrəvɜːrt/|n.|a quiet person who is energized by time alone|內向者|Simon is an introvert.|intro- ‘inward’ + vertere ‘to turn’
+extrovert|/ˈekstrəvɜːrt/|n.|an outgoing person who is energized by others|外向者|Jack is a loud extrovert.|extro- ‘outward’ + vertere ‘to turn’
+omniscient|/ɑːmˈnɪʃənt/|adj.|knowing everything|全知的|An omniscient narrator knows every character’s thoughts.|omni- ‘all’ + scire ‘to know’
+posthumous|/ˈpɑːstʃəməs/|adj.|happening after a person’s death|死後的|The author received posthumous praise.|Latin postumus ‘last’
+# Unit 33 · Modern history
+ideology|/ˌaɪdiˈɑːlədʒi/|n.|a system of political or social beliefs|意識形態|Nazi ideology was built on racism.|Greek idea + logos
+nationalism|/ˈnæʃənəlɪzəm/|n.|strong, sometimes extreme devotion to one’s nation|民族主義|Extreme nationalism fueled the war.|Latin natio ‘nation’
+imperialism|/ɪmˈpɪriəlɪzəm/|n.|a nation extending its power over other lands|帝國主義|Imperialism shaped much of Africa’s history.|Latin imperium ‘command’
+fascism|/ˈfæʃɪzəm/|n.|a far-right system of total, dictatorial government|法西斯主義|Fascism crushed free speech.|Italian fascio ‘bundle’
+reform|/rɪˈfɔːrm/|n./v.|a change to improve something|改革|Reform came slowly after the war.|re- + formare ‘to shape’
+treaty|/ˈtriːti/|n.|a formal agreement between nations|條約|The treaty ended years of fighting.|Latin tractatus ‘discussion’
+armistice|/ˈɑːrmɪstɪs/|n.|an agreement to stop fighting|停戰協定|The armistice was signed in November 1918.|arma ‘weapons’ + stare ‘to stand’
+civilian|/sɪˈvɪljən/|n.|a person who is not in the military|平民|Millions of civilians died in the war.|Latin civis ‘citizen’
+nuclear|/ˈnuːkliər/|adj.|relating to atomic energy or weapons|核子的|Piggy fears a nuclear war.|Latin nucleus ‘kernel’
+refugee|/ˌrefjuˈdʒiː/|n.|a person forced to flee their country|難民|Many refugees found no country willing to take them.|French réfugié
+# Unit 34 · Law & responsibility
+jurisdiction|/ˌdʒʊrɪsˈdɪkʃən/|n.|the official power to make legal decisions|管轄權|The case falls under federal jurisdiction.|jus ‘law’ + dicere ‘to say’
+statute|/ˈstætʃuːt/|n.|a written law|法令；成文法|A statute banned reading in public.|Latin statuere ‘to set up’
+sanction|/ˈsæŋkʃən/|n./v.|a penalty; official approval|制裁；批准|The council imposed sanctions.|Latin sanctio ‘decree’
+accountable|/əˈkaʊntəbəl/|adj.|responsible and required to explain one’s actions|應負責任的|Leaders must be held accountable.|ad- + count
+liable|/ˈlaɪəbəl/|adj.|legally responsible; likely to do something|應負法律責任的；易於|The owner is liable for damages.|Old French lier ‘to bind’
+complicit|/kəmˈplɪsɪt/|adj.|involved with others in wrongdoing|共謀的；同流合污的|Silent bystanders can become complicit.|Latin complicare ‘to fold together’
+culpable|/ˈkʌlpəbəl/|adj.|deserving blame|有罪的；應受責備的|Who is most culpable for Simon’s death?|Latin culpa ‘fault’
+impartial|/ɪmˈpɑːrʃəl/|adj.|fair; not favoring one side|公正的；不偏袒的|A judge must be impartial.|im- ‘not’ + partial
+plea|/pliː/|n.|an urgent request; a formal answer in court|懇求；（法庭）答辯|Piggy makes a final plea for reason.|Old French plaid ‘lawsuit’
+amnesty|/ˈæmnəsti/|n.|an official pardon for a group|特赦|The new king offers amnesty to rebels.|Greek amnestia ‘forgetfulness’
+# Unit 35 · Writing & research
+cohesion|/koʊˈhiːʒən/|n.|the way parts of a text connect smoothly|連貫性；銜接|Transitions improve cohesion.|co- + haerere ‘to stick’
+transition|/trænˈzɪʃən/|n.|a word or phrase that links ideas|轉折語；過渡|Use a transition between paragraphs.|trans- + ire ‘to go’
+elaborate|/ɪˈlæbəreɪt/|v.|to add more detail or explanation|詳細說明|Elaborate on how the quote supports your claim.|e- + laborare ‘to work’
+embed|/ɪmˈbed/|v.|to fix something firmly inside something else|嵌入|Embed short quotations in your sentences.|em- + bed
+citation|/saɪˈteɪʃən/|n.|a reference to a source|引用；出處標註|Every quotation needs a citation.|Latin citare ‘to summon’
+rubric|/ˈruːbrɪk/|n.|a set of scoring criteria|評分標準|Check the rubric before revising.|Latin rubrica ‘red ink’
+proofread|/ˈpruːfriːd/|v.|to read and correct errors in writing|校對|Proofread for spelling and punctuation.|proof + read
+plagiarism|/ˈpleɪdʒərɪzəm/|n.|using others’ words or ideas without credit|抄襲|Plagiarism can lead to a failing grade.|Latin plagiarius ‘kidnapper’
+bibliography|/ˌbɪbliˈɑːɡrəfi/|n.|a list of sources used|參考書目|Add a bibliography at the end.|Greek biblion ‘book’ + graphein ‘to write’
+abstract|/ˈæbstrækt/|n./adj.|a short summary of a paper; not concrete|摘要；抽象的|Read the abstract before the full article.|ab- + trahere ‘to draw’
+# Unit 36 · Advanced descriptive words II
+ubiquitous|/juːˈbɪkwɪtəs/|adj.|found everywhere|無所不在的|Screens are ubiquitous in Montag’s world.|Latin ubique ‘everywhere’
+ephemeral|/ɪˈfemərəl/|adj.|lasting a very short time|短暫的；轉瞬即逝的|Fame on the parlor walls is ephemeral.|Greek ephemeros ‘lasting a day’
+enigmatic|/ˌenɪɡˈmætɪk/|adj.|mysterious and hard to understand|神秘的；令人費解的|The witches are enigmatic figures.|Greek ainigma ‘riddle’
+resolute|/ˈrezəluːt/|adj.|firmly determined|堅決的|Macduff is resolute in his revenge.|Latin resolutus ‘loosened, settled’
+ostentatious|/ˌɑːstenˈteɪʃəs/|adj.|designed to impress or show off|炫耀的；浮誇的|The banquet is ostentatious.|Latin ostentare ‘to display’
+pervasive|/pərˈveɪsɪv/|adj.|spreading through every part|無處不在的；瀰漫的|Fear is pervasive on the island.|per- + vadere ‘to go’
+quintessential|/ˌkwɪntɪˈsenʃəl/|adj.|being the most perfect example|典型的；精髓的|Macbeth is the quintessential tragic hero.|Latin quinta essentia ‘fifth essence’
+insidious|/ɪnˈsɪdiəs/|adj.|spreading harm slowly and secretly|潛伏的；暗中為害的|Censorship can be insidious.|Latin insidiae ‘ambush’
+voracious|/vəˈreɪʃəs/|adj.|wanting a great amount of something|貪婪的；如飢似渴的|Montag becomes a voracious reader.|Latin vorare ‘to devour’
+inexorable|/ɪnˈeksərəbəl/|adj.|impossible to stop|無法阻擋的|Macbeth’s fall feels inexorable.|in- ‘not’ + exorare ‘to persuade’`;
+const V10=parseV(V10TXT,[]);
 
 /* ---------- GRADE 9 GRAMMAR ---------- */
 const G9=[
@@ -592,6 +990,82 @@ q:[["Which in-text citation is correct MLA?",["(Lee, p. 87).","(Lee 87).","(87, 
 ["If you already wrote “As Lee writes,” in your sentence, the citation is…",["(Lee 112)","(112)","(p. 112)"],1,"The author is already named in the sentence, so give only the page."],
 ["Citing lines from Romeo and Juliet in MLA uses…",["(2.2.33–35)","(page 33)","(Act 2 Scene 2)"],0,"Act.scene.lines, in Arabic numerals."],
 ["Which Works Cited order is correct for a book?",["Last, First. Title. Publisher, Year.","First Last. Year. Title.","Title. Last, First. Year."],0,"MLA 9: Author (Last, First). Title (italics). Publisher, Year."]]}
+];
+
+/* ---------- GRADE 10 GRAMMAR ---------- */
+const G10=[
+{t:"Active & passive voice",c:"L.9-10.3 · W.9-10.1d",
+r:"In the active voice, the subject performs the action (Jack blew the conch). In the passive voice, the subject receives the action (The conch was blown by Jack). Prefer the active voice for clear, direct writing; use the passive when the doer is unknown or less important.",
+y:["Roger rolled the boulder. (active)","The signal fire was left unattended. (passive — the doer is not the focus)"],
+n:["The decision to hunt was made by Jack. (wordy; ‘Jack decided to hunt’ is clearer)"],
+q:[["Which sentence is in the active voice?",["The fire was lit by Ralph.","Ralph lit the fire.","The fire had been lit."],1,"The subject (Ralph) performs the action."],
+["Identify the voice: “The glasses were stolen during the night.”",["active","passive"],1,"The subject (glasses) receives the action, and the doer is not named."],
+["Best active revision of “The book was burned by Montag.”",["Montag burned the book.","The book got burned.","Burning the book was done by Montag."],0,"Move the doer into the subject position."],
+["When is the passive voice a good choice?",["When you want to sound more formal","When the doer is unknown or unimportant","Whenever possible"],1,"Use the passive when who did it does not matter or is unknown."],
+["Which sentence is passive?",["The witches greeted Macbeth.","Macbeth was greeted by the witches.","Macbeth greeted the witches."],1,"‘Was greeted by’ is the passive voice."]]},
+{t:"Misplaced & dangling modifiers",c:"L.9-10.1 · L.9-10.3",
+r:"A modifier should sit next to the word it describes. A misplaced modifier is in the wrong spot; a dangling modifier has no word in the sentence to describe. Fix it by moving the modifier or by adding the missing subject.",
+y:["Running toward the beach, Ralph spotted the ship.","Piggy, with his cracked glasses, could barely see."],
+n:["Running toward the beach, the ship appeared. (the ship was not running)","Piggy could barely see the fire with cracked glasses. (the fire had no glasses)"],
+q:[["Which sentence has a dangling modifier?",["Walking home, Scout heard a noise.","Walking home, a noise startled Scout.","Scout heard a noise while walking home."],1,"The noise was not walking; the person walking is missing from the opening phrase."],
+["Best revision: “Covered in mud, the teacher scolded the boys.”",["The teacher scolded the boys, covered in mud.","The teacher scolded the boys, who were covered in mud.","Covered in mud, scolding came from the teacher."],1,"Adding ‘who were’ makes it clear that the boys were muddy."],
+["“She almost read the whole book.” What is the problem?",["Nothing is wrong.","‘Almost’ is misplaced: she read almost the whole book.","The verb tense is wrong."],1,"Limiting words such as almost, only and just belong right before the word they modify."],
+["Which sentence is correct?",["After eating the pig, the fire died down.","After the boys ate the pig, the fire died down.","After eating, the fire died down."],1,"The doer (the boys) is now named."],
+["To fix a dangling modifier, you can…",["delete the comma","add the missing subject right after the phrase","change the verb to the passive voice"],1,"Put the word being described right after the modifying phrase."]]},
+{t:"Commas with nonessential elements",c:"L.9-10.2",
+r:"Use commas around words, phrases or clauses that add extra, nonessential information. Do not use commas around essential information that identifies which person or thing you mean. Use ‘which’ for nonessential clauses and ‘that’ for essential ones.",
+y:["Elie Wiesel, who survived Auschwitz, became a writer.","The book that Montag stole was a Bible."],
+n:["The book, that Montag stole, was a Bible.","Elie Wiesel who survived Auschwitz became a writer."],
+q:[["Which sentence punctuates the nonessential clause correctly?",["Macbeth who was Thane of Glamis met the witches.","Macbeth, who was Thane of Glamis, met the witches.","Macbeth, who was Thane of Glamis met the witches."],1,"Put commas on both sides of the extra information."],
+["“The boy ___ found the conch became chief.”",["who",", who (with a comma)"],0,"The clause tells us which boy, so it is essential and takes no comma."],
+["“Fahrenheit 451, ___ was published in 1953, is still widely read.”",["that","which"],1,"Use ‘which’, with commas, for a nonessential clause."],
+["You have only one brother. Which is correct?",["My brother, Jem, is older.","My brother Jem is older."],0,"If he is your only brother, his name is extra information, so set it off with commas."],
+["Where do commas belong? “Piggy who was often mocked had the best ideas.”",["Piggy, who was often mocked, had the best ideas.","Piggy who was often mocked, had the best ideas.","No commas are needed."],0,"The clause adds extra information about a named person."]]},
+{t:"Pronoun–antecedent agreement",c:"L.9-10.1",
+r:"A pronoun must agree in number and gender with the noun it replaces (its antecedent). In formal writing, indefinite pronouns such as each, everyone and nobody are singular, though singular ‘they’ is increasingly accepted when gender is unknown. Make sure every pronoun has one clear antecedent.",
+y:["Each of the boys brought his own spear.","When Ralph met Jack, Ralph spoke first."],
+n:["When Ralph met Jack, he spoke first. (who is ‘he’?)","The boys left the glasses on the rock, but later it was gone. (what is ‘it’?)"],
+q:[["Each of the hunters sharpened ___ stick.",["his","their"],0,"In formal writing ‘each’ is singular, and the hunters are all boys."],
+["Which sentence has an unclear pronoun?",["Jack told Ralph that he was wrong.","Jack told Ralph, “You are wrong.”","Jack said that Ralph was wrong."],0,"‘He’ could mean Jack or Ralph."],
+["The jury announced ___ verdict.",["its","their"],0,"Acting as one unit, the jury is singular."],
+["Montag and Faber shared ___ plan.",["his","their"],1,"Two people joined by ‘and’ need a plural pronoun."],
+["Neither Lady Macbeth nor the witches revealed ___ true intentions.",["her","their"],1,"With neither/nor, the pronoun agrees with the closer noun (witches)."]]},
+{t:"Pronoun case",c:"L.9-10.1",
+r:"Use subject pronouns (I, he, she, we, they, who) as subjects, and object pronouns (me, him, her, us, them, whom) as objects of verbs and prepositions. To check, remove the other person: ‘Jem and I went’ → ‘I went’. Use who if he/she would fit; use whom if him/her would fit.",
+y:["Jem and I walked home.","Between you and me, Beatty is dangerous.","To whom did Montag give the book?"],
+n:["Me and Jem walked home.","Between you and I, Beatty is dangerous."],
+q:[["Piggy and ___ found the conch.",["me","I"],1,"Remove ‘Piggy and’: ‘I found the conch’."],
+["The teacher gave the books to Maria and ___.",["I","me"],1,"Object of the preposition ‘to’: ‘to me’."],
+["___ did Macbeth fear most?",["Who","Whom"],1,"The answer would be ‘him’ (he feared him), so use ‘whom’."],
+["___ wrote Night?",["Who","Whom"],0,"The answer would be ‘he’ (he wrote it), so use ‘who’."],
+["Between you and ___, the test was hard.",["I","me"],1,"‘Between’ is a preposition, so it takes an object pronoun."]]},
+{t:"Verb tense consistency",c:"W.9-10.2 · L.9-10.3",
+r:"Keep verb tenses consistent within a sentence and a paragraph. When writing about literature, use the literary present tense: describe events in a story as if they are happening now (Montag burns books), and use the past tense for historical facts about the author or publication.",
+y:["In Fahrenheit 451, Montag meets Clarisse and begins to question his life.","Bradbury published the novel in 1953."],
+n:["In the novel, Montag met Clarisse and begins to question his life."],
+q:[["Which sentence uses the literary present correctly?",["Macbeth killed Duncan and then feels guilty.","Macbeth kills Duncan and then feels guilty.","Macbeth will kill Duncan and felt guilty."],1,"Both verbs are in the present tense."],
+["“Wiesel first ___ Night in Yiddish.” (a historical fact)",["writes","wrote"],1,"Facts about the author’s life use the past tense."],
+["Find the tense shift: “Ralph calls an assembly, but the boys ignored him.”",["calls","ignored"],1,"‘Ignored’ breaks the present tense; use ‘ignore’."],
+["In an essay, which sentence is best?",["Golding shows that fear spreads quickly.","Golding showed that fear spread quickly.","Golding will show that fear spreads quickly."],0,"Use the present tense to discuss what an author shows in a text."],
+["Which sentence is consistent?",["Eliezer watches his father and wanted to help.","Eliezer watches his father and wants to help.","Eliezer watched his father and wants to help."],1,"Both verbs are in the present tense."]]},
+{t:"Integrating quotations",c:"W.9-10.8 · W.9-10.9",
+r:"Never drop a quotation in by itself. Introduce it with a signal phrase (As Macbeth admits, …), blend it into your own sentence, or set it up with a complete sentence and a colon. Then explain it. Use brackets for words you change and an ellipsis (…) for words you leave out.",
+y:["As Macbeth admits, his ambition is ‘vaulting’ and ‘o’erleaps itself’ (1.7).","Macbeth knows his only motive is ambition: he has ‘no spur’ to act except ‘vaulting ambition’ (1.7)."],
+n:["Macbeth is ambitious. ‘Vaulting ambition, which o’erleaps itself.’ (a dropped quotation)"],
+q:[["What is a ‘dropped quotation’?",["A quotation with no introduction or connection to your sentence","A quotation that is too short","A quotation from the end of a book"],0,"Always introduce a quotation and connect it to your own words."],
+["Which quotation is introduced correctly?",["Macbeth says, ‘Fair is foul.’","As the witches chant, ‘Fair is foul, and foul is fair’ (1.1).","‘Fair is foul.’ Witches."],1,"It names the right speakers, introduces the words and cites them."],
+["Brackets [ ] inside a quotation show…",["a word you changed or added","a word you deleted","the page number"],0,"Brackets mark your own changes."],
+["An ellipsis (…) inside a quotation shows…",["that you left out words","that the speaker paused","that the quotation continues on the next page"],0,"Use an ellipsis for omitted words."],
+["After a quotation, you should…",["start a new topic","explain how it supports your claim","add another quotation right away"],1,"Evidence always needs reasoning."]]},
+{t:"Formal style & objective tone",c:"W.9-10.1d · W.9-10.2e",
+r:"Academic writing uses a formal style and an objective tone. Avoid slang, contractions, ‘you’ addressed to the reader, and phrases such as ‘I think’ or ‘I feel’. State claims directly and support them with evidence rather than emotion.",
+y:["Golding suggests that fear can destroy order.","Bradbury criticizes a society that values entertainment over thought."],
+n:["I think Golding is saying fear is super bad.","You can totally tell Beatty is the bad guy."],
+q:[["Which sentence is most formal?",["Jack is kinda crazy.","Jack grows increasingly violent.","Jack goes nuts, you know?"],1,"It has no slang or casual phrases."],
+["Which should you avoid in an academic essay?",["Evidence from the text","Contractions such as don’t and can’t","Transition words"],1,"Write out ‘do not’ and ‘cannot’."],
+["Best revision of “I feel like Macbeth is evil.”",["Macbeth becomes a ruthless tyrant.","I really feel Macbeth is evil.","Macbeth is, like, evil."],0,"State the claim directly and precisely."],
+["An objective tone means…",["writing about facts and evidence without strong personal emotion","writing only about objects","agreeing with the author"],0,"Objective writing is based on evidence, not feelings."],
+["Which is the strongest academic claim?",["Night is a really sad book.","Wiesel uses images of night to show the loss of faith.","You will cry when you read Night."],1,"It is specific, arguable and focused on the author’s technique."]]}
 ];
 
 /* ---------- NOVEL: To Kill a Mockingbird ---------- */
@@ -904,6 +1378,227 @@ ct:[{q:"George 最後的行為是出於慈悲，還是謀殺？",claim:"表明�
 {q:"跨文本：比較《Of Mice and Men》的 Crooks 與《To Kill a Mockingbird》的 Tom Robinson。",claim:"論證這兩個角色揭示了 1930 年代美國的種族與權力。",ev:"OMAM 第 4 章（Crooks 的房間與 Curley 妻子的威脅）；TKAM 第 19 章（Tom 的證詞）與第 24 章（Tom 的死訊）。",rs:"比較白人女性的一句話如何對這兩個男人握有權力。",cc:"一本設定在加州，一本在阿拉巴馬州。背景不同會改變種族主義的運作方式嗎？",m:"參考論點：兩個男人都受到白人女性指控的威脅，顯示 1930 年代的種族權力遠遠超出了南方腹地。"}]};
 
 const BOOKS=[TKAM,RJ,ODY,OMAM];
+TKAM.blurb="Justice, empathy, growing up";RJ.blurb="Love, fate, conflict between generations";ODY.blurb="The hero’s journey, loyalty, homecoming";OMAM.blurb="Friendship, dreams, loneliness";
+
+/* ---------- GRADE 10 NOVELS ---------- */
+const LOTF={
+title:"Lord of the Flies",author:"William Golding · 1954",blurb:"Human nature, civilization vs. savagery",cite:"author and page, e.g., (Golding 64)",
+bg:["William Golding’s first novel, published in 1954. Golding served in the Royal Navy during World War II, and the book reflects his belief, shaped by the war, that cruelty is part of human nature and not only a product of bad societies.",
+"During an unnamed future war, a plane evacuating British schoolboys crashes on a deserted tropical island during an attack. No adults survive, so the boys, aged about six to twelve, must govern themselves.",
+"The novel is often read as an allegory, in which each boy and object stands for a larger idea about society. Golding received the Nobel Prize in Literature in 1983. Content note: the novel includes the violent deaths of children."],
+sum:[["Ch. 1–2 · The shell and the fire","Ralph finds a conch shell in a lagoon, and Piggy, an overweight, asthmatic boy with glasses, shows him how to blow it to call the others. The boys elect Ralph chief; Jack Merridew, leader of a choir, takes charge of the hunters. Ralph, Jack and Simon explore and confirm they are on an island, and Jack fails to kill a piglet. At an assembly they agree that whoever holds the conch may speak. A small boy with a birthmark claims to have seen a ‘beastie.’ The boys light a signal fire with Piggy’s glasses, but it spreads out of control, and the boy with the birthmark is never seen again."],
+["Ch. 3–4 · Huts and painted faces","Ralph and Simon struggle to build shelters while Jack becomes obsessed with hunting. Simon goes off alone to a peaceful clearing in the jungle. Roger throws stones near a littlun but deliberately misses, still held back by the memory of rules. Jack paints his face with clay and feels free of shame. A ship passes, but the signal fire has gone out because the hunters left it to hunt. The hunters return chanting with a dead pig; Ralph is furious, and Jack hits Piggy, breaking one lens of his glasses."],
+["Ch. 5–7 · The beast","At a tense assembly, the littluns’ fear of a beast spreads. Simon suggests the beast might be ‘only us,’ but the others laugh. Rules begin to break down. That night the body of a dead parachutist from an air battle drifts down onto the mountain; the twins Sam and Eric see it in the dark and believe it is the beast. On an expedition, Ralph wounds a boar and feels the thrill of the hunt, and a mock hunt turns rough. Ralph, Jack and Roger climb the mountain, see the shape of the dead parachutist and flee."],
+["Ch. 8–9 · The gift and the death","Jack fails to get the boys to vote Ralph out, so he leaves to form his own tribe, and most of the older boys gradually follow him. His hunters kill a sow and leave its head on a stick as a gift for the beast. Alone, Simon has a vision in which the fly-covered pig’s head — the Lord of the Flies — tells him the beast is part of the boys themselves. Simon climbs the mountain, discovers the truth about the parachutist and runs down to tell the others. During a storm and a wild ritual dance at Jack’s feast, the boys, including Ralph and Piggy, mistake Simon for the beast and kill him."],
+["Ch. 10–11 · The glasses and Castle Rock","Ralph and Piggy struggle with guilt. Jack’s tribe raids their camp at night and steals Piggy’s glasses, their only way to make fire. Ralph, Piggy and the twins go to Jack’s fortress at Castle Rock to demand them back. Piggy holds up the conch and pleads for reason. Roger levers a huge boulder down the cliff; it kills Piggy and shatters the conch. The twins are captured and forced to join the tribe."],
+["Ch. 12 · Cry of the hunters","Alone, Ralph learns from the twins that the tribe will hunt him the next day and that Roger has sharpened a stick at both ends. The tribe sets the island on fire to smoke him out. Ralph runs to the beach and falls at the feet of a British naval officer whose ship has seen the smoke. The officer is disappointed that British boys did not behave better. Ralph weeps for the end of innocence, the darkness in human hearts and the death of Piggy."]],
+chars:[["Ralph","Elected chief; stands for order and democracy."],["Piggy","Intelligent and rational but physically weak; mocked by the others."],["Jack Merridew","Choir leader turned hunter; craves power."],["Simon","Quiet, kind and thoughtful; understands what the beast really is."],["Roger","Cruel boy who becomes Jack’s enforcer."],["Sam and Eric","Twins; loyal to Ralph until they are captured."],["The littluns","The youngest boys; the most fearful."],["The naval officer","The adult who arrives at the very end."]],
+themes:[["Civilization vs. savagery","The boys begin with rules, assemblies and a signal fire. As these break down, painted faces, chanting and killing take their place, suggesting that civilization is a thin layer over savage instincts."],
+["Loss of innocence","The boys arrive as ordinary schoolchildren and end as killers. Ralph’s tears at the end mourn the innocence they have lost."],
+["The beast within","The boys look for a monster outside themselves, but Simon learns that the ‘beast’ is the capacity for evil inside every person."],
+["Power and leadership","Ralph leads through election and reason; Jack leads through fear, food and ritual. Jack’s method wins over most of the boys, raising questions about why people follow strong leaders."],
+["Fear","Fear of the beast grows far faster than any real danger, and Jack uses that fear to gain power."]],
+syms:[["The conch","Order, democracy and the right to speak. It shatters when Piggy dies."],
+["Piggy’s glasses","Intelligence, science and the power to make fire. They are broken, then stolen."],
+["The signal fire","Hope of rescue and connection to civilization. Ironically, the destructive fire set to hunt Ralph is what brings rescue."],
+["The beast","The evil the boys fear outside themselves, which is really within them."],
+["The Lord of the Flies","The pig’s head on a stick. The phrase translates the Hebrew name Beelzebub, a name for the devil, and stands for the evil the boys come to worship."]],
+devs:[["Allegory","Characters and objects stand for larger ideas: Ralph for democracy, Jack for dictatorship, Piggy for reason, Simon for spiritual insight."],
+["Foreshadowing","The missing boy with the birthmark and Roger’s thrown stones hint at the killings to come."],
+["Irony","The boys are rescued by a naval officer from a world fighting a larger war, and by a fire meant to kill Ralph."],
+["Foil characters","Ralph and Jack, and Piggy and Jack, highlight each other’s values through contrast."],
+["Setting and imagery","The island changes from a bright paradise to a burning hell, mirroring the boys’ decline."]],
+ct:[{q:"Does the novel prove that human nature is evil?",claim:"Take a position on Golding’s view of human nature.",ev:"Ch. 4 (Roger’s stones and Jack’s mask), Ch. 8 (the Lord of the Flies speaks to Simon), Ch. 9 (Simon’s death), Ch. 12 (Ralph’s tears).",rs:"Explain what causes the boys’ violence: something inside them, or the situation they are in?",cc:"Ralph, Piggy, Simon and the twins resist for a long time. Does that weaken Golding’s argument?",m:"Model claim: Golding argues that the capacity for evil exists in everyone, but the characters who resist suggest that choice, not just nature, decides who we become."},
+{q:"Why does Jack win the boys’ loyalty while Ralph loses it?",claim:"Compare the two leaders’ methods.",ev:"Ch. 1 (the election), Ch. 4 (the fire goes out), Ch. 8 (Jack leaves), Ch. 9 (the feast).",rs:"Look at what each leader offers: safety and rescue, or meat, excitement and protection from the beast.",cc:"Is Ralph partly responsible for losing control?",m:"Model claim: Jack wins because he offers immediate pleasure and protection from fear, while Ralph asks the boys to work for a distant goal they stop believing in."},
+{q:"Why does Simon have to die?",claim:"Explain the meaning of Simon’s death.",ev:"Ch. 3 (Simon’s clearing), Ch. 5 (his suggestion that the beast is ‘only us’), Ch. 8 (the vision), Ch. 9 (his death).",rs:"Consider what Simon knows and why the group cannot accept it.",cc:"Is Simon too good to be believable?",m:"Model claim: Simon is killed at the very moment he brings the truth, showing that a crowd ruled by fear destroys the people who could save it."},
+{q:"Is the ending hopeful?",claim:"Decide what the arrival of the naval officer means.",ev:"Ch. 12 (the officer and his warship), Ch. 6 (the dead parachutist), Ch. 1 (Piggy mentions the atom bomb).",rs:"Think about who rescues the boys and what that adult world is doing.",cc:"Ralph is saved and the killing stops. Is that enough to call the ending hopeful?",m:"Model claim: The ending is deeply ironic: the boys are rescued by a warship from a world fighting the same kind of war on a larger scale."},
+{q:"How is Piggy treated, and what does it say about groups?",claim:"Argue what Piggy’s treatment reveals.",ev:"Ch. 1 (his nickname spreads), Ch. 4 (Jack breaks his glasses), Ch. 11 (his death).",rs:"Explain why the group mocks the boy with the best ideas.",cc:"Does Piggy’s own behavior make it harder for others to listen to him?",m:"Model claim: The boys mock Piggy because he looks and sounds different, showing that groups often reject reason when it comes from an outsider."},
+{q:"Cross-text: Compare the novel with the true story of six Tongan boys stranded on the island of ‘Ata in the 1960s.",claim:"Argue what the comparison reveals about Golding’s claims.",ev:"The novel, plus a reliable account of the ‘Ata castaways (for example, the reporting in Rutger Bregman’s book Humankind, 2020).",rs:"Compare how each group organized itself and why the outcomes differed.",cc:"One group is real and one is fiction. Can a real event disprove a novel’s argument?",m:"Model claim: The Tongan boys’ cooperation suggests that Golding’s view is one possibility, not a law of nature, and that culture and choices shape how people behave under pressure."}],
+kz:{"Civilization vs. savagery":"文明與野蠻","Loss of innocence":"失去純真","The beast within":"內在的野獸","Power and leadership":"權力與領導","Fear":"恐懼","The conch":"海螺","Piggy’s glasses":"Piggy 的眼鏡","The signal fire":"求救的烽火","The beast":"野獸","The Lord of the Flies":"蒼蠅王","Allegory":"寓言","Foil characters":"對照角色","Setting and imagery":"場景與意象"},
+zh:{bg:["William Golding 的第一部小說，1954 年出版。Golding 二戰期間曾在英國皇家海軍服役，這本書反映了他受戰爭影響的信念：殘酷是人性的一部分，而不只是壞社會的產物。",
+"在一場沒有說明的未來戰爭中，一架撤離英國學童的飛機在遭受攻擊時墜落在一座無人的熱帶島嶼上。沒有大人倖存，這群大約六到十二歲的男孩必須自己管理自己。",
+"這部小說常被當作寓言來讀，每個男孩和物件都代表一個關於社會的更大概念。Golding 於 1983 年獲得諾貝爾文學獎。內容提醒：小說中有兒童遭暴力致死的情節。"],
+sum:["Ralph 在潟湖裡找到一個海螺，戴眼鏡、體型肥胖又有氣喘的 Piggy 教他吹響海螺召集其他人。男孩們選 Ralph 當首領；唱詩班領隊 Jack Merridew 負責帶領獵人。Ralph、Jack 和 Simon 探勘後確認他們在一座島上，Jack 沒能殺死一隻小豬。在集會上，他們約定拿著海螺的人才能發言。一個臉上有胎記的小男孩說他看見了「野獸」。男孩們用 Piggy 的眼鏡點燃求救烽火，但火勢失控，那個有胎記的男孩從此不見蹤影。",
+"Ralph 和 Simon 辛苦地搭建棚屋，Jack 卻沉迷於打獵。Simon 獨自走到叢林裡一片寧靜的空地。Roger 朝一個小男孩丟石頭，卻故意丟偏，因為他仍受到規矩記憶的約束。Jack 用黏土塗臉，覺得自己擺脫了羞恥感。一艘船經過，但烽火已經熄滅，因為獵人們丟下它去打獵。獵人們唱著歌帶著死豬回來；Ralph 大怒，Jack 則打了 Piggy，打破他眼鏡的一片鏡片。",
+"在一場緊張的集會中，小男孩們對野獸的恐懼不斷擴散。Simon 提出野獸也許「只是我們自己」，其他人卻哄堂大笑。規矩開始瓦解。當晚，一名在空戰中死去的跳傘員屍體飄落到山上；雙胞胎 Sam 和 Eric 在黑暗中看見，以為那就是野獸。一次探勘中，Ralph 刺傷一頭野豬，感受到狩獵的快感，一場模擬狩獵也變得粗暴。Ralph、Jack 和 Roger 爬上山，看見跳傘員屍體的輪廓後逃走。",
+"Jack 沒能讓男孩們投票罷免 Ralph，於是離開去組成自己的部落，大部分年紀較大的男孩陸續跟隨他。他的獵人殺了一頭母豬，把豬頭插在木棍上當作獻給野獸的禮物。Simon 獨自一人時產生幻覺，爬滿蒼蠅的豬頭（蒼蠅王）告訴他，野獸就是男孩們自己的一部分。Simon 爬上山，發現跳傘員的真相，跑下山要告訴大家。在 Jack 的宴會上，一場暴風雨中的狂野儀式舞蹈裡，包括 Ralph 和 Piggy 在內的男孩們把 Simon 誤認為野獸，將他殺死。",
+"Ralph 和 Piggy 飽受罪惡感折磨。Jack 的部落趁夜襲擊他們的營地，偷走 Piggy 的眼鏡，那是他們唯一的生火工具。Ralph、Piggy 和雙胞胎前往 Jack 在 Castle Rock 的堡壘要求歸還眼鏡。Piggy 舉起海螺，懇求大家講道理。Roger 撬動一塊巨石滾下懸崖，砸死了 Piggy，海螺也碎了。雙胞胎被抓，被迫加入部落。",
+"孤身一人的 Ralph 從雙胞胎口中得知，部落第二天要獵殺他，而 Roger 已經把一根木棍的兩端都削尖了。部落放火燒島要把他逼出來。Ralph 跑到海灘，跌倒在一名英國海軍軍官腳邊，軍官的船是看到濃煙才過來的。軍官對英國男孩們沒有表現得更好感到失望。Ralph 為純真的終結、人心的黑暗和 Piggy 的死而痛哭。"],
+chars:["被選為首領；代表秩序與民主。","聰明理性但體弱；常被其他人嘲笑。","從唱詩班領隊變成獵人；渴望權力。","安靜、善良、善於思考；明白野獸的真面目。","殘酷的男孩，成為 Jack 的打手。","雙胞胎；在被抓之前一直忠於 Ralph。","年紀最小的男孩們；最容易害怕。","在最後才出現的大人。"],
+themes:["男孩們一開始有規矩、集會和求救烽火。當這些瓦解時，塗臉、吟唱和殺戮取而代之，暗示文明只是覆蓋在野蠻本能上的一層薄膜。","男孩們來到島上時是普通的學生，最後卻成了殺人者。Ralph 在結局的眼淚，是在哀悼他們失去的純真。","男孩們在自己以外尋找怪物，但 Simon 明白了：「野獸」是每個人內心作惡的能力。","Ralph 透過選舉與理性領導；Jack 則透過恐懼、食物與儀式領導。Jack 的方法贏得了大部分男孩，引發人們為何追隨強勢領袖的問題。","對野獸的恐懼增長得遠比任何真實危險快，而 Jack 利用這份恐懼取得權力。"],
+syms:["秩序、民主與發言的權利。Piggy 死時它也碎了。","智慧、科學與生火的能力。先被打破，後被偷走。","獲救的希望，以及與文明的連結。諷刺的是，為獵殺 Ralph 而放的那把破壞之火，才是讓他們獲救的原因。","男孩們害怕存在於自身以外的邪惡，其實它就在他們心中。","插在木棍上的豬頭。這個詞是希伯來名字 Beelzebub（魔鬼的名字之一）的翻譯，代表男孩們開始崇拜的邪惡。"],
+devs:["人物和物件代表更大的概念：Ralph 代表民主，Jack 代表獨裁，Piggy 代表理性，Simon 代表心靈的洞察。","失蹤的胎記男孩和 Roger 丟的石頭，都暗示了後來的殺戮。","男孩們被一名來自正在打更大戰爭的世界的海軍軍官救起，而且救他們的是一把原本要燒死 Ralph 的火。","Ralph 與 Jack、Piggy 與 Jack，透過對比凸顯彼此的價值觀。","島嶼從明亮的樂園變成燃燒的地獄，映照出男孩們的墮落。"],
+ct:[{q:"這部小說證明了人性本惡嗎？",claim:"對 Golding 的人性觀表明立場。",ev:"第 4 章（Roger 的石頭與 Jack 的面具）、第 8 章（蒼蠅王對 Simon 說話）、第 9 章（Simon 之死）、第 12 章（Ralph 的眼淚）。",rs:"說明男孩們暴力的原因：是他們內在的某種東西，還是他們所處的情境？",cc:"Ralph、Piggy、Simon 和雙胞胎抵抗了很久。這會削弱 Golding 的論點嗎？",m:"參考論點：Golding 主張每個人都有作惡的能力，但那些抵抗的角色顯示，決定我們成為什麼人的，不只是本性，還有選擇。"},
+{q:"為什麼 Jack 贏得男孩們的忠誠，而 Ralph 卻失去它？",claim:"比較兩位領袖的方法。",ev:"第 1 章（選舉）、第 4 章（烽火熄滅）、第 8 章（Jack 離開）、第 9 章（宴會）。",rs:"看看每位領袖提供了什麼：安全與獲救，還是肉、刺激和免於野獸的保護。",cc:"Ralph 失去控制，自己是否也有部分責任？",m:"參考論點：Jack 之所以獲勝，是因為他提供立即的快樂和對恐懼的保護，而 Ralph 要男孩們為一個他們不再相信的遙遠目標努力。"},
+{q:"為什麼 Simon 必須死？",claim:"說明 Simon 之死的意義。",ev:"第 3 章（Simon 的空地）、第 5 章（他提出野獸「只是我們自己」）、第 8 章（幻覺）、第 9 章（他的死）。",rs:"想一想 Simon 知道什麼，以及為什麼群體無法接受。",cc:"Simon 是否好得令人難以置信？",m:"參考論點：Simon 正好在帶來真相的那一刻被殺，顯示被恐懼支配的群眾，會毀掉原本能拯救他們的人。"},
+{q:"結局是充滿希望的嗎？",claim:"判斷海軍軍官的到來代表什麼。",ev:"第 12 章（軍官和他的軍艦）、第 6 章（死去的跳傘員）、第 1 章（Piggy 提到原子彈）。",rs:"想一想是誰救了男孩們，以及那個大人的世界正在做什麼。",cc:"Ralph 獲救了，殺戮也停止了。這樣就能說結局充滿希望嗎？",m:"參考論點：結局充滿反諷：救起男孩們的，是一艘來自正在以更大規模打同樣戰爭的世界的軍艦。"},
+{q:"Piggy 受到什麼樣的對待？這揭示了群體的什麼？",claim:"論證 Piggy 的遭遇揭示了什麼。",ev:"第 1 章（他的綽號傳開）、第 4 章（Jack 打破他的眼鏡）、第 11 章（他的死）。",rs:"說明為什麼群體會嘲笑點子最好的那個男孩。",cc:"Piggy 自己的行為，是否也讓別人更難聽他說話？",m:"參考論點：男孩們嘲笑 Piggy，是因為他的外表和說話方式與眾不同，顯示當理性來自局外人時，群體往往會拒絕它。"},
+{q:"跨文本：把這部小說和 1960 年代六名東加男孩受困於 ‘Ata 島的真實故事做比較。",claim:"論證這個比較對 Golding 的觀點揭示了什麼。",ev:"小說本身，加上一份關於 ‘Ata 島受困者的可靠報導（例如 Rutger Bregman 2020 年的著作《Humankind》中的記述）。",rs:"比較兩群人如何組織自己，以及結果為何不同。",cc:"一群是真實的，一群是虛構的。真實事件能推翻小說的論點嗎？",m:"參考論點：東加男孩們的合作顯示，Golding 的觀點只是一種可能，而不是自然定律；文化與選擇會影響人在壓力下的行為。"}]}};
+
+const NIGHT={
+title:"Night",author:"Elie Wiesel · 1956 / 1960",blurb:"Holocaust memoir, faith, survival",cite:"author and page, e.g., (Wiesel 34)",
+bg:["Night is a memoir, not a novel: Elie Wiesel’s account of his own experience in the Nazi concentration camps of Auschwitz and Buchenwald in 1944–1945, when he was fifteen and sixteen. A longer version was first published in Yiddish in 1956; a shorter French version appeared in 1958 and the English translation in 1960. A new translation by his wife, Marion Wiesel, was published in 2006.",
+"Wiesel grew up in Sighet, a town in Transylvania that was then part of Hungary. Most of Hungary’s Jews were deported to Auschwitz in the spring and summer of 1944. Wiesel’s mother and younger sister were killed there, and his father died in Buchenwald.",
+"Wiesel became a writer, teacher and human rights activist and received the Nobel Peace Prize in 1986. Content note: this book describes real genocide, death and cruelty. Read it with care, and talk with a trusted adult if it is distressing."],
+sum:[["Section 1 · Sighet","In 1941, twelve-year-old Eliezer studies Jewish law and mysticism with Moishe the Beadle, a poor, gentle man. When foreign Jews are expelled from Sighet, Moishe is deported, but he escapes and returns to warn the town that the deportees were murdered. No one believes him. In the spring of 1944, German troops arrive in Hungary. The Jews of Sighet are forced to wear the yellow star, moved into ghettos and finally packed into cattle cars."],
+["Sections 2–3 · Arrival","During the journey, Madame Schächter screams that she sees fire; the others silence her, until they arrive at Birkenau and see the flames and smell burning flesh. In the selection, Eliezer is separated forever from his mother and his younger sister, Tzipora. Following another prisoner’s advice, he and his father lie about their ages. Eliezer sees children being burned, and his faith begins to break. The prisoners are stripped, shaved and tattooed with numbers."],
+["Section 4 · Buna","Eliezer and his father are moved to the labor camp Buna. Eliezer is beaten by the Kapo Idek and forced to give up the gold crown on his tooth. Prisoners are made to watch hangings. When a young boy is hanged and takes a long time to die, a man behind Eliezer asks where God is, and Eliezer hears a voice inside him answer that God is hanging there on the gallows."],
+["Section 5 · Selection and evacuation","On Rosh Hashanah, Eliezer cannot join the prayers and feels that he is accusing God; on Yom Kippur he decides not to fast. He and his father survive another selection. In January 1945, Eliezer has surgery on his foot. As the Soviet army approaches, the Nazis evacuate the camp, and he and his father choose to leave with the others."],
+["Sections 6–7 · The march and the train","Prisoners are forced to run through the snow for miles; those who fall are shot. Rabbi Eliahu searches for his son, and Eliezer realizes the son abandoned his father; he prays never to do the same. At Gleiwitz, his friend Juliek plays his violin one last time and dies. The prisoners are packed into open cattle cars for days without food. When workers throw bread into a car, men fight over it, and a son kills his own father for a piece. Of about a hundred men in Eliezer’s car, only a dozen reach Buchenwald alive."],
+["Sections 8–9 · Buchenwald and liberation","At Buchenwald, Eliezer’s father falls sick with dysentery. Eliezer cares for him but struggles with the weight of keeping him alive, while others beat and rob the dying man. One night in January 1945 his father is taken away, and Eliezer feels both grief and a guilty sense of relief. On April 11, 1945, the American army liberates Buchenwald. When Eliezer looks in a mirror for the first time since the ghetto, he sees a corpse looking back at him."]],
+chars:[["Eliezer","The narrator, based on Wiesel himself; a devout boy whose faith is shaken."],["Shlomo","Eliezer’s father; respected in the Sighet community."],["Moishe the Beadle","Eliezer’s teacher; the witness no one believes."],["Madame Schächter","A woman on the train who screams that she sees fire."],["Tzipora","Eliezer’s youngest sister; killed at Birkenau with their mother."],["Idek","A Kapo who beats prisoners."],["Juliek","A young violinist Eliezer befriends."],["Rabbi Eliahu","A holy man whose son abandons him."]],
+themes:[["Faith and doubt","Eliezer argues with God. His faith is deeply wounded, but he keeps addressing God even in anger."],
+["Silence","The town ignores Moishe, the world says nothing, and God seems silent. Wiesel writes to break that silence."],
+["Fathers and sons","Eliezer and his father keep each other alive, yet the camps push sons to abandon fathers."],
+["Dehumanization","Numbers replace names, hunger replaces thought, and prisoners are forced to turn on one another."],
+["Memory and witness","Wiesel treats remembering and telling as a duty to the dead and a warning to the living."]],
+syms:[["Night","Darkness, death, the absence of God and the end of childhood."],
+["Fire","The destruction of the camps; it turns a symbol of light into a symbol of murder."],
+["The yellow star","The first step in marking and separating Jews from their neighbors."],
+["The mirror","At the end, the corpse he sees shows how much of himself the camps destroyed."]],
+devs:[["First-person memoir","A true account told by the person who lived it, which gives it the authority of a witness."],
+["Imagery","Night, fire and smoke appear again and again to make the horror visible."],
+["Repetition","The passage beginning ‘Never shall I forget’ repeats the phrase to show that these memories will never leave him."],
+["Irony","The people of Sighet ignore the one person who tries to warn them."],
+["Retrospective narration","An adult writer looks back on a boy’s experience, adding reflection and judgment."]],
+ct:[{q:"Why didn’t the Jews of Sighet believe Moishe the Beadle?",claim:"Explain the reasons for the town’s disbelief.",ev:"Section 1 (Moishe’s warning, the town’s reaction, the arrival of the Germans and the ghetto).",rs:"Consider fear, hope and how people react to news that seems impossible.",cc:"Could the townspeople have saved themselves if they had believed him?",m:"Model claim: The town’s disbelief shows how people reject unbearable truths in order to protect their hope, which makes warnings easy to ignore."},
+{q:"Has Eliezer lost his faith, or is he arguing with God?",claim:"Take a position on Eliezer’s relationship with God by the end.",ev:"Section 1 (his early devotion), Section 3 (the first night), Section 4 (the hanging), Section 5 (Rosh Hashanah and Yom Kippur).",rs:"Notice that he still speaks to God even when he is angry.",cc:"Some readers see a total loss of faith. What evidence supports that view?",m:"Model claim: Eliezer does not stop believing in God so much as he puts God on trial, which is itself a form of faith."},
+{q:"Is Eliezer’s father a burden or the reason he survives?",claim:"Argue how the father–son relationship affects Eliezer’s survival.",ev:"Section 3 (lying about their ages), Section 6 (the march and Rabbi Eliahu), Section 7 (the train), Section 8 (Buchenwald).",rs:"Show moments when each keeps the other alive, and moments of resentment.",cc:"How should we judge Eliezer’s feeling of relief?",m:"Model claim: Eliezer’s father is both his greatest burden and his reason to live; the camps’ cruelty shows most clearly in how they force a loving son to feel relief."},
+{q:"Why is the book called Night?",claim:"Explain what ‘night’ means in the memoir.",ev:"Section 1 (night prayers), Section 3 (the first night in camp), Section 9 (the mirror).",rs:"Track how night changes from a time of prayer to a symbol of death and despair.",cc:"Is there any light or hope in the book?",m:"Model claim: ‘Night’ stands for a darkness that is physical, moral and spiritual — a night that, for Eliezer, never fully ends."},
+{q:"What is the responsibility of bystanders?",claim:"Argue what Night says about those who stay silent.",ev:"Section 1 (the town and the world), Section 3 (the world’s silence), and Wiesel’s 1986 Nobel Peace Prize acceptance speech, available on the Nobel Prize website.",rs:"Connect the book’s silence to Wiesel’s later call to take sides against injustice.",cc:"Can ordinary people be blamed for not acting when they feel powerless?",m:"Model claim: Wiesel argues that silence helps the oppressor, so remembering and speaking out are moral duties, not choices."},
+{q:"Cross-text: Compare the bystanders in Night with the townspeople of Maycomb in To Kill a Mockingbird.",claim:"Argue what both texts show about communities that accept injustice.",ev:"Night Section 1; To Kill a Mockingbird Ch. 15 (the mob) and Ch. 21 (the verdict).",rs:"Compare how ordinary people allow or resist injustice.",cc:"The Holocaust and Jim Crow differ greatly in scale. Is the comparison fair?",m:"Model claim: Both texts show that injustice depends on ordinary people who look away, though the Holocaust shows where that silence can lead at its most extreme."}],
+kz:{"Faith and doubt":"信仰與懷疑","Silence":"沉默","Fathers and sons":"父與子","Dehumanization":"非人化","Memory and witness":"記憶與見證","Night":"黑夜","Fire":"火","The yellow star":"黃色星章","The mirror":"鏡子","First-person memoir":"第一人稱回憶錄","Imagery":"意象","Repetition":"重複","Retrospective narration":"回顧式敘事"},
+zh:{bg:["《Night》是回憶錄，不是小說：這是 Elie Wiesel 親身經歷 1944–1945 年納粹 Auschwitz 和 Buchenwald 集中營的記述，當時他十五、十六歲。較長的版本於 1956 年首先以意第緒語出版；較短的法文版於 1958 年問世，英譯本於 1960 年出版。他的妻子 Marion Wiesel 的新譯本於 2006 年出版。",
+"Wiesel 在 Sighet 長大，這是 Transylvania 的一個小鎮，當時屬於匈牙利。1944 年春夏，匈牙利大部分猶太人被驅逐到 Auschwitz。Wiesel 的母親和妹妹在那裡遇害，父親則死於 Buchenwald。",
+"Wiesel 後來成為作家、教師和人權運動者，並於 1986 年獲得諾貝爾和平獎。內容提醒：這本書描述真實的種族滅絕、死亡與殘酷。請謹慎閱讀；如果讀了感到難受，請和信任的大人談談。"],
+sum:["1941 年，十二歲的 Eliezer 跟著貧窮而溫和的 Moishe 學習猶太律法與神秘主義。外國籍猶太人被驅逐出 Sighet 時，Moishe 也被遣送，但他逃了回來，警告鎮上的人：被遣送的人都被殺害了。沒有人相信他。1944 年春天，德軍進入匈牙利。Sighet 的猶太人被迫佩戴黃色星章，被趕進猶太隔離區，最後被塞進運牲畜的車廂。",
+"途中，Schächter 太太尖叫說她看見了火；其他人讓她閉嘴，直到他們抵達 Birkenau，看見火焰、聞到焚燒屍體的氣味。在篩選中，Eliezer 與母親和妹妹 Tzipora 永遠分開了。他和父親聽從另一名囚犯的建議，謊報了年齡。Eliezer 看見孩子被焚燒，他的信仰開始崩裂。囚犯們被剝光衣服、剃光頭髮，並刺上編號。",
+"Eliezer 和父親被轉到勞動營 Buna。Eliezer 被囚犯頭目 Idek 毆打，還被迫交出牙齒上的金牙冠。囚犯們被迫觀看絞刑。一個小男孩被吊死、久久沒有斷氣時，Eliezer 身後有人問上帝在哪裡，Eliezer 聽見內心有個聲音回答：上帝就吊在那座絞刑架上。",
+"猶太新年時，Eliezer 無法加入禱告，覺得自己在控訴上帝；贖罪日時，他決定不禁食。他和父親又熬過了一次篩選。1945 年 1 月，Eliezer 的腳動了手術。隨著蘇聯軍隊逼近，納粹撤離集中營，他和父親選擇跟著其他人一起離開。",
+"囚犯們被迫在雪中跑了好幾英里；倒下的人就被槍殺。Eliahu 拉比尋找他的兒子，Eliezer 明白那個兒子拋棄了父親；他祈禱自己永遠不要這樣做。在 Gleiwitz，他的朋友 Juliek 最後一次拉起小提琴，然後死去。囚犯們被塞進敞篷的運牲畜車廂，好幾天沒有食物。當工人往車廂裡丟麵包時，人們為此爭搶，一個兒子為了一塊麵包殺死了自己的父親。Eliezer 所在的車廂約有一百人，活著抵達 Buchenwald 的只有十幾人。",
+"在 Buchenwald，Eliezer 的父親染上痢疾。Eliezer 照顧他，卻在讓父親活下去的重擔中掙扎，而其他人毆打並搶奪這個垂死的人。1945 年 1 月的某個夜裡，父親被帶走了，Eliezer 同時感到悲痛與一種帶著罪惡感的解脫。1945 年 4 月 11 日，美軍解放了 Buchenwald。Eliezer 自離開隔離區後第一次照鏡子，看見一具屍體正望著他。"],
+chars:["敘事者，以 Wiesel 本人為原型；一個信仰虔誠、信仰卻被動搖的男孩。","Eliezer 的父親；在 Sighet 社群中受人尊敬。","Eliezer 的老師；沒有人相信的見證者。","火車上尖叫說看見火的女人。","Eliezer 的妹妹；和母親一起在 Birkenau 遇害。","毆打囚犯的囚犯頭目（Kapo）。","Eliezer 結識的年輕小提琴手。","一位被兒子拋棄的虔誠拉比。"],
+themes:["Eliezer 與上帝爭辯。他的信仰受了重創，但即使在憤怒中，他仍然對上帝說話。","小鎮忽視 Moishe，世界一言不發，上帝似乎也沉默不語。Wiesel 寫作，就是為了打破這份沉默。","Eliezer 和父親讓彼此活下去，但集中營卻逼著兒子拋棄父親。","編號取代名字，飢餓取代思考，囚犯們被迫互相傷害。","Wiesel 把記憶與述說視為對死者的責任，也是對生者的警告。"],
+syms:["黑暗、死亡、上帝的缺席，以及童年的終結。","集中營的毀滅；它把光明的象徵變成了屠殺的象徵。","把猶太人標記出來、與鄰居隔離的第一步。","結局時他看見的那具屍體，顯示集中營毀掉了他多少的自我。"],
+devs:["由親身經歷者講述的真實記錄，具有見證者的權威。","黑夜、火焰和濃煙一再出現，讓恐怖變得具體可見。","以「Never shall I forget」開頭的段落反覆使用這句話，顯示這些記憶永遠不會離開他。","Sighet 的人們忽視了唯一試圖警告他們的人。","成年的作者回顧一個男孩的經歷，加入了反思與評斷。"],
+ct:[{q:"為什麼 Sighet 的猶太人不相信 Moishe？",claim:"說明小鎮不相信他的原因。",ev:"第 1 節（Moishe 的警告、小鎮的反應、德軍抵達與隔離區）。",rs:"想一想恐懼、希望，以及人們面對看似不可能的消息時的反應。",cc:"如果鎮民相信了他，他們能救自己嗎？",m:"參考論點：小鎮的不信顯示，人們會為了保護自己的希望而拒絕難以承受的真相，這讓警告很容易被忽視。"},
+{q:"Eliezer 失去了信仰，還是在與上帝爭辯？",claim:"對 Eliezer 在結局時與上帝的關係表明立場。",ev:"第 1 節（他早年的虔誠）、第 3 節（第一夜）、第 4 節（絞刑）、第 5 節（猶太新年與贖罪日）。",rs:"注意他即使在憤怒時，仍然在對上帝說話。",cc:"有些讀者認為他完全失去了信仰。有哪些證據支持這個看法？",m:"參考論點：與其說 Eliezer 不再相信上帝，不如說他把上帝送上了審判台，而這本身就是一種信仰。"},
+{q:"Eliezer 的父親是負擔，還是他活下來的理由？",claim:"論證父子關係如何影響 Eliezer 的生存。",ev:"第 3 節（謊報年齡）、第 6 節（行軍與 Eliahu 拉比）、第 7 節（火車）、第 8 節（Buchenwald）。",rs:"舉出兩人讓彼此活下去的時刻，以及心生怨懟的時刻。",cc:"我們該如何看待 Eliezer 感到解脫這件事？",m:"參考論點：Eliezer 的父親既是他最大的負擔，也是他活下去的理由；集中營的殘酷，最清楚地表現在它逼一個深愛父親的兒子感到解脫。"},
+{q:"這本書為什麼叫《Night》？",claim:"說明「黑夜」在這本回憶錄中的意義。",ev:"第 1 節（夜間禱告）、第 3 節（集中營的第一夜）、第 9 節（鏡子）。",rs:"追蹤黑夜如何從禱告的時刻，轉變為死亡與絕望的象徵。",cc:"這本書裡有任何光明或希望嗎？",m:"參考論點：「黑夜」代表身體、道德與心靈上的黑暗；對 Eliezer 來說，這個黑夜從未真正結束。"},
+{q:"旁觀者負有什麼責任？",claim:"論證《Night》對保持沉默的人有什麼看法。",ev:"第 1 節（小鎮與世界）、第 3 節（世界的沉默），以及 Wiesel 1986 年諾貝爾和平獎的得獎演說（可在諾貝爾獎官方網站找到）。",rs:"把書中的沉默，與 Wiesel 後來呼籲人們在不公義面前選邊站連結起來。",cc:"當普通人感到無力時，能因為他們沒有行動而責怪他們嗎？",m:"參考論點：Wiesel 主張沉默會幫助壓迫者，因此記憶與發聲是道德責任，而不是可有可無的選擇。"},
+{q:"跨文本：比較《Night》中的旁觀者與《To Kill a Mockingbird》中 Maycomb 的鎮民。",claim:"論證兩個文本對接受不公義的社群揭示了什麼。",ev:"《Night》第 1 節；《To Kill a Mockingbird》第 15 章（暴民）與第 21 章（判決）。",rs:"比較普通人如何容許或抵抗不公義。",cc:"大屠殺與 Jim Crow 在規模上差異極大。這樣比較公平嗎？",m:"參考論點：兩個文本都顯示，不公義仰賴那些轉過頭去的普通人，而大屠殺則呈現了這種沉默在最極端時會導致什麼。"}]}};
+
+const F451={
+title:"Fahrenheit 451",author:"Ray Bradbury · 1953",blurb:"Censorship, technology, thinking for yourself",cite:"author and page, e.g., (Bradbury 58)",
+bg:["A dystopian novel by Ray Bradbury, published in 1953 and expanded from his 1951 novella ‘The Fireman.’ The title refers to the temperature Bradbury gave as the point at which book paper catches fire.",
+"In a future America, houses are fireproof, and ‘firemen’ start fires instead of putting them out: they burn books, which are illegal. People fill their time with wall-sized televisions, tiny earbud radios called Seashells, fast cars and sleeping pills.",
+"Bradbury wrote the novel early in the Cold War, two decades after the Nazi book burnings and during the McCarthy era’s fear of dangerous ideas. He also worried that television and mass media would make people stop reading and thinking for themselves."],
+sum:[["Part 1 · The Hearth and the Salamander (opening)","Guy Montag, a fireman, enjoys burning books. Walking home, he meets his new neighbor Clarisse McClellan, a curious seventeen-year-old who asks whether he is happy. At home he finds his wife, Mildred, unconscious from an overdose of sleeping pills; technicians pump her stomach, and the next morning she remembers nothing. Clarisse keeps talking with Montag about nature and ideas, and he begins to question his life."],
+["Part 1 · (continued)","On a call, an old woman refuses to leave her books and burns with them. Montag secretly takes a book. Clarisse disappears, and Mildred mentions that she was hit by a car. When Montag stays home sick, Captain Beatty visits and explains how their society came to be: as media sped up and people wanted to avoid offending anyone, books were shortened, simplified and finally banned, and firemen became keepers of everyone’s peace of mind. After Beatty leaves, Montag shows Mildred the books he has hidden."],
+["Part 2 · The Sieve and the Sand","Montag and Mildred try to read, but she is frightened and uninterested. Montag visits Faber, a retired English professor he once met in a park. Faber explains that books matter because they offer detailed truth about life, time to think about it and the freedom to act on what we learn. He gives Montag a tiny two-way radio earpiece so he can guide him. Montag reads the poem ‘Dover Beach’ to Mildred’s friends; one of them cries, and the others are angry. At the firehouse, Beatty taunts Montag with quotations from the very books he burns."],
+["Part 3 · Burning Bright (the escape)","The alarm sounds, and the firemen drive to Montag’s own house: Mildred has turned him in. Beatty orders Montag to burn his home. When Beatty discovers the earpiece and threatens to track down Faber, Montag turns the flamethrower on Beatty and kills him. The Mechanical Hound injures Montag’s leg before he destroys it. Montag flees across the city while the chase is broadcast on television, reaches the river and floats away. To end the show, the broadcast pretends to catch him by killing an innocent man."],
+["Part 3 · (ending)","Downstream, Montag meets Granger and a group of exiled thinkers who have each memorized a book so it can be rebuilt someday; Montag has memorized parts of the Book of Ecclesiastes. From a distance, they watch the city destroyed by bombs in a sudden war. Granger tells the legend of the phoenix rising from its own ashes, and the group walks back toward the city to help rebuild."]],
+chars:[["Guy Montag","A fireman who awakens to the value of books."],["Mildred Montag","His wife; absorbed by television and pills."],["Clarisse McClellan","A curious teenage neighbor who makes Montag think."],["Captain Beatty","The fire chief; widely read, yet a defender of censorship."],["Faber","A retired English professor; Montag’s mentor."],["Granger","Leader of the exiled book people."],["Mrs. Phelps and Mrs. Bowles","Mildred’s shallow friends."],["The Mechanical Hound","A robotic hunter used by the firemen."]],
+themes:[["Censorship and knowledge","The society bans books to keep people comfortable and equal, but in doing so it destroys their ability to think, remember and question."],
+["Conformity vs. individuality","Clarisse and Montag are seen as dangerous simply because they ask questions and notice the world around them."],
+["Technology and isolation","Wall televisions and Seashell radios surround people with noise and a fake ‘family,’ yet Montag and Mildred cannot remember how they met."],
+["Happiness vs. pleasure","Mildred is entertained all the time but deeply unhappy. Clarisse’s simple question shows that pleasure is not the same as happiness."],
+["Destruction and rebirth","Fire destroys, but it also gives warmth and new beginnings; the phoenix suggests a society can rise again from its ashes."]],
+syms:[["Fire","At first destruction and control; by the end, warmth, light and renewal."],
+["The phoenix and the salamander","The firemen’s emblems. The salamander was believed to live in fire; the phoenix dies and is reborn from its ashes."],
+["The Mechanical Hound","Technology turned into a weapon of government control."],
+["The sieve and the sand","Montag’s childhood memory of trying to fill a sieve with sand stands for his struggle to hold on to knowledge."],
+["The mirror","Granger says the book people must first look honestly at themselves, as if building a factory of mirrors."]],
+devs:[["Dystopian setting","A future society that looks comfortable but is controlled and empty, used to criticize trends in the present."],
+["Allusion","References to the Bible, ‘Dover Beach’ and the phoenix connect the novel to the books its society destroys."],
+["Metaphor and imagery","Fire imagery, and Montag’s hands acting as if they have a will of their own, show his inner change."],
+["Irony","Firemen start fires, and Beatty quotes books to defend burning them."],
+["Foreshadowing","Jets crossing the sky and Mildred’s coldness hint at the war and her betrayal."]],
+ct:[{q:"Is Captain Beatty right that people chose censorship themselves?",claim:"Evaluate Beatty’s explanation of how book burning began.",ev:"Part 1 (Beatty’s history lesson), Part 2 (Faber’s explanation), Part 3 (the burning of Montag’s house).",rs:"Separate the parts of Beatty’s argument that the novel supports from the parts it rejects.",cc:"If the government enforces the ban, can ordinary people really be blamed?",m:"Model claim: Bradbury suggests that censorship began with people’s own desire for easy comfort, and that the government only finished what the public started."},
+{q:"How close is our world to the world of Fahrenheit 451?",claim:"Compare one technology in the novel with one in your own life.",ev:"Part 1 (the parlor walls and Seashells), Part 2 (Mildred’s friends), plus one real example from today.",rs:"Explain how the technology affects attention, relationships or thinking.",cc:"Modern technology also spreads information and connects people. Does that change your answer?",m:"Model claim: Like the parlor walls, endless entertainment today can crowd out deep thinking, but unlike Montag’s world, we still have the freedom to choose what we read."},
+{q:"Who changes Montag the most: Clarisse, Faber or Beatty?",claim:"Choose one character and argue for that choice.",ev:"Part 1 (Clarisse’s questions), Part 2 (Faber’s lessons), Parts 1 and 2 (Beatty’s speeches).",rs:"Explain what each character teaches him and what he does differently afterward.",cc:"Does Montag change himself more than anyone else changes him?",m:"Model claim: Clarisse starts Montag’s change by making him ask whether he is happy; without that first question, Faber’s lessons would have meant nothing."},
+{q:"Is Montag a hero?",claim:"Decide whether Montag’s actions are heroic.",ev:"Part 2 (reading to Mildred’s friends), Part 3 (killing Beatty), Part 3 (joining the book people).",rs:"Weigh his courage against his violence and his mistakes.",cc:"Montag later suspects Beatty wanted to die. Does that change how we judge him?",m:"Model claim: Montag becomes a hero not when he kills Beatty but when he chooses to remember and protect books for the future."},
+{q:"Should books ever be removed from schools?",claim:"Take a position on book challenges today.",ev:"The novel (Beatty’s argument about avoiding offense, Faber’s view of books), plus one recent news article about book challenges.",rs:"Consider who decides, what reasons are given and what students gain or lose.",cc:"Some parents worry about age-appropriate content. How would you answer that concern?",m:"Model claim: The novel warns that removing books to avoid discomfort leads to a society that cannot think, so challenges should be rare, transparent and based on age, not on ideas."},
+{q:"Cross-text: Compare the book burnings in Fahrenheit 451 with the Nazi book burnings of 1933.",claim:"Argue what destroying books has to do with controlling people.",ev:"Part 1 (the old woman); a reliable history source on the May 1933 book burnings, such as the U.S. Holocaust Memorial Museum website; Night Section 1 (the first steps of persecution in Sighet).",rs:"Explain how controlling ideas makes persecution easier.",cc:"Bradbury’s society is not genocidal. Is the comparison fair?",m:"Model claim: Both show that attacks on books are attacks on people’s ability to think and resist, which is why tyranny so often begins with ideas."}],
+kz:{"Censorship and knowledge":"審查與知識","Conformity vs. individuality":"從眾與個體性","Technology and isolation":"科技與孤立","Happiness vs. pleasure":"幸福與享樂","Destruction and rebirth":"毀滅與重生","The phoenix and the salamander":"鳳凰與火蜥蜴","The Mechanical Hound":"機械獵犬","The sieve and the sand":"篩子與沙","Dystopian setting":"反烏托邦背景","Allusion":"典故","Metaphor and imagery":"隱喻與意象"},
+zh:{bg:["Ray Bradbury 的反烏托邦小說，1953 年出版，由他 1951 年的中篇小說〈The Fireman〉擴寫而成。書名指的是 Bradbury 所說的書頁紙張起火燃燒的溫度。",
+"在未來的美國，房屋都是防火的，「消防員」不是滅火，而是放火：他們燒掉違法的書。人們用整面牆大小的電視、叫做 Seashell 的小型耳塞式收音機、飛快的汽車和安眠藥來打發時間。",
+"Bradbury 在冷戰初期寫下這部小說，那時距離納粹焚書已過了二十年，又正值麥卡錫時代對「危險思想」的恐懼。他也擔心電視與大眾媒體會讓人們不再自己閱讀和思考。"],
+sum:["消防員 Guy Montag 很享受燒書。走路回家時，他遇到新鄰居 Clarisse McClellan，一個好奇的十七歲女孩，她問他快不快樂。回到家，他發現妻子 Mildred 因服用過量安眠藥而昏迷；技術人員幫她洗胃，第二天早上她什麼都不記得。Clarisse 持續和 Montag 聊大自然和各種想法，他開始質疑自己的人生。",
+"在一次出勤中，一位老婦人不肯離開她的書，和書一起被燒死。Montag 偷偷拿走一本書。Clarisse 不見了，Mildred 提到她被車撞了。Montag 請病假在家時，Beatty 隊長來訪，解釋他們的社會是怎麼形成的：隨著媒體越來越快，人們又想避免冒犯任何人，書被刪短、簡化，最後被禁止，消防員則成了守護大家內心平靜的人。Beatty 離開後，Montag 把藏起來的書拿給 Mildred 看。",
+"Montag 和 Mildred 試著閱讀，但她又害怕又沒興趣。Montag 去找 Faber，一位他曾在公園遇過的退休英文教授。Faber 解釋書之所以重要，是因為書提供了關於生活的細膩真相、思考它的時間，以及依據所學採取行動的自由。他給了 Montag 一個小小的雙向無線電耳機，以便引導他。Montag 對 Mildred 的朋友們朗讀詩作〈Dover Beach〉；其中一人哭了，其他人則很生氣。在消防站，Beatty 引用他所燒掉的那些書中的句子來嘲弄 Montag。",
+"警鈴響起，消防員們開車前往的竟是 Montag 自己的家：Mildred 告發了他。Beatty 命令 Montag 燒掉自己的房子。當 Beatty 發現耳機並揚言要追查 Faber 時，Montag 把噴火器對準 Beatty，殺了他。機械獵犬在被 Montag 摧毀之前刺傷了他的腿。Montag 在電視直播追捕的同時逃過整座城市，抵達河邊並順流漂走。為了讓節目收尾，直播殺了一名無辜的人，假裝抓到了他。",
+"在下游，Montag 遇到 Granger 和一群流亡的思想者，他們每人都背下一本書，好讓書有一天能重建；Montag 背下了《傳道書》的部分內容。他們從遠處看著城市在一場突如其來的戰爭中被炸毀。Granger 講述鳳凰從自己的灰燼中重生的傳說，這群人隨即朝城市走去，準備幫忙重建。"],
+chars:["一名逐漸覺醒、明白書本價值的消防員。","他的妻子；沉迷於電視和藥物。","好奇的少女鄰居，讓 Montag 開始思考。","消防隊長；博覽群書，卻捍衛審查制度。","退休的英文教授；Montag 的導師。","流亡的「書人」的領袖。","Mildred 膚淺的朋友。","消防員使用的機器人獵犬。"],
+themes:["這個社會禁書是為了讓人們舒適、平等，但這樣做卻摧毀了他們思考、記憶與質疑的能力。","Clarisse 和 Montag 被視為危險人物，只因為他們會提問，並留意周遭的世界。","整面牆的電視和 Seashell 收音機用噪音和虛假的「家人」包圍人們，然而 Montag 和 Mildred 卻記不起他們是怎麼認識的。","Mildred 隨時都在娛樂中，內心卻極度不快樂。Clarisse 一個簡單的問題就顯示出：享樂不等於幸福。","火會毀滅，也會帶來溫暖與新的開始；鳳凰暗示一個社會可以從灰燼中再次崛起。"],
+syms:["起初代表毀滅與控制；到了結尾，則代表溫暖、光明與更新。","消防員的徽章。人們曾相信火蜥蜴能住在火裡；鳳凰則死後從灰燼中重生。","被當成政府控制武器的科技。","Montag 童年時試著用篩子裝沙的記憶，象徵他努力想留住知識的掙扎。","Granger 說，書人們首先必須誠實地看清自己，就像要建一座鏡子工廠一樣。"],
+devs:["一個看似舒適、實則受控又空虛的未來社會，用來批評當下的趨勢。","引用《聖經》、〈Dover Beach〉和鳳凰的典故，把小說與這個社會所摧毀的書連結起來。","火的意象，以及 Montag 的手彷彿有自己意志的描寫，呈現出他內心的轉變。","消防員放火，而 Beatty 引用書中的話來為燒書辯護。","劃過天空的噴射機和 Mildred 的冷漠，暗示了戰爭與她的背叛。"],
+ct:[{q:"Beatty 隊長說是人們自己選擇了審查制度，他說得對嗎？",claim:"評估 Beatty 對焚書起源的解釋。",ev:"第 1 部（Beatty 的歷史課）、第 2 部（Faber 的解釋）、第 3 部（燒毀 Montag 的房子）。",rs:"把 Beatty 論點中小說支持的部分，與小說否定的部分分開。",cc:"如果是政府在執行禁令，真的能責怪普通人嗎？",m:"參考論點：Bradbury 暗示，審查始於人們自己對輕鬆舒適的渴望，政府只是完成了大眾開始的事。"},
+{q:"我們的世界和《Fahrenheit 451》的世界有多接近？",claim:"把小說中的一種科技和你生活中的一種科技做比較。",ev:"第 1 部（客廳電視牆與 Seashell）、第 2 部（Mildred 的朋友），再加上一個當今的真實例子。",rs:"說明這項科技如何影響專注力、人際關係或思考。",cc:"現代科技也傳播資訊、連結人們。這會改變你的答案嗎？",m:"參考論點：就像客廳電視牆一樣，今天無止盡的娛樂可能擠掉深度思考；但和 Montag 的世界不同，我們仍有選擇閱讀內容的自由。"},
+{q:"誰對 Montag 的改變最大：Clarisse、Faber，還是 Beatty？",claim:"選一個角色並論證你的選擇。",ev:"第 1 部（Clarisse 的問題）、第 2 部（Faber 的教導）、第 1 和第 2 部（Beatty 的演說）。",rs:"說明每個角色教了他什麼，以及他之後的行為有什麼不同。",cc:"是不是 Montag 自己改變自己，比任何人改變他都多？",m:"參考論點：Clarisse 開啟了 Montag 的轉變，讓他問自己是否快樂；沒有那第一個問題，Faber 的教導就毫無意義。"},
+{q:"Montag 是英雄嗎？",claim:"判斷 Montag 的行為是否英勇。",ev:"第 2 部（對 Mildred 的朋友朗讀）、第 3 部（殺死 Beatty）、第 3 部（加入書人）。",rs:"權衡他的勇氣與他的暴力和錯誤。",cc:"Montag 後來懷疑 Beatty 其實想死。這會改變我們對他的評價嗎？",m:"參考論點：Montag 成為英雄，不是在他殺死 Beatty 的時候，而是在他選擇為未來記住並保護書本的時候。"},
+{q:"學校是否應該移除某些書？",claim:"對當今的禁書爭議表明立場。",ev:"小說本身（Beatty 關於避免冒犯的論點、Faber 對書的看法），再加上一篇近期關於禁書爭議的新聞報導。",rs:"想一想由誰決定、提出什麼理由，以及學生會得到或失去什麼。",cc:"有些家長擔心內容是否適合學生的年齡。你會如何回應這個顧慮？",m:"參考論點：小說警告，為了避免不舒服而移除書本，會導致一個無法思考的社會；因此對書的質疑應該很少見、公開透明，並以年齡而非思想為依據。"},
+{q:"跨文本：比較《Fahrenheit 451》中的焚書與 1933 年的納粹焚書。",claim:"論證摧毀書本與控制人民之間的關係。",ev:"第 1 部（老婦人）；一份關於 1933 年 5 月焚書事件的可靠史料，例如美國大屠殺紀念館網站；《Night》第 1 節（Sighet 迫害的最初幾步）。",rs:"說明控制思想如何讓迫害變得更容易。",cc:"Bradbury 筆下的社會並沒有進行種族滅絕。這樣比較公平嗎？",m:"參考論點：兩者都顯示，攻擊書本就是攻擊人們思考與反抗的能力，這正是暴政往往從思想下手的原因。"}]}};
+
+const MAC={
+title:"Macbeth",author:"William Shakespeare · c. 1606",blurb:"Ambition, guilt, fate",cite:"act.scene.line, e.g., (2.2.62)",
+bg:["A tragedy written around 1606 and Shakespeare’s shortest tragedy. It draws on Raphael Holinshed’s Chronicles, a history of Britain, but changes the facts freely. The real Macbeth ruled Scotland from 1040 to 1057.",
+"The play was written soon after James VI of Scotland became King James I of England. James was fascinated by witchcraft and was believed to be descended from Banquo, so the play flatters him while warning against killing a lawful king.",
+"The play is in the public domain, so you may quote it directly; cite act, scene and line numbers, which vary slightly between editions. Many actors avoid saying the title inside a theater and call it ‘the Scottish play’ out of superstition."],
+sum:[["Act 1","Three witches meet on a heath. Returning from battle, the Scottish generals Macbeth and Banquo meet them: the witches hail Macbeth as Thane of Cawdor and future king, and tell Banquo his descendants will be kings. Moments later, King Duncan’s messengers announce that Macbeth has been named Thane of Cawdor. Macbeth writes to his wife, and Lady Macbeth, fearing he is too kind to seize the crown, calls on dark spirits to fill her with cruelty. When Duncan visits their castle, Macbeth hesitates, but she mocks his manhood until he agrees to murder the king."],
+["Act 2","Before the murder, Macbeth sees a floating, bloody dagger. He kills Duncan in his sleep but is too shaken to finish the plan, so Lady Macbeth returns the daggers and smears the sleeping guards with blood. A drunken porter jokes that he is the gatekeeper of hell while someone knocks at the gate. Macduff discovers the body, and Macbeth kills the guards, claiming rage. Duncan’s sons, Malcolm and Donalbain, flee to England and Ireland, and Macbeth is crowned king."],
+["Act 3","Remembering the prophecy about Banquo’s heirs, Macbeth hires murderers to kill Banquo and his son, Fleance. Banquo is killed, but Fleance escapes. At a royal banquet, Banquo’s ghost appears in Macbeth’s seat; only Macbeth can see it, and his terror alarms the guests. Lady Macbeth sends them away."],
+["Act 4","Macbeth seeks out the witches, who show him apparitions: beware Macduff; no man born of a woman can harm him; he will not be defeated until Birnam Wood comes to Dunsinane Hill. They also show him a line of kings descended from Banquo. Learning that Macduff has fled to England, Macbeth has Macduff’s wife and children murdered. In England, Macduff hears the news and, with Malcolm, prepares to invade Scotland."],
+["Act 5","Lady Macbeth sleepwalks, trying to wash imaginary blood from her hands. She dies offstage, probably by suicide, and Macbeth responds with his despairing ‘Tomorrow, and tomorrow, and tomorrow’ speech. Malcolm’s soldiers carry branches from Birnam Wood as camouflage, so the forest seems to move. In battle, Macduff reveals that he was cut from his mother’s womb rather than born naturally. Macduff kills Macbeth, and Malcolm becomes king."]],
+chars:[["Macbeth","A brave general whose ambition turns him into a tyrant."],["Lady Macbeth","His wife; drives the murder, then is destroyed by guilt."],["The three witches","The ‘weird sisters,’ who speak in riddles about the future."],["Banquo","Macbeth’s fellow general; resists temptation; a foil to Macbeth."],["Fleance","Banquo’s son; escapes the murderers."],["King Duncan","The generous, trusting king of Scotland."],["Malcolm","Duncan’s elder son; becomes king at the end."],["Macduff","A Scottish nobleman; Macbeth’s nemesis."],["Lady Macduff","Macduff’s wife; murdered with her children."],["The Porter","A comic, drunken gatekeeper."]],
+themes:[["Ambition","Ambition is Macbeth’s fatal flaw. Without moral limits, it drives him to murder again and again to protect what he has stolen."],
+["Guilt","Guilt appears as blood, sleeplessness and visions. Macbeth’s guilt hardens into numbness, while Lady Macbeth’s breaks her mind."],
+["Fate vs. free will","The witches predict the future but never tell Macbeth to kill. The play asks whether he was destined to be king or chose his path himself."],
+["Appearance vs. reality","‘Fair is foul, and foul is fair’: in this world, loyal faces hide murderous plans, and prophecies hide traps."],
+["Manhood and violence","Lady Macbeth links manhood to violence, but Macduff shows a different kind of man, one who can both fight and grieve."],
+["Order and disorder","Killing a king upsets the natural order: storms rage, darkness covers the day and Duncan’s horses turn wild."]],
+syms:[["Blood","Guilt that cannot be washed away."],
+["Sleep","Innocence and peace; Macbeth says he has ‘murdered sleep.’"],
+["The dagger","Temptation and the pull toward murder."],
+["Darkness","Evil deeds hidden from the light; Macbeth and Lady Macbeth both call on night to hide them."],
+["Borrowed clothes","Macbeth’s new titles are described as robes that do not fit him, showing he does not deserve them."]],
+devs:[["Soliloquy","Macbeth’s speeches alone, such as the dagger speech, reveal his fear and ambition."],
+["Dramatic irony","Duncan praises the pleasant air of the castle where the audience knows he will be murdered."],
+["Paradox and equivocation","The witches speak in contradictions and double meanings that are true in ways Macbeth does not expect."],
+["Imagery","Images of blood, darkness and disease run through the play."],
+["Foil characters","Banquo hears a prophecy too but stays loyal, highlighting Macbeth’s choice."],
+["Comic relief","The Porter’s drunken jokes right after the murder release tension and add dark irony."]],
+ct:[{q:"Who is most responsible for Duncan’s murder: Macbeth, Lady Macbeth or the witches?",claim:"Choose one and defend your choice.",ev:"1.3 (the prophecy), 1.5 (Lady Macbeth’s soliloquy), 1.7 (Macbeth’s doubts and her persuasion), 2.1 (the dagger).",rs:"Separate who suggests the idea, who pushes it and who carries it out.",cc:"If Macbeth already wanted to be king, did the witches only reveal his desire?",m:"Model claim: Macbeth is most responsible: the witches only predict and Lady Macbeth only persuades, but he knows the murder is wrong and chooses it anyway."},
+{q:"Would Macbeth have become king without the prophecy?",claim:"Argue whether the prophecy causes or reveals Macbeth’s ambition.",ev:"1.3 (Macbeth’s first reaction and Banquo’s warning about ‘instruments of darkness’), 1.4 (Malcolm is named heir).",rs:"Compare Macbeth’s response with Banquo’s, since both hear prophecies.",cc:"Banquo also hears good news but does nothing wicked. What does that prove?",m:"Model claim: The prophecy does not create Macbeth’s ambition but releases it; Banquo’s restraint shows that the same words need not lead to murder."},
+{q:"Is Macbeth a tragic hero or simply a villain?",claim:"Take a position using the definition of a tragic hero.",ev:"1.2 (his bravery), 1.7 (his conscience), 3.1–3.2 (planning Banquo’s murder), 5.5 (the ‘Tomorrow’ speech).",rs:"Ask whether the audience still feels pity for him at the end.",cc:"After he murders Macduff’s family, can we still feel sympathy?",m:"Model claim: Macbeth begins as a tragic hero whose flaw destroys him, but by Act 4 he has become a villain, which makes his final despair both deserved and pitiable."},
+{q:"Why does Lady Macbeth collapse while Macbeth grows harder?",claim:"Explain the reversal between husband and wife.",ev:"1.5 and 1.7 (her strength), 2.2 (she says a little water will clear them of the deed), 3.2 (Macbeth plans without her), 5.1 (sleepwalking).",rs:"Track who controls the action in each act.",cc:"Is her collapse a sign of weakness, or of a conscience she tried to deny?",m:"Model claim: Lady Macbeth suppresses her conscience for one terrible act, but it returns and destroys her, while Macbeth kills so often that guilt turns to numbness."},
+{q:"How do the witches’ riddles mislead Macbeth?",claim:"Analyze how half-truths work in the play.",ev:"4.1 (the apparitions), 5.5 (Birnam Wood moves), 5.8 (Macduff’s birth; 5.7 in some editions).",rs:"Explain why Macbeth believes what he wants to hear.",cc:"Did the witches lie, or did Macbeth fail to question them?",m:"Model claim: The witches tell technically true riddles, and Macbeth’s overconfidence turns them into false promises; the play warns that we hear what our desires want us to hear."},
+{q:"Cross-text: Compare Macbeth’s rise to power with Jack’s in Lord of the Flies.",claim:"Argue what both texts suggest about how people seize and keep power.",ev:"Macbeth 3.1 and 4.1; Lord of the Flies Ch. 8 and Ch. 11.",rs:"Look at fear, violence and the removal of rivals.",cc:"Macbeth is an adult king and Jack is a boy. Does that change the comparison?",m:"Model claim: Both leaders take power by exploiting fear and keep it through violence against anyone who threatens them, and both rules end in destruction."}],
+kz:{"Ambition":"野心","Guilt":"罪惡感","Appearance vs. reality":"表象與真實","Manhood and violence":"男子氣概與暴力","Order and disorder":"秩序與混亂","Blood":"血","Sleep":"睡眠","The dagger":"匕首","Darkness":"黑暗","Borrowed clothes":"借來的衣服","Paradox and equivocation":"悖論與模稜兩可","Comic relief":"喜劇調劑"},
+zh:{bg:["約寫於 1606 年的悲劇，也是莎士比亞最短的一部悲劇。它取材自 Raphael Holinshed 的不列顛史《Chronicles》，但對史實做了大幅改動。真實的 Macbeth 於 1040 至 1057 年統治蘇格蘭。",
+"這部劇寫於蘇格蘭國王 James 六世成為英格蘭國王 James 一世後不久。James 對巫術非常著迷，而且被認為是 Banquo 的後裔，因此這部劇一方面奉承他，一方面警告人們不可殺害合法的國王。",
+"本劇屬於公共領域，可以直接引用原文；請標示幕、場和行數，各版本的行數略有不同。出於迷信，許多演員避免在劇院裡說出劇名，而稱它為「那部蘇格蘭劇」。"],
+sum:["三個女巫在荒野上相會。蘇格蘭將軍 Macbeth 和 Banquo 從戰場歸來時遇見她們：女巫稱 Macbeth 為 Cawdor 領主和未來的國王，並告訴 Banquo 他的子孫將成為國王。不久，Duncan 國王的使者宣布 Macbeth 被封為 Cawdor 領主。Macbeth 寫信給妻子，Macbeth 夫人擔心丈夫太善良、不敢奪取王位，便召喚黑暗的靈魂讓自己充滿殘忍。Duncan 到他們的城堡作客時，Macbeth 猶豫了，但她嘲笑他不像男人，直到他同意謀殺國王。",
+"行兇前，Macbeth 看見一把飄浮、沾血的匕首。他趁 Duncan 熟睡時殺了他，卻因過度驚慌而無法完成計畫，於是 Macbeth 夫人把匕首放回去，並把血抹在熟睡的侍衛身上。一個喝醉的門房一邊開玩笑說自己是地獄的看門人，一邊聽著有人敲門。Macduff 發現了屍體，Macbeth 聲稱因為憤怒而殺了侍衛。Duncan 的兒子 Malcolm 和 Donalbain 分別逃往英格蘭和愛爾蘭，Macbeth 加冕為王。",
+"想起關於 Banquo 子孫的預言，Macbeth 僱用刺客去殺 Banquo 和他的兒子 Fleance。Banquo 被殺，但 Fleance 逃走了。在王室宴會上，Banquo 的鬼魂出現在 Macbeth 的座位上；只有 Macbeth 看得見，他的驚恐讓賓客們十分不安。Macbeth 夫人把賓客們打發走了。",
+"Macbeth 去找女巫，她們讓他看見幻影：要提防 Macduff；凡是女人生的都傷不了他；直到 Birnam 森林移到 Dunsinane 山之前，他都不會被打敗。她們還讓他看見一列 Banquo 後裔的國王。得知 Macduff 逃往英格蘭後，Macbeth 下令殺害 Macduff 的妻子和孩子。在英格蘭，Macduff 得知消息，與 Malcolm 一起準備進攻蘇格蘭。",
+"Macbeth 夫人夢遊，試圖洗掉手上想像中的血跡。她在台下死去，很可能是自殺，Macbeth 則以充滿絕望的「Tomorrow, and tomorrow, and tomorrow」獨白回應。Malcolm 的士兵拿著 Birnam 森林的樹枝作為偽裝，讓森林看起來像在移動。戰鬥中，Macduff 揭露自己是剖開母親的子宮取出，而非自然出生。Macduff 殺死 Macbeth，Malcolm 成為國王。"],
+chars:["勇敢的將軍，野心讓他變成暴君。","他的妻子；推動謀殺，後來被罪惡感摧毀。","「命運三姊妹」，用謎語談論未來。","Macbeth 的將軍同僚；抵擋住誘惑；Macbeth 的對照角色。","Banquo 的兒子；逃過刺客的追殺。","慷慨、輕信他人的蘇格蘭國王。","Duncan 的長子；最後成為國王。","蘇格蘭貴族；Macbeth 的剋星。","Macduff 的妻子；和孩子們一起遇害。","滑稽、喝醉的門房。"],
+themes:["野心是 Macbeth 的致命缺陷。沒有道德的約束，野心驅使他一再殺人，以保住他偷來的一切。","罪惡感以鮮血、失眠和幻覺的形式出現。Macbeth 的罪惡感逐漸變成麻木，Macbeth 夫人的罪惡感則讓她精神崩潰。","女巫預言了未來，卻從未叫 Macbeth 去殺人。這部劇提出的問題是：他是命中注定要當國王，還是自己選擇了這條路？","「美即是醜，醜即是美」：在這個世界裡，忠誠的面孔下藏著謀殺的計畫，預言裡藏著陷阱。","Macbeth 夫人把男子氣概與暴力連在一起，但 Macduff 展現出另一種男人：既能戰鬥，也能悲傷。","殺害國王打亂了自然秩序：暴風雨肆虐，白晝被黑暗籠罩，Duncan 的馬也變得狂野。"],
+syms:["洗不掉的罪惡。","純真與平靜；Macbeth 說他「謀殺了睡眠」。","誘惑，以及走向謀殺的拉力。","隱藏在光明之外的惡行；Macbeth 和夫人都呼喚黑夜來掩蓋他們。","Macbeth 的新頭銜被形容成不合身的長袍，顯示他配不上這些頭銜。"],
+devs:["Macbeth 獨自一人時的獨白（例如匕首獨白），揭露了他的恐懼與野心。","Duncan 稱讚城堡空氣宜人，而觀眾知道他將在那裡被殺。","女巫用矛盾和雙關的話語說話，這些話以 Macbeth 意想不到的方式成真。","鮮血、黑暗和疾病的意象貫穿全劇。","Banquo 也聽到了預言，卻保持忠誠，凸顯出 Macbeth 的選擇。","謀殺發生後，門房醉醺醺的笑話緩和了緊張氣氛，也增添了黑色反諷。"],
+ct:[{q:"誰應該為 Duncan 的死負最大責任：Macbeth、Macbeth 夫人，還是女巫？",claim:"選一個並為你的選擇辯護。",ev:"1.3（預言）、1.5（Macbeth 夫人的獨白）、1.7（Macbeth 的猶豫與她的說服）、2.1（匕首）。",rs:"區分誰提出想法、誰推動它、誰付諸行動。",cc:"如果 Macbeth 原本就想當國王，女巫是否只是揭露了他的慾望？",m:"參考論點：Macbeth 責任最大：女巫只是預言，Macbeth 夫人只是說服，但他明知謀殺是錯的，還是選擇了它。"},
+{q:"如果沒有預言，Macbeth 還會成為國王嗎？",claim:"論證預言是造成還是揭露了 Macbeth 的野心。",ev:"1.3（Macbeth 的第一反應，以及 Banquo 對「黑暗的工具」的警告）、1.4（Malcolm 被立為繼承人）。",rs:"比較 Macbeth 和 Banquo 的反應，因為兩人都聽到了預言。",cc:"Banquo 也聽到了好消息，卻沒有做任何壞事。這證明了什麼？",m:"參考論點：預言並沒有創造 Macbeth 的野心，而是釋放了它；Banquo 的克制顯示，同樣的話不一定會導致謀殺。"},
+{q:"Macbeth 是悲劇英雄，還是單純的惡人？",claim:"用悲劇英雄的定義表明立場。",ev:"1.2（他的勇敢）、1.7（他的良心）、3.1–3.2（策劃殺害 Banquo）、5.5（「Tomorrow」獨白）。",rs:"問問自己，觀眾在最後是否仍對他感到同情。",cc:"在他殺害 Macduff 全家之後，我們還能同情他嗎？",m:"參考論點：Macbeth 一開始是被自身缺陷摧毀的悲劇英雄，但到了第四幕，他已經變成惡人，這讓他最後的絕望既是罪有應得，又令人憐憫。"},
+{q:"為什麼 Macbeth 夫人崩潰了，而 Macbeth 卻越來越冷酷？",claim:"說明這對夫妻之間的角色反轉。",ev:"1.5 和 1.7（她的強悍）、2.2（她說一點水就能洗清他們的罪行）、3.2（Macbeth 不再和她商量就自行策劃）、5.1（夢遊）。",rs:"追蹤每一幕中由誰主導劇情。",cc:"她的崩潰是軟弱的表現，還是她試圖否認的良心？",m:"參考論點：Macbeth 夫人為了一次可怕的行動壓抑良心，但良心回來摧毀了她；而 Macbeth 殺了太多次，罪惡感已化為麻木。"},
+{q:"女巫的謎語如何誤導 Macbeth？",claim:"分析半真半假的話在劇中如何運作。",ev:"4.1（幻影）、5.5（Birnam 森林移動）、5.8（Macduff 的出生；部分版本為 5.7）。",rs:"說明 Macbeth 為什麼會相信他想聽的話。",cc:"是女巫說了謊，還是 Macbeth 沒有質疑她們？",m:"參考論點：女巫說的謎語在字面上是真的，是 Macbeth 的過度自信把它們變成了虛假的承諾；這部劇警告我們，人只聽得見自己的慾望想聽的話。"},
+{q:"跨文本：比較 Macbeth 與《Lord of the Flies》中 Jack 的掌權過程。",claim:"論證兩個文本對人們如何奪取並保住權力有何揭示。",ev:"《Macbeth》3.1 和 4.1；《Lord of the Flies》第 8 章和第 11 章。",rs:"觀察恐懼、暴力和剷除對手。",cc:"Macbeth 是成年的國王，Jack 只是個男孩。這會改變比較的結果嗎？",m:"參考論點：兩位領袖都利用恐懼奪權，並以暴力對付任何威脅他們的人來保住權力，而兩人的統治都以毀滅告終。"}]}};
+
+const BOOKS10=[LOTF,NIGHT,F451,MAC];
+
+const BOOKSG={9:BOOKS,10:BOOKS10};
+const VOC={9:V9,10:V10};
+const GRAM={9:G9,10:G10};
 
 /* ---------- Grades 10–12 plan ---------- */
 const PLAN={
@@ -942,7 +1637,18 @@ const ZR={
 "MLA in-text citation":"MLA 格式的引用：在括號中寫作者姓氏和頁碼，中間不加逗號，例如 (Lee 87)。句點放在括號後面。如果句中已經寫出作者，括號內只寫頁碼。詩體劇本則標示「幕.場.行」。"};
 const Z=k=>S.zh&&ZH[k]?` <span class="zh">${ZH[k]}</span>`:"";
 const ZB=k=>S.zh&&ZH[k]?`<div class="zh">${ZH[k]}</div>`:"";
-BOOKS.forEach(b=>Object.assign(ZH,b.kz||{}));
+Object.values(BOOKSG).flat().forEach(b=>Object.assign(ZH,b.kz||{}));
+Object.assign(ZR,{
+"Active & passive voice":"主動語態中，主詞執行動作（Jack blew the conch）。被動語態中，主詞接受動作（The conch was blown by Jack）。寫作時優先使用主動語態，讓句子清楚直接；當行為者不明或不重要時，才使用被動語態。",
+"Misplaced & dangling modifiers":"修飾語應該緊貼它所修飾的字。錯置修飾語是放錯了位置；懸垂修飾語則是句中根本沒有它可以修飾的字。修正方法：移動修飾語，或補上缺少的主詞。",
+"Commas with nonessential elements":"用逗號把額外、非必要的資訊（字詞、片語或子句）隔開。如果資訊是用來辨認你指的是哪個人或哪件事（必要資訊），就不要加逗號。非限定子句用 which，限定子句用 that。",
+"Pronoun–antecedent agreement":"代名詞必須在單複數和性別上與它所代替的名詞（先行詞）一致。在正式寫作中，each、everyone、nobody 等不定代名詞是單數；不過當性別不明時，單數的 they 也越來越被接受。確保每個代名詞都只有一個清楚的先行詞。",
+"Pronoun case":"主格代名詞（I、he、she、we、they、who）當主詞；受格代名詞（me、him、her、us、them、whom）當動詞或介系詞的受詞。檢查方法：去掉另一個人，例如 Jem and I went → I went。能換成 he/she 就用 who，能換成 him/her 就用 whom。",
+"Verb tense consistency":"同一句話、同一段落裡的動詞時態要保持一致。寫文學分析時使用「文學現在式」：把故事中的事件當作正在發生來描述（Montag burns books）；關於作者或出版的歷史事實則用過去式。",
+"Integrating quotations":"不要把引文孤零零地丟進文章。用引導語（例如 As Macbeth admits, …）介紹它、把它融入你自己的句子，或先寫一個完整句再用冒號引出，接著解釋這段引文。修改的字詞用方括號 [ ]，省略的字詞用刪節號（…）。",
+"Formal style & objective tone":"學術寫作使用正式文體與客觀語氣。避免俚語、縮寫（don’t、can’t）、對讀者說 you，以及 I think、I feel 之類的說法。直接陳述主張，並用證據而不是情緒來支持。"});
+Object.assign(ZH,{"Active & passive voice":"主動與被動語態","Misplaced & dangling modifiers":"錯置與懸垂修飾語","Commas with nonessential elements":"非限定成分的逗號","Pronoun–antecedent agreement":"代名詞與先行詞一致","Pronoun case":"代名詞的格","Verb tense consistency":"動詞時態一致","Integrating quotations":"引文的融入","Formal style & objective tone":"正式文體與客觀語氣"});
+
 const VZ=w=>{const t=ZH[w[0]]||w[4];return S.zh&&t?`<div class="zh">${t}</div>`:""};
 if(location.hash==="#zh-tw")S.zh=true;else if(location.hash==="#en")S.zh=false;
 const save=()=>store.set("el-state",S);
@@ -969,11 +1675,11 @@ function soon(txt){return `<div class="soon"><h3>Coming in the next batch</h3><p
 
 let quiz=null;
 function vocabView(){
-  if(S.g!==9)return `<h2>Grade ${S.g} vocabulary</h2>`+soon("360 words (36 units × 10) of academic and literary vocabulary at the Grade "+S.g+" level, plus key words from each novel, increasing in difficulty.");
-  const total=V9.reduce((a,u)=>a+u[1].length,0),done=Object.keys(learned).filter(k=>learned[k]).length;
-  const u=V9[S.unit];
-  let h=`<h2>Grade 9 vocabulary</h2><p class="meta">${total} words · ${V9.length} units · 10 words a week for the school year · Learned ${done}/${total}</p>
-  <div class="caps">${V9.map((x,i)=>{const n=x[1].filter(w=>learned[w[0]]).length;return `<button class="cap ${n===x[1].length?"full":""}" data-unit="${i}" aria-pressed="${S.unit===i}" title="${esc(x[0])}">Unit ${i+1}${n?`<small>${n}/10</small>`:""}</button>`}).join("")}</div><div class="row">${voiceSel()}</div>
+  const V=VOC[S.g];if(!V)return `<h2>Grade ${S.g} vocabulary</h2>`+soon("360 words (36 units × 10) of academic and literary vocabulary at the Grade "+S.g+" level, plus key words from each novel, increasing in difficulty.");
+  const total=V.reduce((a,u)=>a+u[1].length,0),done=V.reduce((a,u)=>a+u[1].filter(w=>learned[w[0]]).length,0);
+  const u=V[S.unit];
+  let h=`<h2>Grade ${S.g} vocabulary</h2><p class="meta">${total} words · ${V.length} units · 10 words a week for the school year · Learned ${done}/${total}</p>
+  <div class="caps">${V.map((x,i)=>{const n=x[1].filter(w=>learned[w[0]]).length;return `<button class="cap ${n===x[1].length?"full":""}" data-unit="${i}" aria-pressed="${S.unit===i}" title="${esc(x[0])}">Unit ${i+1}${n?`<small>${n}/10</small>`:""}</button>`}).join("")}</div><div class="row">${voiceSel()}</div>
   <div class="row"><b>${esc(u[0])}</b><button class="pill" data-quiz="1" aria-pressed="${!!quiz}">${quiz?"Back to cards":"Quiz this unit"}</button></div>`;
   if(quiz)return h+quizView();
   return h+`<div class="cards">${u[1].map(w=>`<div class="card ${learned[w[0]]?"done":""}">
@@ -982,7 +1688,7 @@ function vocabView(){
    <div class="root">Root: ${esc(w[6])}</div>
    <label class="chk"><input type="checkbox" data-learn="${w[0]}" ${learned[w[0]]?"checked":""}> Learned</label></div>`).join("")}</div>`;
 }
-function newQuiz(){const ws=V9[S.unit][1];const order=ws.map((_,i)=>i).sort(()=>Math.random()-.5);quiz={ws,order,i:0,score:0,ans:null};}
+function newQuiz(){const ws=VOC[S.g][S.unit][1];const order=ws.map((_,i)=>i).sort(()=>Math.random()-.5);quiz={ws,order,i:0,score:0,ans:null};}
 function quizView(){
   const {ws,order,i,score,ans}=quiz;
   if(i>=order.length)return `<div class="quiz"><h3>Score: ${score}/${order.length}</h3><p>${score>=8?"Great work. Mark these words as learned.":"Review the cards, then try again."}</p><button class="pill" data-requiz="1">Try again</button></div>`;
@@ -995,25 +1701,25 @@ function quizView(){
 
 let gAns={};
 function gramView(){
-  if(S.g!==9)return `<h2>Grade ${S.g} grammar & language</h2>`+soon("Planned topics: "+PLAN[S.g].gram.join(" · "));
-  const t=G9[S.gt];
-  return `<h2>Grade 9 grammar & language</h2><p class="meta">Based on CA CCSS Language standards for grades 9–10, with two foundational review topics.</p>
-  <div class="gtopics"><div class="glist">${G9.map((x,i)=>`<button data-gt="${i}" aria-pressed="${S.gt===i}">${x.t}${ZB(x.t)}</button>`).join("")}</div>
+  const G=GRAM[S.g];if(!G)return `<h2>Grade ${S.g} grammar & language</h2>`+soon("Planned topics: "+PLAN[S.g].gram.join(" · "));
+  const t=G[S.gt];
+  return `<h2>Grade ${S.g} grammar & language</h2><p class="meta">${S.g===9?"Based on CA CCSS Language standards for grades 9–10, with two foundational review topics.":"Based on CA CCSS Language and Writing standards for grades 9–10, focused on revising and polishing academic writing."}</p>
+  <div class="gtopics"><div class="glist">${G.map((x,i)=>`<button data-gt="${i}" aria-pressed="${S.gt===i}">${x.t}${ZB(x.t)}</button>`).join("")}</div>
   <div><span class="code">${t.c}</span><h2>${t.t}${Z(t.t)}</h2><p>${esc(t.r)}</p>${S.zh&&ZR[t.t]?`<p class="zh zr">${ZR[t.t]}</p>`:""}
   <div class="eg">${t.y.map(s=>`<div class="y">${esc(s)}</div>`).join("")}${t.n.map(s=>`<div class="n">${esc(s)}</div>`).join("")}</div>
-  <h3>Practice (${t.q.filter((_,i)=>gAns[S.gt+"-"+i]===t.q[i][2]).length}/${t.q.length} correct)</h3>
-  ${t.q.map((q,i)=>{const a=gAns[S.gt+"-"+i];return `<div class="quiz" style="margin:10px 0"><b>${i+1}. ${esc(q[0])}</b><div class="opts">${q[1].map((o,j)=>{let c="";if(a!==undefined){if(j===q[2])c="right";else if(j===a)c="wrong"}return `<button class="opt ${c}" data-gq="${i}" data-o="${j}" ${a!==undefined?"disabled":""}>${esc(o)}</button>`}).join("")}</div>${a!==undefined?`<div class="fb">${a===q[2]?"✓ Correct.":"✗ Not quite."} ${esc(q[3])}</div>`:""}</div>`}).join("")}
+  <h3>Practice (${t.q.filter((_,i)=>gAns[S.g+"-"+S.gt+"-"+i]===t.q[i][2]).length}/${t.q.length} correct)</h3>
+  ${t.q.map((q,i)=>{const a=gAns[S.g+"-"+S.gt+"-"+i];return `<div class="quiz" style="margin:10px 0"><b>${i+1}. ${esc(q[0])}</b><div class="opts">${q[1].map((o,j)=>{let c="";if(a!==undefined){if(j===q[2])c="right";else if(j===a)c="wrong"}return `<button class="opt ${c}" data-gq="${i}" data-o="${j}" ${a!==undefined?"disabled":""}>${esc(o)}</button>`}).join("")}</div>${a!==undefined?`<div class="fb">${a===q[2]?"✓ Correct.":"✗ Not quite."} ${esc(q[3])}</div>`:""}</div>`}).join("")}
   <button class="pill" data-greset="1">Reset this topic</button></div></div>`;
 }
 
 function novelView(){
-  const list=S.g===9?[["To Kill a Mockingbird","Harper Lee · 1960","Justice, empathy, growing up",1],["Romeo and Juliet","William Shakespeare · c. 1595","Love, fate, conflict between generations",1],["The Odyssey","Homer · c. 8th century BCE","The hero’s journey, loyalty, homecoming",1],["Of Mice and Men","John Steinbeck · 1937","Friendship, dreams, loneliness",1]]:PLAN[S.g].books.map(b=>[...b,0]);
-  if(S.book!==null&&S.g===9&&BOOKS[S.book])return bookView();
+  const BK=BOOKSG[S.g];const list=BK?BK.map(b=>[b.title,b.author,b.blurb,1]):PLAN[S.g].books.map(b=>[...b,0]);
+  if(S.book!==null&&BK&&BK[S.book])return bookView();
   return `<h2>Grade ${S.g} novels</h2><p class="meta">Each guide: background · chapter summaries · characters · themes & symbols · literary devices · critical thinking (claim–evidence–reasoning).</p>
   <div class="books">${list.map((b,i)=>`<button class="book" ${b[3]?`data-book="${i}"`:"disabled"}><b>${b[0]}</b><span class="meta">${b[1]}</span><div>${b[2]}</div>${b[3]?`<span class="badge" style="background:var(--blue);color:var(--bg)">Open guide</span>`:`<span class="badge">Next batch</span>`}</button>`).join("")}</div>`;
 }
 function bookView(){
-  const B=BOOKS[S.book],secs=[["bg","Background"],["sum","Summary"],["chars","Characters"],["themes","Themes & Symbols"],["devs","Literary Devices"],["ct","Critical Thinking"]];
+  const B=BOOKSG[S.g][S.book],secs=[["bg","Background"],["sum","Summary"],["chars","Characters"],["themes","Themes & Symbols"],["devs","Literary Devices"],["ct","Critical Thinking"]];
   let body="";
   const zt=(k,i,f)=>{if(!S.zh||!B.zh||!B.zh[k])return "";let v=B.zh[k][i];if(f&&v)v=v[f];return v?`<p class="zh zr">${v}</p>`:""};
   const zd=(i,f)=>{const t=S.zh&&B.zh&&B.zh.ct[i]?B.zh.ct[i][f]:"";return t?`<div class="zh">${t}</div>`:""};
@@ -1023,7 +1729,7 @@ function bookView(){
   if(S.bs==="themes")body=`<h3>Themes${Z("Themes")}</h3>`+B.themes.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("themes",i)}</div>`).join("")+`<h3>Symbols${Z("Symbols")}</h3>`+B.syms.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("syms",i)}</div>`).join("");
   if(S.bs==="devs")body=B.devs.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("devs",i)}</div>`).join("");
   if(S.bs==="ct")body=`<p class="meta">Answer each question with a claim, at least two pieces of evidence (cite ${B.cite}), and reasoning that connects them. Then answer the counterclaim.</p>${S.zh?`<p class="zh zr">每題都要提出主張、至少兩項證據（標示出處），以及連結兩者的推理，最後回應反方論點。</p>`:""}`+B.ct.map((c,i)=>`<div class="cer"><b>${i+1}. ${esc(c.q)}</b>${zd(i,"q")}<dl><dt>Claim${Z("Claim")}</dt><dd>${esc(c.claim)}${zd(i,"claim")}</dd><dt>Evidence${Z("Evidence")}</dt><dd>${esc(c.ev)}${zd(i,"ev")}</dd><dt>Reasoning${Z("Reasoning")}</dt><dd>${esc(c.rs)}${zd(i,"rs")}</dd><dt>Counterclaim${Z("Counterclaim")}</dt><dd>${esc(c.cc)}${zd(i,"cc")}</dd></dl><details><summary>Show model claim</summary><p>${esc(c.m)}</p>${zd(i,"m")}</details></div>`).join("");
-  return `<button class="pill" data-back="1">← All Grade 9 novels</button><h2 style="margin-top:14px">${B.title}</h2><p class="meta">${B.author}</p>
+  return `<button class="pill" data-back="1">← All Grade ${S.g} novels</button><h2 style="margin-top:14px">${B.title}</h2><p class="meta">${B.author}</p>
   <div class="row">${secs.map(([k,l])=>`<button class="pill" data-bs="${k}" aria-pressed="${S.bs===k}">${l}${Z(l)}</button>`).join("")}</div><div class="sec">${body}</div>`;
 }
 
@@ -1033,7 +1739,7 @@ document.addEventListener("change",e=>{if(e.target.id==="unitsel"){S.unit=+e.tar
 document.addEventListener("click",e=>{
   const b=e.target.closest("button,input");if(!b)return;const d=b.dataset;
   if(d.zh!==undefined){S.zh=d.zh==="1";try{history.replaceState(null,"",S.zh?"#zh-tw":"#en")}catch(err){location.hash=S.zh?"zh-tw":"en"}}
-  else if(d.g){S.g=+d.g;S.book=null;quiz=null}
+  else if(d.g){S.g=+d.g;S.book=null;S.unit=0;S.gt=0;quiz=null}
   else if(d.tab){S.tab=d.tab;quiz=null}
   else if(d.unit){S.unit=+d.unit;quiz=null}
   else if(d.say){speak(d.say);return}
@@ -1043,8 +1749,8 @@ document.addEventListener("click",e=>{
   else if(d.vq){quiz.ans=d.vq;if(d.vq===quiz.ws[quiz.order[quiz.i]][0])quiz.score++}
   else if(d.vnext){quiz.i++;quiz.ans=null}
   else if(d.gt){S.gt=+d.gt}
-  else if(d.gq!==undefined&&d.o!==undefined){gAns[S.gt+"-"+d.gq]=+d.o}
-  else if(d.greset){G9[S.gt].q.forEach((_,i)=>delete gAns[S.gt+"-"+i])}
+  else if(d.gq!==undefined&&d.o!==undefined){gAns[S.g+"-"+S.gt+"-"+d.gq]=+d.o}
+  else if(d.greset){GRAM[S.g][S.gt].q.forEach((_,i)=>delete gAns[S.g+"-"+S.gt+"-"+i])}
   else if(d.book!==undefined){S.book=+d.book;S.bs="bg"}
   else if(d.back){S.book=null}
   else if(d.bs){S.bs=d.bs}
