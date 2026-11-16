@@ -50,6 +50,11 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--hl);outline-of
 .icon{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;min-width:44px;min-height:44px;cursor:pointer;font-size:15px}
 select{font:16px "Source Sans 3",sans-serif;min-height:44px;padding:6px 10px;border:1.5px solid var(--blue);border-radius:10px;background:var(--bg);color:var(--ink);flex:1 1 220px;max-width:460px}
 .zr{font-size:15.5px;line-height:1.7;color:var(--ink);border-left:3px solid var(--hl);padding:4px 0 4px 12px;margin:-2px 0 10px}
+.caps{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}
+.cap{border:1.5px solid var(--blue);background:var(--bg);color:var(--blue);border-radius:999px;padding:6px 12px;min-height:36px;font:600 14px "Source Sans 3",sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.cap small{font-size:11.5px;font-weight:600;opacity:.75}
+.cap.full{border-color:var(--ok);color:var(--ok)}
+.cap[aria-pressed=true]{background:var(--blue);color:var(--bg);border-color:var(--blue)}
 .chk{display:flex;align-items:center;gap:6px;font-size:14px;margin-top:8px;cursor:pointer;min-height:32px}
 .chk input{width:18px;height:18px}
 mark{background:var(--hl);color:inherit;padding:0 3px;border-radius:3px}
@@ -776,6 +781,128 @@ ct:[{q:"Was George’s final act an act of mercy or murder?",claim:"Take a clear
 {q:"Cross-text: Compare Crooks in Of Mice and Men with Tom Robinson in To Kill a Mockingbird.",claim:"Argue what both characters reveal about race and power in 1930s America.",ev:"OMAM Ch. 4 (Crooks’s room and the threat from Curley’s wife); TKAM Ch. 19 (Tom’s testimony) and Ch. 24 (news of Tom’s death).",rs:"Compare how a white woman’s word holds power over both men.",cc:"One book is set in California and one in Alabama. Does the setting change how racism works?",m:"Model claim: Both men are threatened by a white woman’s accusation, showing that racial power in the 1930s reached far beyond the Deep South."}],
 kz:{"Loneliness and friendship":"孤獨與友誼","The American Dream":"美國夢","Power and powerlessness":"權力與無力","The strong and the weak":"強者與弱者","Mercy and responsibility":"慈悲與責任","The dream farm":"夢想中的農場","Rabbits":"兔子","Candy’s dog":"Candy 的老狗","Soft things":"柔軟的東西","The river clearing":"河邊空地","Circular structure":"循環結構","Play-like structure":"劇本式結構","Descriptive scene openings":"描寫式開場","Dialect":"方言"}};
 
+TKAM.zh={
+bg:["1960 年出版，1961 年獲得普立茲小說獎。故事發生在虛構的阿拉巴馬州小鎮 Maycomb，時間大約是 1933 到 1935 年，正值經濟大蕭條與 Jim Crow 種族隔離法時期。",
+"敘事者是 Jean Louise「Scout」Finch，她以成年人的身分回憶自己大約六到九歲的那幾年。她的父親、律師 Atticus Finch 被指派為 Tom Robinson 辯護；Tom 是一名黑人，被誣告侵犯白人女性 Mayella Ewell。",
+"Lee 在阿拉巴馬州的 Monroeville 長大，她的父親也是律師。讀者常把書中的審判與當時的真實案件聯想在一起，特別是 Scottsboro Boys 案（1931–1937）：九名黑人青少年在阿拉巴馬州遭到誣告。"],
+sum:["Scout、哥哥 Jem 和喪妻的父親 Atticus 住在 Maycomb，家中有廚娘 Calpurnia。暑假來訪的朋友 Dill 和他們一起著迷於 Boo Radley，一位從不出門的鄰居。上學時，Scout 的新老師責備她早就會識字。Scout 在午餐時讓貧窮的同學 Walter Cunningham 難堪後，Calpurnia 責罵她，Atticus 則教她：要了解一個人，就要想像從對方的角度過生活。",
+"Radley 家旁邊一棵樹的樹洞裡陸續出現小禮物：口香糖、硬幣、肥皂雕像、一支懷錶。孩子們扮演 Boo 的故事，並在夜裡偷偷溜進 Radley 家的院子；Jem 的褲子勾在籬笆上弄丟了，後來卻發現褲子被補好、折好。Nathan Radley 用水泥把樹洞封住。一場罕見的大雪期間，Miss Maudie 的房子失火，有人悄悄在 Scout 肩上披了一條毯子。",
+"Atticus 答應為 Tom Robinson 辯護，Scout 和侮辱父親的同學及表哥打架。Atticus 一槍射殺一隻瘋狗，讓孩子們大吃一驚，因為他從未炫耀過這項本領。Miss Maudie 解釋為什麼殺死知更鳥是罪過：牠只會唱歌，從不傷害任何人。Jem 毀了年老的 Mrs. Dubose 的花之後，被罰每天念書給她聽；她去世後，Atticus 透露她當時正在戒除嗎啡成癮，並說她是他認識最勇敢的人。",
+"Calpurnia 帶孩子們去她的教會 First Purchase，讓他們看見她在黑人社群中的另一面生活。Alexandra 姑姑搬進來，要給 Scout「得體」的教養。某天夜裡，一群人到監獄想對 Tom 動私刑；Scout 不懂其中的危險，和 Mr. Cunningham 聊起他的兒子，暴民因此羞愧離去。",
+"審判時，孩子們和黑人社群一起坐在樓上看台旁聽。Atticus 指出 Mayella 的傷在右臉，很可能是左撇子造成的：Bob Ewell 是左撇子，而 Tom 的左手早年因意外殘廢。Tom 作證說他幫 Mayella 做家事是因為同情她，這句話激怒了在場的白人。儘管證據明確，全白人陪審團仍判 Tom 有罪。",
+"Jem 被判決擊垮。Bob Ewell 朝 Atticus 臉上吐口水並威脅他。在 Alexandra 姑姑的傳道會茶會上，婦女們同情遙遠的非洲人，卻侮辱 Maycomb 的黑人。消息傳來，Tom 試圖逃獄時被射殺。當地報社主編把他的死比作毫無意義地殺害鳴禽。",
+"在學校，Scout 發現老師譴責希特勒迫害猶太人，卻在家鄉輕蔑地談論黑人。萬聖節表演結束後走路回家時，Scout 和 Jem 遭到 Bob Ewell 襲擊。一名陌生人救了他們，並把受傷的 Jem 抱回家，他就是 Boo Radley。Bob Ewell 被發現死亡。警長 Heck Tate 堅稱 Ewell 是自己跌倒刺中刀子，以保護害羞的 Boo 不被公眾注意。Scout 同意，揭露 Boo 就像射殺一隻知更鳥。她陪 Boo 走回家，站在他的門廊上，終於從他的角度看見整個社區。"],
+chars:["敘事者；好奇、脾氣急的假小子，逐漸學會同理心。","Scout 的哥哥；他對正義的信念被判決打碎。","喪妻的律師；冷靜、有原則，為 Tom 辯護。","Finch 家的黑人廚娘；嚴格，連結兩個社群。","隱居的鄰居；孩子們害怕他，他卻暗中善良。","被誣告的黑人農工；一隻「知更鳥」。","Mayella 貧窮、殘暴、懷恨在心的父親。","孤單、受虐的女兒，指控 Tom。","想像力豐富的暑假玩伴；為審判中的殘酷而哭泣。","鄰居兼園丁；孩子們的道德引導者。","Atticus 的姊妹；執著於家族地位。","警長；最後選擇保護 Boo。"],
+themes:["Scout 和 Jem 從孩子氣地害怕 Boo，成長到以成人的眼光理解真正的惡（偏見）與真正的善（默默的善意）。這部小說是一部成長小說（bildungsroman）。",
+"審判顯示，在 Maycomb 的法庭上，種族比證據更重要。法律理應人人平等，但執行法律的人並不平等。",
+"Atticus 將勇氣定義為明知可能會輸仍堅持到底：Mrs. Dubose 和 Atticus 本人都展現了這一點，而不是靠一把槍。",
+"這本書以「從他人立場看事情」這一課開始，也以它結束。Scout 最後真的站在 Boo 的門廊上做到了。",
+"Maycomb 把人分等級：老家族、Cunningham 家（貧窮但有骨氣）、Ewell 家（貧窮且被鄙視），而黑人社群在法律上被壓在所有人之下。"],
+syms:["只做好事的無辜者：Tom 和 Boo。傷害他們是一種罪。","對未知的恐懼；樹洞成為秘密的溝通管道，直到被封住。","小鎮必須面對的危險；常被解讀為 Atticus 必須對抗的種族主義這種「病」。","她送給 Jem 的白色山茶花：明白人比外表看起來更複雜。"],
+devs:["由成年的敘事者描述孩子的經歷，因此讀者同時得到孩子的純真與成年人的理解。",
+"第一句就提到 Jem 的手臂骨折，直到最後幾章才解釋原因。Bob Ewell 的威脅預示了後來的襲擊。",
+"傳道會茶會和 Miss Gates 的民主課，都呈現大人們譴責遠方的偏見，卻在家鄉實踐偏見。",
+"第一部聚焦於 Boo，第二部聚焦於審判。結局把兩者連在一起：人人害怕的局外人 Boo，救了 Maycomb 沒能保護的孩子。",
+"神秘的房子、謠言、夜裡的暴力和衰敗的社會秩序，全都發生在一個南方小鎮裡。"],
+ct:[{q:"Atticus Finch 是英雄，還是對他的小鎮過於包容？",claim:"選定立場：例如「Atticus 是英雄，因為……」或「Atticus 值得敬佩但有其局限，因為……」",ev:"第 9 章（他為何接下案子）、第 15 章（監獄前）、第 23 章（他對 Bob Ewell 的反應，以及他對 Mr. Cunningham 的看法）、第 30 章（接受 Heck Tate 的決定）。",rs:"說明每個時刻揭示了他的哪些價值觀。在種族主義的體制內工作，是在改變它，還是在保護它？",cc:"有些評論家認為，這部小說以白人英雄為中心，而 Tom 幾乎沒有發聲的機會。Lee 後來出版的《Go Set a Watchman》（2015）描寫年老的 Atticus 抱持支持種族隔離的觀點。",m:"參考論點：Atticus 在個人品格上是英雄，但小說也呈現了一個好人在不公義體制中的局限：他贏得了小鎮的尊重，卻沒能換來 Tom 的自由。"},
+{q:"為什麼 Lee 透過孩子的眼睛講這個故事？",claim:"說明效果，例如「孩子當敘事者讓偏見顯得荒謬，因為……」",ev:"第 15 章（Scout 在不懂危險的情況下化解暴民）、第 19–20 章（Dill 對交叉詰問的反應）、第 26 章（Scout 質疑 Miss Gates）。",rs:"說明孩子天真的問題如何揭露大人拒絕看見的事。注意成年敘事者如何補上孩子無法理解的意義。",cc:"孩子的觀點也可能淡化或簡化種族暴力。這是缺點嗎？",m:"參考論點：Scout 的天真把小鎮習以為常的偏見變得陌生而清晰可見，迫使讀者質疑大人所接受的一切。"},
+{q:"Heck Tate 隱瞞 Bob Ewell 死亡真相是對的嗎？",claim:"在法律與正義之間做出判斷：「Heck Tate 的選擇是正義的／不正義的，因為……」",ev:"第 30 章（門廊上的討論）、第 10 章（知更鳥那一課）、第 21 章（司法體制對 Tom 做了什麼）。",rs:"權衡法治與保護無辜、脆弱的人。連結到小說的觀點：法院早已辜負了 Tom。",cc:"如果官員可以決定隱瞞哪些真相，又有什麼能阻止他們隱瞞不公義的事？",m:"參考論點：Tate 違反了法律的條文，卻實現了法律的目的：保護無辜者，而這正是法庭沒能為 Tom 做到的。"},
+{q:"小說中缺少了誰的聲音？",claim:"例如「雖然小說譴責種族主義，但 Tom 和 Calpurnia 的故事大多是從外部講述的。」",ev:"第 12 章（Calpurnia 的「兩種生活」）、第 19 章（Tom 的證詞）、第 25 章（Tom 的死訊如何傳達給他的家人）。",rs:"想一想，我們從未得知 Tom 或 Helen Robinson 的哪些想法？白人孩子當敘事者，如何限制了我們能知道的內容？",cc:"也有人認為，有限的敘事者反而誠實：Scout 無法知道沒人告訴她的事。",m:"參考論點：Lee 選擇的敘事者讓黑人角色的內心世界幾乎隱形，這既反映了 Maycomb 的種族隔離，也限制了小說的批判力道。"},
+{q:"跨文本：比較 Tom Robinson 的審判與真實的 Scottsboro Boys 案。",claim:"找出一個關鍵相似點和一個差異，再論證這個比較揭示了什麼。",ev:"小說：第 17–21 章。真實世界：一份關於 Scottsboro 審判（1931–1937）的可靠史料，例如博物館或圖書館網站。",rs:"綜合分析：小說如何讓讀者「感受到」史料只能「報導」的事？",cc:"小說比歷史「不真實」嗎？什麼時候小說反而更有力量？",m:"參考論點：兩個案件都顯示陪審團選擇了種族而非證據，但小說透過一個家庭把不公義變得具體而個人，讓讀者更難轉過頭去。"},
+{q:"辯論：這部小說應該繼續列為加州高中的必讀書目嗎？",claim:"選定明確立場，並提出兩個理由。",ev:"使用小說本身（主題、語言、以誰的故事為中心），再加上至少一篇近期關於課程爭議的新聞報導。",rs:"想一想讀這本書的是誰（不同背景的學生），以及他們會得到或失去什麼。",cc:"回應對方最有力的論點，再加以反駁。",m:"參考論點：這部小說應該教，但要搭配黑人作家的作品，讓學生同時研讀不公義的故事，以及這個故事遺漏的聲音。"}]};
+
+RJ.zh={
+bg:["這部悲劇寫於約 1594–1596 年，主要取材自 Arthur Brooke 1562 年的詩作《The Tragical History of Romeus and Juliet》。故事發生在義大利的 Verona 和 Mantua，劇情只橫跨四、五天。",
+"兩個貴族家族 Montague 和 Capulet 陷入一場古老的世仇。Montague 家的 Romeo 與還不滿十四歲的 Capulet 家女兒 Juliet 相愛、秘密結婚，並在一週內雙雙死去。",
+"這部劇大部分以無韻詩（不押韻的抑揚五步格）寫成，在關鍵時刻則使用押韻的十四行詩。本劇於 1597 年首次印行，已屬公共領域，因此可以直接引用原文。請標示幕、場和行數。"],
+sum:["開場的十四行詩告訴我們，一對「命運多舛的戀人」將會死去，而他們的死將終結父母之間的世仇。僕人之間的街頭鬥毆越演越烈，直到 Prince Escalus 宣布，任何再擾亂和平的人都將被處死。Romeo 為不愛他的 Rosaline 害相思病。Paris 伯爵向 Capulet 老爺請求娶 Juliet。Romeo 和朋友 Benvolio、Mercutio 溜進 Capulet 家的宴會，Romeo 和 Juliet 在那裡相遇，共同說出一首十四行詩並親吻，之後才得知對方的姓氏。Tybalt 認出 Romeo 想要決鬥，但被 Capulet 制止。",
+"在陽台一場戲中，Romeo 和 Juliet 互訴愛意，Juliet 提出：如果他的愛是真誠的，就和她結婚。Romeo 請 Laurence 修士幫忙。修士答應了，希望這場婚姻能終結世仇，但警告他要放慢腳步。Juliet 的奶媽替兩人傳話，這對戀人當天下午就秘密成婚。婚禮前，修士警告：「這些狂暴的歡愉，必有狂暴的結局。」",
+"Tybalt 向 Romeo 挑戰，但 Romeo 拒絕和剛因婚姻成為親戚的他決鬥。Mercutio 代替他上場，Romeo 上前阻攔時，Mercutio 受了致命傷；臨死前，他詛咒兩個家族。盛怒之下，Romeo 殺了 Tybalt，親王將他放逐到 Mantua。Juliet 在對表哥的哀痛與對丈夫的忠誠之間掙扎。共度一夜後，Romeo 離開。對婚事毫不知情的 Capulet 老爺命令 Juliet 幾天內嫁給 Paris。她拒絕時，父親威脅要把她趕出家門，而奶媽勸她嫁給 Paris。",
+"走投無路的 Juliet 去找 Laurence 修士，修士給她一瓶藥水，能讓她看起來像死去約四十二小時。他會派人通知 Romeo，讓 Romeo 在她於家族墓穴醒來時帶她離開。Juliet 假裝順從父親，婚禮因此提前一天。當晚，在一段充滿恐懼的獨白之後，她喝下藥水。早上，家人發現她彷彿已經死去，婚禮變成了葬禮。",
+"Romeo 的僕人 Balthasar 告訴他 Juliet 死了。修士的信始終沒有送到，因為送信人被瘟疫隔離擋住了。Romeo 買了毒藥回到 Verona。在墓穴裡，他殺了 Paris，然後在 Juliet 身旁喝下毒藥。片刻後 Juliet 醒來，拒絕跟修士離開，用 Romeo 的匕首刺死自己。修士說明了一切；親王把責任歸咎於兩家的仇恨，Montague 和 Capulet 終於和解。"],
+chars:["Montague 家熱情、衝動的兒子。","還不滿十四歲；從順從的女兒成長為果斷的妻子。","Romeo 的顧問；為兩人證婚，並想出藥水計畫。","Juliet 的照顧者與知己；起初逗趣，後來令人失望。","Romeo 機智的朋友，也是親王的親戚；既不屬於 Montague 家，也不屬於 Capulet 家。","Juliet 的表哥；驕傲，一觸即發。","Romeo 的堂兄弟；努力維持和平。","Juliet 的父親；是慷慨的主人，被違抗時卻專橫霸道。","Juliet 的母親；與女兒疏離。","獲 Capulet 認可的貴族求婚者。","Verona 的統治者；代表法律與秩序。","Romeo 的父母；Montague 夫人因悲傷而死。"],
+themes:["愛與恨並肩成長。這對戀人的激情誕生在世仇之中，而劇中的語言從第一場戲起就把兩者交織在一起。",
+"開場白稱這對戀人「命運多舛」，但幾乎每一場災難也都源自人的選擇：一場決鬥、一場倉促的婚姻、一封遺失的信、一場被迫的婚禮。",
+"一切都發生得太快：相遇、結婚、復仇和自殺都在幾天內發生。那些警告不要倉促的角色都被忽視了。",
+"父母、親王和教會都試圖控制年輕人，卻沒有一個人真正傾聽 Romeo 或 Juliet。",
+"年輕男子為捍衛家族名聲而戰。榮譽要求復仇，而復仇導致了悲劇。"],
+syms:["Romeo 把 Juliet 形容成黑暗中的光：太陽、星星、火炬。他們的愛屬於夜晚，卻被白晝摧毀。",
+"毒藥和藥物來自同樣的植物，正如修士所說：同一樣東西可以治癒也可以殺人，就像愛也可能變得致命。",
+"星辰象徵命運；Romeo 聽到 Juliet 的死訊時，向星辰發出挑戰。",
+"Mercutio 口中掌管夢境的仙子，暗示夢想與慾望可能是愚蠢而危險的。"],
+devs:["開場白已經把結局告訴觀眾，所以我們看著每一個充滿希望的時刻，都知道它終將失敗。",
+"Mercutio 的嘲諷機智對照 Romeo 的浪漫；愛好和平的 Benvolio 對照暴力的 Tybalt；俗氣務實的奶媽對照理想主義的 Juliet。",
+"Romeo 說的「愛的恨」以及 Juliet 說的「甜蜜的哀愁」等詞語，表現出互相衝突的情感。",
+"Juliet 喝下藥水前的獨白，讓我們直接聽見她的恐懼與勇氣。",
+"開場白和戀人的第一段對話都是十四行詩，這是情詩的經典形式。",
+"Mercutio 連臨死時都在開玩笑，說自己會是個「grave man」（既是「嚴肅的人」也是「墳墓裡的人」），把幽默與恐怖混在一起。"],
+ct:[{q:"誰應該為 Romeo 和 Juliet 的死負最大責任？",claim:"指出一個人物或力量，並論證他的角色是決定性的，例如「Laurence 修士應負最大責任，因為……」",ev:"2.3（修士答應證婚）、3.1（Romeo 殺死 Tybalt）、3.5（Capulet 的威脅與奶媽的建議）、5.2（沒送到的信）、5.3（親王最後的裁決）。",rs:"說明這個人的選擇如何讓結局變得難以避免，以及為什麼其他人的行為沒那麼重要。",cc:"開場白暗示命運才是罪魁禍首。這樣就能免除人的責任嗎？",m:"參考論點：大人們責任最大：修士的秘密計畫、奶媽的背叛和 Capulet 的威脅，讓兩個青少年沒有任何安全的選擇。"},
+{q:"這場悲劇是命運造成的，還是選擇造成的？",claim:"選定一方，或論證劇中呈現的是兩者共同作用。",ev:"開場白（「命運多舛」）、1.4（Romeo 在宴會前的不祥預感）、3.1（「命運的傻瓜」）、5.1（Romeo 向星辰挑戰）、5.2（那封信）。",rs:"針對每個事件問自己：換一個選擇能改變它嗎？哪些事件純屬巧合？",cc:"如果一切都由命運決定，為什麼莎士比亞要如此詳細地呈現角色的選擇？",m:"參考論點：命運搭好了舞台，但角色的倉促讓厄運變成了災難。"},
+{q:"這是真愛的故事，還是年少迷戀的故事？",claim:"判斷劇本如何呈現 Romeo 和 Juliet 的愛。",ev:"1.1（Romeo 談 Rosaline）、1.5（初次相遇）、2.2（Juliet 擔心這份愛「太魯莽」）、2.3（修士懷疑 Romeo 變心太快）。",rs:"比較 Romeo 談論 Rosaline 和談論 Juliet 的方式。Juliet 的愛是否展現出更多判斷力？",cc:"即使愛是真的，它的速度是否讓它變得危險？",m:"參考論點：Romeo 一開始是個迷戀中的男孩，但他對 Juliet 的愛因為需要犧牲而變得真實；劇本讚揚這份愛，同時警告它來得太快。"},
+{q:"這部劇如何呈現大人辜負年輕人？",claim:"找出一位失職最嚴重的大人，並論證原因。",ev:"3.5（Capulet 的暴怒與 Capulet 夫人的冷漠）、3.5（奶媽勸她嫁給 Paris）、4.1（修士冒險的計畫）、5.3（修士逃離墓穴）。",rs:"說明 Juliet 在那一刻需要什麼，而她實際得到了什麼。",cc:"以當時的標準來看，這些大人的做法合理嗎？",m:"參考論點：在 Juliet 最孤立無援的時候，她信任的每個大人不是威脅她就是拋棄她，把她推向那瓶藥水。"},
+{q:"Juliet 比 Romeo 更成熟嗎？",claim:"比較兩位戀人的判斷力與勇氣。",ev:"2.2（Juliet 質疑誓言來得太快）、3.2（她對 Tybalt 之死的反應）、3.3（Romeo 在修士房裡的絕望）、4.3（她的獨白）。",rs:"看看誰在擬定計畫，誰只是被情緒牽著走。",cc:"Juliet 在結局時也很衝動。這會改變你的答案嗎？",m:"參考論點：Juliet 會預先思考並勇敢行動，而 Romeo 大多只是在反應；她年紀較小，卻更成熟。"},
+{q:"跨文本：比較 Verona 的世仇與《To Kill a Mockingbird》中 Maycomb 的偏見。",claim:"論證兩個文本對「代代相傳的仇恨」有何揭示。",ev:"R&J 1.1（開場的鬥毆）和 5.3（兩家和解）；TKAM 第 15 章（暴民）和第 21 章（判決）。",rs:"說明大人如何把仇恨傳給下一代，以及由誰付出代價。",cc:"在 Verona，仇恨結束了；在 Maycomb，它沒有。這個差異暗示了什麼？",m:"參考論點：兩個文本都顯示，從大人那裡學來的仇恨會毀掉年輕與無辜的人，但只有莎士比亞讓社群在最後改變。"}]};
+
+ODY.zh={
+bg:["一部傳統上歸於 Homer 的古希臘史詩。它可能創作於西元前 8 世紀末或 7 世紀，在被寫下來之前已口頭傳唱很久。全詩共二十四卷，以長短短六步格寫成，延續了《伊利亞德》所講述的特洛伊戰爭故事。",
+"希臘人靠 Odysseus 想出的木馬贏得長達十年的特洛伊戰爭後，Ithaca 國王 Odysseus 又花了十年努力回家。與此同時，一百多名求婚者佔據他的宮殿，吃光他的財產，並逼迫他的妻子 Penelope 改嫁。",
+"Homer 的希臘原文屬於公共領域，但現代英譯本（例如 Robert Fagles、Robert Fitzgerald 或 Emily Wilson 的譯本）受版權保護，行數也各不相同。引用時請註明譯者，並標示卷數與行數。"],
+sum:["全詩以呼告繆思開場。在 Olympus 山上，Athena 說服 Zeus 讓 Odysseus 回家。她假扮成家族友人，督促 Odysseus 約二十歲的兒子 Telemachus 對抗求婚者，並去打聽父親的消息。我們得知 Penelope 用一個計謀拖延了求婚者三年：白天織一件壽衣，晚上偷偷拆掉。Telemachus 拜訪 Pylos 的 Nestor 國王，以及 Sparta 的 Menelaus 國王和 Helen，他們告訴他 Odysseus 還活著，但被仙女 Calypso 困住。求婚者計畫在 Telemachus 回程時伏擊他。",
+"Zeus 派 Hermes 命令 Calypso 放走 Odysseus，她已經把他留在島上七年。Odysseus 造了一艘木筏，但痛恨他的 Poseidon 用暴風雨把木筏打碎。他被沖上 Phaeacia 人的海岸，公主 Nausicaa 幫助了他。在 Alcinous 國王的宮廷裡，一位盲眼吟遊詩人唱起特洛伊的故事，Odysseus 落淚，終於說出自己的名字，開始講述他的故事。",
+"在一段長長的倒敘中，Odysseus 講述他突襲 Cicones 人，並逃離 Lotus-Eaters（吃了他們的果實會讓人忘記回家）。他被困在 Poseidon 之子、獨眼巨人 Polyphemus 的洞穴裡，他告訴巨人自己叫「Nobody（沒有人）」，刺瞎巨人後躲在羊肚子底下逃走；但他接著得意地喊出自己的真名，Polyphemus 便向 Poseidon 祈求報復。風神 Aeolus 送他一袋風；船員在看得見家鄉的地方把袋子打開，他們又被吹了回去。食人巨人摧毀了除他之外的所有船隻。女神 Circe 把他的部下變成豬；在 Hermes 的幫助下，Odysseus 抵擋住她的魔法，他們和她一起住了一年。",
+"在冥界，先知 Tiresias 警告他不要傷害太陽神 Helios 的牛群，並預言家中會有麻煩。他和母親的亡魂以及 Achilles 交談。他讓人把自己綁在桅杆上聆聽 Sirens 的歌聲，船員則用蠟塞住耳朵。在海怪 Scylla 和漩渦 Charybdis 之間航行時，他失去了六名部下。在 Helios 的島上，飢餓的船員殺了神聖的牛。Zeus 摧毀了船，只有 Odysseus 倖存，漂流到 Calypso 的島上。",
+"Phaeacia 人把 Odysseus 送回 Ithaca，Athena 把他變成一個老乞丐。他住在忠心的養豬人 Eumaeus 家裡，並向逃過伏擊的 Telemachus 表明身分；父子一起策劃復仇。在宮殿裡，他的老狗 Argos 認出他後死去。求婚者嘲弄、虐待這個「乞丐」。他的老奶媽 Eurycleia 替他洗腳時認出他腿上的疤痕，但他要她發誓保密。Penelope 宣布，誰能為 Odysseus 的大弓上弦，並一箭射穿十二個斧頭，她就嫁給誰。",
+"沒有一個求婚者能為弓上弦。Odysseus 輕鬆上弦，一箭射穿斧頭，然後和 Telemachus 及兩名忠僕一起殺光求婚者。不忠的侍女被處死。Penelope 以吩咐人搬動他們的床來試探他；Odysseus 憤怒地說明，那張床是他圍著一棵活橄欖樹打造的，她因此確定他真的是自己的丈夫。他與父親 Laertes 團聚。當求婚者的家人前來尋仇時，Athena 介入並下令和平。"],
+chars:["Ithaca 國王；勇敢、聰明、驕傲，而且常常欺騙別人。","他的妻子；忠貞、有耐心，和他一樣足智多謀。","他們的兒子；從猶豫的男孩成長為男人。","智慧女神；Odysseus 的守護者。","海神；因 Odysseus 刺瞎他的兒子而懲罰他。","眾神之王；在其他神的意願之間取得平衡。","把 Odysseus 留了七年，並願意賜他永生的仙女。","把人變成動物的女巫，後來幫助了 Odysseus。","獨眼巨人；Poseidon 的兒子。","最傲慢的求婚者；第一個被殺。","收留喬裝國王的忠心養豬人。","Odysseus 的老奶媽；認出了他的疤痕。","冥界的盲眼先知。"],
+themes:["希臘人相信 Zeus 保護賓客與主人。好主人（Phaeacia 人、Eumaeus）得到回報；濫用待客之道的人（獨眼巨人、求婚者）則遭到毀滅。",
+"Odysseus 靠計謀、喬裝和言語生存的次數，多於靠武力，而 Penelope 也不遑多讓。",
+"Penelope、Telemachus、Eumaeus，甚至老狗 Argos，都忠心守候了二十年；不忠的人則受到懲罰。",
+"整首詩都朝著家前進：家不只是一個地方，也是家人、身分與角色。",
+"Lotus-Eaters、Circe、Calypso、Sirens 和牛群，都在考驗人能否為了長遠重要的事，抵擋眼前想要的東西。",
+"Odysseus 希望名揚天下，這讓他偉大，卻也在他向獨眼巨人炫耀時引來災難。"],
+syms:["只有真正的國王能上弦：它象徵 Odysseus 正當的權力與身分。","圍著一棵無法移動的活樹建造，象徵這段婚姻牢不可破的連結。","織了又拆的壽衣，展現 Penelope 的耐心與智慧。","他年少時留下的印記，證明無論怎麼喬裝，他就是他。"],
+devs:["長而詳細的比喻（例如把 Odysseus 比作山獅）讓情節慢下來，畫面更生動。",
+"像「灰眼的 Athena」這樣反覆出現的描述語，幫助口頭吟誦的詩人記憶並補足詩行。",
+"全詩從旅程接近尾聲時開始；較早的冒險則由 Odysseus 本人在第 9–12 卷親口講述。",
+"詩人一開頭就請繆思透過他歌唱，這是史詩的慣例。",
+"在第 13–22 卷中，我們知道乞丐就是 Odysseus，而求婚者不知道，因此製造出緊張感。",
+"眾神現身、喬裝並改變事件，引發關於人類責任的問題。"],
+ct:[{q:"Odysseus 是個好領袖嗎？",claim:"對他帶領船員的方式表明立場。",ev:"第 1 卷（開頭幾行把責任歸於船員自己的魯莽）、第 9 卷（獨眼巨人的洞穴與他的炫耀）、第 10 卷（那袋風）、第 12 卷（Sirens 與 Helios 的牛）。",rs:"權衡他聰明的脫困，與他的部下沒有一個回到家的事實。",cc:"用現代的領導觀念評判一位古代戰士國王公平嗎？",m:"參考論點：Odysseus 是出色的倖存者，卻是有缺陷的領袖：他的驕傲與隱瞞，賠上了信任他的部下的性命。"},
+{q:"Odysseus 對求婚者的復仇是正義，還是過度？",claim:"判斷第 22 卷的屠殺是否正當。",ev:"第 1–2 卷（求婚者做了什麼）、第 18 卷（Amphinomus 受到警告卻留下）、第 22 卷（屠殺與處死侍女）、第 24 卷（Athena 下令和平）。",rs:"用希臘的待客之道觀念，說明當時的聽眾可能怎麼看，再說明現代讀者可能怎麼看。",cc:"為什麼這首詩是以女神強制和平作結，而不是以慶祝作結？",m:"參考論點：以 Homer 的標準，求婚者罪有應得，但處死侍女，以及需要 Athena 出手終止循環，顯示這首詩本身也在質疑無止盡的復仇。"},
+{q:"Penelope 和 Odysseus 一樣聰明嗎？",claim:"論證 Penelope 在智謀上是否與他旗鼓相當。",ev:"第 2 卷（壽衣）、第 19 卷（她與乞丐的對話及射箭比賽）、第 23 卷（床的考驗）。",rs:"說明她如何在沒有武器或權力的情況下保護她的家。",cc:"有些讀者認為她很被動，只是等待男人來救她。回應這個觀點。",m:"參考論點：Penelope 在智識上與 Odysseus 平起平坐：壽衣的計謀與床的考驗證明，她掌控著自己的故事。"},
+{q:"為什麼待客之道在這首詩中如此重要？",claim:"說明 Homer 的聽眾應該從賓客與主人的關係中學到什麼。",ev:"第 1 卷（Telemachus 款待喬裝的 Athena）、第 6–8 卷（Phaeacia 人）、第 9 卷（獨眼巨人）、第 14–17 卷（Eumaeus 與求婚者的對比）。",rs:"比較好主人與壞主人，以及他們各自的下場。",cc:"Odysseus 本人有沒有濫用過待客之道？想想獨眼巨人的洞穴。",m:"參考論點：這首詩以待客之道作為道德考驗；角色如何對待陌生人，決定了他們得到回報還是遭到毀滅。"},
+{q:"這首詩對眾神與人類責任有什麼看法？",claim:"論證詩中的苦難該歸咎於人類還是眾神。",ev:"第 1 卷（Zeus 抱怨凡人把自己的愚蠢怪罪於神）、第 5 卷（Poseidon 的暴風雨）、第 12 卷（船員選擇吃掉牛）。",rs:"把眾神造成的事件與人類選擇造成的事件分開。",cc:"如果眾神可以隨意改變事件，人類真的能負責嗎？",m:"參考論點：Homer 呈現眾神在世間作為，但他透過 Zeus 強調，人類的魯莽才造成最嚴重的苦難。"},
+{q:"跨文本：Odysseus 符合現代故事中的「英雄旅程」模式嗎？",claim:"把 Odysseus 與你熟悉的書或電影中的現代英雄比較。",ev:"《奧德賽》：出發、考驗（第 9–12 卷）、冥界（第 11 卷）、回歸（第 13–24 卷）。現代文本：找出相同的階段。",rs:"說明什麼沒有改變，以及「英雄」的條件有什麼變化。",cc:"現代英雄常被期待誠實又謙虛。以今天的標準，Odysseus 還算英雄嗎？",m:"參考論點：Odysseus 符合經典模式，但現代英雄更常以道德而非聰明來評判，這讓他在現代讀者眼中成為更複雜的英雄。"}]};
+
+OMAM.zh={
+bg:["John Steinbeck 的中篇小說，1937 年出版，背景設在經濟大蕭條時期加州 Salinas Valley 的 Soledad 附近。Steinbeck 刻意讓它很容易改編成舞台劇，同年就有舞台版在百老匯上演。",
+"George Milton 和 Lennie Small 是結伴同行的流動農場工人，這在一個充滿孤單男人的世界裡很不尋常。Lennie 身材高大、力氣很大，並有智能障礙；George 照顧他。他們有一個共同的夢想：擁有一座屬於自己的小農場。",
+"書名來自 Robert Burns 1785 年的詩作〈To a Mouse〉，內容是再周密的計畫也可能出錯。內容提醒：這部小說含有反映其時代與背景的種族歧視用語和暴力情節，也經常在學校遭到質疑。請在歷史脈絡中討論這些內容。"],
+sum:["在 Salinas 河的一個水潭邊，George 和 Lennie 在到農場工作的前一晚露營。George 拿走 Lennie 一直在撫摸的死老鼠，並抱怨 Lennie 害他們被趕出上一個城鎮 Weed：Lennie 抓住一個女人的裙子不肯放手。在 Lennie 的要求下，George 講起他們的夢想：總有一天，他們會擁有一小塊地、養動物，而 Lennie 負責照顧兔子。George 告訴 Lennie，如果惹了麻煩，就回到這裡，躲在河邊的樹叢裡。",
+"在農場上，他們遇到失去一隻手、養著一條老狗的老工人 Candy；多疑的老闆；以及老闆的兒子 Curley，一個矮小、好鬥、愛找大個子打架的前拳擊手。Curley 那個愛調情的妻子出現了，George 警告 Lennie 離她遠一點。他們還認識了備受尊敬的騾隊車夫 Slim，以及抱怨 Candy 的狗很臭、應該被槍斃的 Carlson。",
+"George 把 Lennie 的真實情況和在 Weed 發生的事告訴 Slim。Carlson 一再施壓，直到 Candy 同意讓他槍殺那條老狗。Candy 無意間聽到他們的夢想，提出用他約 350 美元的積蓄加入，農場突然顯得有可能實現了。Curley 攻擊 Lennie，Lennie 一直沒有還手，直到 George 叫他還手，Lennie 隨即捏碎了 Curley 的手。Slim 逼 Curley 說他的手是被機器夾傷的。",
+"星期六晚上，其他人進城去了，被留下的 Lennie 去找黑人馬廄工 Crooks；Crooks 因為種族的關係，只能獨自住在馬具房裡。Crooks 起初殘忍地捉弄 Lennie，接著吐露自己的孤單，還短暫地希望加入他們的夢想。Curley 的妻子走進來，以私刑威脅 Crooks，他便縮回沉默之中。之後，Crooks 收回了加入的請求。",
+"星期天下午，Lennie 不小心弄死了他的小狗。Curley 的妻子向他訴說她失落的電影明星夢，並讓他撫摸她的頭髮。她驚慌起來時，Lennie 抓著不放，在恐懼中扭斷了她的脖子。他逃往河邊。Candy 發現了屍體，George 明白夢想已經結束。Curley 召集眾人追捕 Lennie。",
+"在河邊，Lennie 一邊等待，一邊幻想 Clara 姑媽和一隻巨大的兔子在責罵他。George 趕到，最後一次講述那個夢想來安撫他，並在眾人逼近時，用 Carlson 的槍從 Lennie 的後腦開槍。Slim 安慰 George，而 Carlson 完全不懂他們為什麼那麼難過。"],
+chars:["矮小、機靈、精明；Lennie 的保護者與朋友。","高大、溫和、力氣很大，有智能障礙；喜歡柔軟的東西。","只剩一隻手的年老農場工人；害怕被拋棄。","老闆的兒子；缺乏安全感又好鬥。","孤單的年輕女子，始終沒有名字；曾夢想當演員。","受人敬重、沉著的工人領袖。","黑人馬廄工；孤立、自尊心強，而且滿懷怨氣。","務實、冷漠的工人，槍殺了 Candy 的狗。","多疑的農場老闆。"],
+themes:["農場上幾乎每個人都是孤單的；George 和 Lennie 的友誼讓他們與眾不同，而這也正是 George 最後失去的。",
+"夢想中的農場承諾獨立與安全，但大蕭條的經濟與角色們的無力，讓它幾乎不可能實現。",
+"種族（Crooks）、年齡與殘疾（Candy）、性別（Curley 的妻子）和智力（Lennie），讓這些人落在農場階級的最底層。",
+"在這個世界裡，弱者會被毀滅：老鼠、小狗、Candy 的狗，最後是 Lennie。",
+"Candy 後悔讓外人槍殺他的狗；George 則決定必須由自己來結束 Lennie 的生命。"],
+syms:["自由、安全與歸屬：一個這些人能描述卻永遠到不了的樂園。","Lennie 在夢想中負責的部分；象徵純真與希望。","年老、不再有用，預示了 Candy 的恐懼，也預示了 Lennie 的死。","Lennie 對老鼠、小狗和頭髮的喜愛，顯示他的純真，也顯示他的力量如何毀掉他所愛的東西。","一個寧靜的大自然避風港，故事在這裡開始，也在這裡結束。"],
+devs:["Candy 的狗之死、在 Weed 惹的麻煩和被弄死的老鼠，都預示了結局。",
+"小說在河邊同一個水潭開始與結束，暗示這些人無法逃脫自己的命運。",
+"六個場景、少數幾個地點和大量對話，讓這部中篇小說讀起來像劇本。",
+"每一章都先詳細描寫大自然或房間，然後人物才登場。",
+"角色說著非正式的地方口語，讓他們顯得真實，也顯示他們的階級。"],
+ct:[{q:"George 最後的行為是出於慈悲，還是謀殺？",claim:"表明明確立場，例如「George 的選擇是出於慈悲，因為……」",ev:"第 3 章（Candy 的狗被槍殺後他的懊悔）、第 5 章（Curley 對 Lennie 的打算）、第 6 章（最後一幕）。",rs:"比較 George 和 Candy 的處境。如果 George 沒有行動，Lennie 會有什麼下場？",cc:"George 有沒有其他選擇，例如逃跑或把 Lennie 交給法律？",m:"參考論點：George 的行為是痛苦的慈悲：他讓 Lennie 免於死在暴民手中，並承擔了 Candy 希望自己當初承擔的責任。"},
+{q:"為什麼 Steinbeck 從不給 Curley 的妻子一個名字？",claim:"論證這個選擇揭示了她以及這座農場的什麼。",ev:"第 2 章（男人們如何描述她）、第 4 章（她對 Crooks 的威脅）、第 5 章（她與 Lennie 的對話）。",rs:"說明只被稱為「某人的妻子」如何反映她在階級中的位置。",cc:"有些讀者認為 Steinbeck 不公平地把她塑造成危險的誘惑者。這說法正確嗎？",m:"參考論點：沒有名字，她只被定義為 Curley 的財產，顯示農場剝奪了她的身分；但第 5 章揭露了一個有自己夢想的孤單之人。"},
+{q:"夢想中的農場有可能實現嗎？",claim:"判斷這個夢想能否成真。",ev:"第 1 章（第一次講述）、第 3 章（Candy 的錢讓它顯得真實）、第 4 章（Crooks 說他見過許多懷抱同樣夢想的人）、第 5 章（George 的反應）。",rs:"考慮大蕭條的經濟、Lennie 的需求和這些人的工資。",cc:"如果這個夢想本身支撐他們活下去，它能不能實現還重要嗎？",m:"參考論點：這個夢想幾乎觸手可及，但小說暗示，在他們的世界裡，無力者的計畫就像老鼠的窩一樣輕易破碎。"},
+{q:"誰是農場上最孤單的人？",claim:"選一個角色並支持你的選擇。",ev:"第 2 章（Candy）、第 4 章（Crooks）、第 5 章（Curley 的妻子）、第 6 章（結局時的 George）。",rs:"說明每個角色孤單的原因：種族、年齡、性別、失去。",cc:"Lennie 離開後，George 會不會才是最孤單的人？",m:"參考論點：Crooks 最孤單，因為他的孤立是法律與習俗強加的，而不是出於選擇或境遇。"},
+{q:"Lennie 要為自己的行為負責嗎？",claim:"論證對 Lennie 這樣的人來說，「責任」意味著什麼。",ev:"第 1 章（老鼠與 Weed）、第 3 章（Curley 的手）、第 5 章（小狗與 Curley 的妻子）。",rs:"把意圖和結果分開。還有誰也該分擔這些事情的責任？",cc:"如果 Lennie 無法控制自己的力氣，其他人是否應該保護別人不受他傷害？",m:"參考論點：Lennie 造成了傷害，卻從未有意如此，因此小說把大部分責任歸於一個沒有給他安身之處的世界。"},
+{q:"跨文本：比較《Of Mice and Men》的 Crooks 與《To Kill a Mockingbird》的 Tom Robinson。",claim:"論證這兩個角色揭示了 1930 年代美國的種族與權力。",ev:"OMAM 第 4 章（Crooks 的房間與 Curley 妻子的威脅）；TKAM 第 19 章（Tom 的證詞）與第 24 章（Tom 的死訊）。",rs:"比較白人女性的一句話如何對這兩個男人握有權力。",cc:"一本設定在加州，一本在阿拉巴馬州。背景不同會改變種族主義的運作方式嗎？",m:"參考論點：兩個男人都受到白人女性指控的威脅，顯示 1930 年代的種族權力遠遠超出了南方腹地。"}]};
+
 const BOOKS=[TKAM,RJ,ODY,OMAM];
 
 /* ---------- Grades 10–12 plan ---------- */
@@ -846,7 +973,7 @@ function vocabView(){
   const total=V9.reduce((a,u)=>a+u[1].length,0),done=Object.keys(learned).filter(k=>learned[k]).length;
   const u=V9[S.unit];
   let h=`<h2>Grade 9 vocabulary</h2><p class="meta">${total} words · ${V9.length} units · 10 words a week for the school year · Learned ${done}/${total}</p>
-  <div class="row"><button class="icon" data-unit="${Math.max(0,S.unit-1)}" aria-label="Previous unit">‹</button><select id="unitsel" aria-label="Choose unit">${V9.map((x,i)=>`<option value="${i}" ${S.unit===i?"selected":""}>${esc(x[0])} (${V9[i][1].filter(w=>learned[w[0]]).length}/10)</option>`).join("")}</select><button class="icon" data-unit="${Math.min(V9.length-1,S.unit+1)}" aria-label="Next unit">›</button></div><div class="row">${voiceSel()}</div>
+  <div class="caps">${V9.map((x,i)=>{const n=x[1].filter(w=>learned[w[0]]).length;return `<button class="cap ${n===x[1].length?"full":""}" data-unit="${i}" aria-pressed="${S.unit===i}" title="${esc(x[0])}">Unit ${i+1}${n?`<small>${n}/10</small>`:""}</button>`}).join("")}</div><div class="row">${voiceSel()}</div>
   <div class="row"><b>${esc(u[0])}</b><button class="pill" data-quiz="1" aria-pressed="${!!quiz}">${quiz?"Back to cards":"Quiz this unit"}</button></div>`;
   if(quiz)return h+quizView();
   return h+`<div class="cards">${u[1].map(w=>`<div class="card ${learned[w[0]]?"done":""}">
@@ -888,12 +1015,14 @@ function novelView(){
 function bookView(){
   const B=BOOKS[S.book],secs=[["bg","Background"],["sum","Summary"],["chars","Characters"],["themes","Themes & Symbols"],["devs","Literary Devices"],["ct","Critical Thinking"]];
   let body="";
-  if(S.bs==="bg")body=B.bg.map(p=>`<p>${esc(p)}</p>`).join("");
-  if(S.bs==="sum")body=B.sum.map(c=>`<div class="ch"><b>${c[0]}</b><p>${esc(c[1])}</p></div>`).join("");
-  if(S.bs==="chars")body=`<div class="people">${B.chars.map(c=>`<div><b>${c[0]}</b><br>${esc(c[1])}</div>`).join("")}</div>`;
-  if(S.bs==="themes")body=`<h3>Themes${Z("Themes")}</h3>`+B.themes.map(t=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p></div>`).join("")+`<h3>Symbols${Z("Symbols")}</h3>`+B.syms.map(t=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p></div>`).join("");
-  if(S.bs==="devs")body=B.devs.map(t=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p></div>`).join("");
-  if(S.bs==="ct")body=`<p class="meta">Answer each question with a claim, at least two pieces of evidence (cite ${B.cite}), and reasoning that connects them. Then answer the counterclaim.</p>`+B.ct.map((c,i)=>`<div class="cer"><b>${i+1}. ${esc(c.q)}</b><dl><dt>Claim${Z("Claim")}</dt><dd>${esc(c.claim)}</dd><dt>Evidence${Z("Evidence")}</dt><dd>${esc(c.ev)}</dd><dt>Reasoning${Z("Reasoning")}</dt><dd>${esc(c.rs)}</dd><dt>Counterclaim${Z("Counterclaim")}</dt><dd>${esc(c.cc)}</dd></dl><details><summary>Show model claim</summary><p>${esc(c.m)}</p></details></div>`).join("");
+  const zt=(k,i,f)=>{if(!S.zh||!B.zh||!B.zh[k])return "";let v=B.zh[k][i];if(f&&v)v=v[f];return v?`<p class="zh zr">${v}</p>`:""};
+  const zd=(i,f)=>{const t=S.zh&&B.zh&&B.zh.ct[i]?B.zh.ct[i][f]:"";return t?`<div class="zh">${t}</div>`:""};
+  if(S.bs==="bg")body=B.bg.map((p,i)=>`<p>${esc(p)}</p>${zt("bg",i)}`).join("");
+  if(S.bs==="sum")body=B.sum.map((c,i)=>`<div class="ch"><b>${c[0]}</b><p>${esc(c[1])}</p>${zt("sum",i)}</div>`).join("");
+  if(S.bs==="chars")body=`<div class="people">${B.chars.map((c,i)=>`<div><b>${c[0]}</b><br>${esc(c[1])}${S.zh&&B.zh?`<div class="zh">${B.zh.chars[i]||""}</div>`:""}</div>`).join("")}</div>`;
+  if(S.bs==="themes")body=`<h3>Themes${Z("Themes")}</h3>`+B.themes.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("themes",i)}</div>`).join("")+`<h3>Symbols${Z("Symbols")}</h3>`+B.syms.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("syms",i)}</div>`).join("");
+  if(S.bs==="devs")body=B.devs.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("devs",i)}</div>`).join("");
+  if(S.bs==="ct")body=`<p class="meta">Answer each question with a claim, at least two pieces of evidence (cite ${B.cite}), and reasoning that connects them. Then answer the counterclaim.</p>${S.zh?`<p class="zh zr">每題都要提出主張、至少兩項證據（標示出處），以及連結兩者的推理，最後回應反方論點。</p>`:""}`+B.ct.map((c,i)=>`<div class="cer"><b>${i+1}. ${esc(c.q)}</b>${zd(i,"q")}<dl><dt>Claim${Z("Claim")}</dt><dd>${esc(c.claim)}${zd(i,"claim")}</dd><dt>Evidence${Z("Evidence")}</dt><dd>${esc(c.ev)}${zd(i,"ev")}</dd><dt>Reasoning${Z("Reasoning")}</dt><dd>${esc(c.rs)}${zd(i,"rs")}</dd><dt>Counterclaim${Z("Counterclaim")}</dt><dd>${esc(c.cc)}${zd(i,"cc")}</dd></dl><details><summary>Show model claim</summary><p>${esc(c.m)}</p>${zd(i,"m")}</details></div>`).join("");
   return `<button class="pill" data-back="1">← All Grade 9 novels</button><h2 style="margin-top:14px">${B.title}</h2><p class="meta">${B.author}</p>
   <div class="row">${secs.map(([k,l])=>`<button class="pill" data-bs="${k}" aria-pressed="${S.bs===k}">${l}${Z(l)}</button>`).join("")}</div><div class="sec">${body}</div>`;
 }
