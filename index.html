@@ -811,7 +811,19 @@ if(location.hash==="#zh-tw")S.zh=true;else if(location.hash==="#en")S.zh=false;
 const save=()=>store.set("el-state",S);
 const $=id=>document.getElementById(id);
 
-function speak(w){try{const u=new SpeechSynthesisUtterance(w);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+/* ---- speech: pick a natural English voice, skip novelty voices ---- */
+const NOVELTY=/^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Deranged|Good News|Hysterical|Jester|Organ|Pipe Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Fred|Junior|Ralph|Kathy|Princess|Agnes|Bruce|Vicki|Victoria|Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i;
+const PREF=[/natural/i,/premium/i,/enhanced/i,/Google US English/i,/Samantha/i,/\bAva\b/i,/Allison/i,/\bAria\b/i,/Jenny/i,/Zira/i,/Google UK English Female/i,/Serena/i,/Karen/i,/Moira/i];
+let VOICES=[];
+function loadVoices(){try{VOICES=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang)&&!NOVELTY.test(v.name))}catch(e){VOICES=[]}}
+function bestVoice(){
+  if(S.voice){const v=VOICES.find(x=>x.name===S.voice);if(v)return v}
+  const us=VOICES.filter(v=>/en[-_]US/i.test(v.lang));
+  for(const p of PREF){const v=us.find(x=>p.test(x.name))||VOICES.find(x=>p.test(x.name));if(v)return v}
+  return us.find(v=>v.localService)||us[0]||VOICES[0]||null}
+function speak(w){try{loadVoices();const u=new SpeechSynthesisUtterance(w),v=bestVoice();if(v){u.voice=v;u.lang=v.lang}else u.lang="en-US";u.rate=.92;u.pitch=1;u.volume=1;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+loadVoices();try{speechSynthesis.addEventListener("voiceschanged",()=>{const n=VOICES.length;loadVoices();if(VOICES.length!==n&&S.tab==="vocab"&&!quiz)render()})}catch(e){}
+function voiceSel(){if(!VOICES.length)return "";const cur=(bestVoice()||{}).name;return `<label class="meta" for="voicesel">Voice</label><select id="voicesel" style="flex:0 1 260px">${VOICES.map(v=>`<option value="${esc(v.name)}" ${v.name===cur?"selected":""}>${esc(v.name.replace(/^Microsoft |^Google /,""))} (${v.lang})</option>`).join("")}</select><button class="icon" data-say="Welcome to English Lab" aria-label="Test voice">▶</button>`}
 
 function renderGrades(){$("grades").innerHTML=[9,10,11,12].map(g=>`<button data-g="${g}" aria-pressed="${S.g===g}">Grade ${g}</button>`).join("")}
 function renderTabs(){$("tabs").innerHTML=[["vocab","Vocabulary"],["gram","Grammar"],["novel","Novels"]].map(([k,l])=>`<button data-tab="${k}" aria-pressed="${S.tab===k}">${l}${Z(l)}</button>`).join("")}
@@ -824,7 +836,7 @@ function vocabView(){
   const total=V9.reduce((a,u)=>a+u[1].length,0),done=Object.keys(learned).filter(k=>learned[k]).length;
   const u=V9[S.unit];
   let h=`<h2>Grade 9 vocabulary</h2><p class="meta">${total} words · ${V9.length} units · 10 words a week for the school year · Learned ${done}/${total}</p>
-  <div class="row"><button class="icon" data-unit="${Math.max(0,S.unit-1)}" aria-label="Previous unit">‹</button><select id="unitsel" aria-label="Choose unit">${V9.map((x,i)=>`<option value="${i}" ${S.unit===i?"selected":""}>${esc(x[0])} (${V9[i][1].filter(w=>learned[w[0]]).length}/10)</option>`).join("")}</select><button class="icon" data-unit="${Math.min(V9.length-1,S.unit+1)}" aria-label="Next unit">›</button></div>
+  <div class="row"><button class="icon" data-unit="${Math.max(0,S.unit-1)}" aria-label="Previous unit">‹</button><select id="unitsel" aria-label="Choose unit">${V9.map((x,i)=>`<option value="${i}" ${S.unit===i?"selected":""}>${esc(x[0])} (${V9[i][1].filter(w=>learned[w[0]]).length}/10)</option>`).join("")}</select><button class="icon" data-unit="${Math.min(V9.length-1,S.unit+1)}" aria-label="Next unit">›</button></div><div class="row">${voiceSel()}</div>
   <div class="row"><b>${esc(u[0])}</b><button class="pill" data-quiz="1" aria-pressed="${!!quiz}">${quiz?"Back to cards":"Quiz this unit"}</button></div>`;
   if(quiz)return h+quizView();
   return h+`<div class="cards">${u[1].map(w=>`<div class="card ${learned[w[0]]?"done":""}">
@@ -878,7 +890,7 @@ function bookView(){
 
 function render(){$("lang").innerHTML=`<button data-zh="0" aria-pressed="${!S.zh}">English</button><button data-zh="1" aria-pressed="${!!S.zh}">English + 中文</button>`;renderGrades();renderTabs();$("view").innerHTML=S.tab==="vocab"?vocabView():S.tab==="gram"?gramView():novelView();save()}
 
-document.addEventListener("change",e=>{if(e.target.id==="unitsel"){S.unit=+e.target.value;quiz=null;render()}});
+document.addEventListener("change",e=>{if(e.target.id==="unitsel"){S.unit=+e.target.value;quiz=null;render()}else if(e.target.id==="voicesel"){S.voice=e.target.value;save();speak("Welcome to English Lab")}});
 document.addEventListener("click",e=>{
   const b=e.target.closest("button,input");if(!b)return;const d=b.dataset;
   if(d.zh!==undefined){S.zh=d.zh==="1";try{history.replaceState(null,"",S.zh?"#zh-tw":"#en")}catch(err){location.hash=S.zh?"zh-tw":"en"}}
