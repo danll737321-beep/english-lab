@@ -11,6 +11,8 @@ California high school English, Grades 9–12: vocabulary, grammar and classic n
 
 Each novel guide includes background, section summaries, characters, themes and symbols, literary devices and six claim–evidence–reasoning critical-thinking questions. Each grammar topic has a rule, examples and five practice questions.
 
+Each grade's Novels tab also lists the district **ELA Extended Reading Guide** titles (32 books and plays, Grades 9–12) by unit, with Lexile, year, a short bilingual summary, content warnings, frontloading topics and the 360learn link. Titles that already have a full guide link to it.
+
 Two interfaces:
 - English only: `#en`
 - English + Traditional Chinese support: `#zh-tw`
