@@ -9,7 +9,7 @@ California high school English, Grades 9–12: vocabulary, grammar and classic n
 | 11 | 360 words · 36 units | 8 topics (L.11-12) | The Great Gatsby · The Crucible · Adventures of Huckleberry Finn · Their Eyes Were Watching God · Barrio Boy · The Distance Between Us · Bound for the Promised Land · Moneyball · Travels with Charley · A Doll’s House · A Raisin in the Sun · As I Lay Dying |
 | 12 | 360 words · 36 units | 8 topics (L/W.11-12) | Hamlet · 1984 · Frankenstein · Things Fall Apart · Never Fall Down · Sold · The Boy Who Harnessed the Wind · I Am Malala · The Omnivore’s Dilemma · Sugar Changed the World · Fast Food Nation |
 
-Each novel guide includes background, section summaries, characters, themes and symbols, literary devices and six claim–evidence–reasoning critical-thinking questions. Each grammar topic has a rule, examples and five practice questions.
+Each novel guide includes background, section summaries, characters, themes and symbols, literary devices, six claim–evidence–reasoning critical-thinking questions and a 5-min Story (a bilingual retelling of the whole book with read-aloud). Each grammar topic has a rule, examples and five practice questions.
 
 Each grade's Novels tab also lists the district **ELA Extended Reading Guide** titles (32 books and plays, Grades 9–12) by unit, with Lexile, year, a short bilingual summary, content warnings, frontloading topics and the 360learn link. Every title on the district list now links to a full guide (40 guides in all).
 
