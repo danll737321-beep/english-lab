@@ -5130,7 +5130,7 @@ const BOOKS12=[HAMLET,ORWELL,FRANK,TFA,NEVERFALL,SOLD,WIND,MALALA,OMNI,SUGAR,FAS
 
 /* ---------- EXTRA (番外篇): Phoenix Rising ---------- */
 const PHOENIX={
-title:"Phoenix Rising",author:"Karen Hesse · 1994",blurb:"Nuclear accident, fear of loss, the courage to love",cite:"author and page, e.g., (Hesse 31)",
+title:"Phoenix Rising",author:"Karen Hesse · 1994",blurb:"Grades 5–8 · Nuclear accident, fear of loss, the courage to love",cite:"author and page, e.g., (Hesse 31)",
 bg:["A realistic novel published in 1994 by Karen Hesse, the Newbery Medal–winning author of Out of the Dust. Hesse lived in Vermont, not far from a working nuclear power plant, and imagined what an accident there would do to an ordinary farm family.",
 "The narrator is thirteen-year-old Nyle Sumner, who lives with her grandmother, Gran, on a sheep farm in Vermont. After an accident at the nearby Cookshire nuclear plant, people wear masks, test their food and water, and watch the wind. Gran takes in two evacuees, fifteen-year-old Ezra Trent and his mother, who are sick with radiation sickness. They stay in the back bedroom, where Nyle’s mother and grandfather both died.",
 "Content note: the novel deals with serious illness, radiation sickness, grief and the death of a teenage character. It is often read in upper elementary and middle school; preview the ending before assigning."],
@@ -5417,7 +5417,7 @@ function gramView(){
 function novelView(){
   const BK=BOOKSG[S.g];const list=BK?BK.map(b=>[b.title,b.author,b.blurb,1]):PLAN[S.g].books.map(b=>[...b,0]);
   if(S.book!==null&&BK&&BK[S.book])return bookView();
-  return `<h2>${gname(S.g)} novels${S.g===0?Z("Extra"):""}</h2><p class="meta">${S.g===0?"Extra reads beyond the Grade 9–12 list, with the same full guide. ":""}Each guide: background · chapter summaries · characters · themes & symbols · literary devices · critical thinking (claim–evidence–reasoning) · Thinking Maps with Picture → Bridge → Pencil practice.</p>
+  return `<h2>${gname(S.g)} novels${S.g===0?Z("Extra"):""}</h2><p class="meta">${S.g===0?"Extra reads outside the Grade 9–12 list, with the same full guide. ":""}Each guide: background · chapter summaries · characters · themes & symbols · literary devices · critical thinking (claim–evidence–reasoning) · Thinking Maps with Picture → Bridge → Pencil practice.</p>
   <div class="books">${list.map((b,i)=>`<button class="book" ${b[3]?`data-book="${i}"`:"disabled"}><b>${b[0]}</b><span class="meta">${b[1]}</span><div>${b[2]}</div>${b[3]?`<span class="badge" style="background:var(--blue);color:var(--bg)">Open guide</span>`:`<span class="badge">Next batch</span>`}</button>`).join("")}</div>`+readingList();
 }
 function findGuide(t){const n=x=>x.toLowerCase().replace(/^the /,"").replace(/[^a-z0-9]/g,"");for(const g of [9,10,11,12]){const i=(BOOKSG[g]||[]).findIndex(b=>n(b.title)===n(t)||n(b.title)===n(t.replace(/:.*/,"")));if(i>=0)return [g,i]}return null}
