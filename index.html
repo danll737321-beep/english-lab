@@ -95,6 +95,36 @@ details summary{cursor:pointer;color:var(--blue);font-weight:600;min-height:32px
 .rb a{color:var(--blue)}
 .unith{font:700 15px "Source Sans 3",sans-serif;color:var(--red);margin:18px 0 4px;text-transform:uppercase;letter-spacing:.04em}
 footer{max-width:980px;margin:auto;padding:0 max(4vw,16px) 30px;color:var(--mute);font-size:13.5px}
+.tmap{margin:8px 0 22px}
+.troot{display:block;width:max-content;max-width:100%;margin:0 auto 12px;padding:8px 20px;border:2px solid var(--ink);border-radius:10px;font:700 19px "Source Serif 4",serif;background:var(--bg);text-align:center}
+.tcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:2px solid var(--line);padding-top:12px}
+.thd{font-weight:700;padding:6px 10px;border-radius:8px;background:var(--blue);color:var(--bg);text-align:center}
+.thd .zh{color:inherit;opacity:.85}
+.c2 .thd{background:var(--ok)}.c3 .thd{background:var(--red)}
+.tcol ul{list-style:none;margin:8px 0 0 8px;padding:0 0 0 10px;border-left:2px solid var(--line)}
+.tcol li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:6px 0;position:relative}
+.tcol li::before{content:"";position:absolute;left:-12px;top:50%;width:10px;border-top:2px solid var(--line)}
+.tcol li b{display:block}.tcol li span{font-size:14.5px;color:var(--mute)}
+.blank{display:inline-block;min-width:8em;width:90%;border-bottom:1.5px solid var(--mute);height:1.3em;vertical-align:bottom}
+.relc .thd{margin-bottom:8px}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:6px 0}
+.rcard.rp{border-left:4px solid var(--ok)}.rcard.rn{border-left:4px solid var(--red)}
+.rcard small{display:block;font-weight:700;font-size:12.5px;color:var(--mute)}
+.bub{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center}
+.bub ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.bub li{border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;text-align:center;background:var(--card)}
+.bub .ba li{border-color:var(--red)}.bub .bb li{border-color:var(--ok)}
+.bc{width:124px;height:124px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:2.5px solid var(--red);font-weight:700;padding:10px;font-size:15px;line-height:1.25}
+.bc.end{border-color:var(--ok)}.bc small{font-weight:400;color:var(--mute);font-size:12.5px}
+.layer{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0;background:var(--card)}
+.layer h3{margin-top:0}
+.frame{font:600 17px "Source Serif 4",serif;padding:8px 12px;border-left:4px solid var(--hl);background:var(--bg);margin:6px 0}
+.lines{height:64px;background-image:linear-gradient(transparent 31px,var(--line) 31px);background-size:100% 32px;margin:4px 0 12px}
+.lines.tall{height:256px}
+.steps{display:grid;grid-template-columns:120px minmax(0,1fr);gap:6px 12px;margin:8px 0}
+.steps dt{font-weight:700;color:var(--red)}.steps dd{margin:0}
+@media(max-width:700px){.tcols{grid-template-columns:minmax(0,1fr)}.bub{grid-template-columns:minmax(0,1fr)}.bc{margin:auto}.steps{grid-template-columns:minmax(0,1fr)}}
+@media print{header,footer,.tabs,.noprint{display:none!important}main{background:none;padding:0}.panel{animation:none}.layer,.tcol li,.rcard,.cer,.bub{break-inside:avoid}details{display:block}details[open] summary{display:none}}
 @media(max-width:700px){.gtopics{grid-template-columns:minmax(0,1fr)}.glist{grid-template-columns:repeat(2,minmax(0,1fr))}.cer dl{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:no-preference){.panel{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 </style>
@@ -5098,7 +5128,111 @@ const BOOKS12=[HAMLET,ORWELL,FRANK,TFA,NEVERFALL,SOLD,WIND,MALALA,OMNI,SUGAR,FAS
 
 
 
-const BOOKSG={9:BOOKS,10:BOOKS10,11:BOOKS11,12:BOOKS12};
+/* ---------- EXTRA (番外篇): Phoenix Rising ---------- */
+const PHOENIX={
+title:"Phoenix Rising",author:"Karen Hesse · 1994",blurb:"Nuclear accident, fear of loss, the courage to love",cite:"author and page, e.g., (Hesse 31)",
+bg:["A realistic novel published in 1994 by Karen Hesse, the Newbery Medal–winning author of Out of the Dust. Hesse lived in Vermont, not far from a working nuclear power plant, and imagined what an accident there would do to an ordinary farm family.",
+"The narrator is thirteen-year-old Nyle Sumner, who lives with her grandmother, Gran, on a sheep farm in Vermont. After an accident at the nearby Cookshire nuclear plant, people wear masks, test their food and water, and watch the wind. Gran takes in two evacuees, fifteen-year-old Ezra Trent and his mother, who are sick with radiation sickness. They stay in the back bedroom, where Nyle’s mother and grandfather both died.",
+"Content note: the novel deals with serious illness, radiation sickness, grief and the death of a teenage character. It is often read in upper elementary and middle school; preview the ending before assigning."],
+sum:[["Ch. 1–3 · The accident","A stray dog belonging to the bully Ripley Powers kills one of Nyle’s sheep, and Nyle stands up for her best friend, Muncie. Life has changed since the Cookshire accident: masks, radiation checks and the fear that the wind will shift. Gran agrees to take in two evacuees."],
+["Ch. 4 · Keeping a secret","At the bus stop, Nyle is lost in thought about Ezra and barely hears Muncie. She chooses not to tell her best friend that evacuees are living at the farm."],
+["Ch. 5–7 · The right book","Nyle looks at the treasures in her room, knowing she may have to leave them all behind. Unsure what to say to Ezra, she chooses Slake’s Limbo, a book about a lonely boy who never sees daylight, and begins reading aloud to him. She starts caring for him in small ways while still hiding the truth."],
+["Ch. 8–9 · Friendship under stress","Nyle sits with Ezra each night. After school, she and Muncie move fencing, gather loose wool and card it by the fire. Gran scolds Nyle for coming home late, because Mrs. Trent waits for Nyle’s visit to rest. Muncie notices the closed curtain in the back bedroom and asks what is wrong; Nyle cannot tell her."],
+["Ch. 10–13 · Ezra wakes up","Ezra sits up and talks, calling Nyle by his nickname for her, Shep. He tells her that her voice kept him going. On the night of a meteor shower, Nyle coaxes him out of bed. Remembering that Ezra once had a dog, she decides the farm will get a guard dog for him: a Great Pyrenees puppy, also named Shep."],
+["Middle chapters · School and feelings","Ezra recovers enough to go to school with Nyle, where Ripley bullies him. Gran worries that Nyle is growing too close to Ezra, and everyone knows the Trents will leave once they are well. Nyle and Ezra develop feelings for each other."],
+["Ch. 23 · The truth","On the bus, Muncie blocks the seat with her backpack; she is hurt by the secret. Nyle finally tells her who Ezra is, why he is staying at the farm and why she kept it hidden."],
+["Ending · Rising again","Ezra gets into a fight with Ripley and begins to bleed badly. At the hospital, doctors find he has leukemia caused by the radiation. Nyle says goodbye, and Ezra dies in the spring. Afterward, Nyle’s little cousin Bethany, who is very sick from radiation, comes to the farm to recover in the back bedroom. The ‘dying room’ becomes a place of healing, and Nyle has learned to love even when love can mean loss."]],
+chars:[["Nyle Sumner","The thirteen-year-old narrator; afraid of loss, so she keeps people at a distance, but quietly caring and brave."],
+["Gran","Nyle’s grandmother; a strong, kind farmer who takes in the evacuees when others are afraid."],
+["Ezra Trent","A fifteen-year-old evacuee with radiation sickness; withdrawn at first, he recovers, goes to school and grows close to Nyle."],
+["Mrs. Trent (Miriam)","Ezra’s mother; exhausted and devoted, she depends on Nyle’s visits."],
+["Muncie Harris","Nyle’s best friend; small, often teased, physically strong and strong-willed; hurt when Nyle keeps a secret from her."],
+["Ripley Powers","A fifteen-year-old local bully who torments Muncie, Nyle and later Ezra."],
+["Bethany","Nyle’s young cousin, sick from radiation; she comes to heal in the back bedroom at the end."]],
+themes:[["Fear of loss vs. the courage to love","Nyle expects Ezra to die like her mother and grandfather, so she tries not to care. By the end she chooses to love him even though she may lose him."],
+["Friendship and secrets","Keeping the Trents a secret protects them but strains Nyle and Muncie’s friendship until Nyle tells the truth."],
+["Acceptance","Gran welcomes the Trents when neighbors fear them, while classmates reject Muncie. The novel asks whom we let into our lives, and why."],
+["Invisible danger","Radiation cannot be seen, so fear spreads quickly and changes how people treat each other."],
+["Loss and renewal","Ezra dies, but Nyle grows stronger and the back bedroom becomes a place of healing."]],
+syms:[["The phoenix","The title bird that rises from its own ashes: hope and new life after disaster."],
+["The back bedroom","At first Nyle’s grief (‘the dying room’); by the end, a room where Bethany heals."],
+["The closed curtain","Hiding: from danger, from the outside world and from the truth."],
+["Shep the puppy","Nyle’s care for Ezra and the future she hopes he will have."],
+["Masks","Fear and protection; keeping hers shows Nyle does not yet feel safe."]],
+devs:[["First-person point of view","Nyle tells the story, so we feel her fear from the inside but see Ezra only through her eyes."],
+["Flashback","Memories of Nyle’s mother, her father leaving and her grandfather fill in why she fears the back bedroom."],
+["Foreshadowing","Calling the back bedroom ‘the dying room’ and showing Ezra’s fragile health hint that he may not survive."],
+["Characterization through actions","Small actions, such as choosing a book, wiping Ezra’s lips or picking a hangnail, show Nyle’s feelings."],
+["Irony","Ezra survives the ‘dying room’ but dies in the hospital, and the room becomes a place of recovery."]],
+ct:[{q:"Why does Nyle stay away from Ezra at first?",claim:"Explain the reason behind Nyle’s distance.",ev:"The ‘dying room’; her mother and grandfather; her actions in Ch. 5–7.",rs:"Connect her past losses to her present fear.",cc:"Is Nyle simply unkind, or is she protecting herself?",m:"Model claim: Nyle keeps her distance because she believes everyone who stays in the back bedroom dies, and she cannot face another loss."},
+{q:"Should Nyle have told Muncie the truth sooner?",claim:"Take a position on Nyle’s secret.",ev:"Ch. 4, Ch. 9 and Ch. 23.",rs:"Weigh protecting the Trents against trust between friends.",cc:"Nyle worries Muncie’s family would stop the friendship. Is that a good reason?",m:"Model claim: Nyle should have trusted Muncie sooner, because the secret hurt their friendship more than the truth would have."},
+{q:"How does Nyle change from the beginning to the end?",claim:"Describe Nyle’s most important change.",ev:"Reading aloud (Ch. 5–7); Ezra says her voice kept him going (Ch. 10); her goodbye at the hospital.",rs:"Show the move from avoiding love to choosing it.",cc:"Does losing Ezra prove that Nyle was right to be afraid?",m:"Model claim: Nyle changes from someone who avoids love to someone brave enough to love, even knowing she may lose."},
+{q:"Was Gran right to take in the Trents?",claim:"Judge Gran’s decision.",ev:"Neighbors’ fears; Mrs. Trent’s exhaustion; Ezra’s recovery.",rs:"Consider the risks to the family and the needs of the Trents.",cc:"Did Gran put Nyle at risk, physically or emotionally?",m:"Model claim: Gran made the right choice, because the Trents had nowhere else to go and her kindness gave Ezra a chance to recover."},
+{q:"What does the closed curtain stand for?",claim:"Interpret the symbol.",ev:"Ch. 9 (Muncie notices it); Ch. 10 (Ezra shouts ‘No!’).",rs:"Connect the curtain to secrets and to fear of the outside world.",cc:"Could the curtain simply be practical, not symbolic?",m:"Model claim: The closed curtain stands for hiding, from danger and from the truth."},
+{q:"Why is the novel called Phoenix Rising?",claim:"Explain the title.",ev:"Ezra’s recovery; Nyle’s growth after his death; Bethany in the back bedroom.",rs:"Connect the myth of the phoenix to the ending.",cc:"Is the ending too sad to be hopeful?",m:"Model claim: The title shows that even after terrible loss, new life and hope can rise again."}],
+story:["Nyle Sumner lives with her grandmother, Gran, on a sheep farm in Vermont. One night, the nuclear power plant at Cookshire has an accident. Now everyone wears masks, tests their food and watches the wind.",
+"Gran takes in two sick evacuees, a boy named Ezra and his mother. They stay in the back bedroom, the room where Nyle’s mother and grandfather died. Nyle is scared. She does not want to care about Ezra, because she thinks he will die too. She keeps him a secret from her best friend, Muncie.",
+"But every night Nyle sits by Ezra and reads to him. She chooses a book about a lonely boy who never sees daylight, because Ezra hides behind a closed curtain too. One snowy day, Ezra sits up and talks. He tells Nyle that her voice helped him keep going.",
+"Ezra gets stronger. Nyle gets him a puppy named Shep, and he even goes to school with her. Nyle and Ezra grow close. Muncie is hurt that Nyle hid the truth, so Nyle finally tells her everything.",
+"Then Ezra fights with the bully, Ripley, and starts to bleed. At the hospital, doctors find he has leukemia from the radiation. Nyle says goodbye, and Ezra dies in the spring.",
+"Nyle is very sad, but she is not sorry she loved him. Her little cousin Bethany, sick from radiation, comes to rest in the back bedroom. The dying room becomes a room for getting well. Like a phoenix, hope rises again."],
+maps:{
+tree:{chars:[["Nyle Sumner","13, the narrator","13 歲，敘事者"],["Gran","Takes in evacuees","收留撤離者"],["Ezra Trent","Radiation sickness","輻射病"],["Mrs. Trent","Ezra’s mother","Ezra 的媽媽"],["Muncie Harris","Nyle’s best friend","Nyle 最好的朋友"],["Ripley Powers","The bully","惡霸"],["Bethany","Cousin who heals","來養病的表妹"]],
+story:[["Ch. 1–3","Nuclear accident at Cookshire","Cookshire 核電廠事故"],["Ch. 1–4","Trents move into the back bedroom","Trent 母子住進後臥室"],["Ch. 5–7","Nyle reads Slake’s Limbo to Ezra","Nyle 唸《Slake’s Limbo》給 Ezra 聽"],["Ch. 10","Ezra sits up and talks","Ezra 坐起來說話"],["Ch. 13","Meteor shower; puppy Shep","流星雨；小狗 Shep"],["Middle","Ezra goes to school; Ripley bullies him","Ezra 上學；被 Ripley 欺負"],["Ch. 23","Nyle tells Muncie the truth","Nyle 告訴 Muncie 真相"],["Ending","Ezra dies; Bethany heals in the room","Ezra 過世；Bethany 在房間養病"]],
+themes:[["Fear vs. love","Caring means risk","關心就有風險"],["Friendship","Secrets strain trust","秘密削弱信任"],["Acceptance","Who we let in","我們接納誰"],["The phoenix","Hope after loss","失去後的希望"],["The back bedroom","From dying to healing","從死亡到療癒"],["The curtain","Hiding the truth","隱藏真相"],["Masks","Fear of danger","對危險的恐懼"]]},
+rel:{hero:"Nyle",links:[{who:"Ezra",pos:["Ch. 5–10","Reads aloud to him; he says her voice kept him going","唸書給他聽；他說她的聲音讓他撐下去"],neg:["Ch. 5–7","Fears he will die in the dying room","害怕他會死在死亡之房"]},
+{who:"Muncie",pos:["Ch. 8–9","Moving fences and carding wool together","一起搬圍籬、梳羊毛"],neg:["Ch. 4, 9, 23","Hides the Trents; Muncie feels shut out","隱瞞 Trent 母子；Muncie 覺得被排擠"]},
+{who:"Gran",pos:["Ch. 8","Guides her to do the right thing","引導她做對的事"],neg:["Ch. 8","Scolds her for coming home late","責備她太晚回家"]}]},
+bubble:{a:["Nyle at the start","Ch. 1–7","開頭的 Nyle"],b:["Nyle at the end","Final chapters","結尾的 Nyle"],
+aOnly:[["Afraid","害怕"],["Avoids Ezra","躲著 Ezra"],["Keeps secrets","保守秘密"]],
+both:[["Caring","關心別人"],["Hardworking","勤勞"],["Loyal friend","忠誠的朋友"]],
+bOnly:[["Brave","勇敢"],["Chooses love","選擇去愛"],["Tells the truth","說出真相"]]},
+practice:{
+picture:[["Tree map: under each character, write one trait and the page or chapter that proves it.","樹狀圖：在每個人物下面寫一個特質，以及證明它的頁碼或章節。","Example: Nyle — lonely — p. 31"],
+["Story branch: put the eight events in order and label each with its chapter.","故事支線：把八個事件排好順序，並標上章節。","Example: Ch. 5–7 — Nyle reads to Ezra"],
+["Relationship map: for Ezra, Muncie and Gran, write one positive and one difficult moment.","人物關係圖：替 Ezra、Muncie、Gran 各寫一個正面時刻和一個困難時刻。","Example: Muncie + carding wool (Ch. 9)"],
+["Double bubble: sort these words into Start, End or Both: afraid, brave, caring, keeps secrets, tells the truth, loyal friend.","雙泡泡圖：把這些詞分到「開頭」「結尾」或「兩者皆是」。","Example: afraid → Start"]],
+bridge:[{l:"Character",f:"Nyle feels ___ because ___ (p. ___).",m:"Nyle feels lonely because she understands how Slake felt all alone, and she thinks Ezra feels the same way (p. 31).",zf:"Nyle 覺得＿＿，因為＿＿（第＿頁）。",zm:"Nyle 覺得孤單，因為她懂 Slake 孤零零的感受，也覺得 Ezra 一樣孤單（第 31 頁）。"},
+{l:"Relationship",f:"At first, Nyle and ___ ___. Later, ___.",m:"At first, Nyle and Muncie work happily together, carding wool by the fire (Ch. 9). Later, the secret about Ezra makes Muncie feel shut out (Ch. 23).",zf:"一開始，Nyle 和＿＿＿＿。後來，＿＿。",zm:"一開始，Nyle 和 Muncie 開心地在火爐邊一起梳羊毛（第 9 章）。後來，關於 Ezra 的秘密讓 Muncie 覺得被排擠（第 23 章）。"},
+{l:"Symbol",f:"The ___ stands for ___ because ___.",m:"The back bedroom stands for Nyle’s grief because her mother and grandfather both died there.",zf:"＿＿代表＿＿，因為＿＿。",zm:"後臥室代表 Nyle 的悲傷，因為她的媽媽和爺爺都在那裡過世。"},
+{l:"Change",f:"At the beginning, Nyle is ___. By the end, she is ___ because ___.",m:"At the beginning, Nyle is afraid to care about Ezra. By the end, she is brave enough to love him, because she learns that loving someone is worth the risk of losing them.",zf:"一開始，Nyle 是＿＿。到了結尾，她變得＿＿，因為＿＿。",zm:"一開始，Nyle 害怕在乎 Ezra。到了結尾，她有勇氣愛他，因為她明白愛一個人值得冒失去的風險。"},
+{l:"Theme",f:"The author shows that ___ when ___.",m:"The author shows that hope can rise after loss when Bethany comes to heal in the back bedroom.",zf:"作者在＿＿的時候，告訴我們＿＿。",zm:"作者在 Bethany 來到後臥室養病時，告訴我們失去之後希望仍能升起。"}],
+pencil:{q:"How does Nyle change from the beginning of the novel to the end? Write one CER paragraph.",zq:"Nyle 從小說開頭到結尾有什麼改變？寫一段 CER 段落。",
+steps:[["Claim","One sentence that answers the question. Use your double bubble map.","一句話回答問題，用雙泡泡圖。"],["Evidence 1","Something Nyle does or feels at the beginning, with a chapter or page.","開頭 Nyle 的行動或感受，標章節或頁碼。"],["Evidence 2","Something Nyle does or feels at the end, with a chapter or page.","結尾 Nyle 的行動或感受，標章節或頁碼。"],["Reasoning","Explain how the two pieces of evidence prove she changed.","說明兩項證據如何證明她改變了。"],["Closing","Connect the change to the title or a theme.","把改變連結到書名或主題。"]],
+check:[["Complete sentences, not single words","用完整句子，不要只寫一個字"],["He / she / it + verb-s (Nyle feels, Ezra says)","he / she / it 的動詞要加 -s"],["Cite a chapter or page for each piece of evidence","每項證據都標章節或頁碼"],["Use transitions: At first, Later, By the end","用轉折語：At first、Later、By the end"]],
+m:"Over the course of Phoenix Rising, Nyle changes from a girl who is afraid to love into a girl brave enough to love even when she might lose. At first, she avoids Ezra because she believes everyone in the back bedroom dies, like her mother and grandfather (Ch. 1–4). Even when she starts reading to him, she still hides him from Muncie (Ch. 4–9). By the end, Nyle stays with Ezra at the hospital and says goodbye, and she tells Muncie the whole truth (Ch. 23). These choices show that she no longer runs from people she cares about. Like the phoenix in the title, Nyle rises from her grief stronger than before.",
+zm:"在《Phoenix Rising》中，Nyle 從一個害怕去愛的女孩，變成即使可能失去也有勇氣去愛的女孩。一開始，她躲著 Ezra，因為她相信住進後臥室的人都會死，就像她的媽媽和爺爺（第 1–4 章）。即使開始唸書給他聽，她仍對 Muncie 隱瞞他的存在（第 4–9 章）。到了結尾，Nyle 在醫院陪著 Ezra 並向他道別，也把全部真相告訴 Muncie（第 23 章）。這些選擇顯示她不再逃避自己在乎的人。就像書名中的鳳凰，Nyle 從悲傷中重生，變得比以前更堅強。"}}},
+kz:{"Fear of loss vs. the courage to love":"害怕失去 vs. 勇於去愛","Friendship and secrets":"友誼與秘密","Acceptance":"接納","Invisible danger":"看不見的危險","Loss and renewal":"失去與重生","The phoenix":"鳳凰","The back bedroom":"後臥室","The closed curtain":"拉上的窗簾","Shep the puppy":"小狗 Shep","Masks":"口罩","First-person point of view":"第一人稱觀點","Flashback":"倒敘","Characterization through actions":"用行動刻畫人物"},
+zh:{bg:["Karen Hesse 於 1994 年出版的寫實小說，她也是紐伯瑞獎作品《Out of the Dust》的作者。Hesse 住在佛蒙特州，離一座運轉中的核電廠不遠，她想像如果那裡發生事故，一個普通的農家會變成什麼樣子。",
+"敘事者是 13 歲的 Nyle Sumner，和奶奶住在佛蒙特州的牧羊農場。附近的 Cookshire 核電廠發生事故後，大家戴口罩、檢測食物和水，還要注意風向。奶奶收留了兩位受輻射傷害的撤離者：15 歲的 Ezra Trent 和他的母親。他們住進後臥室——Nyle 的媽媽和爺爺都在那裡過世。",
+"內容提醒：小說涉及重病、輻射病、悲傷，以及一位青少年角色的死亡。常用於小學高年級與國中；指定閱讀前請先了解結局。"],
+sum:["惡霸 Ripley 的流浪狗咬死了 Nyle 的一隻羊，Nyle 挺身保護好朋友 Muncie。核災後生活全變了：口罩、輻射檢測，還擔心風向改變。奶奶答應收留兩位撤離者。",
+"在公車站，Nyle 想著 Ezra，幾乎沒聽見 Muncie 說話。她選擇不告訴最好的朋友，農場裡住了撤離者。",
+"Nyle 看著房間裡的寶貝，知道可能得全部留下。她不知道跟 Ezra 說什麼，於是選了《Slake’s Limbo》——一本關於孤單、看不到陽光的男孩的書——開始唸給他聽。她開始用小小的方式照顧他，但仍然保密。",
+"Nyle 每晚陪著 Ezra。放學後，她和 Muncie 搬圍籬、撿羊毛，在火爐邊梳毛。奶奶責備 Nyle 太晚回家，因為 Trent 太太要等 Nyle 來陪 Ezra 才能休息。Muncie 注意到後臥室的窗簾一直拉著，問她怎麼了；Nyle 說不出口。",
+"Ezra 坐起來說話，叫 Nyle 的綽號「Shep」，還說是她的聲音讓他撐下去。流星雨那晚，Nyle 引他下床。她想起 Ezra 以前養過狗，決定替農場找一隻看門狗給他：一隻也叫 Shep 的大白熊幼犬。",
+"Ezra 康復到可以和 Nyle 一起上學，卻被 Ripley 欺負。奶奶擔心 Nyle 和 Ezra 太親近，大家也知道 Trent 母子康復後就會離開。Nyle 和 Ezra 對彼此產生好感。",
+"公車上，Muncie 用書包擋住座位——她因為被隱瞞而受傷。Nyle 終於告訴她 Ezra 是誰、為什麼住在農場，以及自己為什麼保密。",
+"Ezra 和 Ripley 打架後大量出血。在醫院，醫生發現他因輻射得了白血病。Nyle 向他道別，Ezra 在春天過世。之後，因輻射重病的小表妹 Bethany 來到農場，在後臥室養病。「死亡之房」變成療癒的地方，而 Nyle 學會了即使愛可能帶來失去，仍然願意去愛。"],
+chars:["13 歲的敘事者；害怕失去，所以和人保持距離，但默默付出、很勇敢。","Nyle 的奶奶；堅強善良的農夫，在別人害怕時收留撤離者。","15 歲、得了輻射病的撤離者；一開始封閉，後來康復、上學，和 Nyle 越來越親近。","Ezra 的母親；疲憊但全心照顧兒子，很依賴 Nyle 的探望。","Nyle 最好的朋友；個子小、常被嘲笑，卻有力氣又意志堅強；被 Nyle 隱瞞而受傷。","15 歲的鎮上惡霸，欺負 Muncie、Nyle，後來也欺負 Ezra。","Nyle 的小表妹，因輻射生病；結尾時來到後臥室養病。"],
+themes:["Nyle 以為 Ezra 會像媽媽和爺爺一樣死去，所以努力不去在乎。最後她選擇愛他，即使可能失去他。","保守 Trent 母子的秘密保護了他們，卻讓 Nyle 和 Muncie 的友誼出現裂痕，直到 Nyle 說出真相。","鄰居害怕 Trent 母子時，奶奶接納了他們；同學卻排擠 Muncie。小說追問：我們讓誰走進生命，為什麼？","輻射看不見，所以恐懼擴散得很快，也改變了人與人之間的相處。","Ezra 過世了，但 Nyle 變得更堅強，後臥室也成了療癒的地方。"],
+syms:["書名中的鳥從自己的灰燼中重生：災難後的希望與新生。","一開始是 Nyle 的悲傷（「死亡之房」）；結尾成為 Bethany 康復的房間。","躲藏：躲避危險、躲避外面的世界，也躲避真相。","Nyle 對 Ezra 的關心，以及她希望他擁有的未來。","恐懼與保護；Nyle 留著口罩，表示她還沒有安全感。"],
+devs:["由 Nyle 說故事，我們從內心感受她的恐懼，但只能透過她的眼睛看 Ezra。","關於媽媽、爸爸離開與爺爺的回憶，說明了她為什麼害怕後臥室。","把後臥室叫作「死亡之房」、描寫 Ezra 虛弱的身體，都暗示他可能活不下來。","選一本書、幫 Ezra 擦嘴唇、摳肉刺等小動作，都顯示了 Nyle 的感受。","Ezra 在「死亡之房」活了下來，卻在醫院過世；那個房間反而成了康復的地方。"],
+ct:[{q:"Nyle 一開始為什麼躲著 Ezra？",claim:"說明 Nyle 保持距離的原因。",ev:"「死亡之房」；媽媽和爺爺；第 5–7 章的行動。",rs:"把她過去的失去和現在的恐懼連結起來。",cc:"Nyle 只是不友善，還是在保護自己？",m:"參考論點：Nyle 保持距離，是因為她相信住進後臥室的人都會死，而她承受不了再一次失去。"},
+{q:"Nyle 應該早一點告訴 Muncie 真相嗎？",claim:"對 Nyle 的秘密表明立場。",ev:"第 4、9、23 章。",rs:"權衡保護 Trent 母子和朋友之間的信任。",cc:"Nyle 擔心 Muncie 的家人會阻止她們來往。這是好理由嗎？",m:"參考論點：Nyle 應該早點信任 Muncie，因為秘密對友誼的傷害比真相更大。"},
+{q:"Nyle 從頭到尾有什麼改變？",claim:"描述 Nyle 最重要的改變。",ev:"唸書給 Ezra 聽（第 5–7 章）；Ezra 說她的聲音讓他撐下去（第 10 章）；在醫院道別。",rs:"說明她從逃避愛到選擇去愛的轉變。",cc:"失去 Ezra 是否證明 Nyle 當初害怕是對的？",m:"參考論點：Nyle 從逃避愛的人，變成即使知道可能失去，仍有勇氣去愛的人。"},
+{q:"奶奶收留 Trent 母子是對的嗎？",claim:"評價奶奶的決定。",ev:"鄰居的恐懼；Trent 太太的疲憊；Ezra 的康復。",rs:"考慮家人承擔的風險，以及 Trent 母子的需要。",cc:"奶奶是否讓 Nyle 承受了身體或情感上的風險？",m:"參考論點：奶奶做了對的選擇，因為 Trent 母子無處可去，她的善良讓 Ezra 有機會康復。"},
+{q:"拉上的窗簾代表什麼？",claim:"詮釋這個象徵。",ev:"第 9 章（Muncie 注意到）；第 10 章（Ezra 大喊 No!）。",rs:"把窗簾和秘密、對外面世界的恐懼連結起來。",cc:"窗簾會不會只是實際用途，沒有象徵意義？",m:"參考論點：拉上的窗簾代表躲藏——躲避危險，也躲避真相。"},
+{q:"小說為什麼叫《Phoenix Rising》？",claim:"解釋書名。",ev:"Ezra 的康復；Ezra 過世後 Nyle 的成長；Bethany 住進後臥室。",rs:"把鳳凰的神話和結局連結起來。",cc:"結局是否太悲傷，談不上希望？",m:"參考論點：書名說明即使經歷巨大的失去，新的生命和希望仍能重生。"}],
+story:["Nyle Sumner 和奶奶住在佛蒙特州的牧羊農場。某天夜裡，Cookshire 核電廠發生事故。從此大家戴口罩、檢測食物、注意風向。",
+"奶奶收留了兩位生病的撤離者：男孩 Ezra 和他的媽媽。他們住進後臥室——Nyle 的媽媽和爺爺都在那裡過世。Nyle 很害怕，不想在乎 Ezra，因為她覺得他也會死。她也對最好的朋友 Muncie 保守這個秘密。",
+"可是每天晚上，Nyle 都坐在 Ezra 旁邊唸書給他聽。她選了一本關於孤單、看不到陽光的男孩的書，因為 Ezra 也躲在拉上的窗簾後面。某個下雪天，Ezra 坐起來說話，告訴 Nyle 是她的聲音讓他撐下去。",
+"Ezra 越來越強壯。Nyle 送他一隻叫 Shep 的小狗，他甚至能和她一起上學。Nyle 和 Ezra 越來越親近。Muncie 因為被隱瞞而受傷，Nyle 終於把一切告訴她。",
+"後來 Ezra 和惡霸 Ripley 打架，開始流血不止。在醫院，醫生發現他因輻射得了白血病。Nyle 向他道別，Ezra 在春天離開了。",
+"Nyle 很傷心，但她不後悔愛過他。因輻射生病的小表妹 Bethany 來到後臥室休養，「死亡之房」變成了康復的房間。就像鳳凰一樣，希望再次升起。"]}};
+const EXTRA=[PHOENIX];
+
+const BOOKSG={9:BOOKS,10:BOOKS10,11:BOOKS11,12:BOOKS12,0:EXTRA};
 const VOC={9:V9,10:V10,11:V11,12:V12};
 const GRAM={9:G9,10:G10,11:G11,12:G12};
 
@@ -5166,7 +5300,7 @@ narrator:"敘事者",protagonist:"主角",antagonist:"對手；反派",foreshado
 reluctant:"不情願的",vindictive:"有報復心的",condescending:"居高臨下的",assert:"斷言；主張",ambiguous:"模稜兩可的",compel:"迫使",vulnerable:"脆弱的",persistent:"堅持不懈的",provoke:"激怒；引發",inevitable:"不可避免的",
 claim:"主張；論點",counterclaim:"反方論點",rebuttal:"反駁",valid:"站得住腳的",credible:"可信的",emphasize:"強調",illustrate:"舉例說明",imply:"暗示",justify:"證明…合理",synthesize:"綜合；整合",
 "Vocabulary":"單字","Grammar":"文法","Novels":"小說",
-"Background":"背景","Summary":"摘要","Characters":"人物","Themes & Symbols":"主題與象徵","Literary Devices":"文學手法","Critical Thinking":"思辨","5-min Story":"五分鐘故事",
+"Extra":"番外篇","Thinking Maps":"思考地圖","Tree map":"樹狀圖","Relationship map":"人物關係圖","Double bubble map":"雙泡泡圖","Story":"故事","Picture → Bridge → Pencil":"看圖 → 句型 → 寫作","Answer key":"答案版","Fill-in":"填空版","Print":"列印","Positive":"正面","Difficult":"困難","Both":"兩者皆是","Background":"背景","Summary":"摘要","Characters":"人物","Themes & Symbols":"主題與象徵","Literary Devices":"文學手法","Critical Thinking":"思辨","5-min Story":"五分鐘故事",
 "Parallel structure":"平行結構","Phrases":"片語","Clauses":"子句","Semicolons":"分號","Colons":"冒號","Run-ons & comma splices":"連寫句與逗號錯接","Subject–verb agreement":"主詞動詞一致","MLA in-text citation":"MLA 文內引用",
 "Loss of innocence & moral growth":"失去純真與道德成長","Racial injustice":"種族不公","Courage":"勇氣","Empathy & perspective":"同理心與觀點","Social class":"社會階級",
 "The mockingbird":"知更鳥","The Radley house & knothole":"Radley 家與樹洞","The rabid dog":"瘋狗","Mrs. Dubose’s camellia":"Dubose 太太的山茶花",
@@ -5235,8 +5369,9 @@ function speak(w){try{loadVoices();const u=new SpeechSynthesisUtterance(w),v=bes
 loadVoices();try{speechSynthesis.addEventListener("voiceschanged",()=>{const n=VOICES.length;loadVoices();if(VOICES.length!==n&&S.tab==="vocab"&&!quiz)render()})}catch(e){}
 function voiceSel(){if(!VOICES.length)return "";const cur=(bestVoice()||{}).name;return `<label class="meta" for="voicesel">Voice</label><select id="voicesel" style="flex:0 1 260px">${VOICES.map(v=>`<option value="${esc(v.name)}" ${v.name===cur?"selected":""}>${esc(v.name.replace(/^Microsoft |^Google /,""))} (${v.lang})</option>`).join("")}</select><button class="icon" data-say="Welcome to English Lab" aria-label="Test voice">▶</button>`}
 
-function renderGrades(){$("grades").innerHTML=[9,10,11,12].map(g=>`<button data-g="${g}" aria-pressed="${S.g===g}">Grade ${g}</button>`).join("")}
-function renderTabs(){$("tabs").innerHTML=[["vocab","Vocabulary"],["gram","Grammar"],["novel","Novels"]].map(([k,l])=>`<button data-tab="${k}" aria-pressed="${S.tab===k}">${l}${Z(l)}</button>`).join("")}
+const gname=g=>g===0?"Extra":"Grade "+g;
+function renderGrades(){$("grades").innerHTML=[9,10,11,12,0].map(g=>`<button data-g="${g}" aria-pressed="${S.g===g}">${g===0?"Extra"+Z("Extra"):"Grade "+g}</button>`).join("")}
+function renderTabs(){$("tabs").innerHTML=(S.g===0?[["novel","Novels"]]:[["vocab","Vocabulary"],["gram","Grammar"],["novel","Novels"]]).map(([k,l])=>`<button data-tab="${k}" aria-pressed="${S.tab===k}">${l}${Z(l)}</button>`).join("")}
 
 function soon(txt){return `<div class="soon"><h3>Coming in the next batch</h3><p>${txt}</p></div>`}
 
@@ -5282,7 +5417,7 @@ function gramView(){
 function novelView(){
   const BK=BOOKSG[S.g];const list=BK?BK.map(b=>[b.title,b.author,b.blurb,1]):PLAN[S.g].books.map(b=>[...b,0]);
   if(S.book!==null&&BK&&BK[S.book])return bookView();
-  return `<h2>Grade ${S.g} novels</h2><p class="meta">Each guide: background · chapter summaries · characters · themes & symbols · literary devices · critical thinking (claim–evidence–reasoning).</p>
+  return `<h2>${gname(S.g)} novels${S.g===0?Z("Extra"):""}</h2><p class="meta">${S.g===0?"Extra reads beyond the Grade 9–12 list, with the same full guide. ":""}Each guide: background · chapter summaries · characters · themes & symbols · literary devices · critical thinking (claim–evidence–reasoning) · Thinking Maps with Picture → Bridge → Pencil practice.</p>
   <div class="books">${list.map((b,i)=>`<button class="book" ${b[3]?`data-book="${i}"`:"disabled"}><b>${b[0]}</b><span class="meta">${b[1]}</span><div>${b[2]}</div>${b[3]?`<span class="badge" style="background:var(--blue);color:var(--bg)">Open guide</span>`:`<span class="badge">Next batch</span>`}</button>`).join("")}</div>`+readingList();
 }
 function findGuide(t){const n=x=>x.toLowerCase().replace(/^the /,"").replace(/[^a-z0-9]/g,"");for(const g of [9,10,11,12]){const i=(BOOKSG[g]||[]).findIndex(b=>n(b.title)===n(t)||n(b.title)===n(t.replace(/:.*/,"")));if(i>=0)return [g,i]}return null}
@@ -5299,8 +5434,70 @@ function readingList(){
    <details><summary>Frontloading${Z("Frontloading")}</summary><ul>${b[8].map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>
    <div class="row" style="margin:6px 0 0"><a href="https://${b[9]}" target="_blank" rel="noopener">${esc(b[9])}</a>${gd?`<button class="pill" data-gg="${gd[0]}" data-book="${gd[1]}">Open full guide${gd[0]!==S.g?" (Grade "+gd[0]+")":""}</button>`:""}</div></div>`}).join("")}</div>`).join("")}`;
 }
+
+/* ---------- Thinking Maps + Picture → Bridge → Pencil ---------- */
+const BL=`<span class="blank"></span>`;
+const cut=(t,n)=>{t=String(t||"").split(/[;:.；：。]/)[0].trim();return t.length>n?t.slice(0,n-1).trim()+"…":t};
+const tz=(en,zh)=>`${esc(en)}${S.zh&&zh?`<div class="zh">${zh}</div>`:""}`;
+function mapData(B){
+  if(B.maps)return B.maps;
+  const nm=c=>String(c).replace(/\s*\(.*?\)/g,"");
+  const zc=i=>B.zh&&B.zh.chars&&B.zh.chars[i]?cut(B.zh.chars[i].split("，")[0],16):"";
+  return {auto:1,tree:{
+    chars:B.chars.slice(0,7).map((c,i)=>[nm(c[0]),cut(c[1].split(",")[0],38),zc(i)]),
+    story:B.sum.slice(0,8).map(x=>{const p=String(x[0]).split(" · ");return [p[0],p.slice(1).join(" · "),""]}),
+    themes:[...B.themes,...B.syms].slice(0,8).map(t=>[t[0],"",ZH[t[0]]||""])}};
+}
+function practiceData(B,M){
+  if(M.practice)return M.practice;
+  const hero=M.tree.chars[0][0],c2=(M.tree.chars[1]||["another character"])[0],sym=(B.syms[0]||["a symbol"])[0],th=(B.themes[0]||["the main theme"])[0];
+  const eg=B.cite.replace(/^.*e\.g\.,\s*/,"");
+  return {picture:[[`Tree map: under each character, write one trait and the page or chapter that proves it.`,`樹狀圖：在每個人物下面寫一個特質，以及證明它的頁碼或章節。`,`Example: ${hero} — ___ — ${eg}`],
+   [`Story branch: write what happens in each part, in order.`,`故事支線：依序寫出每個段落發生的事。`,`Use the Summary tab to check.`],
+   [`Themes & symbols branch: for each item, write what it means in three to five words.`,`主題與象徵支線：每一項用三到五個字寫出它的意思。`,`Example: ${sym} — stands for ___`]],
+  bridge:[{l:"Character",f:`${hero} feels ___ because ___ ${eg}.`,zf:`${hero} 覺得＿＿，因為＿＿（標出處）。`},
+   {l:"Relationship",f:`At first, ${hero} and ${c2} ___. Later, ___.`,zf:`一開始，${hero} 和 ${c2}＿＿。後來，＿＿。`},
+   {l:"Symbol",f:`${sym} stands for ___ because ___.`,zf:`${sym} 代表＿＿，因為＿＿。`},
+   {l:"Change",f:`At the beginning, ${hero} is ___. By the end, ${hero} is ___ because ___.`,zf:`一開始，${hero} 是＿＿。到了結尾，變得＿＿，因為＿＿。`},
+   {l:"Theme",f:`The author develops the theme of ${th.toLowerCase()} when ___.`,zf:`作者在＿＿的時候，發展「${ZH[th]||th}」這個主題。`}],
+  pencil:{q:`How does ${hero} change from the beginning to the end? Write one CER paragraph.`,zq:`${hero} 從開頭到結尾有什麼改變？寫一段 CER 段落。`,steps:GSTEPS,check:GCHECK}};
+}
+const GSTEPS=[["Claim","One sentence that answers the question.","一句話回答問題。"],["Evidence 1","Something from the beginning, with a page or chapter.","開頭的證據，標頁碼或章節。"],["Evidence 2","Something from the end, with a page or chapter.","結尾的證據，標頁碼或章節。"],["Reasoning","Explain how the evidence proves your claim.","說明證據如何證明你的論點。"],["Closing","Connect your claim to a theme or the title.","把論點連結到主題或書名。"]];
+const GCHECK=[["Complete sentences, not single words","用完整句子，不要只寫一個字"],["He / she / it + verb-s","he / she / it 的動詞要加 -s"],["Cite a page or chapter for each piece of evidence","每項證據都標頁碼或章節"],["Use transitions: At first, Later, By the end","用轉折語：At first、Later、By the end"]];
+function treeHTML(B,M,F){
+  const T=M.tree,col=(label,items,cls)=>`<div class="tcol ${cls}"><div class="thd">${label}${Z(label)}</div><ul>${items.map((it,i)=>`<li><b>${esc(it[0])}</b>${F&&i>0?BL:(it[1]?`<span>${tz(it[1],it[2])}</span>`:(S.zh&&it[2]?`<div class="zh">${it[2]}</div>`:""))}</li>`).join("")}</ul></div>`;
+  return `<div class="tmap"><div class="troot">${esc(B.title)}</div><div class="tcols">${col("Characters",T.chars,"")}${col("Story",T.story,"c2")}${col("Themes & Symbols",T.themes,"c3")}</div></div>`;
+}
+function relHTML(R,F){
+  const card=(c,cls,lab)=>`<div class="rcard ${cls}"><small>${lab}${Z(lab)} · ${esc(c[0])}</small>${F?BL:tz(c[1],c[2])}</div>`;
+  return `<div class="tmap"><div class="troot">${esc(R.hero)}</div><div class="tcols">${R.links.map((l,i)=>`<div class="tcol relc ${["","c2","c3"][i%3]}"><div class="thd">${esc(l.who)}</div>${card(l.pos,"rp","Positive")}${card(l.neg,"rn","Difficult")}</div>`).join("")}</div></div>`;
+}
+function bubHTML(D,F){
+  const li=(arr)=>arr.map((x,i)=>`<li>${F&&i>0?BL:tz(x[0],x[1])}</li>`).join("");
+  const circ=(c,cls)=>`<div class="bc ${cls}">${esc(c[0])}${S.zh&&c[2]?`<span class="zh">${c[2]}</span>`:""}<small>${esc(c[1])}</small></div>`;
+  return `<div class="bub"><ul class="ba">${li(D.aOnly)}</ul>${circ(D.a,"")}<ul>${li(D.both)}</ul>${circ(D.b,"end")}<ul class="bb">${li(D.bOnly)}</ul></div><p class="meta" style="text-align:center">Left: only at the start · Middle: ${"Both"}${Z("Both")} · Right: only at the end</p>`;
+}
+function mapsView(B){
+  const M=mapData(B),P=practiceData(B,M),F=!!S.mf,op=F?"":" open";
+  let h=`<div class="row noprint"><button class="pill" data-mf="0" aria-pressed="${!F}">Answer key${Z("Answer key")}</button><button class="pill" data-mf="1" aria-pressed="${F}">Fill-in${Z("Fill-in")}</button><button class="pill" data-print="1">🖨 Print${Z("Print")}</button></div>
+  <p class="meta">Picture to Pencil: start from the maps (Picture), turn them into sentences (Bridge), then write a paragraph (Pencil). Fill-in mode blanks the maps for students; print it as a worksheet.</p>${S.zh?`<p class="zh zr">從圖到筆：先看圖整理（Picture），再用句型串成句子（Bridge），最後寫成段落（Pencil）。填空版會把圖留白給學生寫，可直接列印成學習單。</p>`:""}
+  <h3>Tree map${Z("Tree map")}</h3>${treeHTML(B,M,F)}`;
+  if(M.rel)h+=`<h3>Relationship map${Z("Relationship map")}</h3>${relHTML(M.rel,F)}`;
+  if(M.bubble)h+=`<h3>Double bubble map${Z("Double bubble map")}</h3>${bubHTML(M.bubble,F)}`;
+  h+=`<h2 style="margin-top:26px">Picture → Bridge → Pencil${Z("Picture → Bridge → Pencil")}</h2>`;
+  h+=`<div class="layer"><h3>Layer 1 · Picture${S.zh?` <span class="zh">看圖整理</span>`:""}</h3><ol>${P.picture.map(x=>`<li>${tz(x[0],x[1])}<div class="meta">${esc(x[2])}</div></li>`).join("")}</ol></div>`;
+  h+=`<div class="layer"><h3>Layer 2 · Bridge${S.zh?` <span class="zh">句型串句子</span>`:""}</h3><p class="meta">Pick one box from each map and complete the sentence frame.</p>${P.bridge.map((b,i)=>`<div><b>${i+1}. ${esc(b.l)}</b><div class="frame">${esc(b.f)}${S.zh&&b.zf?`<div class="zh">${b.zf}</div>`:""}</div><div class="lines"></div>${b.m?`<details${op}><summary>Model sentence</summary><p>${esc(b.m)}</p>${S.zh&&b.zm?`<p class="zh zr">${b.zm}</p>`:""}</details>`:""}</div>`).join("")}</div>`;
+  const pc=P.pencil;
+  h+=`<div class="layer"><h3>Layer 3 · Pencil${S.zh?` <span class="zh">寫成段落</span>`:""}</h3><p><b>${esc(pc.q)}</b></p>${S.zh&&pc.zq?`<p class="zh zr">${pc.zq}</p>`:""}
+  <dl class="steps">${pc.steps.map(x=>`<dt>${esc(x[0])}</dt><dd>${tz(x[1],x[2])}</dd>`).join("")}</dl>
+  <div class="lines tall"></div>
+  <p><b>Checklist</b></p>${pc.check.map(x=>`<label class="chk"><input type="checkbox"> ${tz(x[0],x[1])}</label>`).join("")}
+  ${pc.m?`<details${op} style="margin-top:10px"><summary>Model paragraph</summary><p>${esc(pc.m)}</p>${S.zh&&pc.zm?`<p class="zh zr">${pc.zm}</p>`:""}</details>`:""}</div>`;
+  if(M.auto)h+=`<p class="meta">This map set is built automatically from the guide. Books with a full map set also include a relationship map, a double bubble map and model answers.</p>`;
+  return h;
+}
 function bookView(){
-  const B=BOOKSG[S.g][S.book],secs=[["bg","Background"],["sum","Summary"],["chars","Characters"],["themes","Themes & Symbols"],["devs","Literary Devices"],["ct","Critical Thinking"],["story","5-min Story"]];
+  const B=BOOKSG[S.g][S.book],secs=[["bg","Background"],["sum","Summary"],["chars","Characters"],["themes","Themes & Symbols"],["devs","Literary Devices"],["ct","Critical Thinking"],["maps","Thinking Maps"],["story","5-min Story"]];
   let body="";
   const zt=(k,i,f)=>{if(!S.zh||!B.zh||!B.zh[k])return "";let v=B.zh[k][i];if(f&&v)v=v[f];return v?`<p class="zh zr">${v}</p>`:""};
   const zd=(i,f)=>{const t=S.zh&&B.zh&&B.zh.ct[i]?B.zh.ct[i][f]:"";return t?`<div class="zh">${t}</div>`:""};
@@ -5310,12 +5507,13 @@ function bookView(){
   if(S.bs==="themes")body=`<h3>Themes${Z("Themes")}</h3>`+B.themes.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("themes",i)}</div>`).join("")+`<h3>Symbols${Z("Symbols")}</h3>`+B.syms.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("syms",i)}</div>`).join("");
   if(S.bs==="devs")body=B.devs.map((t,i)=>`<div class="ch"><b>${t[0]}</b>${Z(t[0])}<p>${esc(t[1])}</p>${zt("devs",i)}</div>`).join("");
   if(S.bs==="story"){const st=B.story;body=st?`<p class="meta">A short retelling of the whole story — about five minutes to read or listen. It includes the ending.</p>${S.zh?`<p class="zh zr">用約五分鐘讀完或聽完整個故事的簡短重述，包含結局。</p>`:""}<div class="row"><button class="pill" data-listen="1">🔊 Listen</button><button class="pill" data-stop="1">■ Stop</button></div>`+st.map((p,i)=>`<p>${esc(p)}</p>${S.zh&&B.zh&&B.zh.story&&B.zh.story[i]?`<p class="zh zr">${B.zh.story[i]}</p>`:""}`).join(""):soon("The five-minute story for this book is being written.")}
+  if(S.bs==="maps")body=mapsView(B);
   if(S.bs==="ct")body=`<p class="meta">Answer each question with a claim, at least two pieces of evidence (cite ${B.cite}), and reasoning that connects them. Then answer the counterclaim.</p>${S.zh?`<p class="zh zr">每題都要提出主張、至少兩項證據（標示出處），以及連結兩者的推理，最後回應反方論點。</p>`:""}`+B.ct.map((c,i)=>`<div class="cer"><b>${i+1}. ${esc(c.q)}</b>${zd(i,"q")}<dl><dt>Claim${Z("Claim")}</dt><dd>${esc(c.claim)}${zd(i,"claim")}</dd><dt>Evidence${Z("Evidence")}</dt><dd>${esc(c.ev)}${zd(i,"ev")}</dd><dt>Reasoning${Z("Reasoning")}</dt><dd>${esc(c.rs)}${zd(i,"rs")}</dd><dt>Counterclaim${Z("Counterclaim")}</dt><dd>${esc(c.cc)}${zd(i,"cc")}</dd></dl><details><summary>Show model claim</summary><p>${esc(c.m)}</p>${zd(i,"m")}</details></div>`).join("");
-  return `<button class="pill" data-back="1">← All Grade ${S.g} novels</button><h2 style="margin-top:14px">${B.title}</h2><p class="meta">${B.author}</p>
-  <div class="row">${secs.map(([k,l])=>`<button class="pill" data-bs="${k}" aria-pressed="${S.bs===k}">${l}${Z(l)}</button>`).join("")}</div><div class="sec">${body}</div>`;
+  return `<button class="pill noprint" data-back="1">← All ${gname(S.g)} novels</button><h2 style="margin-top:14px">${B.title}</h2><p class="meta">${B.author}</p>
+  <div class="row noprint">${secs.map(([k,l])=>`<button class="pill" data-bs="${k}" aria-pressed="${S.bs===k}">${l}${Z(l)}</button>`).join("")}</div><div class="sec">${body}</div>`;
 }
 
-function render(){$("lang").innerHTML=`<button data-zh="0" aria-pressed="${!S.zh}">English</button><button data-zh="1" aria-pressed="${!!S.zh}">English + 中文</button>`;renderGrades();renderTabs();$("view").innerHTML=S.tab==="vocab"?vocabView():S.tab==="gram"?gramView():novelView();save()}
+function render(){if(S.g===0)S.tab="novel";$("lang").innerHTML=`<button data-zh="0" aria-pressed="${!S.zh}">English</button><button data-zh="1" aria-pressed="${!!S.zh}">English + 中文</button>`;renderGrades();renderTabs();$("view").innerHTML=S.tab==="vocab"?vocabView():S.tab==="gram"?gramView():novelView();save()}
 
 document.addEventListener("change",e=>{if(e.target.id==="unitsel"){S.unit=+e.target.value;quiz=null;render()}else if(e.target.id==="voicesel"){S.voice=e.target.value;save();speak("Welcome to English Lab")}});
 document.addEventListener("click",e=>{
@@ -5338,6 +5536,8 @@ document.addEventListener("click",e=>{
   else if(d.book!==undefined){if(d.gg)S.g=+d.gg;S.book=+d.book;S.bs="bg"}
   else if(d.back){S.book=null;try{speechSynthesis.cancel()}catch(e){}}
   else if(d.bs){S.bs=d.bs}
+  else if(d.mf!==undefined){S.mf=d.mf==="1"}
+  else if(d.print){window.print();return}
   else return;
   const y=window.scrollY;render();if(d.g||d.tab||d.book!==undefined||d.back||d.unit)window.scrollTo(0,0);else window.scrollTo(0,y);
 });
